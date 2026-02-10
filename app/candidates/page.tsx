@@ -7,6 +7,8 @@ import CandidateCard from '@/components/candidates/CandidateCard';
 import CandidateModal from '@/components/candidates/CandidateModal';
 import CandidateFilters from '@/components/candidates/CandidateFilters';
 import VotingInfo from '@/components/candidates/VotingInfo';
+import ScrollReveal, { StaggerContainer, StaggerItem } from '@/components/layout/ScrollReveal';
+import AnimatedCounter from '@/components/layout/AnimatedCounter';
 import { Candidate, CandidateFilters as Filters } from '@/lib/types/candidate';
 import sampleCandidates from '@/data/sample-candidates.json';
 import { motion } from 'framer-motion';
@@ -79,19 +81,24 @@ export default function CandidatesPage() {
         <>
             <Header />
             <main className="min-h-screen">
-                {/* Page Header */}
-                <section className="bg-navy border-b border-gold/20 py-12">
-                    <div className="container-custom">
-                        <div className="text-center max-w-3xl mx-auto">
-                            <Users className="w-16 h-16 text-gold mx-auto mb-4" />
-                            <h1 className="text-hero font-bold text-white mb-4">
-                                Ellis County Candidate Tracker
-                            </h1>
-                            <p className="text-lg text-cream/80">
-                                Your comprehensive guide to every candidate running for office in Ellis County.
-                                Research positions, compare candidates, and make your voice heard.
-                            </p>
-                        </div>
+                {/* Page Header — Premium gradient */}
+                <section className="relative bg-gradient-to-b from-navy via-navy to-navy-dark border-b border-gold/15 py-16 overflow-hidden">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.06)_0%,_transparent_60%)]" />
+                    <div className="container-custom relative z-10">
+                        <ScrollReveal>
+                            <div className="text-center max-w-3xl mx-auto">
+                                <div className="w-16 h-16 bg-gold/10 border border-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                                    <Users className="w-8 h-8 text-gold" />
+                                </div>
+                                <h1 className="text-hero font-bold text-white mb-4">
+                                    Ellis County Candidate Tracker
+                                </h1>
+                                <p className="text-lg text-cream/60 max-w-2xl mx-auto">
+                                    Your comprehensive guide to every candidate running for office in Ellis County.
+                                    Research positions, compare candidates, and make your voice heard.
+                                </p>
+                            </div>
+                        </ScrollReveal>
                     </div>
                 </section>
 
@@ -128,23 +135,23 @@ export default function CandidatesPage() {
                 )}
 
                 {/* Stats row */}
-                <section className="bg-navy-dark/50 border-b border-gold/20 py-6">
+                <section className="border-b border-gold/10 py-6">
                     <div className="container-custom">
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                            <div className="text-center">
-                                <p className="text-2xl font-bold text-gold">{stats.totalCandidates}</p>
+                            <div className="glass-card text-center !p-4">
+                                <p className="text-2xl font-display font-bold text-gold"><AnimatedCounter end={stats.totalCandidates} /></p>
                                 <p className="text-xs text-cream/50 flex items-center justify-center gap-1"><Users className="w-3 h-3" /> Candidates</p>
                             </div>
-                            <div className="text-center">
-                                <p className="text-2xl font-bold text-gold">{stats.races}</p>
+                            <div className="glass-card text-center !p-4">
+                                <p className="text-2xl font-display font-bold text-gold"><AnimatedCounter end={stats.races} /></p>
                                 <p className="text-xs text-cream/50 flex items-center justify-center gap-1"><BarChart3 className="w-3 h-3" /> Active Races</p>
                             </div>
-                            <div className="text-center">
-                                <p className="text-2xl font-bold text-gold">{stats.incumbents}</p>
+                            <div className="glass-card text-center !p-4">
+                                <p className="text-2xl font-display font-bold text-gold"><AnimatedCounter end={stats.incumbents} /></p>
                                 <p className="text-xs text-cream/50 flex items-center justify-center gap-1"><Shield className="w-3 h-3" /> Incumbents</p>
                             </div>
-                            <div className="text-center">
-                                <p className="text-2xl font-bold text-gold">{stats.parties}</p>
+                            <div className="glass-card text-center !p-4">
+                                <p className="text-2xl font-display font-bold text-gold"><AnimatedCounter end={stats.parties} /></p>
                                 <p className="text-xs text-cream/50 flex items-center justify-center gap-1"><Vote className="w-3 h-3" /> Parties</p>
                             </div>
                         </div>

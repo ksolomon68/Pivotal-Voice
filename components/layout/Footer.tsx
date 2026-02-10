@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Mic, Facebook, Twitter, Linkedin, Youtube, Instagram } from 'lucide-react';
+import Image from 'next/image';
+import { Facebook, Twitter, Linkedin, Youtube, Instagram } from 'lucide-react';
 
 const platformLinks = [
     { name: 'Calendar', href: '/calendar' },
@@ -28,40 +29,69 @@ const socialLinks = [
 
 export default function Footer() {
     return (
-        <footer className="bg-navy border-t border-gold/20 mt-20">
-            <div className="container-custom py-16">
+        <footer className="relative bg-navy-dark border-t border-gold/10 mt-0">
+            {/* Gold accent line */}
+            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+
+            <div className="container-custom py-20">
                 {/* Main footer content */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand */}
-                    <div>
-                        <Link href="/" className="flex items-center gap-3 group mb-4">
-                            <div className="w-10 h-10 bg-gradient-to-br from-gold to-gold-dark rounded-full flex items-center justify-center">
-                                <Mic className="w-6 h-6 text-navy" />
+                    <div className="lg:col-span-1">
+                        <Link href="/" className="flex items-center gap-3 group mb-6">
+                            <div className="relative w-12 h-12">
+                                <Image
+                                    src="/images/logo.png"
+                                    alt="Pivotal Voice"
+                                    fill
+                                    className="object-contain rounded-full"
+                                />
                             </div>
-                            <span className="font-display text-xl font-bold text-white">
-                                Pivotal Voice
-                            </span>
+                            <div className="flex flex-col">
+                                <span className="font-display text-lg font-bold text-white leading-tight">
+                                    Pivotal Voice
+                                </span>
+                                <span className="text-[10px] text-gold/70 font-medium tracking-wider uppercase">
+                                    Ellis County
+                                </span>
+                            </div>
                         </Link>
-                        <p className="text-cream/80 text-sm mb-4">
-                            Amplifying Leaders, Informing Communities
+                        <p className="text-cream/50 text-sm leading-relaxed mb-6">
+                            A non-partisan platform dedicated to creating meaningful
+                            dialogue on the issues that shape Ellis County&apos;s future.
                         </p>
-                        <p className="text-cream/60 text-sm">
-                            A non-partisan platform dedicated to creating meaningful dialogue on the issues that shape Ellis County's future.
-                        </p>
+
+                        {/* Social media */}
+                        <div className="flex gap-2">
+                            {socialLinks.map((social) => {
+                                const Icon = social.icon;
+                                return (
+                                    <a
+                                        key={social.name}
+                                        href={social.href}
+                                        aria-label={social.name}
+                                        className="w-10 h-10 rounded-full bg-navy border border-gold/20 flex items-center justify-center text-cream/50 hover:text-gold hover:border-gold hover:rotate-[360deg] transition-all duration-700"
+                                    >
+                                        <Icon className="w-4 h-4" />
+                                    </a>
+                                );
+                            })}
+                        </div>
                     </div>
 
                     {/* Platform */}
                     <div>
-                        <h3 className="font-display text-lg font-semibold text-white mb-4">
+                        <h3 className="font-display text-sm font-bold text-gold/80 uppercase tracking-wider mb-5">
                             Platform
                         </h3>
-                        <ul className="space-y-2">
+                        <ul className="space-y-3">
                             {platformLinks.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-cream/80 hover:text-gold transition-colors duration-200 text-sm"
+                                        className="text-cream/60 hover:text-gold transition-colors duration-300 text-sm flex items-center gap-2 group"
                                     >
+                                        <span className="w-0 group-hover:w-2 h-[1px] bg-gold transition-all duration-300" />
                                         {link.name}
                                     </Link>
                                 </li>
@@ -71,16 +101,17 @@ export default function Footer() {
 
                     {/* Services */}
                     <div>
-                        <h3 className="font-display text-lg font-semibold text-white mb-4">
+                        <h3 className="font-display text-sm font-bold text-gold/80 uppercase tracking-wider mb-5">
                             Services
                         </h3>
-                        <ul className="space-y-2">
+                        <ul className="space-y-3">
                             {serviceLinks.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-cream/80 hover:text-gold transition-colors duration-200 text-sm"
+                                        className="text-cream/60 hover:text-gold transition-colors duration-300 text-sm flex items-center gap-2 group"
                                     >
+                                        <span className="w-0 group-hover:w-2 h-[1px] bg-gold transition-all duration-300" />
                                         {link.name}
                                     </Link>
                                 </li>
@@ -90,82 +121,56 @@ export default function Footer() {
 
                     {/* Connect */}
                     <div>
-                        <h3 className="font-display text-lg font-semibold text-white mb-4">
-                            Connect
+                        <h3 className="font-display text-sm font-bold text-gold/80 uppercase tracking-wider mb-5">
+                            Stay Connected
                         </h3>
                         <div className="space-y-4">
-                            <div>
-                                <Link
-                                    href="/contact"
-                                    className="text-cream/80 hover:text-gold transition-colors duration-200 text-sm block mb-2"
-                                >
-                                    Contact Us
-                                </Link>
-                            </div>
+                            <Link
+                                href="/contact"
+                                className="text-cream/60 hover:text-gold transition-colors duration-300 text-sm block"
+                            >
+                                Contact Us
+                            </Link>
 
                             {/* Newsletter */}
                             <div>
-                                <p className="text-cream/80 text-sm mb-2">
+                                <p className="text-cream/50 text-sm mb-3">
                                     Subscribe to our newsletter
                                 </p>
                                 <form className="flex gap-2">
                                     <input
                                         type="email"
                                         placeholder="Your email"
-                                        className="input text-sm flex-1 min-w-0 py-2 px-3"
+                                        className="input text-sm flex-1 min-w-0 !py-2.5 !px-4 !rounded-l-xl !rounded-r-none !border-r-0"
                                     />
                                     <button
                                         type="submit"
-                                        className="btn-primary text-sm px-4 py-2"
+                                        className="btn-primary text-sm !px-4 !py-2.5 !rounded-l-none !rounded-r-xl whitespace-nowrap"
                                     >
                                         Subscribe
                                     </button>
                                 </form>
                             </div>
-
-                            {/* Social media */}
-                            <div className="flex gap-3 pt-2">
-                                {socialLinks.map((social) => {
-                                    const Icon = social.icon;
-                                    return (
-                                        <a
-                                            key={social.name}
-                                            href={social.href}
-                                            aria-label={social.name}
-                                            className="w-9 h-9 rounded-full bg-navy-dark border border-gold/30 flex items-center justify-center text-cream hover:text-gold hover:border-gold transition-all duration-200"
-                                        >
-                                            <Icon className="w-4 h-4" />
-                                        </a>
-                                    );
-                                })}
-                            </div>
                         </div>
                     </div>
                 </div>
 
+                {/* Divider */}
+                <div className="h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent mb-8" />
+
                 {/* Bottom row */}
-                <div className="pt-8 border-t border-gold/20">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-cream/60 text-sm">
-                            © {new Date().getFullYear()} Pivotal Voice. All rights reserved.
-                        </p>
-                        <div className="flex gap-6 text-sm">
-                            <Link
-                                href="/privacy"
-                                className="text-cream/60 hover:text-gold transition-colors duration-200"
-                            >
-                                Privacy Policy
-                            </Link>
-                            <Link
-                                href="/terms"
-                                className="text-cream/60 hover:text-gold transition-colors duration-200"
-                            >
-                                Terms of Service
-                            </Link>
-                            <span className="text-cream/60">
-                                Non-Partisan Platform
-                            </span>
-                        </div>
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-cream/40 text-sm">
+                        © {new Date().getFullYear()} Pivotal Voice. All rights reserved.
+                    </p>
+                    <div className="flex gap-6 text-sm">
+                        <Link href="/privacy" className="text-cream/40 hover:text-gold transition-colors duration-300">
+                            Privacy Policy
+                        </Link>
+                        <Link href="/terms" className="text-cream/40 hover:text-gold transition-colors duration-300">
+                            Terms of Service
+                        </Link>
+                        <span className="text-cream/30">Non-Partisan Platform</span>
                     </div>
                 </div>
             </div>

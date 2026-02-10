@@ -1,6 +1,7 @@
 // Forum Service — Supabase-backed
 import { supabase } from '@/lib/supabase/client';
 import { Topic, Reply, ForumCategory } from '@/lib/types/forum';
+import { FORUM_CATEGORIES, SEED_TOPICS, SEED_REPLIES } from './forum-data';
 
 export type SortOption = 'active' | 'newest' | 'popular' | 'trending';
 
@@ -55,11 +56,11 @@ export async function getCategories(): Promise<ForumCategory[]> {
         .select('*')
         .order('order', { ascending: true });
 
-    if (error) {
-        console.error('Error fetching categories:', error);
-        return [];
+    if (error || !data || data.length === 0) {
+        if (error) console.error('Error fetching categories:', error);
+        return FORUM_CATEGORIES;
     }
-    return (data || []).map(cat => ({
+    return data.map(cat => ({
         ...cat,
         topicCount: cat.topic_count
     }));
@@ -71,7 +72,7 @@ export async function getCategoryById(id: string): Promise<ForumCategory | undef
         .select('*')
         .eq('id', id)
         .single();
-    if (!data) return undefined;
+    if (!data) return FORUM_CATEGORIES.find(c => c.id === id);
     return {
         ...data,
         topicCount: data.topic_count
@@ -86,11 +87,11 @@ export async function getTopics(): Promise<Topic[]> {
         .select('*')
         .order('created_at', { ascending: false });
 
-    if (error) {
-        console.error('Error fetching topics:', error);
-        return [];
+    if (error || !data || data.length === 0) {
+        if (error) console.error('Error fetching topics:', error);
+        return SEED_TOPICS;
     }
-    return (data || []).map(mapTopic);
+    return data.map(mapTopic);
 }
 
 export async function getTopicById(id: string): Promise<Topic | undefined> {
@@ -99,7 +100,8 @@ export async function getTopicById(id: string): Promise<Topic | undefined> {
         .select('*')
         .eq('id', id)
         .single();
-    return data ? mapTopic(data) : undefined;
+    if (!data) return SEED_TOPICS.find(t => t.id === id);
+    return mapTopic(data);
 }
 
 export async function getTopicsByCategory(categoryId: string): Promise<Topic[]> {
@@ -108,7 +110,11 @@ export async function getTopicsByCategory(categoryId: string): Promise<Topic[]> 
         .select('*')
         .eq('category_id', categoryId)
         .order('created_at', { ascending: false });
-    return (data || []).map(mapTopic);
+
+    if (!data || data.length === 0) {
+        return SEED_TOPICS.filter(t => t.categoryId === categoryId);
+    }
+    return data.map(mapTopic);
 }
 
 export async function createTopic(topic: any): Promise<Topic | null> {
@@ -178,7 +184,10 @@ export async function getRepliesByTopic(topicId: string): Promise<Reply[]> {
         .select('*')
         .eq('topic_id', topicId)
         .order('created_at', { ascending: true });
-    return (data || []).map(mapReply);
+    if (!data || data.length === 0) {
+        return SEED_REPLIES.filter(r => r.topicId === topicId);
+    }
+    return data.map(mapReply);
 }
 
 export async function createReply(reply: any): Promise<Reply | null> {

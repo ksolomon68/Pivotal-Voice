@@ -117,15 +117,18 @@ export default function ForumPage() {
             <Header />
             <main className="min-h-screen">
                 {/* Hero */}
-                <section className="bg-navy border-b border-gold/20 py-10 sm:py-14">
-                    <div className="container-custom">
+                <section className="relative bg-gradient-to-b from-navy via-navy to-navy-dark border-b border-gold/15 py-12 sm:py-16 overflow-hidden">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.06)_0%,_transparent_60%)]" />
+                    <div className="container-custom relative z-10">
                         <div className="text-center max-w-3xl mx-auto">
                             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-                                <MessageSquare className="w-14 h-14 text-gold mx-auto mb-4" />
+                                <div className="w-16 h-16 bg-gold/10 border border-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                                    <MessageSquare className="w-8 h-8 text-gold" />
+                                </div>
                                 <h1 className="text-hero font-bold text-white mb-3">
                                     Community Forum
                                 </h1>
-                                <p className="text-lg text-cream/70 mb-6">
+                                <p className="text-lg text-cream/60 mb-6">
                                     The hub for Ellis County residents to discuss local issues, share ideas, and shape our community&apos;s future.
                                 </p>
                             </motion.div>

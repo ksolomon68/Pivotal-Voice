@@ -77,8 +77,9 @@ export default function ServicesPage() {
             <Header />
             <main className="min-h-screen">
                 {/* Hero Section */}
-                <section className="bg-navy border-b border-gold/20 py-16">
-                    <div className="container-custom">
+                <section className="relative bg-gradient-to-b from-navy via-navy to-navy-dark border-b border-gold/15 py-16 overflow-hidden">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.06)_0%,_transparent_60%)]" />
+                    <div className="container-custom relative z-10">
                         <div className="text-center max-w-3xl mx-auto">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -88,12 +89,12 @@ export default function ServicesPage() {
                                 <h1 className="text-hero font-bold text-white mb-6">
                                     Transform Your Leadership Voice
                                 </h1>
-                                <p className="text-xl text-cream/80 mb-8">
+                                <p className="text-xl text-cream/60 mb-8">
                                     Strategic PR services for Ellis County leaders. Reputation management, crisis communications,
                                     speechwriting, and digital strategy that builds trust and commands attention.
                                 </p>
                                 <p className="text-gold font-display text-2xl italic mb-8">
-                                    "Transforming Leaders into Iconic Communicators"
+                                    &quot;Transforming Leaders into Iconic Communicators&quot;
                                 </p>
                             </motion.div>
                         </div>

@@ -18,14 +18,17 @@ export default function PodcastPage() {
             <Header />
             <main className="min-h-screen">
                 {/* Page Header */}
-                <section className="bg-navy border-b border-gold/20 py-12">
-                    <div className="container-custom">
+                <section className="relative bg-gradient-to-b from-navy via-navy to-navy-dark border-b border-gold/15 py-16 overflow-hidden">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.06)_0%,_transparent_60%)]" />
+                    <div className="container-custom relative z-10">
                         <div className="text-center max-w-3xl mx-auto">
-                            <Podcast className="w-16 h-16 text-gold mx-auto mb-4" />
+                            <div className="w-16 h-16 bg-gold/10 border border-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                                <Podcast className="w-8 h-8 text-gold" />
+                            </div>
                             <h1 className="text-hero font-bold text-white mb-4">
                                 The Pivotal Voice Podcast
                             </h1>
-                            <p className="text-lg text-cream/80">
+                            <p className="text-lg text-cream/60">
                                 Honest conversations with Ellis County leaders and change-makers.
                                 Real conversations. Local leadership. Informed voters.
                             </p>
