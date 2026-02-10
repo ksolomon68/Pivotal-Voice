@@ -114,7 +114,17 @@ export async function getSubscriberById(id: string): Promise<NewsletterSubscribe
         .select('*')
         .eq('id', id)
         .single();
-    return data as NewsletterSubscriber | undefined;
+    return data ? mapSubscriber(data) : undefined;
+}
+
+export async function getSubscriberByEmail(email: string): Promise<NewsletterSubscriber | undefined> {
+    const { data } = await supabase
+        .from('subscribers')
+        .select('*')
+        .eq('email', email.toLowerCase())
+        .maybeSingle();
+
+    return data ? mapSubscriber(data) : undefined;
 }
 
 export async function updateSubscriberPreferences(id: string, prefs: any): Promise<void> {
