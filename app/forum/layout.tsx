@@ -1,14 +1,11 @@
 'use client';
 
-import { AuthProvider } from '@/lib/forum/AuthContext';
-import { initializeForumData } from '@/lib/forum/forum-service';
 import { useEffect, useState } from 'react';
 
 export default function ForumLayout({ children }: { children: React.ReactNode }) {
     const [ready, setReady] = useState(false);
 
     useEffect(() => {
-        initializeForumData();
         setReady(true);
     }, []);
 
@@ -24,8 +21,8 @@ export default function ForumLayout({ children }: { children: React.ReactNode })
     }
 
     return (
-        <AuthProvider>
+        <>
             {children}
-        </AuthProvider>
+        </>
     );
 }

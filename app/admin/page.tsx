@@ -26,20 +26,25 @@ export default function AdminPage() {
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'unsubscribed'>('all');
     const [cityFilter, setCityFilter] = useState('');
+    const [stats, setStats] = useState<any>(null);
     const [ready, setReady] = useState(false);
 
     useEffect(() => {
         initializeNewsletterData();
         loadData();
-        setReady(true);
     }, []);
 
-    const loadData = () => {
-        setSubscribers(getSubscribers());
-        setCampaigns(getCampaigns());
+    const loadData = async () => {
+        const [subs, camps, crmStats] = await Promise.all([
+            getSubscribers(),
+            getCampaigns(),
+            getCRMStats()
+        ]);
+        setSubscribers(subs);
+        setCampaigns(camps);
+        setStats(crmStats);
+        setReady(true);
     };
-
-    const stats = useMemo(() => getCRMStats(), [subscribers]);
 
     const filteredSubscribers = useMemo(() => {
         let subs = subscribers;
@@ -57,9 +62,9 @@ export default function AdminPage() {
         downloadCSV(`pv_subscribers_${new Date().toISOString().split('T')[0]}.csv`, csv);
     };
 
-    const toggleStatus = (id: string, currentStatus: string) => {
-        if (currentStatus === 'active') unsubscribeById(id);
-        else resubscribe(id);
+    const toggleStatus = async (id: string, currentStatus: string) => {
+        if (currentStatus === 'active') await unsubscribeById(id);
+        else await resubscribe(id);
         loadData();
     };
 
@@ -153,7 +158,7 @@ export default function AdminPage() {
                                     <BarChart3 className="w-4 h-4 text-blue-400" /> By Location
                                 </h3>
                                 <div className="space-y-2">
-                                    {stats.cityBreakdown.slice(0, 6).map(c => (
+                                    {stats.cityBreakdown.slice(0, 6).map((c: any) => (
                                         <div key={c.city} className="flex items-center gap-2">
                                             <div className="flex-1 text-xs text-white/60">{c.city}</div>
                                             <div className="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
@@ -170,7 +175,7 @@ export default function AdminPage() {
                         <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                             <h3 className="text-sm font-semibold text-white mb-3">Top Interests</h3>
                             <div className="flex flex-wrap gap-2">
-                                {stats.topInterests.map(t => (
+                                {stats.topInterests.map((t: any) => (
                                     <span key={t.interest} className="px-3 py-1 rounded-full bg-gold/10 text-gold text-xs border border-gold/20">
                                         {t.interest} ({t.count})
                                     </span>
@@ -255,8 +260,8 @@ export default function AdminPage() {
                                                 <button
                                                     onClick={() => toggleStatus(sub.id, sub.status)}
                                                     className={`text-xs px-2 py-1 rounded transition-colors ${sub.status === 'active'
-                                                            ? 'text-red-400 hover:bg-red-500/10'
-                                                            : 'text-green-400 hover:bg-green-500/10'
+                                                        ? 'text-red-400 hover:bg-red-500/10'
+                                                        : 'text-green-400 hover:bg-green-500/10'
                                                         }`}
                                                 >
                                                     {sub.status === 'active' ? 'Unsubscribe' : 'Resubscribe'}
@@ -280,9 +285,9 @@ export default function AdminPage() {
                                     <div className="flex items-start justify-between">
                                         <div>
                                             <span className={`text-[10px] px-2 py-0.5 rounded-full border font-medium capitalize ${camp.type === 'weekly_digest' ? 'bg-blue-500/15 text-blue-400 border-blue-500/30' :
-                                                    camp.type === 'monthly_newsletter' ? 'bg-purple-500/15 text-purple-400 border-purple-500/30' :
-                                                        camp.type === 'event_reminder' ? 'bg-green-500/15 text-green-400 border-green-500/30' :
-                                                            'bg-amber-500/15 text-amber-400 border-amber-500/30'
+                                                camp.type === 'monthly_newsletter' ? 'bg-purple-500/15 text-purple-400 border-purple-500/30' :
+                                                    camp.type === 'event_reminder' ? 'bg-green-500/15 text-green-400 border-green-500/30' :
+                                                        'bg-amber-500/15 text-amber-400 border-amber-500/30'
                                                 }`}>
                                                 {camp.type.replace(/_/g, ' ')}
                                             </span>

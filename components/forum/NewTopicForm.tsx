@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '@/lib/forum/AuthContext';
 import { getCategories, createTopic } from '@/lib/forum/forum-service';
 import { useRouter } from 'next/navigation';
@@ -16,8 +16,7 @@ interface NewTopicFormProps {
 export default function NewTopicForm({ isOpen, onClose, defaultCategory }: NewTopicFormProps) {
     const { user } = useAuth();
     const router = useRouter();
-    const categories = getCategories();
-
+    const [categories, setCategories] = useState<any[]>([]);
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [categoryId, setCategoryId] = useState(defaultCategory || '');
@@ -25,9 +24,17 @@ export default function NewTopicForm({ isOpen, onClose, defaultCategory }: NewTo
     const [isAnonymous, setIsAnonymous] = useState(false);
     const [error, setError] = useState('');
 
+    useEffect(() => {
+        const fetchCats = async () => {
+            const data = await getCategories();
+            setCategories(data);
+        };
+        fetchCats();
+    }, []);
+
     if (!isOpen || !user) return null;
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
 
@@ -52,21 +59,25 @@ export default function NewTopicForm({ isOpen, onClose, defaultCategory }: NewTo
             .filter(Boolean)
             .slice(0, 5);
 
-        const newTopic = createTopic({
+        const newTopic = await createTopic({
             title: title.trim(),
             body: body.trim(),
-            categoryId,
-            authorId: user.id,
-            authorName: isAnonymous ? 'Anonymous' : user.displayName,
-            isPinned: false,
-            isLocked: false,
-            isAnonymous,
+            category_id: categoryId,
+            author_id: user.id,
+            author_name: isAnonymous ? 'Anonymous' : user.displayName,
+            is_pinned: false,
+            is_locked: false,
+            is_anonymous: isAnonymous,
             tags: tagList,
         });
 
-        // Navigate to the new topic
-        router.push(`/forum/topic/${newTopic.id}`);
-        onClose();
+        if (newTopic) {
+            // Navigate to the new topic
+            router.push(`/forum/topic/${newTopic.id}`);
+            onClose();
+        } else {
+            setError('Failed to create topic. Please try again.');
+        }
     };
 
     return (

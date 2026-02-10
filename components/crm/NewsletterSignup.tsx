@@ -58,9 +58,8 @@ export default function NewsletterSignup({ variant = 'sidebar', optInMethod = 'f
         }
 
         setIsSubmitting(true);
-        await new Promise(r => setTimeout(r, 800));
 
-        const result = addSubscriber({
+        const result = await addSubscriber({
             email, name, zipCode,
             interests: interests.length > 0 ? interests : ['general'],
             optInMethod, forumUserId,
@@ -154,8 +153,8 @@ export default function NewsletterSignup({ variant = 'sidebar', optInMethod = 'f
                                     <label
                                         key={opt.id}
                                         className={`flex items-center gap-1.5 px-2 py-1 rounded-md text-xs cursor-pointer transition-colors ${interests.includes(opt.id)
-                                                ? 'bg-gold/20 text-gold border border-gold/30'
-                                                : 'bg-white/5 text-white/60 border border-white/10 hover:border-white/20'
+                                            ? 'bg-gold/20 text-gold border border-gold/30'
+                                            : 'bg-white/5 text-white/60 border border-white/10 hover:border-white/20'
                                             }`}
                                     >
                                         <input

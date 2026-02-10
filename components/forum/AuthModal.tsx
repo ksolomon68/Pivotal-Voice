@@ -33,10 +33,10 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: Aut
     const [regBio, setRegBio] = useState('');
     const [regNewsletter, setRegNewsletter] = useState(true);
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
-        const result = login(loginEmail, loginPassword);
+        const result = await login(loginEmail, loginPassword);
         if (result.success) {
             onClose();
         } else {
@@ -44,7 +44,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: Aut
         }
     };
 
-    const handleRegister = (e: React.FormEvent) => {
+    const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
 
@@ -53,7 +53,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: Aut
             return;
         }
 
-        const result = register({
+        const result = await register({
             email: regEmail,
             displayName: regDisplayName,
             password: regPassword,
@@ -66,7 +66,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: Aut
         if (result.success) {
             // Subscribe to newsletter if opted in
             if (regNewsletter && regEmail) {
-                addSubscriber({
+                await addSubscriber({
                     email: regEmail,
                     name: regDisplayName,
                     zipCode: '',

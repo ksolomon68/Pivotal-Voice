@@ -55,9 +55,8 @@ export default function EventSubmitForm({ userId, onClose, onSubmitted }: EventS
         }
 
         setSubmitting(true);
-        await new Promise(r => setTimeout(r, 800));
 
-        submitEvent({
+        await submitEvent({
             title, description, date, startTime,
             endTime: endTime || undefined,
             location, city, eventType, submittedBy: userId,

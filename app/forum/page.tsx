@@ -83,21 +83,28 @@ export default function ForumPage() {
     }, []);
 
     useEffect(() => {
-        setCategories(getCategories());
+        const fetchCategories = async () => {
+            const data = await getCategories();
+            setCategories(data);
+        };
+        fetchCategories();
     }, [refreshKey]);
 
     useEffect(() => {
-        let result: Topic[];
-        if (search.trim()) {
-            result = searchTopics(search);
-        } else if (selectedCategory) {
-            result = getTopicsByCategory(selectedCategory);
-        } else {
-            result = getTopics();
-        }
-        result = sortTopics(result, sort);
-        setTopics(result);
-        setFilteredTopics(result);
+        const fetchTopics = async () => {
+            let result: Topic[];
+            if (search.trim()) {
+                result = await searchTopics(search);
+            } else if (selectedCategory) {
+                result = await getTopicsByCategory(selectedCategory!);
+            } else {
+                result = await getTopics();
+            }
+            result = sortTopics(result, sort);
+            setTopics(result);
+            setFilteredTopics(result);
+        };
+        fetchTopics();
     }, [search, sort, selectedCategory, refreshKey]);
 
     const openAuth = (tab: 'login' | 'register') => {
@@ -191,8 +198,8 @@ export default function ForumPage() {
                                             key={cat.id}
                                             onClick={() => setSelectedCategory(isActive ? null : cat.id)}
                                             className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm transition-all ${isActive
-                                                    ? `${categoryBorderColors[cat.color]} bg-white/5 ${categoryTextColors[cat.color]}`
-                                                    : 'border-gold/10 text-cream/50 hover:border-gold/30 hover:text-cream/80'
+                                                ? `${categoryBorderColors[cat.color]} bg-white/5 ${categoryTextColors[cat.color]}`
+                                                : 'border-gold/10 text-cream/50 hover:border-gold/30 hover:text-cream/80'
                                                 }`}
                                         >
                                             <span className={isActive ? categoryTextColors[cat.color] : 'text-cream/40'}>
@@ -235,8 +242,8 @@ export default function ForumPage() {
                                                 key={s}
                                                 onClick={() => setSort(s)}
                                                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${sort === s
-                                                        ? 'bg-gold/15 text-gold border border-gold/30'
-                                                        : 'text-cream/50 hover:text-cream border border-transparent'
+                                                    ? 'bg-gold/15 text-gold border border-gold/30'
+                                                    : 'text-cream/50 hover:text-cream border border-transparent'
                                                     }`}
                                             >
                                                 {sortIcons[s]}
@@ -277,7 +284,12 @@ export default function ForumPage() {
                                         </div>
                                     ) : (
                                         filteredTopics.map((topic, idx) => (
-                                            <TopicCard key={topic.id} topic={topic} index={idx} />
+                                            <TopicCard
+                                                key={topic.id}
+                                                topic={topic}
+                                                index={idx}
+                                                category={categories.find(c => c.id === topic.categoryId)}
+                                            />
                                         ))
                                     )}
                                 </div>

@@ -32,7 +32,11 @@ export default function ForumSidebar() {
     const [expandedResource, setExpandedResource] = useState<string | null>('government');
 
     useEffect(() => {
-        setStats(getForumStats());
+        const fetchStats = async () => {
+            const data = await getForumStats();
+            setStats(data);
+        };
+        fetchStats();
     }, []);
 
     // Group resources by category

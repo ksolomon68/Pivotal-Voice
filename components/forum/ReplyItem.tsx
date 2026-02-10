@@ -41,28 +41,28 @@ export default function ReplyItem({ reply, depth, childReplies, allReplies, onRe
     const userVote = user ? reply.voters[user.id] : undefined;
     const maxDepth = 4;
 
-    const handleVote = (direction: 'up' | 'down') => {
+    const handleVote = async (direction: 'up' | 'down') => {
         if (!user) return;
-        voteReply(reply.id, user.id, direction);
+        await voteReply(reply.id, user.id, direction);
         onDataChange();
     };
 
-    const handleEdit = () => {
-        updateReply(reply.id, editBody);
+    const handleEdit = async () => {
+        await updateReply(reply.id, editBody);
         setIsEditing(false);
         onDataChange();
     };
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
         if (confirm('Are you sure you want to delete this reply?')) {
-            deleteReply(reply.id);
+            await deleteReply(reply.id);
             onDataChange();
         }
     };
 
-    const handleReport = () => {
+    const handleReport = async () => {
         if (!user || !reportReason) return;
-        createReport({ contentType: 'reply', contentId: reply.id, reporterId: user.id, reason: reportReason });
+        await createReport({ content_type: 'reply', content_id: reply.id, reporter_id: user.id, reason: reportReason });
         setShowReport(false);
         setReportReason('');
         alert('Report submitted. Thank you for helping keep our community safe.');

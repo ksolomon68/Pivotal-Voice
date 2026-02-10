@@ -27,9 +27,9 @@ export default function CivicEventCard({ event, userId, onRSVPChange, compact = 
     const endOfWeek = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
     const isThisWeek = eventDate >= now && eventDate <= endOfWeek;
 
-    const handleRSVP = () => {
+    const handleRSVP = async () => {
         if (!userId) return;
-        const result = toggleRSVP(event.id, userId);
+        const result = await toggleRSVP(event.id, userId);
         setIsRSVPed(result);
         onRSVPChange?.();
     };
@@ -129,8 +129,8 @@ export default function CivicEventCard({ event, userId, onRSVPChange, compact = 
                         <button
                             onClick={handleRSVP}
                             className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${isRSVPed
-                                    ? 'bg-gold/20 text-gold border border-gold/30'
-                                    : 'bg-white/5 text-white/60 border border-white/10 hover:border-white/20'
+                                ? 'bg-gold/20 text-gold border border-gold/30'
+                                : 'bg-white/5 text-white/60 border border-white/10 hover:border-white/20'
                                 }`}
                         >
                             <Users className="w-3 h-3" />

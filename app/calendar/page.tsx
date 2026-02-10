@@ -12,7 +12,7 @@ import MapView from '@/components/calendar/MapView';
 import CivicEventCard from '@/components/events/CivicEventCard';
 import EventSubmitForm from '@/components/events/EventSubmitForm';
 import { Event, EventFilters as EventFiltersType } from '@/lib/types/event';
-import { getUpcomingEvents, initializeCivicEvents } from '@/lib/events/civic-events-service';
+import { getCivicEvents } from '@/lib/events/civic-events-service';
 import { CivicEvent } from '@/lib/types/civic-events';
 import sampleEvents from '@/data/sample-events.json';
 import { Calendar, List, Map, LayoutGrid, Download, Code, AlertCircle, Clock, Zap, Plus, Landmark } from 'lucide-react';
@@ -31,8 +31,11 @@ export default function CalendarPage() {
     const [civicEvents, setCivicEvents] = useState<CivicEvent[]>([]);
 
     useEffect(() => {
-        initializeCivicEvents();
-        setCivicEvents(getUpcomingEvents(12));
+        const fetchEvents = async () => {
+            const events = await getCivicEvents();
+            setCivicEvents(events.slice(0, 12));
+        };
+        fetchEvents();
     }, []);
 
     const events = sampleEvents.events as Event[];
@@ -455,7 +458,10 @@ export default function CalendarPage() {
                             <EventSubmitForm
                                 userId="guest"
                                 onClose={() => setShowSubmitForm(false)}
-                                onSubmitted={() => setCivicEvents(getUpcomingEvents(12))}
+                                onSubmitted={async () => {
+                                    const events = await getCivicEvents();
+                                    setCivicEvents(events.slice(0, 12));
+                                }}
                             />
                         </motion.div>
                     </motion.div>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Calendar, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
-import { getUpcomingEvents, getTodayEvents, initializeCivicEvents } from '@/lib/events/civic-events-service';
+import { getUpcomingEvents, getTodayEvents } from '@/lib/events/civic-events-service';
 import { CivicEvent, EVENT_TYPE_LABELS } from '@/lib/types/civic-events';
 import CivicEventCard from './CivicEventCard';
 
@@ -18,10 +18,14 @@ export default function UpcomingMeetings({ limit = 5, userId }: UpcomingMeetings
     const [ready, setReady] = useState(false);
 
     useEffect(() => {
-        initializeCivicEvents();
-        setEvents(getUpcomingEvents(limit));
-        setTodayEvents(getTodayEvents());
-        setReady(true);
+        const fetchEvents = async () => {
+            const up = await getUpcomingEvents(limit);
+            const today = await getTodayEvents();
+            setEvents(up);
+            setTodayEvents(today);
+            setReady(true);
+        };
+        fetchEvents();
     }, [limit]);
 
     if (!ready) return null;

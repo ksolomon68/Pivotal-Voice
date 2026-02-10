@@ -63,14 +63,16 @@ export default function TopicDetailPage({ params }: { params: Promise<{ id: stri
     const [showAuthModal, setShowAuthModal] = useState(false);
     const [showReport, setShowReport] = useState(false);
     const [reportReason, setReportReason] = useState('');
+    const [author, setAuthor] = useState<any>(null);
     const [isFollowing, setIsFollowing] = useState(false);
 
-    const refreshData = useCallback(() => {
-        const t = getTopicById(topicId);
+    const refreshData = useCallback(async () => {
+        const t = await getTopicById(topicId);
         if (t) {
             setTopic(t);
-            setCategory(getCategoryById(t.categoryId) || null);
-            setReplies(getRepliesByTopic(topicId));
+            setCategory(await getCategoryById(t.categoryId) || null);
+            setReplies(await getRepliesByTopic(topicId));
+            setAuthor(await getForumUserById(t.authorId));
         }
     }, [topicId]);
 
@@ -92,8 +94,8 @@ export default function TopicDetailPage({ params }: { params: Promise<{ id: stri
                 <main className="min-h-screen flex items-center justify-center">
                     <div className="text-center">
                         <MessageCircle className="w-16 h-16 text-gold/30 mx-auto mb-4" />
-                        <h2 className="text-white font-display text-2xl mb-2">Topic Not Found</h2>
-                        <p className="text-cream/50 mb-4">This topic may have been deleted or moved.</p>
+                        <h2 className="text-white font-display text-2xl mb-2">Loading...</h2>
+                        <p className="text-cream/50 mb-4">Please wait while we fetch the discussion.</p>
                         <Link href="/forum" className="btn-primary">Back to Forum</Link>
                     </div>
                 </main>
@@ -105,51 +107,50 @@ export default function TopicDetailPage({ params }: { params: Promise<{ id: stri
     const score = topic.upvotes - topic.downvotes;
     const userVote = user ? topic.voters[user.id] : undefined;
     const isAuthor = user?.id === topic.authorId;
-    const author = getForumUserById(topic.authorId);
     const topLevelReplies = replies.filter(r => !r.parentReplyId);
 
-    const handleVote = (direction: 'up' | 'down') => {
+    const handleVote = async (direction: 'up' | 'down') => {
         if (!user) { setShowAuthModal(true); return; }
-        voteTopic(topic.id, user.id, direction);
+        await voteTopic(topic.id, user.id, direction);
         refreshData();
     };
 
-    const handleReply = (body: string, isAnonymous: boolean, parentReplyId?: string) => {
+    const handleReply = async (body: string, isAnonymous: boolean, parentReplyId?: string) => {
         if (!user) return;
-        createReply({
-            topicId: topic.id,
-            parentReplyId,
+        await createReply({
+            topic_id: topic.id,
+            parent_reply_id: parentReplyId,
             body,
-            authorId: user.id,
-            authorName: isAnonymous ? 'Anonymous' : user.displayName,
-            isAnonymous,
+            author_id: user.id,
+            author_name: isAnonymous ? 'Anonymous' : user.displayName,
+            is_anonymous: isAnonymous,
         });
         setReplyingTo(null);
         refreshData();
     };
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
         if (confirm('Are you sure you want to delete this topic and all its replies? This cannot be undone.')) {
-            deleteTopic(topic.id);
+            await deleteTopic(topic.id);
             router.push('/forum');
         }
     };
 
-    const handleEdit = () => {
-        updateTopic(topic.id, { body: editBody });
+    const handleEdit = async () => {
+        await updateTopic(topic.id, { body: editBody });
         setIsEditing(false);
         refreshData();
     };
 
-    const handleFollow = () => {
+    const handleFollow = async () => {
         if (!user) { setShowAuthModal(true); return; }
-        const nowFollowing = toggleFollowTopic(user.id, topic.id);
+        const nowFollowing = await toggleFollowTopic(user.id, topic.id);
         setIsFollowing(nowFollowing);
     };
 
-    const handleReport = () => {
+    const handleReport = async () => {
         if (!user || !reportReason) return;
-        createReport({ contentType: 'topic', contentId: topic.id, reporterId: user.id, reason: reportReason });
+        await createReport({ content_type: 'topic', content_id: topic.id, reporter_id: user.id, reason: reportReason });
         setShowReport(false);
         setReportReason('');
         alert('Report submitted. Thank you for helping keep our community safe.');
@@ -270,7 +271,7 @@ export default function TopicDetailPage({ params }: { params: Promise<{ id: stri
                                 {/* Tags */}
                                 {topic.tags.length > 0 && (
                                     <div className="flex flex-wrap gap-2 mb-6">
-                                        {topic.tags.map(tag => (
+                                        {topic.tags.map((tag: string) => (
                                             <span key={tag} className="px-2.5 py-1 bg-navy-dark/80 text-cream/50 rounded-md text-xs border border-gold/10">
                                                 #{tag}
                                             </span>
@@ -366,12 +367,12 @@ export default function TopicDetailPage({ params }: { params: Promise<{ id: stri
                                 </h2>
 
                                 <div className="space-y-1">
-                                    {topLevelReplies.map(reply => (
+                                    {topLevelReplies.map((reply: Reply) => (
                                         <ReplyItem
                                             key={reply.id}
                                             reply={reply}
                                             depth={0}
-                                            childReplies={replies.filter(r => r.parentReplyId === reply.id)}
+                                            childReplies={replies.filter((r: Reply) => r.parentReplyId === reply.id)}
                                             allReplies={replies}
                                             onReplyTo={(replyId) => setReplyingTo(replyId)}
                                             onDataChange={refreshData}

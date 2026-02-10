@@ -1,10 +1,9 @@
 'use client';
 
-import { Topic } from '@/lib/types/forum';
-import { getCategoryById } from '@/lib/forum/forum-service';
 import { motion } from 'framer-motion';
 import { ThumbsUp, ThumbsDown, MessageCircle, Eye, Pin, Lock, Clock } from 'lucide-react';
 import Link from 'next/link';
+import { Topic, ForumCategory } from '@/lib/types/forum';
 
 function timeAgo(dateStr: string): string {
     const now = Date.now();
@@ -38,10 +37,10 @@ const categoryColors: Record<string, string> = {
 interface TopicCardProps {
     topic: Topic;
     index: number;
+    category?: ForumCategory;
 }
 
-export default function TopicCard({ topic, index }: TopicCardProps) {
-    const category = getCategoryById(topic.categoryId);
+export default function TopicCard({ topic, index, category }: TopicCardProps) {
     const score = topic.upvotes - topic.downvotes;
     const colorClass = category ? categoryColors[category.color] || categoryColors.gold : categoryColors.gold;
 

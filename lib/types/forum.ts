@@ -4,7 +4,7 @@ export interface ForumUser {
     id: string;
     email: string;
     displayName: string;
-    passwordHash: string;
+    passwordHash?: string;
     avatar?: string;
     joinDate: string;
     city?: string;
