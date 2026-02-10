@@ -1,0 +1,551 @@
+{
+    "events": [
+        {
+            "id": "event-001",
+            "title": "Property Tax Reform Town Hall",
+            "date": "2026-02-20",
+            "startTime": "18:00",
+            "endTime": "20:00",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Waxahachie Civic Center",
+                "address": "2200 Civic Center Ln",
+                "city": "Waxahachie",
+                "state": "TX",
+                "zip": "75165",
+                "coordinates": {
+                    "lat": 32.3879,
+                    "lng": -96.8489
+                },
+                "accessible": true
+            },
+            "eventType": "town_hall",
+            "office": "County Commissioner Precinct 3",
+            "officeLevel": "county",
+            "candidates": [
+                {
+                    "name": "John Smith",
+                    "party": "Republican",
+                    "incumbent": true
+                },
+                {
+                    "name": "Jane Doe",
+                    "party": "Democrat",
+                    "incumbent": false
+                }
+            ],
+            "description": "Join us for an important discussion on property tax reform proposals for Ellis County. Both candidates will present their plans and answer questions from the community.",
+            "sourceUrl": "https://www.co.ellis.tx.us/events",
+            "registrationUrl": "https://eventbrite.com/property-tax-town-hall",
+            "liveStreamUrl": null,
+            "featured": true,
+            "verified": true,
+            "createdAt": "2026-01-15T10:30:00Z",
+            "updatedAt": "2026-01-20T14:22:00Z"
+        },
+        {
+            "id": "event-002",
+            "title": "Mayoral Debate — Midlothian",
+            "date": "2026-02-15",
+            "startTime": "19:00",
+            "endTime": "21:00",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Midlothian Conference Center",
+                "address": "1 Community Circle Dr",
+                "city": "Midlothian",
+                "state": "TX",
+                "zip": "76065",
+                "coordinates": {
+                    "lat": 32.4824,
+                    "lng": -96.9945
+                },
+                "accessible": true
+            },
+            "eventType": "debate",
+            "office": "Mayor of Midlothian",
+            "officeLevel": "local",
+            "candidates": [
+                {
+                    "name": "Robert Johnson",
+                    "party": "Non-Partisan",
+                    "incumbent": true
+                },
+                {
+                    "name": "Sarah Williams",
+                    "party": "Non-Partisan",
+                    "incumbent": false
+                },
+                {
+                    "name": "Michael Chen",
+                    "party": "Non-Partisan",
+                    "incumbent": false
+                }
+            ],
+            "description": "The three candidates for Mayor of Midlothian will debate key issues including infrastructure, economic development, and public safety.",
+            "sourceUrl": "https://www.midlothian.tx.us/elections",
+            "registrationUrl": "https://midlothian.gov/mayoral-debate",
+            "liveStreamUrl": "https://youtube.com/watch?v=example",
+            "featured": true,
+            "verified": true,
+            "createdAt": "2026-01-10T08:15:00Z",
+            "updatedAt": "2026-01-18T16:45:00Z"
+        },
+        {
+            "id": "event-003",
+            "title": "Public Safety Forum",
+            "date": "2026-02-18",
+            "startTime": "17:30",
+            "endTime": "19:30",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Red Oak Community Center",
+                "address": "200 Live Oak St",
+                "city": "Red Oak",
+                "state": "TX",
+                "zip": "75154",
+                "coordinates": {
+                    "lat": 32.5137,
+                    "lng": -96.8025
+                },
+                "accessible": true
+            },
+            "eventType": "forum",
+            "office": "City Council District 2",
+            "officeLevel": "local",
+            "candidates": [
+                {
+                    "name": "Emily Rodriguez",
+                    "party": "Independent",
+                    "incumbent": false
+                },
+                {
+                    "name": "David Thompson",
+                    "party": "Republican",
+                    "incumbent": false
+                }
+            ],
+            "description": "Candidates for City Council District 2 will discuss their plans to enhance public safety and emergency response in Red Oak.",
+            "sourceUrl": "https://www.redoaktx.org/elections",
+            "registrationUrl": null,
+            "liveStreamUrl": null,
+            "featured": false,
+            "verified": true,
+            "createdAt": "2026-01-12T14:00:00Z",
+            "updatedAt": "2026-01-19T10:30:00Z"
+        },
+        {
+            "id": "event-004",
+            "title": "School Board Candidate Meet & Greet",
+            "date": "2026-02-22",
+            "startTime": "16:00",
+            "endTime": "18:00",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Waxahachie Public Library",
+                "address": "1200 W Highway 287 Bypass",
+                "city": "Waxahachie",
+                "state": "TX",
+                "zip": "75167",
+                "coordinates": {
+                    "lat": 32.4110,
+                    "lng": -96.8644
+                },
+                "accessible": true
+            },
+            "eventType": "meet_greet",
+            "office": "School Board Position 4",
+            "officeLevel": "local",
+            "candidates": [
+                {
+                    "name": "Lisa Martinez",
+                    "party": "Non-Partisan",
+                    "incumbent": false
+                },
+                {
+                    "name": "James Anderson",
+                    "party": "Non-Partisan",
+                    "incumbent": true
+                }
+            ],
+            "description": "Meet the candidates running for School Board Position 4 and learn about their vision for Waxahachie ISD schools.",
+            "sourceUrl": "https://www.wisd.org/board-elections",
+            "registrationUrl": null,
+            "liveStreamUrl": null,
+            "featured": false,
+            "verified": true,
+            "createdAt": "2026-01-08T11:20:00Z",
+            "updatedAt": "2026-01-16T09:00:00Z"
+        },
+        {
+            "id": "event-005",
+            "title": "Budget Priorities Listening Session",
+            "date": "2026-02-25",
+            "startTime": "18:30",
+            "endTime": "20:30",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Ennis Public Library",
+                "address": "501 W Ennis Ave",
+                "city": "Ennis",
+                "state": "TX",
+                "zip": "75119",
+                "coordinates": {
+                    "lat": 32.3293,
+                    "lng": -96.6264
+                },
+                "accessible": true
+            },
+            "eventType": "listening_session",
+            "office": "County Judge",
+            "officeLevel": "county",
+            "candidates": [
+                {
+                    "name": "Todd Little",
+                    "party": "Republican",
+                    "incumbent": true
+                }
+            ],
+            "description": "County Judge Todd Little invites residents to share their priorities for the upcoming county budget. This is an open forum for all Ellis County citizens.",
+            "sourceUrl": "https://www.co.ellis.tx.us/judge",
+            "registrationUrl": null,
+            "liveStreamUrl": null,
+            "featured": false,
+            "verified": true,
+            "createdAt": "2026-01-14T13:45:00Z",
+            "updatedAt": "2026-01-21T15:10:00Z"
+        },
+        {
+            "id": "event-006",
+            "title": "State Representative Town Hall — District 10",
+            "date": "2026-02-12",
+            "startTime": "19:00",
+            "endTime": "20:30",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Italy High School Auditorium",
+                "address": "300 College St",
+                "city": "Italy",
+                "state": "TX",
+                "zip": "76651",
+                "coordinates": {
+                    "lat": 32.1821,
+                    "lng": -96.8844
+                },
+                "accessible": true
+            },
+            "eventType": "town_hall",
+            "office": "State Representative, District 10",
+            "officeLevel": "state",
+            "candidates": [
+                {
+                    "name": "Brian Harrison",
+                    "party": "Republican",
+                    "incumbent": true
+                }
+            ],
+            "description": "State Rep. Brian Harrison hosts a town hall to discuss the upcoming legislative session and hear constituent concerns on state issues affecting Ellis County.",
+            "sourceUrl": "https://house.texas.gov/members/member-page/?district=10",
+            "registrationUrl": null,
+            "liveStreamUrl": null,
+            "featured": false,
+            "verified": true,
+            "createdAt": "2026-01-20T09:00:00Z",
+            "updatedAt": "2026-02-01T11:00:00Z"
+        },
+        {
+            "id": "event-007",
+            "title": "Ellis County Judge Candidate Debate",
+            "date": "2026-03-05",
+            "startTime": "19:00",
+            "endTime": "21:00",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Waxahachie Civic Center",
+                "address": "2200 Civic Center Ln",
+                "city": "Waxahachie",
+                "state": "TX",
+                "zip": "75165",
+                "coordinates": {
+                    "lat": 32.3879,
+                    "lng": -96.8489
+                },
+                "accessible": true
+            },
+            "eventType": "debate",
+            "office": "County Judge",
+            "officeLevel": "county",
+            "candidates": [
+                {
+                    "name": "Todd Little",
+                    "party": "Republican",
+                    "incumbent": true
+                },
+                {
+                    "name": "Patricia Hernandez",
+                    "party": "Democrat",
+                    "incumbent": false
+                }
+            ],
+            "description": "The two candidates for Ellis County Judge face off in a moderated debate covering budget, infrastructure, public safety, and county growth. Hosted by the Ellis County League of Women Voters.",
+            "sourceUrl": "https://www.lwvtexas.org/ellis-county",
+            "registrationUrl": "https://eventbrite.com/ellis-judge-debate",
+            "liveStreamUrl": "https://youtube.com/watch?v=example2",
+            "featured": true,
+            "verified": true,
+            "createdAt": "2026-01-25T14:00:00Z",
+            "updatedAt": "2026-02-05T10:00:00Z"
+        },
+        {
+            "id": "event-008",
+            "title": "Campaign Rally — Palmer Community Park",
+            "date": "2026-02-28",
+            "startTime": "11:00",
+            "endTime": "14:00",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Palmer Community Park",
+                "address": "611 N Main St",
+                "city": "Palmer",
+                "state": "TX",
+                "zip": "75152",
+                "coordinates": {
+                    "lat": 32.4307,
+                    "lng": -96.6679
+                },
+                "accessible": true
+            },
+            "eventType": "rally",
+            "office": "U.S. Congressional District 6",
+            "officeLevel": "federal",
+            "candidates": [
+                {
+                    "name": "Jake Ellzey",
+                    "party": "Republican",
+                    "incumbent": true
+                }
+            ],
+            "description": "Rep. Jake Ellzey hosts a community rally to discuss federal legislation priorities and meet with constituents in southern Ellis County. Food trucks and family activities available.",
+            "sourceUrl": "https://ellzey.house.gov/events",
+            "registrationUrl": null,
+            "liveStreamUrl": null,
+            "featured": false,
+            "verified": true,
+            "createdAt": "2026-02-01T08:00:00Z",
+            "updatedAt": "2026-02-07T12:00:00Z"
+        },
+        {
+            "id": "event-009",
+            "title": "Ferris City Council Candidate Forum",
+            "date": "2026-03-10",
+            "startTime": "18:00",
+            "endTime": "20:00",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Ferris Community Center",
+                "address": "200 S Central St",
+                "city": "Ferris",
+                "state": "TX",
+                "zip": "75125",
+                "coordinates": {
+                    "lat": 32.5340,
+                    "lng": -96.6603
+                },
+                "accessible": true
+            },
+            "eventType": "forum",
+            "office": "City Council Place 3",
+            "officeLevel": "local",
+            "candidates": [
+                {
+                    "name": "Angela White",
+                    "party": "Non-Partisan",
+                    "incumbent": true
+                },
+                {
+                    "name": "Marcus Brown",
+                    "party": "Non-Partisan",
+                    "incumbent": false
+                },
+                {
+                    "name": "Teresa Garcia",
+                    "party": "Non-Partisan",
+                    "incumbent": false
+                }
+            ],
+            "description": "Three candidates for City Council Place 3 present their visions for Ferris. Topics include water infrastructure, city growth, and economic development.",
+            "sourceUrl": "https://www.ferristx.gov/elections",
+            "registrationUrl": null,
+            "liveStreamUrl": null,
+            "featured": false,
+            "verified": true,
+            "createdAt": "2026-02-05T10:00:00Z",
+            "updatedAt": "2026-02-08T14:00:00Z"
+        },
+        {
+            "id": "event-010",
+            "title": "Ovilla Planning & Zoning Community Meeting",
+            "date": "2026-02-11",
+            "startTime": "18:30",
+            "endTime": "20:00",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Ovilla City Hall",
+                "address": "105 S Cockrell Hill Rd",
+                "city": "Ovilla",
+                "state": "TX",
+                "zip": "75154",
+                "coordinates": {
+                    "lat": 32.5270,
+                    "lng": -96.8870
+                },
+                "accessible": true
+            },
+            "eventType": "candidate_appearance",
+            "office": "Planning & Zoning Commission",
+            "officeLevel": "local",
+            "candidates": [
+                {
+                    "name": "Diane Foster",
+                    "party": "Non-Partisan",
+                    "incumbent": false
+                }
+            ],
+            "description": "Candidate Diane Foster will present her qualifications and take questions at this public meeting regarding upcoming development and zoning decisions in Ovilla.",
+            "sourceUrl": "https://www.ovillatx.gov",
+            "registrationUrl": null,
+            "liveStreamUrl": null,
+            "featured": false,
+            "verified": true,
+            "createdAt": "2026-01-30T12:00:00Z",
+            "updatedAt": "2026-02-04T09:00:00Z"
+        },
+        {
+            "id": "event-011",
+            "title": "State Senate District 22 Debate",
+            "date": "2026-03-15",
+            "startTime": "19:00",
+            "endTime": "21:00",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Ennis High School Performing Arts Center",
+                "address": "2001 N Kaufman St",
+                "city": "Ennis",
+                "state": "TX",
+                "zip": "75119",
+                "coordinates": {
+                    "lat": 32.3450,
+                    "lng": -96.6320
+                },
+                "accessible": true
+            },
+            "eventType": "debate",
+            "office": "State Senate, District 22",
+            "officeLevel": "state",
+            "candidates": [
+                {
+                    "name": "Brian Birdwell",
+                    "party": "Republican",
+                    "incumbent": true
+                },
+                {
+                    "name": "Rosa Gonzalez",
+                    "party": "Democrat",
+                    "incumbent": false
+                }
+            ],
+            "description": "A moderated debate between candidates for State Senate District 22 covering education funding, border security, and water policy. Co-hosted by Ennis Chamber of Commerce and the Ellis County Republican/Democratic parties.",
+            "sourceUrl": "https://www.ennischamber.com/events",
+            "registrationUrl": "https://eventbrite.com/sd22-debate",
+            "liveStreamUrl": "https://youtube.com/watch?v=example3",
+            "featured": true,
+            "verified": true,
+            "createdAt": "2026-02-08T11:00:00Z",
+            "updatedAt": "2026-02-09T16:00:00Z"
+        },
+        {
+            "id": "event-012",
+            "title": "Waxahachie ISD Bond Election Information Session",
+            "date": "2026-02-08",
+            "startTime": "10:00",
+            "endTime": "12:00",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Global High School",
+                "address": "3000 N Hwy 77",
+                "city": "Waxahachie",
+                "state": "TX",
+                "zip": "75165",
+                "coordinates": {
+                    "lat": 32.4050,
+                    "lng": -96.8500
+                },
+                "accessible": true
+            },
+            "eventType": "forum",
+            "office": "School Bond Proposition",
+            "officeLevel": "local",
+            "candidates": [],
+            "description": "Informational session about the upcoming Waxahachie ISD bond election. District administrators will present the proposed projects and answer community questions. No candidates — informational only.",
+            "sourceUrl": "https://www.wisd.org/bond2026",
+            "registrationUrl": null,
+            "liveStreamUrl": null,
+            "featured": false,
+            "verified": true,
+            "createdAt": "2026-01-20T08:00:00Z",
+            "updatedAt": "2026-02-01T10:00:00Z"
+        },
+        {
+            "id": "event-013",
+            "title": "Maypearl Water Board Candidate Appearance",
+            "date": "2026-03-01",
+            "startTime": "17:00",
+            "endTime": "18:30",
+            "timezone": "America/Chicago",
+            "venue": {
+                "name": "Maypearl Community Center",
+                "address": "210 E Main St",
+                "city": "Maypearl",
+                "state": "TX",
+                "zip": "76064",
+                "coordinates": {
+                    "lat": 32.3100,
+                    "lng": -97.0100
+                },
+                "accessible": false
+            },
+            "eventType": "candidate_appearance",
+            "office": "Water Board Director",
+            "officeLevel": "local",
+            "candidates": [
+                {
+                    "name": "Carl Wheeler",
+                    "party": "Non-Partisan",
+                    "incumbent": true
+                },
+                {
+                    "name": "Nancy Brennan",
+                    "party": "Non-Partisan",
+                    "incumbent": false
+                }
+            ],
+            "description": "Meet the candidates running for the Maypearl Water Board. Both candidates will discuss water quality, infrastructure investment, and rate structures.",
+            "sourceUrl": "https://www.maypearltx.gov",
+            "registrationUrl": null,
+            "liveStreamUrl": null,
+            "featured": false,
+            "verified": false,
+            "createdAt": "2026-02-10T09:00:00Z",
+            "updatedAt": "2026-02-10T09:00:00Z"
+        }
+    ],
+    "metadata": {
+        "lastUpdated": "2026-02-09T18:30:00-06:00",
+        "source": "Pivotal Voice — Ellis County Political Events Calendar",
+        "disclaimer": "This calendar is provided for informational purposes only. Pivotal Voice is a non-partisan platform and does not endorse any candidate or party.",
+        "totalEvents": 13,
+        "countyFIPS": "48139",
+        "county": "Ellis County",
+        "state": "Texas"
+    }
+}

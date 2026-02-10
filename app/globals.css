@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #1e3a5f;
+  --navy-dark: #0a1628;
+  --gold: #c9a961;
+  --gold-dark: #b8860b;
+  --cream: #e8dcc4;
+  --cream-light: #f5f0e8;
+  --brown-dark: #3d3020;
+  --white: #ffffff;
+}
+
+@layer base {
+  * {
+    @apply border-gold/20;
+  }
+
+  body {
+    @apply bg-navy-dark text-white font-sans antialiased;
+    scroll-behavior: smooth;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+
+  h1 {
+    @apply text-hero font-bold;
+  }
+
+  h2 {
+    @apply text-section font-semibold;
+  }
+
+  h3 {
+    @apply text-card font-semibold;
+  }
+
+  /* Focus indicators for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-navy-dark;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold-dark;
+  }
+}
+
+@layer components {
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-gold text-navy font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+    @apply hover:bg-gold-dark hover:shadow-lg hover:shadow-gold/20 hover:scale-105;
+    @apply active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-navy text-gold border-2 border-gold font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+    @apply hover:bg-gold hover:text-navy hover:shadow-lg hover:shadow-gold/20;
+    @apply active:scale-95;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-navy border border-gold/30 rounded-xl p-6 transition-all duration-300;
+    @apply hover:border-gold hover:shadow-lg hover:shadow-gold/10 hover:scale-105;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-content mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-section;
+  }
+
+  /* Link styles */
+  .link {
+    @apply text-gold hover:text-gold-dark transition-colors duration-200 underline-offset-4;
+    @apply hover:underline;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-red {
+    @apply badge bg-alert-red/20 text-alert-red border border-alert-red/30;
+  }
+
+  .badge-gold {
+    @apply badge bg-gold/20 text-gold border border-gold/30;
+  }
+
+  .badge-blue {
+    @apply badge bg-blue-500/20 text-blue-400 border border-blue-500/30;
+  }
+
+  .badge-green {
+    @apply badge bg-alert-green/20 text-alert-green border border-alert-green/30;
+  }
+
+  .badge-purple {
+    @apply badge bg-purple-500/20 text-purple-400 border border-purple-500/30;
+  }
+
+  /* Input styles */
+  .input {
+    @apply w-full bg-navy border border-gold/30 text-white px-4 py-3 rounded-lg;
+    @apply focus:border-gold focus:ring-2 focus:ring-gold/20;
+    @apply placeholder:text-cream/50 transition-all duration-200;
+  }
+
+  .textarea {
+    @apply input resize-y min-h-[120px];
+  }
+
+  .select {
+    @apply input appearance-none cursor-pointer;
+  }
+
+  /* Decorative elements */
+  .grain-overlay {
+    @apply relative;
+  }
+
+  .grain-overlay::before {
+    content: '';
+    @apply absolute inset-0 opacity-5 pointer-events-none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' /%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(201, 169, 97, 0.3);
+  }
+
+  .glow-gold-strong {
+    box-shadow: 0 0 40px rgba(201, 169, 97, 0.5);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

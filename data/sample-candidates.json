@@ -1,0 +1,648 @@
+{
+    "candidates": [
+        {
+            "id": "cand-001",
+            "name": "Marcus Whitfield",
+            "party": "Republican",
+            "bio": "Ellis County native and small business owner with 15+ years of community leadership experience. Served on the Waxahachie Planning & Zoning Board before running for County Commissioner.",
+            "incumbent": true,
+            "yearsInOffice": 4,
+            "office": "County Commissioner Precinct 3",
+            "officeLevel": "county",
+            "district": "Precinct 3",
+            "campaignWebsite": "https://whitfieldforcommissioner.com",
+            "donationUrl": "https://whitfieldforcommissioner.com/donate",
+            "email": "info@whitfieldforcommissioner.com",
+            "phone": "(972) 555-0101",
+            "socialMedia": {
+                "twitter": "https://twitter.com/whitfield4ec",
+                "facebook": "https://facebook.com/whitfieldforcommissioner"
+            },
+            "topIssues": [
+                "Property Tax Reform",
+                "Infrastructure & Roads",
+                "Public Safety",
+                "Controlled Growth"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "Property Taxes",
+                    "stance": "Supports a 3% cap on appraisal increases for homesteads"
+                },
+                {
+                    "topic": "Infrastructure",
+                    "stance": "Advocates for accelerated road expansion to match county growth"
+                },
+                {
+                    "topic": "Public Safety",
+                    "stance": "Supports increased funding for county sheriff department staffing"
+                }
+            ],
+            "election": {
+                "type": "primary",
+                "date": "2026-03-03",
+                "opponents": [
+                    "Linda Trevino"
+                ]
+            },
+            "raceStatus": "active",
+            "endorsements": [
+                "Ellis County Farm Bureau",
+                "Texas Association of Realtors"
+            ],
+            "eventIds": [
+                "event-001",
+                "event-007"
+            ]
+        },
+        {
+            "id": "cand-002",
+            "name": "Linda Trevino",
+            "party": "Democrat",
+            "bio": "Retired county clerk with 20 years of public service experience. Champions government transparency and community-first budgeting. Long-time Midlothian resident and PTA leader.",
+            "incumbent": false,
+            "office": "County Commissioner Precinct 3",
+            "officeLevel": "county",
+            "district": "Precinct 3",
+            "campaignWebsite": "https://trevinoforellis.com",
+            "donationUrl": "https://trevinoforellis.com/donate",
+            "email": "linda@trevinoforellis.com",
+            "socialMedia": {
+                "twitter": "https://twitter.com/trevino4ellis",
+                "facebook": "https://facebook.com/trevinoforelliscounty",
+                "instagram": "https://instagram.com/trevino4ellis"
+            },
+            "topIssues": [
+                "Government Transparency",
+                "Affordable Housing",
+                "Education Funding",
+                "Healthcare Access"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "Government Transparency",
+                    "stance": "Proposes public dashboard tracking all county spending in real-time"
+                },
+                {
+                    "topic": "Affordable Housing",
+                    "stance": "Supports incentives for developers building workforce housing"
+                },
+                {
+                    "topic": "Healthcare",
+                    "stance": "Advocates for expanded rural clinic access in southern Ellis County"
+                }
+            ],
+            "election": {
+                "type": "primary",
+                "date": "2026-03-03",
+                "opponents": [
+                    "Marcus Whitfield"
+                ]
+            },
+            "raceStatus": "active",
+            "endorsements": [
+                "Ellis County Democratic Club",
+                "Texas AFL-CIO"
+            ],
+            "eventIds": [
+                "event-001",
+                "event-003"
+            ]
+        },
+        {
+            "id": "cand-003",
+            "name": "Kevin Falconer",
+            "party": "Non-Partisan",
+            "bio": "Two-term Mayor of Waxahachie with background in urban planning. Focused on sustainable growth while preserving the city's historic character. Led the downtown revitalization project.",
+            "incumbent": true,
+            "yearsInOffice": 6,
+            "office": "Mayor of Waxahachie",
+            "officeLevel": "local",
+            "campaignWebsite": "https://falconerformayor.com",
+            "email": "mayor@waxahachietx.gov",
+            "phone": "(972) 937-7330",
+            "socialMedia": {
+                "facebook": "https://facebook.com/mayorfalconer"
+            },
+            "topIssues": [
+                "Downtown Revitalization",
+                "Water Infrastructure",
+                "Small Business Support",
+                "Historic Preservation"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "Growth Management",
+                    "stance": "Supports comprehensive plan update with stronger density controls"
+                },
+                {
+                    "topic": "Water",
+                    "stance": "Advocates for new water treatment facility to serve projected 2030 population"
+                }
+            ],
+            "election": {
+                "type": "general",
+                "date": "2026-05-02",
+                "opponents": [
+                    "Priya Sharma"
+                ]
+            },
+            "raceStatus": "active",
+            "endorsements": [
+                "Waxahachie Chamber of Commerce"
+            ],
+            "eventIds": [
+                "event-002"
+            ]
+        },
+        {
+            "id": "cand-004",
+            "name": "Priya Sharma",
+            "party": "Non-Partisan",
+            "bio": "Tech entrepreneur and first-generation American running her first campaign. Founded a youth coding nonprofit that serves 200+ Ellis County students annually.",
+            "incumbent": false,
+            "office": "Mayor of Waxahachie",
+            "officeLevel": "local",
+            "campaignWebsite": "https://priyaforwaxahachie.com",
+            "donationUrl": "https://secure.actblue.com/priyasharma",
+            "email": "priya@priyaforwaxahachie.com",
+            "socialMedia": {
+                "twitter": "https://twitter.com/priya4wax",
+                "facebook": "https://facebook.com/priyaforwaxahachie",
+                "instagram": "https://instagram.com/priya4wax"
+            },
+            "topIssues": [
+                "Digital Infrastructure",
+                "Youth Programs",
+                "Affordable Housing",
+                "Climate Resilience"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "Digital Infrastructure",
+                    "stance": "Plans citywide broadband expansion partnership with ISPs"
+                },
+                {
+                    "topic": "Youth Programs",
+                    "stance": "Proposes new community center with STEM lab and after-school programs"
+                },
+                {
+                    "topic": "Climate",
+                    "stance": "Supports solar panel incentives and urban tree canopy program"
+                }
+            ],
+            "election": {
+                "type": "general",
+                "date": "2026-05-02",
+                "opponents": [
+                    "Kevin Falconer"
+                ]
+            },
+            "raceStatus": "active",
+            "eventIds": [
+                "event-002"
+            ]
+        },
+        {
+            "id": "cand-005",
+            "name": "James Earl Patterson",
+            "party": "Republican",
+            "bio": "Third-generation rancher and Ellis County native. Texas A&M graduate with deep roots in the agricultural community. Currently serves as Ennis City Council member.",
+            "incumbent": false,
+            "office": "Texas State Representative District 10",
+            "officeLevel": "state",
+            "district": "District 10",
+            "campaignWebsite": "https://pattersonfortexas.com",
+            "donationUrl": "https://pattersonfortexas.com/donate",
+            "email": "james@pattersonfortexas.com",
+            "socialMedia": {
+                "twitter": "https://twitter.com/patterson4tx",
+                "facebook": "https://facebook.com/pattersonfortexas"
+            },
+            "topIssues": [
+                "Rural Water Access",
+                "Agriculture Support",
+                "Border Security",
+                "School Choice"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "Water",
+                    "stance": "Advocates for state funding for rural water infrastructure projects"
+                },
+                {
+                    "topic": "Agriculture",
+                    "stance": "Supports property tax exemptions for active agricultural land"
+                },
+                {
+                    "topic": "Education",
+                    "stance": "Supports Education Savings Accounts for all Texas families"
+                }
+            ],
+            "election": {
+                "type": "primary",
+                "date": "2026-03-03",
+                "opponents": [
+                    "Diane Reeves"
+                ]
+            },
+            "raceStatus": "active",
+            "endorsements": [
+                "Texas Farm Bureau",
+                "NRA"
+            ],
+            "eventIds": [
+                "event-004",
+                "event-008"
+            ]
+        },
+        {
+            "id": "cand-006",
+            "name": "Diane Reeves",
+            "party": "Democrat",
+            "bio": "Retired schoolteacher with 28 years in Midlothian ISD. Active in local education advocacy and currently serves on the Midlothian Library Board. Grandmother of five.",
+            "incumbent": false,
+            "office": "Texas State Representative District 10",
+            "officeLevel": "state",
+            "district": "District 10",
+            "campaignWebsite": "https://reevesfordistrict10.com",
+            "donationUrl": "https://reevesfordistrict10.com/support",
+            "email": "diane@reevesfordistrict10.com",
+            "socialMedia": {
+                "facebook": "https://facebook.com/reevesfordistrict10",
+                "instagram": "https://instagram.com/reeves4d10"
+            },
+            "topIssues": [
+                "Public Education Funding",
+                "Healthcare Expansion",
+                "Environmental Protection",
+                "Senior Services"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "Education",
+                    "stance": "Opposes voucher programs, supports $3,000 raise for all Texas teachers"
+                },
+                {
+                    "topic": "Healthcare",
+                    "stance": "Supports Medicaid expansion under the ACA"
+                },
+                {
+                    "topic": "Environment",
+                    "stance": "Proposes stronger chemical plant emissions regulations"
+                }
+            ],
+            "election": {
+                "type": "primary",
+                "date": "2026-03-03",
+                "opponents": [
+                    "James Earl Patterson"
+                ]
+            },
+            "raceStatus": "active",
+            "endorsements": [
+                "Texas State Teachers Association",
+                "Sierra Club Texas"
+            ],
+            "eventIds": [
+                "event-004"
+            ]
+        },
+        {
+            "id": "cand-007",
+            "name": "Todd Little",
+            "party": "Republican",
+            "bio": "Serving as Ellis County Judge since 2018. Former corporate attorney turned public servant. Led the county through two major disaster responses and a period of significant population growth.",
+            "incumbent": true,
+            "yearsInOffice": 8,
+            "office": "Ellis County Judge",
+            "officeLevel": "county",
+            "campaignWebsite": "https://toddlittleforjudge.com",
+            "email": "judge@elliscountytx.gov",
+            "phone": "(972) 825-5011",
+            "socialMedia": {
+                "facebook": "https://facebook.com/judgetoddlittle"
+            },
+            "topIssues": [
+                "Fiscal Responsibility",
+                "Emergency Preparedness",
+                "County Infrastructure",
+                "Economic Development"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "Budget",
+                    "stance": "Maintained balanced budget for 8 consecutive years"
+                },
+                {
+                    "topic": "Infrastructure",
+                    "stance": "Championed $45M bond for road improvements"
+                }
+            ],
+            "election": {
+                "type": "general",
+                "date": "2026-11-03",
+                "opponents": [
+                    "Maria Santos"
+                ]
+            },
+            "raceStatus": "active",
+            "endorsements": [
+                "Texas Association of Counties"
+            ],
+            "eventIds": [
+                "event-006"
+            ]
+        },
+        {
+            "id": "cand-008",
+            "name": "Maria Santos",
+            "party": "Democrat",
+            "bio": "Nonprofit director and community organizer focused on immigrant services and housing equity. Bilingual leader who has worked with underserved communities in Ellis County for over a decade.",
+            "incumbent": false,
+            "office": "Ellis County Judge",
+            "officeLevel": "county",
+            "campaignWebsite": "https://santosforjudge.com",
+            "donationUrl": "https://santosforjudge.com/donate",
+            "email": "maria@santosforjudge.com",
+            "socialMedia": {
+                "twitter": "https://twitter.com/santos4judge",
+                "facebook": "https://facebook.com/santosforjudge",
+                "instagram": "https://instagram.com/santos4judge"
+            },
+            "topIssues": [
+                "Housing Equity",
+                "Criminal Justice Reform",
+                "Community Health",
+                "Workers Rights"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "Housing",
+                    "stance": "Proposes county-level affordable housing trust fund"
+                },
+                {
+                    "topic": "Criminal Justice",
+                    "stance": "Advocates for pre-trial diversion programs and mental health courts"
+                }
+            ],
+            "election": {
+                "type": "general",
+                "date": "2026-11-03",
+                "opponents": [
+                    "Todd Little"
+                ]
+            },
+            "raceStatus": "active",
+            "endorsements": [
+                "Texas Organizing Project"
+            ],
+            "eventIds": [
+                "event-006"
+            ]
+        },
+        {
+            "id": "cand-009",
+            "name": "Robert Chen",
+            "party": "Republican",
+            "bio": "IT executive and Red Oak City Council member. Originally from Houston, moved to Ellis County in 2015. Focused on bringing technology-driven governance to the county.",
+            "incumbent": false,
+            "office": "Ellis County Sheriff",
+            "officeLevel": "county",
+            "campaignWebsite": "https://chenforellis.com",
+            "email": "robert@chenforellis.com",
+            "socialMedia": {
+                "facebook": "https://facebook.com/chenforellis"
+            },
+            "topIssues": [
+                "Law Enforcement Technology",
+                "Drug Prevention",
+                "Community Policing",
+                "Rural Response Times"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "Technology",
+                    "stance": "Plans body camera program and gunshot detection system for county"
+                },
+                {
+                    "topic": "Community Policing",
+                    "stance": "Supports neighborhood liaison officers in all major subdivisions"
+                }
+            ],
+            "election": {
+                "type": "primary",
+                "date": "2026-03-03",
+                "opponents": [
+                    "Karen Washington"
+                ]
+            },
+            "raceStatus": "active",
+            "eventIds": [
+                "event-011"
+            ]
+        },
+        {
+            "id": "cand-010",
+            "name": "Karen Washington",
+            "party": "Republican",
+            "bio": "20-year veteran of the Ellis County Sheriff's Department. Rose from patrol deputy to Chief Deputy. Endorsed by current Sheriff. Mother of three and active in her Palmer church community.",
+            "incumbent": false,
+            "office": "Ellis County Sheriff",
+            "officeLevel": "county",
+            "campaignWebsite": "https://washingtonforellis.com",
+            "donationUrl": "https://washingtonforellis.com/donate",
+            "email": "karen@washingtonforellis.com",
+            "phone": "(972) 555-0210",
+            "socialMedia": {
+                "twitter": "https://twitter.com/washington4sheriff",
+                "facebook": "https://facebook.com/washington4sheriff"
+            },
+            "topIssues": [
+                "Experienced Leadership",
+                "Deputy Retention",
+                "School Safety",
+                "Mental Health Response"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "Staffing",
+                    "stance": "Plans 15% pay increase for deputies and new recruitment program"
+                },
+                {
+                    "topic": "Mental Health",
+                    "stance": "Supports co-responder model pairing deputies with mental health professionals"
+                }
+            ],
+            "election": {
+                "type": "primary",
+                "date": "2026-03-03",
+                "opponents": [
+                    "Robert Chen"
+                ]
+            },
+            "raceStatus": "active",
+            "endorsements": [
+                "Fraternal Order of Police",
+                "Current Sheriff Jim Eddy"
+            ],
+            "eventIds": [
+                "event-011"
+            ]
+        },
+        {
+            "id": "cand-011",
+            "name": "Angela Price",
+            "party": "Non-Partisan",
+            "bio": "Pediatrician and Italy ISD school board member. Passionate about STEM education and closing the rural-urban education gap. Coaches youth soccer in her spare time.",
+            "incumbent": true,
+            "yearsInOffice": 3,
+            "office": "Italy ISD Board Trustee Place 4",
+            "officeLevel": "local",
+            "email": "aprice@italyisd.org",
+            "socialMedia": {},
+            "topIssues": [
+                "STEM Education",
+                "Teacher Retention",
+                "School Safety",
+                "Student Mental Health"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "STEM",
+                    "stance": "Proposes coding curriculum starting in 4th grade"
+                },
+                {
+                    "topic": "Teacher Retention",
+                    "stance": "Supports stipend program for teachers in hard-to-fill positions"
+                }
+            ],
+            "election": {
+                "type": "general",
+                "date": "2026-05-02",
+                "opponents": []
+            },
+            "raceStatus": "active"
+        },
+        {
+            "id": "cand-012",
+            "name": "Derek Simmons",
+            "party": "Republican",
+            "bio": "U.S. Army veteran and small business owner. Runs a veteran employment program in North Texas. Active in Ferris civic organizations and on the Ferris Economic Development Board.",
+            "incumbent": false,
+            "office": "U.S. Representative TX-6",
+            "officeLevel": "federal",
+            "district": "TX-6",
+            "campaignWebsite": "https://simmonsfortx6.com",
+            "donationUrl": "https://simmonsfortx6.com/contribute",
+            "email": "derek@simmonsfortx6.com",
+            "socialMedia": {
+                "twitter": "https://twitter.com/simmons4tx6",
+                "facebook": "https://facebook.com/simmonsfortx6",
+                "instagram": "https://instagram.com/simmons4tx6",
+                "youtube": "https://youtube.com/@simmonsfortx6"
+            },
+            "topIssues": [
+                "Veterans Affairs",
+                "Border Security",
+                "Economic Growth",
+                "Healthcare Reform",
+                "Government Spending"
+            ],
+            "policyPositions": [
+                {
+                    "topic": "Veterans",
+                    "stance": "Proposes streamlined VA benefits processing and mental health expansion"
+                },
+                {
+                    "topic": "Economy",
+                    "stance": "Supports small business tax cuts and deregulation"
+                },
+                {
+                    "topic": "Healthcare",
+                    "stance": "Supports price transparency and cross-state insurance competition"
+                }
+            ],
+            "election": {
+                "type": "primary",
+                "date": "2026-03-03",
+                "opponents": [
+                    "Tamika Johnson"
+                ]
+            },
+            "raceStatus": "active",
+            "endorsements": [
+                "Veterans of Foreign Wars",
+                "National Federation of Independent Business"
+            ],
+            "eventIds": [
+                "event-009"
+            ]
+        }
+    ],
+    "elections": [
+        {
+            "id": "election-2026-primary",
+            "name": "2026 Texas Primary Election",
+            "type": "primary",
+            "date": "2026-03-03",
+            "registrationDeadline": "2026-02-02",
+            "earlyVotingStart": "2026-02-16",
+            "earlyVotingEnd": "2026-02-27"
+        },
+        {
+            "id": "election-2026-municipal",
+            "name": "2026 Municipal Elections",
+            "type": "general",
+            "date": "2026-05-02",
+            "registrationDeadline": "2026-04-02",
+            "earlyVotingStart": "2026-04-20",
+            "earlyVotingEnd": "2026-04-28"
+        },
+        {
+            "id": "election-2026-general",
+            "name": "2026 General Election",
+            "type": "general",
+            "date": "2026-11-03",
+            "registrationDeadline": "2026-10-05",
+            "earlyVotingStart": "2026-10-19",
+            "earlyVotingEnd": "2026-10-30"
+        }
+    ],
+    "votingInfo": {
+        "registrationUrl": "https://www.votetexas.gov/register-to-vote/",
+        "earlyVotingLocations": [
+            {
+                "name": "Ellis County Courthouse",
+                "address": "101 W. Main St",
+                "city": "Waxahachie",
+                "hours": "7:00 AM - 7:00 PM"
+            },
+            {
+                "name": "Midlothian Conference Center",
+                "address": "1 Community Circle",
+                "city": "Midlothian",
+                "hours": "7:00 AM - 7:00 PM"
+            },
+            {
+                "name": "Red Oak Municipal Center",
+                "address": "200 Lakeview Pkwy",
+                "city": "Red Oak",
+                "hours": "7:00 AM - 7:00 PM"
+            },
+            {
+                "name": "Ennis Public Library",
+                "address": "501 W. Ennis Ave",
+                "city": "Ennis",
+                "hours": "7:00 AM - 7:00 PM"
+            }
+        ],
+        "absenteeBallotInfo": "Texas voters may vote by mail if they are 65+, disabled, confined in jail, or will be absent from the county during the election period and early voting. Applications must be received 11 days before Election Day.",
+        "pollingLocationFinder": "https://teamrv-mvp.sos.texas.gov/MVP/mvp.do"
+    },
+    "metadata": {
+        "lastUpdated": "2026-02-09T18:45:00-06:00",
+        "source": "Ellis County Elections Department, Texas Secretary of State, Ballotpedia, candidate campaign websites",
+        "disclaimer": "This information is provided for civic education purposes only. Pivotal Voice does not endorse any candidate or party. All data is sourced from publicly available records and candidate-submitted information. Verify details with official election authorities."
+    }
+}

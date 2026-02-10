@@ -1,0 +1,82 @@
+{
+    "episodes": [
+        {
+            "id": "ep-001",
+            "episodeNumber": 1,
+            "title": "The Future of Ellis County: A Conversation with County Judge Todd Little",
+            "description": "County Judge Todd Little joins us to discuss the county's budget priorities, infrastructure challenges, and vision for sustainable growth.",
+            "guest": {
+                "name": "Todd Little",
+                "title": "Ellis County Judge",
+                "photo": "/images/guests/todd-little.jpg",
+                "bio": "Todd Little is serving his second term as Ellis County Judge, leading the county's administrative and judicial functions."
+            },
+            "duration": "45:30",
+            "publishDate": "2026-02-01",
+            "audioUrl": "https://example.com/podcasts/ep-001.mp3",
+            "thumbnail": "/images/podcast/ep-001.jpg",
+            "topics": [
+                "Budget",
+                "Infrastructure",
+                "Growth"
+            ],
+            "transcript": "Full transcript of the conversation...",
+            "keyQuotes": [
+                "We're committed to responsible growth that preserves our county's character while meeting the needs of new residents."
+            ],
+            "featured": true
+        },
+        {
+            "id": "ep-002",
+            "episodeNumber": 2,
+            "title": "Education Excellence: Talking with WISD Superintendent Dr. Bonny Cain",
+            "description": "Dr. Bonny Cain, Superintendent of Waxahachie ISD, discusses innovative programs, teacher retention, and preparing students for the future.",
+            "guest": {
+                "name": "Dr. Bonny Cain",
+                "title": "Waxahachie ISD Superintendent",
+                "photo": "/images/guests/bonny-cain.jpg",
+                "bio": "Dr. Bonny Cain leads one of Ellis County's largest school districts, serving over 8,000 students."
+            },
+            "duration": "52:15",
+            "publishDate": "2026-01-25",
+            "audioUrl": "https://example.com/podcasts/ep-002.mp3",
+            "thumbnail": "/images/podcast/ep-002.jpg",
+            "topics": [
+                "Education",
+                "Public Schools",
+                "Youth"
+            ],
+            "transcript": "Full transcript of the conversation...",
+            "keyQuotes": [
+                "Our teachers are the heart of everything we do, and investing in them is investing in our community's future."
+            ],
+            "featured": false
+        },
+        {
+            "id": "ep-003",
+            "episodeNumber": 3,
+            "title": "Public Safety First: Chief Perspectives on Community Policing",
+            "description": "Police chiefs from across Ellis County share their approaches to community-oriented policing and building trust.",
+            "guest": {
+                "name": "Chief Robert Taylor",
+                "title": "Waxahachie Police Chief",
+                "photo": "/images/guests/robert-taylor.jpg",
+                "bio": "Chief Robert Taylor has over 25 years of law enforcement experience and leads the Waxahachie Police Department."
+            },
+            "duration": "48:45",
+            "publishDate": "2026-01-18",
+            "audioUrl": "https://example.com/podcasts/ep-003.mp3",
+            "thumbnail": "/images/podcast/ep-003.jpg",
+            "topics": [
+                "Public Safety",
+                "Police",
+                "Community"
+            ],
+            "transcript": "Full transcript of the conversation...",
+            "keyQuotes": [
+                "Community policing isn't just a strategy—it's about building relationships that make everyone safer."
+            ],
+            "featured": false
+        }
+    ]
+}
