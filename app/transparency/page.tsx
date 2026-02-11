@@ -54,7 +54,7 @@ export default function TransparencyPage() {
                 {/* Budget Breakdown */}
                 <section className="section">
                     <div className="container-custom">
-                        <div className="flex items-center justify-between mb-8">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
                             <h2 className="text-section font-bold text-white">
                                 County Budget Breakdown
                             </h2>

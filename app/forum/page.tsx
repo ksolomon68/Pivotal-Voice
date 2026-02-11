@@ -136,7 +136,7 @@ export default function ForumPage() {
                             {/* Auth bar */}
                             <div className="flex items-center justify-center gap-3">
                                 {user ? (
-                                    <div className="flex items-center gap-3 bg-navy-dark/50 border border-gold/20 rounded-full px-5 py-2">
+                                    <div className="flex items-center gap-3 flex-wrap bg-navy-dark/50 border border-gold/20 rounded-2xl px-4 py-2">
                                         <div className="w-8 h-8 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center">
                                             <span className="text-sm font-bold text-gold">{user.displayName[0]}</span>
                                         </div>

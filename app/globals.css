@@ -227,7 +227,7 @@
 
   /* ─── Card ─── */
   .card {
-    @apply bg-navy border border-gold/10 rounded-card p-8;
+    @apply bg-navy border border-gold/10 rounded-card p-5 sm:p-8;
     box-shadow: var(--shadow-card);
     transition: var(--transition-base);
   }
@@ -244,7 +244,7 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(212, 175, 55, 0.15);
-    @apply rounded-card p-8;
+    @apply rounded-card p-5 sm:p-8;
     transition: var(--transition-base);
   }
 

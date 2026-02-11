@@ -338,7 +338,7 @@ export default function CalendarPage() {
                 {civicEvents.length > 0 && (
                     <section className="section bg-navy-dark/30">
                         <div className="container-custom">
-                            <div className="flex items-center justify-between mb-6">
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
                                 <div className="flex items-center gap-3">
                                     <Landmark className="w-6 h-6 text-gold" />
                                     <h2 className="text-section font-bold text-white">Civic Meetings</h2>

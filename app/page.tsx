@@ -208,9 +208,9 @@ export default function HomePage() {
                                 const Icon = stat.icon;
                                 return (
                                     <ScrollReveal key={stat.label} delay={index * 0.1}>
-                                        <div className="glass-card text-center !p-6 group">
+                                        <div className="glass-card text-center !p-4 sm:!p-6 group">
                                             <Icon className="w-6 h-6 text-gold/60 mx-auto mb-2 group-hover:text-gold transition-colors duration-300" />
-                                            <div className="text-3xl md:text-4xl font-display font-bold text-white mb-1">
+                                            <div className="text-2xl md:text-4xl font-display font-bold text-white mb-1">
                                                 <AnimatedCounter end={stat.value} />
                                             </div>
                                             <p className="text-cream/50 text-sm font-medium">{stat.label}</p>
@@ -368,7 +368,7 @@ export default function HomePage() {
                 <section className="section">
                     <div className="container-custom">
                         <ScrollReveal>
-                            <div className="relative bg-navy border border-gold/15 rounded-card p-12 md:p-16 text-center overflow-hidden">
+                            <div className="relative bg-navy border border-gold/15 rounded-card p-6 sm:p-10 md:p-16 text-center overflow-hidden">
                                 {/* Decorative gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-navy-light/10" />
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
