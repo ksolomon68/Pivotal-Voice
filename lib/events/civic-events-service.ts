@@ -2,6 +2,8 @@
 import { supabase } from '@/lib/supabase/client';
 import { CivicEvent, EventFilters, CivicEventType } from '@/lib/types/civic-events';
 
+import { LOCAL_MEETUP_EVENTS } from './civic-events-data';
+
 // ─── CRUD ────────────────────────────────────────────────────
 
 export async function getCivicEvents(): Promise<CivicEvent[]> {
@@ -13,18 +15,34 @@ export async function getCivicEvents(): Promise<CivicEvent[]> {
 
     if (error) {
         console.error('Error fetching events:', error);
-        return [];
+        // Fallback to just local meetups if DB fails
+        return LOCAL_MEETUP_EVENTS;
     }
 
     // Map rsvpUsers from event_rsvps relation
-    return (data as any[]).map(event => ({
+    const dbEvents = (data as any[]).map(event => ({
         ...event,
         rsvpUsers: event.event_rsvps.map((r: any) => r.user_id),
         rsvpCount: event.event_rsvps.length
     })) as CivicEvent[];
+
+    // Merge DB events with local meetups and sort by date
+    const allEvents = [...dbEvents, ...LOCAL_MEETUP_EVENTS];
+
+    return allEvents.sort((a, b) => {
+        const dateA = new Date(a.date + 'T' + a.startTime);
+        const dateB = new Date(b.date + 'T' + b.startTime);
+        return dateA.getTime() - dateB.getTime();
+    });
 }
 
 export async function getCivicEventById(id: string): Promise<CivicEvent | undefined> {
+    // Check local events first
+    const localEvent = LOCAL_MEETUP_EVENTS.find(e => e.id === id);
+    if (localEvent) {
+        return localEvent;
+    }
+
     const { data } = await supabase
         .from('civic_events')
         .select('*, event_rsvps(user_id)')

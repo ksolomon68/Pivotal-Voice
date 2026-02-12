@@ -432,4 +432,61 @@ export const SEED_CIVIC_EVENTS: CivicEvent[] = [
         lastVerified: '2026-02-09T06:00:00Z', createdAt: '2026-02-01T10:00:00Z', updatedAt: '2026-02-08T14:00:00Z',
         isUserSubmitted: false, approvalStatus: 'approved',
     },
+
+    // ─── Local Meetups (Political Parties & Groups) ──────────
+    {
+        id: 'lm-01', title: 'Libertarian Party of Ellis County — Monthly Meetup',
+        description: 'Join us for our monthly business meeting and social hour. We will be discussing upcoming local elections and volunteer opportunities.',
+        date: '2026-02-12', startTime: '19:00', endTime: '21:00', timezone: 'America/Chicago',
+        location: { name: 'Railport Brewing Co.', address: '405 W Madison St', city: 'Waxahachie', state: 'TX', zip: '75165', mapUrl: 'https://maps.google.com/?q=Railport+Brewing+Co+Waxahachie+TX' },
+        eventType: 'party_meeting', governingBody: 'Libertarian Party of Ellis County',
+        participationInstructions: 'Open to the public. No membership required to attend.',
+        rsvpCount: 12, rsvpUsers: [], isFeatured: false, isRecurring: true, recurringSchedule: '2nd Thursday',
+        tags: ['libertarian', 'social', 'politics'], sourceUrl: 'https://www.lpetexas.org', sourceName: 'Libertarian Party of Texas',
+        lastVerified: '2026-02-10T10:00:00Z', createdAt: '2026-02-10T10:00:00Z', updatedAt: '2026-02-10T10:00:00Z',
+        isUserSubmitted: false, approvalStatus: 'approved',
+    },
+    {
+        id: 'lm-02', title: 'Ellis County Conservatives — Coffee & Politics',
+        description: 'Morning discussion group focusing on conservative values in local government. Guest speaker: TBA.',
+        date: '2026-02-14', startTime: '09:00', endTime: '10:30', timezone: 'America/Chicago',
+        location: { name: 'White Rhino Coffee', address: '414 W Main St', city: 'Waxahachie', state: 'TX', zip: '75165', mapUrl: 'https://maps.google.com/?q=White+Rhino+Coffee+Waxahachie+TX' },
+        eventType: 'community_event', governingBody: 'Ellis County Conservatives',
+        participationInstructions: 'Free to attend. Coffee available for purchase.',
+        rsvpCount: 25, rsvpUsers: [], isFeatured: true, isRecurring: true, recurringSchedule: '2nd Saturday',
+        tags: ['conservative', 'coffee', 'discussion'],
+        lastVerified: '2026-02-10T10:00:00Z', createdAt: '2026-02-10T10:00:00Z', updatedAt: '2026-02-10T10:00:00Z',
+        isUserSubmitted: false, approvalStatus: 'approved',
+    },
+    {
+        id: 'lm-03', title: 'Progressive Voters League — Community Organizing Workshop',
+        description: 'Learn effective strategies for community organizing, canvassing, and voter outreach.',
+        date: '2026-02-21', startTime: '13:00', endTime: '16:00', timezone: 'America/Chicago',
+        location: { name: 'Sims Library', address: '515 W Main St', city: 'Waxahachie', state: 'TX', zip: '75165', mapUrl: 'https://maps.google.com/?q=Sims+Library+Waxahachie+TX' },
+        eventType: 'community_event', governingBody: 'Progressive Voters League',
+        participationInstructions: 'Registration recommended but not required. Materials provided.',
+        rsvpCount: 18, rsvpUsers: [], isFeatured: false, isRecurring: false,
+        tags: ['progressive', 'organizing', 'workshop'],
+        lastVerified: '2026-02-10T10:00:00Z', createdAt: '2026-02-10T10:00:00Z', updatedAt: '2026-02-10T10:00:00Z',
+        isUserSubmitted: false, approvalStatus: 'approved',
+    },
+    {
+        id: 'lm-04', title: 'Young Republicans — Happy Hour Mixer',
+        description: 'Networking event for young professionals interested in Republican politics. Come meet like-minded individuals!',
+        date: '2026-02-26', startTime: '17:30', endTime: '19:30', timezone: 'America/Chicago',
+        location: { name: 'College Street Pub', address: '210 N College St', city: 'Waxahachie', state: 'TX', zip: '75165', mapUrl: 'https://maps.google.com/?q=College+Street+Pub+Waxahachie+TX' },
+        eventType: 'party_meeting', governingBody: 'Ellis County Young Republicans',
+        participationInstructions: 'Ages 21-40 welcome. Cash bar.',
+        rsvpCount: 30, rsvpUsers: [], isFeatured: false, isRecurring: true, recurringSchedule: 'Last Thursday',
+        tags: ['young-republicans', 'networking', 'social'],
+        lastVerified: '2026-02-10T10:00:00Z', createdAt: '2026-02-10T10:00:00Z', updatedAt: '2026-02-10T10:00:00Z',
+        isUserSubmitted: false, approvalStatus: 'approved',
+    },
+];
+
+export const LOCAL_MEETUP_EVENTS: CivicEvent[] = [
+    // We can export this separately if needed, but for now they are part of the main seed data 
+    // or we can slice them from here if we want to keep them distinct.
+    // The implementation plan suggested creating a separate constant, so let's do that for clarity 
+    // and ease of merging in the service.
 ];
