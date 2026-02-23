@@ -3,6 +3,7 @@ import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from '@/lib/forum/AuthContext';
 import { ClientWrappers } from "@/components/layout/ClientWrappers";
+import ElectionAlertBanner from "@/components/elections/ElectionAlertBanner";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function RootLayout({
                 <a href="#main-content" className="skip-to-content">
                     Skip to content
                 </a>
+                <ElectionAlertBanner />
                 <AuthProvider>
                     {children}
                     <ClientWrappers />

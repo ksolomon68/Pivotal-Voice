@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import CommunityNewsFeed from '@/components/community/CommunityNewsFeed';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -267,6 +268,11 @@ export default function HomePage() {
                         </StaggerContainer>
                     </div>
                 </section>
+
+                {/* ════════════════════════════════════════
+                    COMMUNITY NEWS — Italy ISD + City of Italy
+                   ════════════════════════════════════════ */}
+                <CommunityNewsFeed />
 
                 {/* ════════════════════════════════════════
                     CALENDAR PREVIEW — Alternating section
