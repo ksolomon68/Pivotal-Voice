@@ -12,8 +12,12 @@ export default function NewsletterPopup() {
     useEffect(() => {
         // Don't show if already dismissed or user is logged in (forum)
         if (isPopupDismissed()) return;
-        const forumUser = localStorage.getItem('pv_forum_current_user');
-        if (forumUser) return;
+        try {
+            const forumUser = localStorage.getItem('pv_forum_current_user');
+            if (forumUser) return;
+        } catch {
+            return; // localStorage blocked — don't show popup
+        }
 
         const timer = setTimeout(() => setShow(true), 30000); // 30 seconds
         return () => clearTimeout(timer);

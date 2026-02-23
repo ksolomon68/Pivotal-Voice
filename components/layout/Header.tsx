@@ -61,7 +61,7 @@ export default function Header() {
                 <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
                 <nav className="container-custom">
-                    <div className="flex items-center justify-between h-20">
+                    <div className="flex items-center justify-between h-16 sm:h-20">
                         {/* Logo */}
                         <Link href="/" className="flex items-center gap-3 group">
                             <motion.div
@@ -81,11 +81,11 @@ export default function Header() {
                                     priority
                                 />
                             </motion.div>
-                            <div className="hidden sm:flex flex-col">
-                                <span className="font-display text-lg font-bold text-white leading-tight tracking-tight">
+                            <div className="flex flex-col">
+                                <span className="font-display text-sm sm:text-lg font-bold text-white leading-tight tracking-tight">
                                     Pivotal Voice
                                 </span>
-                                <span className="text-[10px] text-gold/70 font-medium tracking-wider uppercase">
+                                <span className="text-[9px] sm:text-[10px] text-gold/70 font-medium tracking-wider uppercase">
                                     Ellis County
                                 </span>
                             </div>
@@ -204,8 +204,8 @@ export default function Header() {
                                             <Link
                                                 href={item.href}
                                                 className={`block py-4 px-5 text-lg font-display font-medium rounded-xl transition-all duration-300 ${pathname === item.href
-                                                        ? 'text-gold bg-gold/10'
-                                                        : 'text-cream hover:text-gold hover:bg-gold/5'
+                                                    ? 'text-gold bg-gold/10'
+                                                    : 'text-cream hover:text-gold hover:bg-gold/5'
                                                     }`}
                                                 onClick={() => setMobileMenuOpen(false)}
                                             >

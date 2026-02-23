@@ -152,7 +152,7 @@ export default function HomePage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.7 }}
-                            className="text-xl md:text-2xl text-cream/70 mb-10 max-w-2xl mx-auto font-light leading-relaxed"
+                            className="text-base sm:text-xl md:text-2xl text-cream/70 mb-10 max-w-2xl mx-auto font-light leading-relaxed"
                         >
                             The comprehensive civic engagement platform connecting Ellis County residents with democracy.
                         </motion.p>
@@ -173,15 +173,15 @@ export default function HomePage() {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 1.1 }}
-                            className="flex flex-wrap gap-3 justify-center"
+                            className="grid grid-cols-1 sm:flex sm:flex-wrap gap-3 justify-center"
                         >
-                            <Link href="/candidates" className="btn-ghost text-sm">
+                            <Link href="/candidates" className="btn-ghost text-sm !w-auto">
                                 <Users className="w-4 h-4" /> View Candidates
                             </Link>
-                            <Link href="/calendar" className="btn-ghost text-sm">
+                            <Link href="/calendar" className="btn-ghost text-sm !w-auto">
                                 <Calendar className="w-4 h-4" /> Upcoming Events
                             </Link>
-                            <Link href="/forum" className="btn-ghost text-sm">
+                            <Link href="/forum" className="btn-ghost text-sm !w-auto">
                                 <MessageSquare className="w-4 h-4" /> Join Discussion
                             </Link>
                         </motion.div>

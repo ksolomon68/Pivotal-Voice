@@ -35,9 +35,9 @@ const config: Config = {
                 sans: ['var(--font-inter)', 'Inter', 'sans-serif'],
             },
             fontSize: {
-                'hero': ['clamp(28px, 5vw, 64px)', { lineHeight: '1.1', letterSpacing: '-0.5px', fontWeight: '700' }],
-                'section': ['clamp(24px, 3.5vw, 42px)', { lineHeight: '1.2', letterSpacing: '-0.3px', fontWeight: '600' }],
-                'card': ['clamp(18px, 2vw, 28px)', { lineHeight: '1.3', fontWeight: '600' }],
+                'hero': ['clamp(32px, 8vw, 64px)', { lineHeight: '1.1', letterSpacing: '-0.5px', fontWeight: '700' }],
+                'section': ['clamp(22px, 5vw, 42px)', { lineHeight: '1.2', letterSpacing: '-0.3px', fontWeight: '600' }],
+                'card': ['clamp(18px, 3.5vw, 28px)', { lineHeight: '1.3', fontWeight: '600' }],
                 'body-lg': ['16px', { lineHeight: '1.7' }],
             },
             maxWidth: {
@@ -45,8 +45,8 @@ const config: Config = {
                 'readable': '70ch',
             },
             spacing: {
-                'section': 'clamp(48px, 10vw, 120px)',
-                'section-sm': 'clamp(32px, 6vw, 80px)',
+                'section': 'clamp(36px, 8vw, 120px)',
+                'section-sm': 'clamp(24px, 5vw, 80px)',
             },
             borderRadius: {
                 'card': '16px',

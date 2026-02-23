@@ -137,15 +137,15 @@ export default function Footer() {
                                 <p className="text-cream/50 text-sm mb-3">
                                     Subscribe to our newsletter
                                 </p>
-                                <form className="flex gap-2">
+                                <form className="flex flex-col sm:flex-row gap-2">
                                     <input
                                         type="email"
                                         placeholder="Your email"
-                                        className="input text-sm flex-1 min-w-0 !py-2.5 !px-4 !rounded-l-xl !rounded-r-none !border-r-0"
+                                        className="input text-sm flex-1 min-w-0 !py-2.5 !px-4 sm:!rounded-l-xl sm:!rounded-r-none sm:!border-r-0"
                                     />
                                     <button
                                         type="submit"
-                                        className="btn-primary text-sm !px-4 !py-2.5 !rounded-l-none !rounded-r-xl whitespace-nowrap"
+                                        className="btn-primary text-sm !px-4 !py-2.5 sm:!rounded-l-none sm:!rounded-r-xl whitespace-nowrap w-full sm:w-auto"
                                     >
                                         Subscribe
                                     </button>
@@ -159,11 +159,11 @@ export default function Footer() {
                 <div className="h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent mb-8" />
 
                 {/* Bottom row */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
                     <p className="text-cream/40 text-sm">
                         © {new Date().getFullYear()} Pivotal Voice. All rights reserved.
                     </p>
-                    <div className="flex gap-6 text-sm">
+                    <div className="flex flex-wrap justify-center gap-4 text-sm">
                         <Link href="/privacy" className="text-cream/40 hover:text-gold transition-colors duration-300">
                             Privacy Policy
                         </Link>

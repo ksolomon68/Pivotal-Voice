@@ -268,10 +268,18 @@ export async function getSubscribersByInterest(interest: string): Promise<Newsle
 }
 export function isPopupDismissed(): boolean {
     if (typeof window === 'undefined') return true;
-    return localStorage.getItem('pv_newsletter_dismissed') === 'true';
+    try {
+        return localStorage.getItem('pv_newsletter_dismissed') === 'true';
+    } catch {
+        return true; // localStorage blocked (Firefox private mode, strict privacy, etc.)
+    }
 }
 
 export function dismissPopup(): void {
     if (typeof window === 'undefined') return;
-    localStorage.setItem('pv_newsletter_dismissed', 'true');
+    try {
+        localStorage.setItem('pv_newsletter_dismissed', 'true');
+    } catch {
+        // localStorage blocked — silently ignore
+    }
 }
