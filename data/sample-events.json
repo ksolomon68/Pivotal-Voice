@@ -3,7 +3,7 @@
         {
             "id": "event-001",
             "title": "Property Tax Reform Town Hall",
-            "date": "2026-02-20",
+            "date": "2026-05-20",
             "startTime": "18:00",
             "endTime": "20:00",
             "timezone": "America/Chicago",
@@ -46,7 +46,7 @@
         {
             "id": "event-002",
             "title": "Mayoral Debate — Midlothian",
-            "date": "2026-02-15",
+            "date": "2026-05-15",
             "startTime": "19:00",
             "endTime": "21:00",
             "timezone": "America/Chicago",
@@ -94,7 +94,7 @@
         {
             "id": "event-003",
             "title": "Public Safety Forum",
-            "date": "2026-02-18",
+            "date": "2026-05-18",
             "startTime": "17:30",
             "endTime": "19:30",
             "timezone": "America/Chicago",
@@ -137,7 +137,7 @@
         {
             "id": "event-004",
             "title": "School Board Candidate Meet & Greet",
-            "date": "2026-02-22",
+            "date": "2026-05-22",
             "startTime": "16:00",
             "endTime": "18:00",
             "timezone": "America/Chicago",
@@ -148,7 +148,7 @@
                 "state": "TX",
                 "zip": "75167",
                 "coordinates": {
-                    "lat": 32.4110,
+                    "lat": 32.411,
                     "lng": -96.8644
                 },
                 "accessible": true
@@ -180,7 +180,7 @@
         {
             "id": "event-005",
             "title": "Budget Priorities Listening Session",
-            "date": "2026-02-25",
+            "date": "2026-05-25",
             "startTime": "18:30",
             "endTime": "20:30",
             "timezone": "America/Chicago",
@@ -218,7 +218,7 @@
         {
             "id": "event-006",
             "title": "State Representative Town Hall — District 10",
-            "date": "2026-02-12",
+            "date": "2026-05-12",
             "startTime": "19:00",
             "endTime": "20:30",
             "timezone": "America/Chicago",
@@ -256,7 +256,7 @@
         {
             "id": "event-007",
             "title": "Ellis County Judge Candidate Debate",
-            "date": "2026-03-05",
+            "date": "2026-06-05",
             "startTime": "19:00",
             "endTime": "21:00",
             "timezone": "America/Chicago",
@@ -299,7 +299,7 @@
         {
             "id": "event-008",
             "title": "Campaign Rally — Palmer Community Park",
-            "date": "2026-02-28",
+            "date": "2026-05-28",
             "startTime": "11:00",
             "endTime": "14:00",
             "timezone": "America/Chicago",
@@ -337,7 +337,7 @@
         {
             "id": "event-009",
             "title": "Ferris City Council Candidate Forum",
-            "date": "2026-03-10",
+            "date": "2026-06-10",
             "startTime": "18:00",
             "endTime": "20:00",
             "timezone": "America/Chicago",
@@ -348,7 +348,7 @@
                 "state": "TX",
                 "zip": "75125",
                 "coordinates": {
-                    "lat": 32.5340,
+                    "lat": 32.534,
                     "lng": -96.6603
                 },
                 "accessible": true
@@ -385,7 +385,7 @@
         {
             "id": "event-010",
             "title": "Ovilla Planning & Zoning Community Meeting",
-            "date": "2026-02-11",
+            "date": "2026-05-11",
             "startTime": "18:30",
             "endTime": "20:00",
             "timezone": "America/Chicago",
@@ -396,8 +396,8 @@
                 "state": "TX",
                 "zip": "75154",
                 "coordinates": {
-                    "lat": 32.5270,
-                    "lng": -96.8870
+                    "lat": 32.527,
+                    "lng": -96.887
                 },
                 "accessible": true
             },
@@ -423,7 +423,7 @@
         {
             "id": "event-011",
             "title": "State Senate District 22 Debate",
-            "date": "2026-03-15",
+            "date": "2026-06-15",
             "startTime": "19:00",
             "endTime": "21:00",
             "timezone": "America/Chicago",
@@ -434,8 +434,8 @@
                 "state": "TX",
                 "zip": "75119",
                 "coordinates": {
-                    "lat": 32.3450,
-                    "lng": -96.6320
+                    "lat": 32.345,
+                    "lng": -96.632
                 },
                 "accessible": true
             },
@@ -466,7 +466,7 @@
         {
             "id": "event-012",
             "title": "Waxahachie ISD Bond Election Information Session",
-            "date": "2026-02-08",
+            "date": "2026-05-08",
             "startTime": "10:00",
             "endTime": "12:00",
             "timezone": "America/Chicago",
@@ -477,8 +477,8 @@
                 "state": "TX",
                 "zip": "75165",
                 "coordinates": {
-                    "lat": 32.4050,
-                    "lng": -96.8500
+                    "lat": 32.405,
+                    "lng": -96.85
                 },
                 "accessible": true
             },
@@ -498,7 +498,7 @@
         {
             "id": "event-013",
             "title": "Maypearl Water Board Candidate Appearance",
-            "date": "2026-03-01",
+            "date": "2026-06-01",
             "startTime": "17:00",
             "endTime": "18:30",
             "timezone": "America/Chicago",
@@ -509,8 +509,8 @@
                 "state": "TX",
                 "zip": "76064",
                 "coordinates": {
-                    "lat": 32.3100,
-                    "lng": -97.0100
+                    "lat": 32.31,
+                    "lng": -97.01
                 },
                 "accessible": false
             },

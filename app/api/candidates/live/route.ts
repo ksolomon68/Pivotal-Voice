@@ -1,13 +1,14 @@
 import { NextResponse } from 'next/server';
-import { getLiveCandidates } from '@/lib/civic/google-civic';
+import { getLiveCandidates } from '@/lib/civic/candidates';
 
-export const revalidate = 3600; // 1 hour ISR
+export const revalidate = 0; // Disable caching to fetch live from DB immediately
 
 export async function GET() {
     const result = await getLiveCandidates();
     return NextResponse.json(result, {
         headers: {
-            'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+            'Cache-Control': 'no-store', // Force no cache for now
         },
     });
 }
+
