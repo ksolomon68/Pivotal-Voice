@@ -275,17 +275,12 @@ export default function CalendarPage() {
                                 {sortedEvents.length > 0 ? (
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                         {sortedEvents.map((event, index) => (
-                                            <motion.div
+                                            <EventCard
                                                 key={event.id}
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.5, delay: index * 0.05 }}
-                                            >
-                                                <EventCard
-                                                    event={event}
-                                                    onClick={() => setSelectedEvent(event)}
-                                                />
-                                            </motion.div>
+                                                event={event}
+                                                index={index}
+                                                onClick={() => setSelectedEvent(event)}
+                                            />
                                         ))}
                                     </div>
                                 ) : (

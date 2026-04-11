@@ -10,6 +10,7 @@ import { formatTime12h } from '@/lib/utils/ics';
 interface EventCardProps {
     event: Event;
     onClick: () => void;
+    index?: number;
 }
 
 const eventTypeLabels: Record<EventType, string> = {
@@ -36,7 +37,7 @@ const officeLevelColors: Record<OfficeLevel, string> = {
     federal: 'bg-red-500/20 text-red-400 border-red-500/30',
 };
 
-export default function EventCard({ event, onClick }: EventCardProps) {
+export default function EventCard({ event, onClick, index = 0 }: EventCardProps) {
     const eventDate = parseISO(event.date);
     const daysUntil = Math.ceil((eventDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
     const isUpcoming = daysUntil >= 0;
@@ -46,8 +47,10 @@ export default function EventCard({ event, onClick }: EventCardProps) {
 
     return (
         <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
             whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
             onClick={onClick}
             className={clsx(
                 'card cursor-pointer relative overflow-hidden',

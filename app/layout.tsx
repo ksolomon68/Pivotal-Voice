@@ -27,12 +27,12 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
     title: "Pivotal Voice | Your Voice. Your County. Your Future.",
-    description: "The comprehensive civic engagement platform connecting Ellis County residents with democracy. Stay informed, get involved, and make your voice heard.",
+    description: "The comprehensive civic engagement platform connecting Ellis County residents with candidates. Stay informed, get involved, and make your voice heard.",
     keywords: "Ellis County, Texas, civic engagement, political events, candidate tracker, community forum, democracy, local government",
     authors: [{ name: "Pivotal Voice" }],
     openGraph: {
         title: "Pivotal Voice | Your Voice. Your County. Your Future.",
-        description: "The comprehensive civic engagement platform connecting Ellis County residents with democracy.",
+        description: "The comprehensive civic engagement platform connecting Ellis County residents with candidates.",
         type: "website",
         locale: "en_US",
         images: ["/images/logo.png"],

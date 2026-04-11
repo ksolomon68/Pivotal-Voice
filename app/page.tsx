@@ -155,7 +155,7 @@ export default function HomePage() {
                             transition={{ duration: 0.7, delay: 0.7 }}
                             className="text-base sm:text-xl md:text-2xl text-cream/70 mb-10 max-w-2xl mx-auto font-light leading-relaxed"
                         >
-                            The comprehensive civic engagement platform connecting Ellis County residents with democracy.
+                            The comprehensive civic engagement platform connecting Ellis County residents with candidates.
                         </motion.p>
 
                         {/* CTAs */}
