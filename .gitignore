@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scripts with hardcoded credentials
+push_sql.js
+supabase_candidates.sql

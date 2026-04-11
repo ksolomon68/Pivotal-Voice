@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CandidateCard from '@/components/candidates/CandidateCard';
@@ -14,15 +14,31 @@ import sampleCandidates from '@/data/sample-candidates.json';
 import { motion } from 'framer-motion';
 import {
     Users, Vote, Flame, Shield, ExternalLink,
-    BarChart3, BookOpen, AlertTriangle, Clock
+    BarChart3, BookOpen, AlertTriangle, Clock, Loader2
 } from 'lucide-react';
 
 export default function CandidatesPage() {
     const [filters, setFilters] = useState<Filters>({});
     const [selectedCandidate, setSelectedCandidate] = useState<Candidate | null>(null);
+    const [candidates, setCandidates] = useState<Candidate[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [dataSource, setDataSource] = useState<'supabase' | 'fallback' | null>(null);
 
-    const candidates = sampleCandidates.candidates as Candidate[];
     const { metadata, elections } = sampleCandidates;
+
+    useEffect(() => {
+        fetch('/api/candidates/live')
+            .then((res) => res.json())
+            .then((result) => {
+                setCandidates(result.candidates ?? []);
+                setDataSource(result.source);
+            })
+            .catch(() => {
+                setCandidates(sampleCandidates.candidates as Candidate[]);
+                setDataSource('fallback');
+            })
+            .finally(() => setLoading(false));
+    }, []);
 
     // Find the next upcoming election
     const nextElection = useMemo(() => {
@@ -171,8 +187,16 @@ export default function CandidatesPage() {
                             />
                         </div>
 
+                        {/* Loading state */}
+                        {loading && (
+                            <div className="flex items-center justify-center py-24 gap-3 text-cream/60">
+                                <Loader2 className="w-6 h-6 animate-spin text-gold" />
+                                <span>Loading candidates...</span>
+                            </div>
+                        )}
+
                         {/* Candidate Grid */}
-                        {filteredCandidates.length > 0 ? (
+                        {!loading && filteredCandidates.length > 0 ? (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {filteredCandidates.map((candidate, index) => (
                                     <CandidateCard
@@ -183,7 +207,7 @@ export default function CandidatesPage() {
                                     />
                                 ))}
                             </div>
-                        ) : (
+                        ) : !loading && (
                             <div className="text-center py-16">
                                 <Users className="w-16 h-16 text-gold/30 mx-auto mb-4" />
                                 <h3 className="text-xl font-semibold text-white mb-2">No candidates match your filters</h3>
