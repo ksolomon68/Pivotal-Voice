@@ -7,11 +7,18 @@ import CandidateCard from '@/components/candidates/CandidateCard';
 import CandidateModal from '@/components/candidates/CandidateModal';
 import CandidateFilters from '@/components/candidates/CandidateFilters';
 import VotingInfo from '@/components/candidates/VotingInfo';
-import ScrollReveal, { StaggerContainer, StaggerItem } from '@/components/layout/ScrollReveal';
+import ScrollReveal from '@/components/layout/ScrollReveal';
 import AnimatedCounter from '@/components/layout/AnimatedCounter';
 import { Candidate, CandidateFilters as Filters } from '@/lib/types/candidate';
-import sampleCandidates from '@/data/sample-candidates.json';
-import { motion } from 'framer-motion';
+
+// Texas 2026 election schedule — sourced from Texas Secretary of State
+const elections = [
+    { id: 'primary-2026', name: '2026 Texas Primary Election', type: 'primary', date: '2026-03-03' },
+    { id: 'municipal-2026', name: '2026 Municipal Elections', type: 'general', date: '2026-05-02' },
+    { id: 'general-2026', name: '2026 General Election', type: 'general', date: '2026-11-03' },
+];
+
+const disclaimer = 'This information is provided for civic education purposes only. Pivotal Voice does not endorse any candidate or party. All data is sourced from publicly available records and candidate-submitted information. Verify details with official election authorities.';
 import {
     Users, Vote, Flame, Shield, ExternalLink,
     BarChart3, BookOpen, AlertTriangle, Clock, Loader2
@@ -22,20 +29,15 @@ export default function CandidatesPage() {
     const [selectedCandidate, setSelectedCandidate] = useState<Candidate | null>(null);
     const [candidates, setCandidates] = useState<Candidate[]>([]);
     const [loading, setLoading] = useState(true);
-    const [dataSource, setDataSource] = useState<'supabase' | 'fallback' | null>(null);
-
-    const { metadata, elections } = sampleCandidates;
 
     useEffect(() => {
         fetch('/api/candidates/live')
             .then((res) => res.json())
             .then((result) => {
                 setCandidates(result.candidates ?? []);
-                setDataSource(result.source);
             })
             .catch(() => {
-                setCandidates(sampleCandidates.candidates as Candidate[]);
-                setDataSource('fallback');
+                setCandidates([]);
             })
             .finally(() => setLoading(false));
     }, []);
@@ -266,13 +268,13 @@ export default function CandidatesPage() {
 
                             <div className="flex items-center justify-center gap-2 text-cream/40 text-xs mb-4">
                                 <Clock className="w-3 h-3" />
-                                Last Updated: {new Date(metadata.lastUpdated).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })}
+                                Data sourced from Ellis County Elections Department and Texas Secretary of State
                             </div>
 
                             <div className="bg-amber-500/5 border border-amber-500/20 rounded-lg p-4 flex items-start gap-3">
                                 <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                                 <p className="text-cream/60 text-sm text-left">
-                                    {metadata.disclaimer}
+                                    {disclaimer}
                                 </p>
                             </div>
                         </div>

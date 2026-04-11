@@ -14,7 +14,6 @@ import EventSubmitForm from '@/components/events/EventSubmitForm';
 import { Event, EventFilters as EventFiltersType } from '@/lib/types/event';
 import { getCivicEvents } from '@/lib/events/civic-events-service';
 import { CivicEvent } from '@/lib/types/civic-events';
-import sampleEvents from '@/data/sample-events.json';
 import { Calendar, List, Map, LayoutGrid, Download, Code, AlertCircle, Clock, Zap, Plus, Landmark } from 'lucide-react';
 import clsx from 'clsx';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -38,8 +37,9 @@ export default function CalendarPage() {
         fetchEvents();
     }, []);
 
-    const events = sampleEvents.events as Event[];
-    const metadata = sampleEvents.metadata;
+    // No political events yet — will populate from Supabase when available
+    const events: Event[] = [];
+    const disclaimer = 'Pivotal Voice does not endorse any candidate or party. Event information is sourced from publicly available records. Verify details with official sources.';
 
     // Filter events
     const filteredEvents = useMemo(() => {
@@ -400,10 +400,10 @@ export default function CalendarPage() {
                             </div>
                         </div>
 
-                        {/* Last Updated + Data Sources */}
+                        {/* Data Sources */}
                         <div className="mt-12 text-center">
                             <p className="text-cream/40 text-xs">
-                                Last updated: {metadata.lastUpdated ? format(new Date(metadata.lastUpdated), 'MMMM d, yyyy \'at\' h:mm a') : 'Unknown'} · Data sourced from candidate campaign websites, political party pages, local government announcements, and civic organizations
+                                Data sourced from candidate campaign websites, political party pages, local government announcements, and civic organizations
                             </p>
                         </div>
                     </div>
@@ -416,7 +416,7 @@ export default function CalendarPage() {
                             <AlertCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                             <div>
                                 <p className="text-sm text-cream/70 leading-relaxed">
-                                    <strong className="text-cream">Non-Partisan Notice:</strong> {metadata.disclaimer}
+                                    <strong className="text-cream">Non-Partisan Notice:</strong> {disclaimer}
                                 </p>
                                 <p className="text-xs text-cream/40 mt-2">
                                     Event data is aggregated from publicly available sources and verified where possible. If you believe any event information is inaccurate, please contact us.

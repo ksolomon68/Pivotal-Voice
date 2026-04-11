@@ -6,7 +6,32 @@ import {
     Vote, MapPin, Clock, Mail as MailIcon, ChevronDown, ExternalLink,
     CalendarDays, Building, AlertCircle
 } from 'lucide-react';
-import sampleCandidates from '@/data/sample-candidates.json';
+interface Election {
+    id: string;
+    name: string;
+    registrationDeadline: string;
+    earlyVotingStart: string;
+    earlyVotingEnd: string;
+}
+
+// Ellis County 2026 election dates — sourced from Texas Secretary of State
+const elections: Election[] = [
+    { id: 'primary-2026', name: '2026 Texas Primary Election', registrationDeadline: '2026-02-02', earlyVotingStart: '2026-02-16', earlyVotingEnd: '2026-02-27' },
+    { id: 'municipal-2026', name: '2026 Municipal Elections', registrationDeadline: '2026-04-02', earlyVotingStart: '2026-04-20', earlyVotingEnd: '2026-04-28' },
+    { id: 'general-2026', name: '2026 General Election', registrationDeadline: '2026-10-05', earlyVotingStart: '2026-10-19', earlyVotingEnd: '2026-10-30' },
+];
+
+const votingInfo = {
+    registrationUrl: 'https://www.votetexas.gov/register-to-vote/',
+    pollingLocationFinder: 'https://teamrv-mvp.sos.texas.gov/MVP/mvp.do',
+    absenteeBallotInfo: 'Texas voters may vote by mail if they are 65+, disabled, confined in jail, or will be absent from the county during the election period and early voting. Applications must be received 11 days before Election Day.',
+    earlyVotingLocations: [
+        { name: 'Ellis County Courthouse', address: '101 W. Main St', city: 'Waxahachie', hours: '7:00 AM – 7:00 PM' },
+        { name: 'Midlothian Conference Center', address: '1 Community Circle', city: 'Midlothian', hours: '7:00 AM – 7:00 PM' },
+        { name: 'Red Oak Municipal Center', address: '200 Lakeview Pkwy', city: 'Red Oak', hours: '7:00 AM – 7:00 PM' },
+        { name: 'Ennis Public Library', address: '501 W. Ennis Ave', city: 'Ennis', hours: '7:00 AM – 7:00 PM' },
+    ],
+};
 
 interface VotingLocation {
     name: string;
@@ -17,7 +42,6 @@ interface VotingLocation {
 
 export default function VotingInfo() {
     const [openSection, setOpenSection] = useState<string | null>('registration');
-    const { votingInfo, elections } = sampleCandidates;
 
     const toggle = (section: string) => {
         setOpenSection(openSection === section ? null : section);

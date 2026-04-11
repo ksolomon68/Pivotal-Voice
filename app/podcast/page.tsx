@@ -2,16 +2,10 @@
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import EpisodeCard from '@/components/podcast/EpisodeCard';
 import MissionPillars from '@/components/podcast/MissionPillars';
-import samplePodcasts from '@/data/sample-podcasts.json';
-import { Podcast, Play, Rss, Apple, Music } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Podcast, Rss, Apple, Music } from 'lucide-react';
 
 export default function PodcastPage() {
-    const episodes = samplePodcasts.episodes;
-    const featuredEpisode = episodes.find(ep => ep.featured) || episodes[0];
-    const regularEpisodes = episodes.filter(ep => !ep.featured);
 
     return (
         <>
@@ -52,59 +46,19 @@ export default function PodcastPage() {
                     </div>
                 </section>
 
-                {/* Featured Episode */}
+                {/* No Episodes Yet */}
                 <section className="section">
                     <div className="container-custom">
-                        <h2 className="text-section font-bold text-white mb-8 text-center">
-                            Latest Episode
-                        </h2>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className="card max-w-4xl mx-auto"
-                        >
-                            <EpisodeCard episode={featuredEpisode} featured={true} />
-
-                            {/* Optional: Add audio player here */}
-                            <div className="mt-6 p-4 bg-navy-dark/50 rounded-lg">
-                                <div className="flex items-center gap-4">
-                                    <button className="w-12 h-12 bg-gold rounded-full flex items-center justify-center hover:bg-gold-dark transition-colors">
-                                        <Play className="w-6 h-6 text-navy ml-1" fill="currentColor" />
-                                    </button>
-                                    <div className="flex-1">
-                                        <div className="h-2 bg-navy-dark rounded-full overflow-hidden">
-                                            <div className="h-full w-1/3 bg-gold rounded-full"></div>
-                                        </div>
-                                    </div>
-                                    <span className="text-cream/70 text-sm">
-                                        15:30 / {featuredEpisode.duration}
-                                    </span>
-                                </div>
+                        <div className="max-w-2xl mx-auto text-center py-16">
+                            <div className="w-20 h-20 bg-gold/10 border border-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                <Podcast className="w-10 h-10 text-gold/50" />
                             </div>
-                        </motion.div>
-                    </div>
-                </section>
-
-                {/* Episodes Grid */}
-                <section className="section bg-navy-dark/50">
-                    <div className="container-custom">
-                        <h2 className="text-section font-bold text-white mb-8 text-center">
-                            All Episodes
-                        </h2>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {regularEpisodes.map((episode, index) => (
-                                <motion.div
-                                    key={episode.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                >
-                                    <EpisodeCard episode={episode} />
-                                </motion.div>
-                            ))}
+                            <h2 className="text-2xl font-display font-bold text-white mb-3">
+                                Episodes Coming Soon
+                            </h2>
+                            <p className="text-cream/60">
+                                The Pivotal Voice Podcast is launching soon. Subscribe below to be notified when the first episode drops.
+                            </p>
                         </div>
                     </div>
                 </section>
