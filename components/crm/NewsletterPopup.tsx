@@ -47,9 +47,9 @@ export default function NewsletterPopup() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
                         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[101] w-full max-w-md"
+                        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[101] w-[calc(100%-2rem)] max-w-md"
                     >
-                        <div className="relative bg-gradient-to-b from-[#1a1a2e] to-[#0d0d1a] border border-white/10 rounded-2xl p-6 shadow-2xl shadow-gold/5">
+                        <div className="relative bg-gradient-to-b from-[#1a1a2e] to-[#0d0d1a] border border-white/10 rounded-2xl p-5 shadow-2xl shadow-gold/5 max-h-[85dvh] overflow-y-auto">
                             {/* Close button */}
                             <button
                                 onClick={handleDismiss}
@@ -59,15 +59,15 @@ export default function NewsletterPopup() {
                             </button>
 
                             {/* Header */}
-                            <div className="text-center mb-4">
-                                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center mx-auto mb-3 border border-gold/20">
-                                    <Bell className="w-7 h-7 text-gold" />
+                            <div className="text-center mb-3">
+                                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center mx-auto mb-2 border border-gold/20">
+                                    <Bell className="w-5 h-5 text-gold" />
                                 </div>
-                                <h3 className="text-xl font-bold text-white">
+                                <h3 className="text-lg font-bold text-white leading-snug">
                                     Stay Connected with Ellis County
                                 </h3>
-                                <p className="text-white/50 text-sm mt-1">
-                                    Get weekly updates on local meetings, decisions, and discussions that affect your community.
+                                <p className="text-white/50 text-xs mt-1">
+                                    Weekly updates on local meetings, decisions, and community discussions.
                                 </p>
                             </div>
 
