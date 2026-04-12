@@ -12,7 +12,8 @@ export type CivicEventType =
     | 'voter_registration'
     | 'debate'
     | 'meet_greet'
-    | 'community_event';
+    | 'community_event'
+    | 'election_date';
 
 export interface CivicEvent {
     id: string;
@@ -85,6 +86,7 @@ export const EVENT_TYPE_LABELS: Record<CivicEventType, string> = {
     debate: 'Debate',
     meet_greet: 'Meet & Greet',
     community_event: 'Community Event',
+    election_date: 'Election Day',
 };
 
 export const EVENT_TYPE_COLORS: Record<CivicEventType, string> = {
@@ -100,4 +102,5 @@ export const EVENT_TYPE_COLORS: Record<CivicEventType, string> = {
     debate: 'bg-orange-500/15 text-orange-400 border-orange-500/30',
     meet_greet: 'bg-pink-500/15 text-pink-400 border-pink-500/30',
     community_event: 'bg-indigo-500/15 text-indigo-400 border-indigo-500/30',
+    election_date: 'bg-red-600/20 text-red-300 border-red-500/40',
 };
