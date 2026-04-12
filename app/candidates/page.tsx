@@ -10,6 +10,10 @@ import VotingInfo from '@/components/candidates/VotingInfo';
 import ScrollReveal from '@/components/layout/ScrollReveal';
 import AnimatedCounter from '@/components/layout/AnimatedCounter';
 import { Candidate, CandidateFilters as Filters } from '@/lib/types/candidate';
+import {
+    Users, Vote, Flame, Shield, ExternalLink,
+    BarChart3, BookOpen, AlertTriangle, Clock, Loader2
+} from 'lucide-react';
 
 // Texas 2026 election schedule — sourced from Texas Secretary of State
 const elections = [
@@ -19,10 +23,6 @@ const elections = [
 ];
 
 const disclaimer = 'This information is provided for civic education purposes only. Pivotal Voice does not endorse any candidate or party. All data is sourced from publicly available records and candidate-submitted information. Verify details with official election authorities.';
-import {
-    Users, Vote, Flame, Shield, ExternalLink,
-    BarChart3, BookOpen, AlertTriangle, Clock, Loader2
-} from 'lucide-react';
 
 export default function CandidatesPage() {
     const [filters, setFilters] = useState<Filters>({});
