@@ -7,8 +7,10 @@
     "build": "next build",
     "start": "next start",
     "start:hostinger": "NODE_ENV=production node server.js",
+    "postinstall": "next build",
     "lint": "next lint"
   },
+
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@supabase/supabase-js": "^2.95.3",
