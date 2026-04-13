@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 import { CivicEvent } from '@/lib/types/civic-events';
 import { SEED_CIVIC_EVENTS } from '@/lib/events/civic-events-data';
 
-export const revalidate = 300; // 5-minute cache
+export const dynamic = 'force-dynamic'; // always fetch live from Supabase
 
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -82,13 +82,16 @@ export async function GET() {
         });
 
         return NextResponse.json({ events: merged, count: merged.length });
-    } catch (err) {
-        console.error('[/api/civic-events] Supabase error, using static data:', err);
+    } catch (err: any) {
+        console.error('[/api/civic-events] Supabase error, using static data:', err?.message || err);
         const sorted = [...SEED_CIVIC_EVENTS].sort((a, b) => {
             const da = new Date(`${a.date}T${a.startTime}`).getTime();
             const db2 = new Date(`${b.date}T${b.startTime}`).getTime();
             return da - db2;
         });
-        return NextResponse.json({ events: sorted, count: sorted.length, fallback: true });
+        return NextResponse.json(
+            { events: sorted, count: sorted.length, fallback: true },
+            { headers: { 'Cache-Control': 'no-store' } }
+        );
     }
 }
