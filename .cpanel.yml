@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/pivotalvoice/Pivotal-Voice
+    - export DEPLOYPATH=/home/pivotalvoice//Pivotal-Voice
     - /bin/cp -r . $DEPLOYPATH
     - cd $DEPLOYPATH && npm install --production=false
     - cd $DEPLOYPATH && npm run build
