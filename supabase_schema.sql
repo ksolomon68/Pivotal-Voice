@@ -142,3 +142,46 @@ $$ language 'plpgsql';
 CREATE TRIGGER update_topics_updated_at BEFORE UPDATE ON public.topics FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 CREATE TRIGGER update_replies_updated_at BEFORE UPDATE ON public.replies FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 CREATE TRIGGER update_profiles_updated_at BEFORE UPDATE ON public.profiles FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+
+-- 8. Broadcast Sessions (Live Podcast)
+CREATE TABLE IF NOT EXISTS public.broadcast_sessions (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    title TEXT NOT NULL,
+    description TEXT,
+    host_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+    host_name TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'scheduled', -- 'scheduled' | 'live' | 'ended'
+    livekit_room_name TEXT UNIQUE NOT NULL,
+    guest_invite_token TEXT UNIQUE,
+    scheduled_at TIMESTAMPTZ,
+    started_at TIMESTAMPTZ,
+    ended_at TIMESTAMPTZ,
+    viewer_count INTEGER NOT NULL DEFAULT 0,
+    thumbnail_url TEXT,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TRIGGER update_broadcast_sessions_updated_at
+    BEFORE UPDATE ON public.broadcast_sessions
+    FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+
+ALTER TABLE public.broadcast_sessions ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public can read broadcast sessions"
+    ON public.broadcast_sessions FOR SELECT USING (true);
+
+CREATE POLICY "Host can manage own session"
+    ON public.broadcast_sessions FOR ALL
+    USING (auth.uid() = host_id) WITH CHECK (auth.uid() = host_id);
+
+-- Viewer count helpers (atomic updates)
+CREATE OR REPLACE FUNCTION increment_viewer_count(session_id UUID)
+RETURNS void LANGUAGE sql AS $$
+    UPDATE public.broadcast_sessions SET viewer_count = viewer_count + 1 WHERE id = session_id;
+$$;
+
+CREATE OR REPLACE FUNCTION decrement_viewer_count(session_id UUID)
+RETURNS void LANGUAGE sql AS $$
+    UPDATE public.broadcast_sessions SET viewer_count = GREATEST(viewer_count - 1, 0) WHERE id = session_id;
+$$;
