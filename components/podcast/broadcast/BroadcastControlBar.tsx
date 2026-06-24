@@ -1,0 +1,85 @@
+'use client';
+
+import { useLocalParticipant } from '@livekit/components-react';
+import { Mic, MicOff, Video, VideoOff, Radio, Square } from 'lucide-react';
+import { BroadcastRole, BroadcastStatus } from '@/lib/types/broadcast';
+
+interface Props {
+    role: BroadcastRole;
+    sessionStatus: BroadcastStatus;
+    onGoLive: () => void;
+    onEnd: () => void;
+    isUpdating: boolean;
+}
+
+export default function BroadcastControlBar({ role, sessionStatus, onGoLive, onEnd, isUpdating }: Props) {
+    const { localParticipant, isMicrophoneEnabled, isCameraEnabled } = useLocalParticipant();
+
+    const toggleMic = () => {
+        localParticipant.setMicrophoneEnabled(!isMicrophoneEnabled);
+    };
+
+    const toggleCamera = () => {
+        localParticipant.setCameraEnabled(!isCameraEnabled);
+    };
+
+    return (
+        <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+                <button
+                    onClick={toggleMic}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium transition-all ${
+                        !isMicrophoneEnabled
+                            ? 'bg-red-500/15 border-red-400/30 text-red-400 hover:bg-red-500/25'
+                            : 'bg-white/5 border-white/15 text-cream/80 hover:bg-white/10'
+                    }`}
+                    title={!isMicrophoneEnabled ? 'Unmute microphone' : 'Mute microphone'}
+                >
+                    {!isMicrophoneEnabled ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+                    <span className="hidden sm:inline">{!isMicrophoneEnabled ? 'Unmute' : 'Mute'}</span>
+                </button>
+
+                <button
+                    onClick={toggleCamera}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium transition-all ${
+                        !isCameraEnabled
+                            ? 'bg-red-500/15 border-red-400/30 text-red-400 hover:bg-red-500/25'
+                            : 'bg-white/5 border-white/15 text-cream/80 hover:bg-white/10'
+                    }`}
+                    title={!isCameraEnabled ? 'Enable camera' : 'Disable camera'}
+                >
+                    {!isCameraEnabled ? <VideoOff className="w-4 h-4" /> : <Video className="w-4 h-4" />}
+                    <span className="hidden sm:inline">{!isCameraEnabled ? 'Camera On' : 'Camera Off'}</span>
+                </button>
+            </div>
+
+            {role === 'host' && (
+                <div className="pt-2 border-t border-white/10">
+                    {sessionStatus === 'scheduled' && (
+                        <button
+                            onClick={onGoLive}
+                            disabled={isUpdating}
+                            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-red-500 hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm transition-colors"
+                        >
+                            <Radio className="w-4 h-4" />
+                            {isUpdating ? 'Starting...' : 'Go Live'}
+                        </button>
+                    )}
+                    {sessionStatus === 'live' && (
+                        <button
+                            onClick={onEnd}
+                            disabled={isUpdating}
+                            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-navy-dark border border-red-400/40 hover:bg-red-500/10 disabled:opacity-50 disabled:cursor-not-allowed text-red-400 font-bold text-sm transition-colors"
+                        >
+                            <Square className="w-4 h-4 fill-current" />
+                            {isUpdating ? 'Ending...' : 'End Broadcast'}
+                        </button>
+                    )}
+                    {sessionStatus === 'ended' && (
+                        <div className="text-center py-2 text-sm text-cream/40">Broadcast ended</div>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+}
