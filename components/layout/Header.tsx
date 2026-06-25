@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
-import { Menu, X, Search, User, LayoutDashboard } from 'lucide-react';
+import { Menu, X, Search, User, LayoutDashboard, LogIn, LogOut } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/lib/forum/AuthContext';
+import AuthModal from '@/components/forum/AuthModal';
 
 const navigation = [
     { name: 'Calendar', href: '/calendar' },
@@ -19,11 +20,19 @@ const navigation = [
 ];
 
 export default function Header() {
-    const { user } = useAuth();
+    const { user, logout } = useAuth();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
+    const [showAuthModal, setShowAuthModal] = useState(false);
+    const [authTab, setAuthTab] = useState<'login' | 'register'>('login');
     const pathname = usePathname();
+
+    const openAuth = (tab: 'login' | 'register') => {
+        setAuthTab(tab);
+        setShowAuthModal(true);
+        setMobileMenuOpen(false);
+    };
 
     const handleScroll = useCallback(() => {
         const scrollTop = window.scrollY;
@@ -174,11 +183,11 @@ export default function Header() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="lg:hidden fixed inset-0 top-20 bg-navy-dark/98 backdrop-blur-xl z-40"
+                            className="lg:hidden fixed inset-x-0 top-16 sm:top-20 bottom-0 bg-navy-dark/98 backdrop-blur-xl z-40 flex flex-col overflow-hidden"
                         >
-                            <div className="container-custom py-8 flex flex-col h-full">
+                            <div className="container-custom py-6 flex flex-col flex-1 overflow-hidden">
                                 {/* Logo in mobile menu */}
-                                <div className="flex items-center gap-3 mb-8 pb-6 border-b border-gold/10">
+                                <div className="flex items-center gap-3 mb-6 pb-5 border-b border-gold/10 flex-shrink-0">
                                     <div className="relative w-10 h-10">
                                         <Image
                                             src="/images/logo.png"
@@ -192,8 +201,8 @@ export default function Header() {
                                     </span>
                                 </div>
 
-                                {/* Navigation Links — stagger animation */}
-                                <nav className="space-y-1 flex-1">
+                                {/* Navigation Links — scrollable if needed */}
+                                <nav className="space-y-1 flex-1 overflow-y-auto">
                                     {navigation.map((item, index) => (
                                         <motion.div
                                             key={item.name}
@@ -206,7 +215,7 @@ export default function Header() {
                                         >
                                             <Link
                                                 href={item.href}
-                                                className={`block py-4 px-5 text-lg font-display font-medium rounded-xl transition-all duration-300 ${pathname === item.href
+                                                className={`block py-3 px-5 text-lg font-display font-medium rounded-xl transition-all duration-300 ${pathname === item.href
                                                     ? 'text-gold bg-gold/10'
                                                     : 'text-cream hover:text-gold hover:bg-gold/5'
                                                     }`}
@@ -218,13 +227,46 @@ export default function Header() {
                                     ))}
                                 </nav>
 
-                                {/* Bottom CTA */}
+                                {/* Bottom CTAs */}
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.4, delay: 0.5 }}
-                                    className="pt-6 border-t border-gold/10"
+                                    className="pt-4 border-t border-gold/10 space-y-3 flex-shrink-0"
                                 >
+                                    {/* Auth row */}
+                                    {user ? (
+                                        <div className="flex items-center justify-between px-2 py-2 bg-navy-dark/60 border border-gold/15 rounded-xl">
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-8 h-8 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center flex-shrink-0">
+                                                    <span className="text-sm font-bold text-gold">{user.displayName[0]}</span>
+                                                </div>
+                                                <span className="text-cream/80 text-sm font-medium truncate max-w-[140px]">{user.displayName}</span>
+                                            </div>
+                                            <button
+                                                onClick={() => { logout(); setMobileMenuOpen(false); }}
+                                                className="flex items-center gap-1 text-sm text-cream/50 hover:text-red-400 transition-colors ml-2"
+                                            >
+                                                <LogOut className="w-4 h-4" />
+                                                Sign Out
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <div className="flex gap-2">
+                                            <button
+                                                onClick={() => openAuth('login')}
+                                                className="flex-1 btn-secondary text-sm flex items-center justify-center gap-1.5"
+                                            >
+                                                <LogIn className="w-4 h-4" /> Sign In
+                                            </button>
+                                            <button
+                                                onClick={() => openAuth('register')}
+                                                className="flex-1 btn-primary text-sm flex items-center justify-center gap-1.5"
+                                            >
+                                                <User className="w-4 h-4" /> Join
+                                            </button>
+                                        </div>
+                                    )}
                                     <Link
                                         href="/services#book"
                                         className="block w-full text-center btn-primary"
@@ -238,6 +280,12 @@ export default function Header() {
                     )}
                 </AnimatePresence>
             </header>
+
+            <AuthModal
+                isOpen={showAuthModal}
+                onClose={() => setShowAuthModal(false)}
+                initialTab={authTab}
+            />
         </>
     );
 }
