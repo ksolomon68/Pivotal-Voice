@@ -22,12 +22,52 @@
   },
   "dynamicRoutes": [
     {
+      "page": "/api/broadcast/sessions/[sessionId]",
+      "regex": "^/api/broadcast/sessions/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPsessionId": "nxtPsessionId"
+      },
+      "namedRegex": "^/api/broadcast/sessions/(?<nxtPsessionId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/broadcast/sessions/[sessionId]/viewer-decrement",
+      "regex": "^/api/broadcast/sessions/([^/]+?)/viewer\\-decrement(?:/)?$",
+      "routeKeys": {
+        "nxtPsessionId": "nxtPsessionId"
+      },
+      "namedRegex": "^/api/broadcast/sessions/(?<nxtPsessionId>[^/]+?)/viewer\\-decrement(?:/)?$"
+    },
+    {
+      "page": "/api/broadcast/sessions/[sessionId]/viewer-increment",
+      "regex": "^/api/broadcast/sessions/([^/]+?)/viewer\\-increment(?:/)?$",
+      "routeKeys": {
+        "nxtPsessionId": "nxtPsessionId"
+      },
+      "namedRegex": "^/api/broadcast/sessions/(?<nxtPsessionId>[^/]+?)/viewer\\-increment(?:/)?$"
+    },
+    {
       "page": "/forum/topic/[id]",
       "regex": "^/forum/topic/([^/]+?)(?:/)?$",
       "routeKeys": {
         "nxtPid": "nxtPid"
       },
       "namedRegex": "^/forum/topic/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/podcast/live/[sessionId]",
+      "regex": "^/podcast/live/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPsessionId": "nxtPsessionId"
+      },
+      "namedRegex": "^/podcast/live/(?<nxtPsessionId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/podcast/studio/[sessionId]",
+      "regex": "^/podcast/studio/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPsessionId": "nxtPsessionId"
+      },
+      "namedRegex": "^/podcast/studio/(?<nxtPsessionId>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -54,6 +94,18 @@
       "regex": "^/admin(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/admin(?:/)?$"
+    },
+    {
+      "page": "/api/broadcast/sessions",
+      "regex": "^/api/broadcast/sessions(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/broadcast/sessions(?:/)?$"
+    },
+    {
+      "page": "/api/broadcast/token",
+      "regex": "^/api/broadcast/token(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/broadcast/token(?:/)?$"
     },
     {
       "page": "/api/candidates/live",
@@ -114,6 +166,12 @@
       "regex": "^/podcast(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/podcast(?:/)?$"
+    },
+    {
+      "page": "/podcast/broadcast",
+      "regex": "^/podcast/broadcast(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/podcast/broadcast(?:/)?$"
     },
     {
       "page": "/resources",
