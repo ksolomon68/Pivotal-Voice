@@ -16,13 +16,16 @@ import {
     getSubscribersByCity, getSubscribersByInterest,
 } from '@/lib/crm/newsletter-service';
 import type { NewsletterSubscriber, EmailCampaign } from '@/lib/types/newsletter';
+import { getAllUsers, toggleAdminRole } from '@/lib/admin/user-service';
+import type { ForumUser } from '@/lib/types/forum';
 
-type Tab = 'overview' | 'subscribers' | 'campaigns' | 'events';
+type Tab = 'overview' | 'subscribers' | 'campaigns' | 'events' | 'users';
 
 export default function AdminPage() {
     const [tab, setTab] = useState<Tab>('overview');
     const [subscribers, setSubscribers] = useState<NewsletterSubscriber[]>([]);
     const [campaigns, setCampaigns] = useState<EmailCampaign[]>([]);
+    const [users, setUsers] = useState<ForumUser[]>([]);
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'unsubscribed'>('all');
     const [cityFilter, setCityFilter] = useState('');
@@ -35,14 +38,16 @@ export default function AdminPage() {
     }, []);
 
     const loadData = async () => {
-        const [subs, camps, crmStats] = await Promise.all([
+        const [subs, camps, crmStats, allUsers] = await Promise.all([
             getSubscribers(),
             getCampaigns(),
-            getCRMStats()
+            getCRMStats(),
+            getAllUsers()
         ]);
         setSubscribers(subs);
         setCampaigns(camps);
         setStats(crmStats);
+        setUsers(allUsers);
         setReady(true);
     };
 
@@ -90,7 +95,7 @@ export default function AdminPage() {
 
                 {/* Tabs */}
                 <div className="flex gap-1 mb-6 bg-white/5 p-1 rounded-lg w-fit">
-                    {(['overview', 'subscribers', 'campaigns'] as Tab[]).map(t => (
+                    {(['overview', 'subscribers', 'campaigns', 'users'] as Tab[]).map(t => (
                         <button
                             key={t}
                             onClick={() => setTab(t)}
@@ -315,6 +320,60 @@ export default function AdminPage() {
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* Users Tab */}
+                {tab === 'users' && (
+                    <div className="space-y-4">
+                        <div className="bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-left text-sm text-white/70">
+                                    <thead className="bg-white/5 text-xs uppercase text-white/50 border-b border-white/10">
+                                        <tr>
+                                            <th className="px-6 py-3 font-medium">User</th>
+                                            <th className="px-6 py-3 font-medium">Joined</th>
+                                            <th className="px-6 py-3 font-medium">Posts</th>
+                                            <th className="px-6 py-3 font-medium text-right">Admin Role</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-white/5">
+                                        {users.map(u => (
+                                            <tr key={u.id} className="hover:bg-white/[0.02] transition-colors">
+                                                <td className="px-6 py-4">
+                                                    <div className="flex flex-col">
+                                                        <span className="text-white font-medium">{u.displayName}</span>
+                                                        <span className="text-xs text-white/40">{u.email}</span>
+                                                    </div>
+                                                </td>
+                                                <td className="px-6 py-4">{new Date(u.joinDate).toLocaleDateString()}</td>
+                                                <td className="px-6 py-4">{u.topicCount + u.replyCount}</td>
+                                                <td className="px-6 py-4 text-right">
+                                                    <button
+                                                        onClick={async () => {
+                                                            await toggleAdminRole(u.id, !!u.isAdmin);
+                                                            loadData();
+                                                        }}
+                                                        className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
+                                                            u.isAdmin ? 'bg-gold/20 text-gold border border-gold/30' : 'bg-white/10 text-white/60 hover:text-white'
+                                                        }`}
+                                                    >
+                                                        {u.isAdmin ? 'Revoke Admin' : 'Make Admin'}
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                        {users.length === 0 && (
+                                            <tr>
+                                                <td colSpan={4} className="px-6 py-8 text-center text-white/40">
+                                                    No users found.
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 )}
