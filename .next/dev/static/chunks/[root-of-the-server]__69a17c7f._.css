@@ -2314,6 +2314,10 @@ p {
   border-color: #d4af371a;
 }
 
+.divide-white\/5 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #ffffff0d;
+}
+
 .overflow-auto {
   overflow: auto;
 }
@@ -4429,6 +4433,10 @@ p {
 
 .hover\:bg-white\/5:hover {
   background-color: #ffffff0d;
+}
+
+.hover\:bg-white\/\[0\.02\]:hover {
+  background-color: #ffffff05;
 }
 
 .hover\:text-\[\#1877F2\]:hover {

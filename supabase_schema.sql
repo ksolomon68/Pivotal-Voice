@@ -125,10 +125,18 @@ ALTER TABLE public.replies ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.civic_events ENABLE ROW LEVEL SECURITY;
 
 -- Allow public read Access
+CREATE POLICY "Allow public read on profiles" ON public.profiles FOR SELECT USING (true);
 CREATE POLICY "Allow public read on topics" ON public.topics FOR SELECT USING (true);
 CREATE POLICY "Allow public read on replies" ON public.replies FOR SELECT USING (true);
 CREATE POLICY "Allow public read on categories" ON public.forum_categories FOR SELECT USING (true);
 CREATE POLICY "Allow public read on events" ON public.civic_events FOR SELECT USING (true);
+
+-- Allow users to manage their own profiles, and admins to manage all
+CREATE POLICY "Users can insert their own profile" ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id);
+CREATE POLICY "Users can update their own profile" ON public.profiles FOR UPDATE USING (auth.uid() = id) WITH CHECK (auth.uid() = id);
+CREATE POLICY "Admins can update all profiles" ON public.profiles FOR UPDATE USING (
+    (SELECT is_admin FROM public.profiles WHERE id = auth.uid()) = true
+);
 
 -- Functions
 CREATE OR REPLACE FUNCTION update_updated_at_column()
