@@ -10,9 +10,10 @@
     "postinstall": "next build",
     "lint": "next lint"
   },
-
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
+    "@livekit/components-react": "^2.9.21",
+    "@livekit/components-styles": "^1.2.0",
     "@supabase/supabase-js": "^2.95.3",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -24,6 +25,7 @@
     "eslint": "^9",
     "eslint-config-next": "^16.1.6",
     "framer-motion": "^11.0.0",
+    "livekit-server-sdk": "^2.15.5",
     "lucide-react": "^0.344.0",
     "next": "^16.1.6",
     "postcss": "^8",
