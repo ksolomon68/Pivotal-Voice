@@ -35,9 +35,11 @@ export default function StudioPage() {
     const activeUser = user || (isMockMode ? { id: 'mock-host-1', displayName: 'Commissioner Smith', isAdmin: true } : null);
 
     useEffect(() => {
-        if (!activeUser || !sessionId) return;
+        const currentUser = activeUser;
+        if (!currentUser || !sessionId) return;
 
         async function init() {
+            if (!currentUser) return;
             try {
                 const s = await getSession(sessionId as string);
                 if (!s) throw new Error('Session not found');
@@ -45,9 +47,9 @@ export default function StudioPage() {
                 setSessionStatus(s.status);
 
                 // Determine role
-                if (activeUser.isAdmin && s.hostId === activeUser.id) {
+                if (currentUser.isAdmin && s.hostId === currentUser.id) {
                     setRole('host');
-                    await fetchToken('host', s, activeUser.displayName);
+                    await fetchToken('host', s, currentUser.displayName);
                 } else if (inviteToken && inviteToken === s.guestInviteToken) {
                     setRole('guest');
                     setPageState('name-prompt');
