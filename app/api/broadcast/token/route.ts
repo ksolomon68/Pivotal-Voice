@@ -22,15 +22,34 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Fetch session row (publicly readable)
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
-    const { data: session, error: sessionError } = await supabase
-        .from('broadcast_sessions')
-        .select('*')
-        .eq('id', sessionId)
-        .single();
+    const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-    if (sessionError || !session) {
+    let session: any = null;
+
+    if (isMockMode) {
+        const { getSession } = await import('@/lib/broadcast/broadcast-service');
+        const s = await getSession(sessionId);
+        if (s) {
+            session = {
+                id: s.id,
+                host_id: s.hostId,
+                guest_invite_token: s.guestInviteToken,
+                livekit_room_name: s.livekitRoomName,
+            };
+        }
+    } else {
+        const supabase = createClient(supabaseUrl, supabaseAnonKey);
+        const { data, error: sessionError } = await supabase
+            .from('broadcast_sessions')
+            .select('*')
+            .eq('id', sessionId)
+            .single();
+        if (!sessionError) {
+            session = data;
+        }
+    }
+
+    if (!session) {
         return NextResponse.json({ error: 'Session not found' }, { status: 404 });
     }
 
@@ -40,30 +59,38 @@ export async function POST(req: NextRequest) {
     let canPublishData = false;
 
     if (role === 'host') {
-        const authHeader = req.headers.get('Authorization');
-        if (!authHeader?.startsWith('Bearer ')) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
-        const jwt = authHeader.slice(7);
-        const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
-        if (authError || !user) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+        if (isMockMode) {
+            identity = `host_mock-host-1`;
+            participantName = 'Commissioner Smith';
+            canPublish = true;
+            canPublishData = true;
+        } else {
+            const supabase = createClient(supabaseUrl, supabaseAnonKey);
+            const authHeader = req.headers.get('Authorization');
+            if (!authHeader?.startsWith('Bearer ')) {
+                return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+            }
+            const jwt = authHeader.slice(7);
+            const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
+            if (authError || !user) {
+                return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+            }
 
-        const { data: profile } = await supabase
-            .from('profiles')
-            .select('is_admin, display_name')
-            .eq('id', user.id)
-            .single();
+            const { data: profile } = await supabase
+                .from('profiles')
+                .select('is_admin, display_name')
+                .eq('id', user.id)
+                .single();
 
-        if (!profile?.is_admin || session.host_id !== user.id) {
-            return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+            if (!profile?.is_admin || session.host_id !== user.id) {
+                return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+            }
+
+            identity = `host_${user.id}`;
+            participantName = profile.display_name;
+            canPublish = true;
+            canPublishData = true;
         }
-
-        identity = `host_${user.id}`;
-        participantName = profile.display_name;
-        canPublish = true;
-        canPublishData = true;
 
     } else if (role === 'guest') {
         if (!inviteToken || inviteToken !== session.guest_invite_token) {
@@ -73,19 +100,27 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: 'Display name required' }, { status: 400 });
         }
 
-        identity = `guest_${crypto.randomUUID()}`;
+        identity = `guest_${Math.random().toString(36).substring(2, 15)}`;
         participantName = displayName.trim();
         canPublish = true;
         canPublishData = false;
 
     } else if (role === 'viewer') {
-        identity = `viewer_${crypto.randomUUID()}`;
+        identity = `viewer_${Math.random().toString(36).substring(2, 15)}`;
         participantName = displayName?.trim() || 'Viewer';
         canPublish = false;
         canPublishData = false;
 
     } else {
         return NextResponse.json({ error: 'Invalid role' }, { status: 400 });
+    }
+
+    if (!livekitApiKey || !livekitApiSecret) {
+        return NextResponse.json({
+            token: `mock-token-${identity}`,
+            roomName: session.livekit_room_name,
+            livekitUrl: livekitUrl || 'wss://placeholder.livekit.cloud',
+        });
     }
 
     const token = new AccessToken(livekitApiKey, livekitApiSecret, {

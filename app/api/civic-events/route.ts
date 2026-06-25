@@ -1,14 +1,9 @@
 import { NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/lib/supabase/client';
 import { CivicEvent } from '@/lib/types/civic-events';
 import { SEED_CIVIC_EVENTS } from '@/lib/events/civic-events-data';
 
 export const dynamic = 'force-dynamic'; // always fetch live from Supabase
-
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 function mapDbRow(row: any): CivicEvent {
     // The live DB stores location as a JSONB object; handle both flat columns and JSONB
