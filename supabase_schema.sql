@@ -215,5 +215,28 @@ RETURNS void LANGUAGE sql AS $$
     UPDATE public.broadcast_sessions SET viewer_count = GREATEST(viewer_count - 1, 0) WHERE id = session_id;
 $$;
 
+-- 9. Profile Sync Trigger (Automatically sync auth.users metadata to public.profiles)
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO public.profiles (id, email, display_name, city, is_business_owner, years_in_county, bio)
+    VALUES (
+        NEW.id,
+        NEW.email,
+        COALESCE(NEW.raw_user_meta_data->>'display_name', NEW.email),
+        NEW.raw_user_meta_data->>'city',
+        COALESCE((NEW.raw_user_meta_data->>'is_business_owner')::boolean, false),
+        COALESCE((NEW.raw_user_meta_data->>'years_in_county')::integer, 0),
+        NEW.raw_user_meta_data->>'bio'
+    );
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+    AFTER INSERT ON auth.users
+    FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
+
 -- Force PostgREST schema cache reload
 NOTIFY pgrst, 'reload schema';
