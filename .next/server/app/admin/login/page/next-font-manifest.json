@@ -1,27 +1,7 @@
 {
   "pages": {},
   "app": {
-<<<<<<< HEAD:.next/dev/server/next-font-manifest.json
-    "[project]/app/candidates/page": [
-      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
-      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2"
-    ],
-    "[project]/app/forum/page": [
-      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
-      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2"
-    ],
-    "[project]/app/page": [
-      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
-      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2"
-    ],
-    "[project]/app/podcast/live/[sessionId]/page": [
-=======
     "[project]/app/admin/login/page": [
->>>>>>> cf6ccf715201c783ac646351c9499735062e6060:.next/server/app/admin/login/page/next-font-manifest.json
-      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
-      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2"
-    ],
-    "[project]/app/podcast/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2"
     ]
