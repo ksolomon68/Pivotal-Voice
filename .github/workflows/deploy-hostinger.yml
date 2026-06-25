@@ -14,24 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Next.js app
-        env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-        run: npm run build
-
       - name: Deploy to Hostinger via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -42,17 +24,12 @@ jobs:
           script: |
             set -e
             cd ${{ secrets.HOSTINGER_APP_PATH }}
-            echo "📥 Pulling latest code..."
+            echo "Pulling latest code (includes pre-built .next)..."
             git pull origin main
-            echo "📦 Installing production dependencies..."
+            echo "Installing production dependencies..."
             npm ci --omit=dev
-            echo "🏗️  Copying built assets..."
-            # .next is built above, but we need to sync — so we rebuild on server
-            # using the env vars already set in Hostinger's Node app
-            npm run build
-            echo "🔄 Restarting app..."
-            # Try pm2 first, fall back to Hostinger's restart mechanism
+            echo "Restarting app..."
             pm2 restart pivotal-voice --update-env 2>/dev/null || \
             pm2 start server.js --name pivotal-voice --env production 2>/dev/null || \
-            echo "ℹ️  PM2 not available — restart via Hostinger hPanel"
-            echo "✅ Deploy complete!"
+            echo "PM2 not available — restart via Hostinger hPanel"
+            echo "Deploy complete!"
