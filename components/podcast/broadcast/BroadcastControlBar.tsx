@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useLocalParticipant } from '@livekit/components-react';
 import { Mic, MicOff, Video, VideoOff, Radio, Square } from 'lucide-react';
 import { BroadcastRole, BroadcastStatus } from '@/lib/types/broadcast';
@@ -14,17 +15,36 @@ interface Props {
 
 export default function BroadcastControlBar({ role, sessionStatus, onGoLive, onEnd, isUpdating }: Props) {
     const { localParticipant, isMicrophoneEnabled, isCameraEnabled } = useLocalParticipant();
+    const [error, setError] = useState<string | null>(null);
 
-    const toggleMic = () => {
-        localParticipant.setMicrophoneEnabled(!isMicrophoneEnabled);
+    const toggleMic = async () => {
+        try {
+            setError(null);
+            await localParticipant.setMicrophoneEnabled(!isMicrophoneEnabled);
+        } catch (err: any) {
+            console.error('Failed to toggle microphone:', err);
+            setError(err.message || 'Microphone activation failed. Ensure no other application is using it.');
+        }
     };
 
-    const toggleCamera = () => {
-        localParticipant.setCameraEnabled(!isCameraEnabled);
+    const toggleCamera = async () => {
+        try {
+            setError(null);
+            await localParticipant.setCameraEnabled(!isCameraEnabled);
+        } catch (err: any) {
+            console.error('Failed to toggle camera:', err);
+            setError(err.message || 'Camera activation failed. Ensure no other application is using it.');
+        }
     };
 
     return (
         <div className="flex flex-col gap-3">
+            {error && (
+                <div className="text-xs text-red-400 bg-red-500/10 border border-red-500/20 p-2.5 rounded-lg flex items-start gap-2">
+                    <span className="shrink-0 mt-0.5">⚠️</span>
+                    <span>{error}</span>
+                </div>
+            )}
             <div className="flex items-center gap-2">
                 <button
                     onClick={toggleMic}
