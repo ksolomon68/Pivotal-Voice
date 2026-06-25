@@ -10,7 +10,7 @@
 /coverage
 
 # next.js
-/.next/
+# /.next/ — committed for cPanel deployment (server lacks RAM to build)
 /out/
 
 # production
