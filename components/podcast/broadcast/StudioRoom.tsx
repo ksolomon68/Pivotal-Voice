@@ -1,6 +1,6 @@
 'use client';
 
-import { LiveKitRoom } from '@livekit/components-react';
+import { LiveKitRoom, RoomAudioRenderer } from '@livekit/components-react';
 import '@livekit/components-styles';
 import { BroadcastRole, BroadcastSession } from '@/lib/types/broadcast';
 import ParticipantGrid from './ParticipantGrid';
@@ -34,11 +34,12 @@ export default function StudioRoom({
             token={token}
             serverUrl={livekitUrl}
             connect={true}
-            video={isPublisher}
-            audio={isPublisher}
+            video={false}
+            audio={false}
             data-lk-theme="default"
             style={{ '--lk-bg': 'transparent' } as React.CSSProperties}
         >
+            <RoomAudioRenderer />
             <div className="flex flex-col lg:flex-row gap-4 h-full">
                 {/* Main video area */}
                 <div className="flex-1 min-w-0">
