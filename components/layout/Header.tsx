@@ -7,7 +7,9 @@ import { Menu, X, Search, User, LayoutDashboard, LogIn, LogOut } from 'lucide-re
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/lib/forum/AuthContext';
-import AuthModal from '@/components/forum/AuthModal';
+import dynamic from 'next/dynamic';
+
+const AuthModal = dynamic(() => import('@/components/forum/AuthModal'), { ssr: false });
 
 const navigation = [
     { name: 'Calendar', href: '/calendar' },
