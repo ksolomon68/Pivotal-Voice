@@ -103,7 +103,7 @@ function Header() {
                 "aria-hidden": "true"
             }, void 0, false, {
                 fileName: "[project]/components/layout/Header.tsx",
-                lineNumber: 50,
+                lineNumber: 59,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
@@ -113,7 +113,7 @@ function Header() {
                         className: "absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold/30 to-transparent"
                     }, void 0, false, {
                         fileName: "[project]/components/layout/Header.tsx",
-                        lineNumber: 61,
+                        lineNumber: 65,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -147,12 +147,12 @@ function Header() {
                                                 priority: true
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 76,
+                                                lineNumber: 78,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 67,
+                                            lineNumber: 71,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -163,7 +163,7 @@ function Header() {
                                                     children: "Pivotal Voice"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 85,
+                                                    lineNumber: 81,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -171,19 +171,19 @@ function Header() {
                                                     children: "Ellis County"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 88,
+                                                    lineNumber: 84,
                                                     columnNumber: 33
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 84,
+                                            lineNumber: 80,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/layout/Header.tsx",
-                                    lineNumber: 66,
+                                    lineNumber: 70,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -194,12 +194,12 @@ function Header() {
                                             children: item.name
                                         }, item.name, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 97,
-                                            columnNumber: 33
+                                            lineNumber: 92,
+                                            columnNumber: 53
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/layout/Header.tsx",
-                                    lineNumber: 95,
+                                    lineNumber: 91,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -212,12 +212,12 @@ function Header() {
                                                 className: "w-5 h-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 114,
+                                                lineNumber: 100,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 110,
+                                            lineNumber: 99,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -226,7 +226,7 @@ function Header() {
                                             children: "Book Consultation"
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 117,
+                                            lineNumber: 103,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -236,12 +236,12 @@ function Header() {
                                                 className: "w-5 h-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 128,
+                                                lineNumber: 108,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 124,
+                                            lineNumber: 107,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -271,13 +271,13 @@ function Header() {
                                                         className: "w-6 h-6"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/layout/Header.tsx",
-                                                        lineNumber: 147,
+                                                        lineNumber: 126,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, "close", false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 140,
-                                                    columnNumber: 41
+                                                    lineNumber: 114,
+                                                    columnNumber: 55
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                                                     initial: {
                                                         rotate: 90,
@@ -298,39 +298,39 @@ function Header() {
                                                         className: "w-6 h-6"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/layout/Header.tsx",
-                                                        lineNumber: 157,
+                                                        lineNumber: 139,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, "menu", false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 150,
-                                                    columnNumber: 41
+                                                    lineNumber: 127,
+                                                    columnNumber: 57
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 138,
+                                                lineNumber: 113,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 132,
+                                            lineNumber: 112,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/layout/Header.tsx",
-                                    lineNumber: 109,
+                                    lineNumber: 98,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/layout/Header.tsx",
-                            lineNumber: 64,
+                            lineNumber: 68,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/layout/Header.tsx",
-                        lineNumber: 63,
+                        lineNumber: 67,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -363,12 +363,12 @@ function Header() {
                                                     className: "object-contain rounded-full"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 180,
+                                                    lineNumber: 162,
                                                     columnNumber: 41
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 179,
+                                                lineNumber: 161,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -376,13 +376,13 @@ function Header() {
                                                 children: "Pivotal Voice"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 187,
+                                                lineNumber: 164,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/layout/Header.tsx",
-                                        lineNumber: 178,
+                                        lineNumber: 160,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -407,17 +407,17 @@ function Header() {
                                                     children: item.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 204,
+                                                    lineNumber: 181,
                                                     columnNumber: 45
                                                 }, this)
                                             }, item.name, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 195,
-                                                columnNumber: 41
+                                                lineNumber: 171,
+                                                columnNumber: 70
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Header.tsx",
-                                        lineNumber: 193,
+                                        lineNumber: 170,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -441,34 +441,34 @@ function Header() {
                                             children: "Book Consultation"
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 225,
+                                            lineNumber: 198,
                                             columnNumber: 37
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Header.tsx",
-                                        lineNumber: 219,
+                                        lineNumber: 188,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Header.tsx",
-                                lineNumber: 176,
+                                lineNumber: 158,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/layout/Header.tsx",
-                            lineNumber: 169,
-                            columnNumber: 25
+                            lineNumber: 149,
+                            columnNumber: 40
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/layout/Header.tsx",
-                        lineNumber: 167,
+                        lineNumber: 148,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/layout/Header.tsx",
-                lineNumber: 56,
+                lineNumber: 63,
                 columnNumber: 13
             }, this)
         ]
@@ -581,7 +581,7 @@ function Footer() {
                 className: "absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold/40 to-transparent"
             }, void 0, false, {
                 fileName: "[project]/components/layout/Footer.tsx",
-                lineNumber: 34,
+                lineNumber: 59,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -606,12 +606,12 @@ function Footer() {
                                                     className: "object-contain rounded-full"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Footer.tsx",
-                                                    lineNumber: 43,
+                                                    lineNumber: 68,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 42,
+                                                lineNumber: 67,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -622,7 +622,7 @@ function Footer() {
                                                         children: "Pivotal Voice"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/layout/Footer.tsx",
-                                                        lineNumber: 51,
+                                                        lineNumber: 71,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -630,19 +630,19 @@ function Footer() {
                                                         children: "Ellis County"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/layout/Footer.tsx",
-                                                        lineNumber: 54,
+                                                        lineNumber: 74,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 50,
+                                                lineNumber: 70,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 41,
+                                        lineNumber: 66,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -650,7 +650,7 @@ function Footer() {
                                         children: "A non-partisan platform dedicated to creating meaningful dialogue on the issues that shape Ellis County's future."
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 59,
+                                        lineNumber: 79,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -665,24 +665,24 @@ function Footer() {
                                                     className: "w-4 h-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Footer.tsx",
-                                                    lineNumber: 75,
+                                                    lineNumber: 89,
                                                     columnNumber: 41
                                                 }, this)
                                             }, social.name, false, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 69,
-                                                columnNumber: 37
+                                                lineNumber: 88,
+                                                columnNumber: 22
                                             }, this);
                                         })
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 65,
+                                        lineNumber: 85,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 40,
+                                lineNumber: 65,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -692,7 +692,7 @@ function Footer() {
                                         children: "Platform"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 97,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -706,30 +706,30 @@ function Footer() {
                                                             className: "w-0 group-hover:w-2 h-[1px] bg-gold transition-all duration-300"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/layout/Footer.tsx",
-                                                            lineNumber: 94,
+                                                            lineNumber: 103,
                                                             columnNumber: 41
                                                         }, this),
                                                         link.name
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/layout/Footer.tsx",
-                                                    lineNumber: 90,
+                                                    lineNumber: 102,
                                                     columnNumber: 37
                                                 }, this)
                                             }, link.name, false, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 89,
-                                                columnNumber: 33
+                                                lineNumber: 101,
+                                                columnNumber: 56
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 87,
+                                        lineNumber: 100,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 83,
+                                lineNumber: 96,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -739,7 +739,7 @@ function Footer() {
                                         children: "Services"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 104,
+                                        lineNumber: 112,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -753,30 +753,30 @@ function Footer() {
                                                             className: "w-0 group-hover:w-2 h-[1px] bg-gold transition-all duration-300"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/layout/Footer.tsx",
-                                                            lineNumber: 114,
+                                                            lineNumber: 118,
                                                             columnNumber: 41
                                                         }, this),
                                                         link.name
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/layout/Footer.tsx",
-                                                    lineNumber: 110,
+                                                    lineNumber: 117,
                                                     columnNumber: 37
                                                 }, this)
                                             }, link.name, false, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 109,
-                                                columnNumber: 33
+                                                lineNumber: 116,
+                                                columnNumber: 55
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 115,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 103,
+                                lineNumber: 111,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -786,7 +786,7 @@ function Footer() {
                                         children: "Stay Connected"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 124,
+                                        lineNumber: 127,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -798,7 +798,7 @@ function Footer() {
                                                 children: "Contact Us"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 128,
+                                                lineNumber: 131,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -829,7 +829,7 @@ function Footer() {
                                                                 children: "Subscribe"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                                lineNumber: 146,
+                                                                lineNumber: 142,
                                                                 columnNumber: 37
                                                             }, this)
                                                         ]
@@ -847,26 +847,26 @@ function Footer() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 130,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 123,
+                                lineNumber: 126,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/layout/Footer.tsx",
-                        lineNumber: 38,
+                        lineNumber: 63,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent mb-8"
                     }, void 0, false, {
                         fileName: "[project]/components/layout/Footer.tsx",
-                        lineNumber: 159,
+                        lineNumber: 152,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -881,7 +881,7 @@ function Footer() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 163,
+                                lineNumber: 156,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -893,7 +893,7 @@ function Footer() {
                                         children: "Privacy Policy"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 167,
+                                        lineNumber: 160,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -902,7 +902,7 @@ function Footer() {
                                         children: "Terms of Service"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 170,
+                                        lineNumber: 163,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -910,32 +910,32 @@ function Footer() {
                                         children: "Non-Partisan Platform"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 173,
+                                        lineNumber: 166,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 166,
+                                lineNumber: 159,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/layout/Footer.tsx",
-                        lineNumber: 162,
+                        lineNumber: 155,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/layout/Footer.tsx",
-                lineNumber: 36,
+                lineNumber: 61,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/layout/Footer.tsx",
-        lineNumber: 32,
-        columnNumber: 9
+        lineNumber: 57,
+        columnNumber: 10
     }, this);
 }
 _c = Footer;
@@ -999,7 +999,7 @@ function MissionPillars() {
                     children: "Our Mission Pillars"
                 }, void 0, false, {
                     fileName: "[project]/components/podcast/MissionPillars.tsx",
-                    lineNumber: 37,
+                    lineNumber: 29,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1030,12 +1030,12 @@ function MissionPillars() {
                                         className: "w-10 h-10 text-gold"
                                     }, void 0, false, {
                                         fileName: "[project]/components/podcast/MissionPillars.tsx",
-                                        lineNumber: 54,
+                                        lineNumber: 49,
                                         columnNumber: 37
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/podcast/MissionPillars.tsx",
-                                    lineNumber: 53,
+                                    lineNumber: 48,
                                     columnNumber: 33
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1043,7 +1043,7 @@ function MissionPillars() {
                                     children: pillar.title
                                 }, void 0, false, {
                                     fileName: "[project]/components/podcast/MissionPillars.tsx",
-                                    lineNumber: 56,
+                                    lineNumber: 51,
                                     columnNumber: 33
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1051,31 +1051,31 @@ function MissionPillars() {
                                     children: pillar.description
                                 }, void 0, false, {
                                     fileName: "[project]/components/podcast/MissionPillars.tsx",
-                                    lineNumber: 59,
+                                    lineNumber: 54,
                                     columnNumber: 33
                                 }, this)
                             ]
                         }, pillar.title, true, {
                             fileName: "[project]/components/podcast/MissionPillars.tsx",
-                            lineNumber: 45,
-                            columnNumber: 29
+                            lineNumber: 36,
+                            columnNumber: 18
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/components/podcast/MissionPillars.tsx",
-                    lineNumber: 41,
+                    lineNumber: 33,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/podcast/MissionPillars.tsx",
-            lineNumber: 36,
+            lineNumber: 28,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/podcast/MissionPillars.tsx",
-        lineNumber: 35,
-        columnNumber: 9
+        lineNumber: 27,
+        columnNumber: 10
     }, this);
 }
 _c = MissionPillars;
@@ -1137,28 +1137,28 @@ function SessionCard({ session }) {
                                                 className: "animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                                                lineNumber: 29,
+                                                lineNumber: 28,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                                                lineNumber: 30,
+                                                lineNumber: 29,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                                        lineNumber: 28,
+                                        lineNumber: 27,
                                         columnNumber: 33
                                     }, this),
                                     "LIVE"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                                lineNumber: 27,
-                                columnNumber: 29
+                                lineNumber: 26,
+                                columnNumber: 35
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "flex items-center gap-1.5 px-2 py-0.5 bg-gold/10 border border-gold/20 rounded-full text-xs font-medium text-gold",
                                 children: [
@@ -1166,15 +1166,15 @@ function SessionCard({ session }) {
                                         className: "w-3 h-3"
                                     }, void 0, false, {
                                         fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                                        lineNumber: 36,
+                                        lineNumber: 33,
                                         columnNumber: 33
                                     }, this),
                                     "Upcoming"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                                lineNumber: 35,
-                                columnNumber: 29
+                                lineNumber: 32,
+                                columnNumber: 39
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
@@ -1188,21 +1188,21 @@ function SessionCard({ session }) {
                                     className: "w-3 h-3"
                                 }, void 0, false, {
                                     fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                                    lineNumber: 43,
+                                    lineNumber: 38,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: session.viewerCount.toLocaleString()
                                 }, void 0, false, {
                                     fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                                    lineNumber: 44,
+                                    lineNumber: 39,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                            lineNumber: 42,
-                            columnNumber: 25
+                            lineNumber: 37,
+                            columnNumber: 32
                         }, this)
                     ]
                 }, void 0, true, {
@@ -1215,7 +1215,7 @@ function SessionCard({ session }) {
                     children: session.title
                 }, void 0, false, {
                     fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                    lineNumber: 49,
+                    lineNumber: 43,
                     columnNumber: 17
                 }, this),
                 session.description && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1223,8 +1223,8 @@ function SessionCard({ session }) {
                     children: session.description
                 }, void 0, false, {
                     fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                    lineNumber: 53,
-                    columnNumber: 21
+                    lineNumber: 46,
+                    columnNumber: 41
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex items-center gap-1 text-xs text-cream/40 mb-4",
@@ -1233,7 +1233,7 @@ function SessionCard({ session }) {
                             className: "w-3 h-3"
                         }, void 0, false, {
                             fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                            lineNumber: 57,
+                            lineNumber: 49,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1243,7 +1243,7 @@ function SessionCard({ session }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                            lineNumber: 58,
+                            lineNumber: 50,
                             columnNumber: 21
                         }, this),
                         scheduledDate && !isLive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1253,21 +1253,21 @@ function SessionCard({ session }) {
                                     children: "·"
                                 }, void 0, false, {
                                     fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                                    lineNumber: 61,
+                                    lineNumber: 52,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__["Calendar"], {
                                     className: "w-3 h-3"
                                 }, void 0, false, {
                                     fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                                    lineNumber: 62,
+                                    lineNumber: 53,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$date$2d$fns$2f$format$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["format"])(scheduledDate, 'MMM d, h:mm a')
                                 }, void 0, false, {
                                     fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                                    lineNumber: 63,
+                                    lineNumber: 54,
                                     columnNumber: 29
                                 }, this)
                             ]
@@ -1275,7 +1275,7 @@ function SessionCard({ session }) {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                    lineNumber: 56,
+                    lineNumber: 48,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1284,7 +1284,7 @@ function SessionCard({ session }) {
                     children: isLive ? 'Watch Live' : 'View Details'
                 }, void 0, false, {
                     fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-                    lineNumber: 68,
+                    lineNumber: 58,
                     columnNumber: 17
                 }, this)
             ]
@@ -1295,8 +1295,8 @@ function SessionCard({ session }) {
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/podcast/broadcast/SessionCard.tsx",
-        lineNumber: 18,
-        columnNumber: 9
+        lineNumber: 16,
+        columnNumber: 10
     }, this);
 }
 _c = SessionCard;
@@ -1362,7 +1362,7 @@ function PodcastPage() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$layout$2f$Header$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/podcast/page.tsx",
-                lineNumber: 32,
+                lineNumber: 29,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -1375,7 +1375,7 @@ function PodcastPage() {
                                 className: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.06)_0%,_transparent_60%)]"
                             }, void 0, false, {
                                 fileName: "[project]/app/podcast/page.tsx",
-                                lineNumber: 36,
+                                lineNumber: 33,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1389,12 +1389,12 @@ function PodcastPage() {
                                                 className: "w-8 h-8 text-gold"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/podcast/page.tsx",
-                                                lineNumber: 40,
+                                                lineNumber: 37,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/podcast/page.tsx",
-                                            lineNumber: 39,
+                                            lineNumber: 36,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1402,7 +1402,7 @@ function PodcastPage() {
                                             children: "The Pivotal Voice Podcast"
                                         }, void 0, false, {
                                             fileName: "[project]/app/podcast/page.tsx",
-                                            lineNumber: 42,
+                                            lineNumber: 39,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1410,7 +1410,7 @@ function PodcastPage() {
                                             children: "Honest conversations with Ellis County leaders and change-makers. Real conversations. Local leadership. Informed voters."
                                         }, void 0, false, {
                                             fileName: "[project]/app/podcast/page.tsx",
-                                            lineNumber: 45,
+                                            lineNumber: 42,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1423,14 +1423,14 @@ function PodcastPage() {
                                                             className: "w-4 h-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/podcast/page.tsx",
-                                                            lineNumber: 53,
+                                                            lineNumber: 50,
                                                             columnNumber: 37
                                                         }, this),
                                                         "Apple Podcasts"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/podcast/page.tsx",
-                                                    lineNumber: 52,
+                                                    lineNumber: 49,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1440,14 +1440,14 @@ function PodcastPage() {
                                                             className: "w-4 h-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/podcast/page.tsx",
-                                                            lineNumber: 57,
+                                                            lineNumber: 54,
                                                             columnNumber: 37
                                                         }, this),
                                                         "Spotify"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/podcast/page.tsx",
-                                                    lineNumber: 56,
+                                                    lineNumber: 53,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1457,17 +1457,17 @@ function PodcastPage() {
                                                             className: "w-4 h-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/podcast/page.tsx",
-                                                            lineNumber: 61,
+                                                            lineNumber: 58,
                                                             columnNumber: 37
                                                         }, this),
                                                         "RSS Feed"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/podcast/page.tsx",
-                                                    lineNumber: 60,
+                                                    lineNumber: 57,
                                                     columnNumber: 33
                                                 }, this),
-                                                (user?.isAdmin || !("TURBOPACK compile-time value", "")) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                (user?.isAdmin || !("TURBOPACK compile-time value", "https://cndaaiaygxhmuvqtgxhk.supabase.co")) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                     href: "/podcast/broadcast",
                                                     className: "btn-primary text-sm flex items-center gap-2 bg-red-600 hover:bg-red-700 border-red-500",
                                                     children: [
@@ -1475,37 +1475,37 @@ function PodcastPage() {
                                                             className: "w-4 h-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/podcast/page.tsx",
-                                                            lineNumber: 69,
+                                                            lineNumber: 62,
                                                             columnNumber: 41
                                                         }, this),
                                                         "Start a Broadcast"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/podcast/page.tsx",
-                                                    lineNumber: 65,
-                                                    columnNumber: 37
+                                                    lineNumber: 61,
+                                                    columnNumber: 94
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/podcast/page.tsx",
-                                            lineNumber: 51,
+                                            lineNumber: 48,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/podcast/page.tsx",
-                                    lineNumber: 38,
+                                    lineNumber: 35,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/podcast/page.tsx",
-                                lineNumber: 37,
+                                lineNumber: 34,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/podcast/page.tsx",
-                        lineNumber: 35,
+                        lineNumber: 32,
                         columnNumber: 17
                     }, this),
                     liveSessions.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1523,20 +1523,20 @@ function PodcastPage() {
                                                     className: "animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/podcast/page.tsx",
-                                                    lineNumber: 84,
+                                                    lineNumber: 75,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/podcast/page.tsx",
-                                                    lineNumber: 85,
+                                                    lineNumber: 76,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/podcast/page.tsx",
-                                            lineNumber: 83,
+                                            lineNumber: 74,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1544,13 +1544,13 @@ function PodcastPage() {
                                             children: "Live Now"
                                         }, void 0, false, {
                                             fileName: "[project]/app/podcast/page.tsx",
-                                            lineNumber: 87,
+                                            lineNumber: 78,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/podcast/page.tsx",
-                                    lineNumber: 82,
+                                    lineNumber: 73,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1559,24 +1559,24 @@ function PodcastPage() {
                                             session: s
                                         }, s.id, false, {
                                             fileName: "[project]/app/podcast/page.tsx",
-                                            lineNumber: 91,
-                                            columnNumber: 37
+                                            lineNumber: 81,
+                                            columnNumber: 56
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/app/podcast/page.tsx",
-                                    lineNumber: 89,
+                                    lineNumber: 80,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/podcast/page.tsx",
-                            lineNumber: 81,
+                            lineNumber: 72,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/podcast/page.tsx",
-                        lineNumber: 80,
-                        columnNumber: 21
+                        lineNumber: 71,
+                        columnNumber: 45
                     }, this),
                     scheduledSessions.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                         className: "section",
@@ -1588,7 +1588,7 @@ function PodcastPage() {
                                     children: "Upcoming Broadcasts"
                                 }, void 0, false, {
                                     fileName: "[project]/app/podcast/page.tsx",
-                                    lineNumber: 102,
+                                    lineNumber: 89,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1597,24 +1597,24 @@ function PodcastPage() {
                                             session: s
                                         }, s.id, false, {
                                             fileName: "[project]/app/podcast/page.tsx",
-                                            lineNumber: 107,
-                                            columnNumber: 37
+                                            lineNumber: 93,
+                                            columnNumber: 61
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/app/podcast/page.tsx",
-                                    lineNumber: 105,
+                                    lineNumber: 92,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/podcast/page.tsx",
-                            lineNumber: 101,
+                            lineNumber: 88,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/podcast/page.tsx",
-                        lineNumber: 100,
-                        columnNumber: 21
+                        lineNumber: 87,
+                        columnNumber: 50
                     }, this),
                     !hasSessions && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                         className: "section",
@@ -1629,12 +1629,12 @@ function PodcastPage() {
                                             className: "w-10 h-10 text-gold/50"
                                         }, void 0, false, {
                                             fileName: "[project]/app/podcast/page.tsx",
-                                            lineNumber: 120,
+                                            lineNumber: 103,
                                             columnNumber: 37
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/podcast/page.tsx",
-                                        lineNumber: 119,
+                                        lineNumber: 102,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1642,7 +1642,7 @@ function PodcastPage() {
                                         children: "Episodes Coming Soon"
                                     }, void 0, false, {
                                         fileName: "[project]/app/podcast/page.tsx",
-                                        lineNumber: 122,
+                                        lineNumber: 105,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1650,24 +1650,24 @@ function PodcastPage() {
                                         children: "The Pivotal Voice Podcast is launching soon. Subscribe below to be notified when the first episode drops."
                                     }, void 0, false, {
                                         fileName: "[project]/app/podcast/page.tsx",
-                                        lineNumber: 125,
+                                        lineNumber: 108,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/podcast/page.tsx",
-                                lineNumber: 118,
+                                lineNumber: 101,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/podcast/page.tsx",
-                            lineNumber: 117,
+                            lineNumber: 100,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/podcast/page.tsx",
-                        lineNumber: 116,
-                        columnNumber: 21
+                        lineNumber: 99,
+                        columnNumber: 34
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                         className: "section",
@@ -1675,17 +1675,17 @@ function PodcastPage() {
                             className: "container-custom",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$podcast$2f$MissionPillars$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                 fileName: "[project]/app/podcast/page.tsx",
-                                lineNumber: 136,
+                                lineNumber: 118,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/podcast/page.tsx",
-                            lineNumber: 135,
+                            lineNumber: 117,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/podcast/page.tsx",
-                        lineNumber: 134,
+                        lineNumber: 116,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1700,7 +1700,7 @@ function PodcastPage() {
                                         children: "Never Miss an Episode"
                                     }, void 0, false, {
                                         fileName: "[project]/app/podcast/page.tsx",
-                                        lineNumber: 144,
+                                        lineNumber: 126,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1708,7 +1708,7 @@ function PodcastPage() {
                                         children: "Subscribe to The Pivotal Voice Podcast and get notified when new episodes are released."
                                     }, void 0, false, {
                                         fileName: "[project]/app/podcast/page.tsx",
-                                        lineNumber: 147,
+                                        lineNumber: 129,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1720,7 +1720,7 @@ function PodcastPage() {
                                                 className: "input flex-1"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/podcast/page.tsx",
-                                                lineNumber: 151,
+                                                lineNumber: 133,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1729,46 +1729,46 @@ function PodcastPage() {
                                                 children: "Subscribe"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/podcast/page.tsx",
-                                                lineNumber: 156,
+                                                lineNumber: 134,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/podcast/page.tsx",
-                                        lineNumber: 150,
+                                        lineNumber: 132,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/podcast/page.tsx",
-                                lineNumber: 143,
+                                lineNumber: 125,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/podcast/page.tsx",
-                            lineNumber: 142,
+                            lineNumber: 124,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/podcast/page.tsx",
-                        lineNumber: 141,
+                        lineNumber: 123,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/podcast/page.tsx",
-                lineNumber: 33,
+                lineNumber: 30,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$layout$2f$Footer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/podcast/page.tsx",
-                lineNumber: 164,
+                lineNumber: 142,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true);
 }
-_s(PodcastPage, "7XBY/fejHMFo1eOw2QXF66gyJZM=", false, function() {
+_s(PodcastPage, "uiX5392sZJG9LYjL5Cp0IMf0HLA=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$forum$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"]
     ];

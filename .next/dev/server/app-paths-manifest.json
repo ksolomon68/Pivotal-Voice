@@ -1,3 +1,10 @@
 {
-  "/podcast/live/[sessionId]/page": "app/podcast/live/[sessionId]/page.js"
+  "/api/broadcast/sessions/route": "app/api/broadcast/sessions/route.js",
+  "/api/candidates/live/route": "app/api/candidates/live/route.js",
+  "/api/community-feed/route": "app/api/community-feed/route.js",
+  "/candidates/page": "app/candidates/page.js",
+  "/forum/page": "app/forum/page.js",
+  "/page": "app/page.js",
+  "/podcast/live/[sessionId]/page": "app/podcast/live/[sessionId]/page.js",
+  "/podcast/page": "app/podcast/page.js"
 }

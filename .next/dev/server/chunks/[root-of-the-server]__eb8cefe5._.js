@@ -50,16 +50,11 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$index$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@supabase/supabase-js/dist/index.mjs [app-route] (ecmascript) <locals>");
 ;
-const supabaseUrl = ("TURBOPACK compile-time value", "") || '';
-const supabaseAnonKey = ("TURBOPACK compile-time value", "") || '';
-const supabase = ("TURBOPACK compile-time falsy", 0) ? "TURBOPACK unreachable" : (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$index$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createClient"])('https://placeholder.supabase.co', 'placeholder');
-if ("TURBOPACK compile-time truthy", 1) {
-    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-    ;
-    else {
-        console.error('SERVER SIDE: Supabase credentials missing. Please check your .env.local file.');
-    }
-}
+const supabaseUrl = ("TURBOPACK compile-time value", "https://cndaaiaygxhmuvqtgxhk.supabase.co") || '';
+const supabaseAnonKey = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNuZGFhaWF5Z3hobXV2cXRneGhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2OTQyMzMsImV4cCI6MjA4NjI3MDIzM30.a0gw6nI_sBsR8GN0O14rwzNwXOa4XK6sg60mooySmwE") || '';
+const supabase = ("TURBOPACK compile-time truthy", 1) ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$index$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createClient"])(supabaseUrl, supabaseAnonKey) : "TURBOPACK unreachable";
+if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+;
 }),
 "[project]/lib/broadcast/broadcast-service.ts [app-route] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -125,103 +120,84 @@ let mockSessions = [
         status: 'scheduled',
         livekitRoomName: 'room_mock-session-2',
         scheduledAt: new Date(Date.now() + 24 * 60 * 60 * 1000 * 2).toISOString(),
+        // 2 days from now
         viewerCount: 0,
         createdAt: new Date().toISOString()
     }
 ];
-const isMockMode = !("TURBOPACK compile-time value", "") || !("TURBOPACK compile-time value", "");
+const isMockMode = !("TURBOPACK compile-time value", "https://cndaaiaygxhmuvqtgxhk.supabase.co") || !("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNuZGFhaWF5Z3hobXV2cXRneGhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2OTQyMzMsImV4cCI6MjA4NjI3MDIzM30.a0gw6nI_sBsR8GN0O14rwzNwXOa4XK6sg60mooySmwE");
 async function createSession(hostId, hostName, title, description, scheduledAt) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        const tempId = Math.random().toString(36).substring(2, 15);
-        const newSession = {
-            id: tempId,
-            hostId,
-            hostName,
-            title,
-            description,
-            scheduledAt,
-            status: scheduledAt ? 'scheduled' : 'live',
-            livekitRoomName: `room_${tempId}`,
-            guestInviteToken: Math.random().toString(36).substring(2, 15),
-            viewerCount: 0,
-            createdAt: new Date().toISOString()
-        };
-        mockSessions.push(newSession);
-        return newSession;
-    }
-    //TURBOPACK unreachable
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
-    const tempId = undefined;
-    const data = undefined, error = undefined;
+    const tempId = crypto.randomUUID();
+    const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["supabase"].from('broadcast_sessions').insert({
+        host_id: hostId,
+        host_name: hostName,
+        title,
+        description,
+        scheduled_at: scheduledAt || null,
+        livekit_room_name: `room_${tempId}`,
+        guest_invite_token: crypto.randomUUID()
+    }).select().single();
+    if (error) throw new Error(error.message);
+    return mapRow(data);
 }
 async function getSession(id) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        return mockSessions.find((s)=>s.id === id) || null;
-    }
-    //TURBOPACK unreachable
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
-    const data = undefined, error = undefined;
+    const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["supabase"].from('broadcast_sessions').select('*').eq('id', id).single();
+    if (error || !data) return null;
+    return mapRow(data);
 }
 async function getSessionByInviteToken(token) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        return mockSessions.find((s)=>s.guestInviteToken === token) || null;
-    }
-    //TURBOPACK unreachable
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
-    const data = undefined, error = undefined;
+    const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["supabase"].from('broadcast_sessions').select('*').eq('guest_invite_token', token).single();
+    if (error || !data) return null;
+    return mapRow(data);
 }
 async function getLiveSessions() {
-    if ("TURBOPACK compile-time truthy", 1) {
-        return mockSessions.filter((s)=>s.status === 'live');
-    }
-    //TURBOPACK unreachable
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
-    const data = undefined, error = undefined;
+    const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["supabase"].from('broadcast_sessions').select('*').eq('status', 'live').order('started_at', {
+        ascending: false
+    });
+    if (error || !data) return [];
+    return data.map(mapRow);
 }
 async function getScheduledSessions() {
-    if ("TURBOPACK compile-time truthy", 1) {
-        return mockSessions.filter((s)=>s.status === 'scheduled');
-    }
-    //TURBOPACK unreachable
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
-    const data = undefined, error = undefined;
+    const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["supabase"].from('broadcast_sessions').select('*').eq('status', 'scheduled').order('scheduled_at', {
+        ascending: true
+    });
+    if (error || !data) return [];
+    return data.map(mapRow);
 }
 async function updateSessionStatus(id, status) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        const session = mockSessions.find((s)=>s.id === id);
-        if (session) {
-            session.status = status;
-            if (status === 'live') session.startedAt = new Date().toISOString();
-            if (status === 'ended') session.endedAt = new Date().toISOString();
-        }
-        return;
-    }
-    //TURBOPACK unreachable
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
-    const updates = undefined;
-    const error = undefined;
+    const updates = {
+        status
+    };
+    if (status === 'live') updates.started_at = new Date().toISOString();
+    if (status === 'ended') updates.ended_at = new Date().toISOString();
+    const { error } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["supabase"].from('broadcast_sessions').update(updates).eq('id', id);
+    if (error) throw new Error(error.message);
 }
 async function incrementViewerCount(id) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        const session = mockSessions.find((s)=>s.id === id);
-        if (session) {
-            session.viewerCount += 1;
-        }
-        return;
-    }
-    //TURBOPACK unreachable
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
+    await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["supabase"].rpc('increment_viewer_count', {
+        session_id: id
+    });
 }
 async function decrementViewerCount(id) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        const session = mockSessions.find((s)=>s.id === id);
-        if (session) {
-            session.viewerCount = Math.max(session.viewerCount - 1, 0);
-        }
-        return;
-    }
-    //TURBOPACK unreachable
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
+    await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["supabase"].rpc('decrement_viewer_count', {
+        session_id: id
+    });
 }
 }),
 "[project]/app/api/broadcast/sessions/route.ts [app-route] (ecmascript)", ((__turbopack_context__) => {
@@ -234,12 +210,13 @@ __turbopack_context__.s([
     ()=>POST
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/server.js [app-route] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$index$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@supabase/supabase-js/dist/index.mjs [app-route] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$broadcast$2f$broadcast$2d$service$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/broadcast/broadcast-service.ts [app-route] (ecmascript)");
 ;
 ;
 ;
-const supabaseUrl = ("TURBOPACK compile-time value", "");
-const supabaseAnonKey = ("TURBOPACK compile-time value", "");
+const supabaseUrl = ("TURBOPACK compile-time value", "https://cndaaiaygxhmuvqtgxhk.supabase.co");
+const supabaseAnonKey = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNuZGFhaWF5Z3hobXV2cXRneGhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2OTQyMzMsImV4cCI6MjA4NjI3MDIzM30.a0gw6nI_sBsR8GN0O14rwzNwXOa4XK6sg60mooySmwE");
 async function GET() {
     const [live, scheduled] = await Promise.all([
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$broadcast$2f$broadcast$2d$service$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["getLiveSessions"])(),
@@ -251,11 +228,39 @@ async function GET() {
     });
 }
 async function POST(req) {
-    const isMockMode = !("TURBOPACK compile-time value", "") || !("TURBOPACK compile-time value", "");
+    const isMockMode = !("TURBOPACK compile-time value", "https://cndaaiaygxhmuvqtgxhk.supabase.co") || !("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNuZGFhaWF5Z3hobXV2cXRneGhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2OTQyMzMsImV4cCI6MjA4NjI3MDIzM30.a0gw6nI_sBsR8GN0O14rwzNwXOa4XK6sg60mooySmwE");
     let userId = 'mock-host-1';
     let displayName = 'Commissioner Smith';
-    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-    ;
+    if ("TURBOPACK compile-time truthy", 1) {
+        const authHeader = req.headers.get('Authorization');
+        if (!authHeader?.startsWith('Bearer ')) {
+            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                error: 'Unauthorized'
+            }, {
+                status: 401
+            });
+        }
+        const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$index$2e$mjs__$5b$app$2d$route$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createClient"])(supabaseUrl, supabaseAnonKey);
+        const jwt = authHeader.slice(7);
+        const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
+        if (authError || !user) {
+            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                error: 'Unauthorized'
+            }, {
+                status: 401
+            });
+        }
+        const { data: profile } = await supabase.from('profiles').select('is_admin, display_name').eq('id', user.id).single();
+        if (!profile?.is_admin) {
+            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                error: 'Forbidden'
+            }, {
+                status: 403
+            });
+        }
+        userId = user.id;
+        displayName = profile.display_name;
+    }
     const body = await req.json();
     const { title, description, scheduledAt } = body;
     if (!title?.trim()) {

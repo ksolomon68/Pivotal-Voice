@@ -103,7 +103,7 @@ function Header() {
                 "aria-hidden": "true"
             }, void 0, false, {
                 fileName: "[project]/components/layout/Header.tsx",
-                lineNumber: 50,
+                lineNumber: 59,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
@@ -113,7 +113,7 @@ function Header() {
                         className: "absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold/30 to-transparent"
                     }, void 0, false, {
                         fileName: "[project]/components/layout/Header.tsx",
-                        lineNumber: 61,
+                        lineNumber: 65,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -147,12 +147,12 @@ function Header() {
                                                 priority: true
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 76,
+                                                lineNumber: 78,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 67,
+                                            lineNumber: 71,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -163,7 +163,7 @@ function Header() {
                                                     children: "Pivotal Voice"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 85,
+                                                    lineNumber: 81,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -171,19 +171,19 @@ function Header() {
                                                     children: "Ellis County"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 88,
+                                                    lineNumber: 84,
                                                     columnNumber: 33
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 84,
+                                            lineNumber: 80,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/layout/Header.tsx",
-                                    lineNumber: 66,
+                                    lineNumber: 70,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -194,12 +194,12 @@ function Header() {
                                             children: item.name
                                         }, item.name, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 97,
-                                            columnNumber: 33
+                                            lineNumber: 92,
+                                            columnNumber: 53
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/layout/Header.tsx",
-                                    lineNumber: 95,
+                                    lineNumber: 91,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -212,12 +212,12 @@ function Header() {
                                                 className: "w-5 h-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 114,
+                                                lineNumber: 100,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 110,
+                                            lineNumber: 99,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -226,7 +226,7 @@ function Header() {
                                             children: "Book Consultation"
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 117,
+                                            lineNumber: 103,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -236,12 +236,12 @@ function Header() {
                                                 className: "w-5 h-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 128,
+                                                lineNumber: 108,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 124,
+                                            lineNumber: 107,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -271,13 +271,13 @@ function Header() {
                                                         className: "w-6 h-6"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/layout/Header.tsx",
-                                                        lineNumber: 147,
+                                                        lineNumber: 126,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, "close", false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 140,
-                                                    columnNumber: 41
+                                                    lineNumber: 114,
+                                                    columnNumber: 55
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                                                     initial: {
                                                         rotate: 90,
@@ -298,39 +298,39 @@ function Header() {
                                                         className: "w-6 h-6"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/layout/Header.tsx",
-                                                        lineNumber: 157,
+                                                        lineNumber: 139,
                                                         columnNumber: 45
                                                     }, this)
                                                 }, "menu", false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 150,
-                                                    columnNumber: 41
+                                                    lineNumber: 127,
+                                                    columnNumber: 57
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 138,
+                                                lineNumber: 113,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 132,
+                                            lineNumber: 112,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/layout/Header.tsx",
-                                    lineNumber: 109,
+                                    lineNumber: 98,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/layout/Header.tsx",
-                            lineNumber: 64,
+                            lineNumber: 68,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/layout/Header.tsx",
-                        lineNumber: 63,
+                        lineNumber: 67,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -363,12 +363,12 @@ function Header() {
                                                     className: "object-contain rounded-full"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 180,
+                                                    lineNumber: 162,
                                                     columnNumber: 41
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 179,
+                                                lineNumber: 161,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -376,13 +376,13 @@ function Header() {
                                                 children: "Pivotal Voice"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 187,
+                                                lineNumber: 164,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/layout/Header.tsx",
-                                        lineNumber: 178,
+                                        lineNumber: 160,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -407,17 +407,17 @@ function Header() {
                                                     children: item.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Header.tsx",
-                                                    lineNumber: 204,
+                                                    lineNumber: 181,
                                                     columnNumber: 45
                                                 }, this)
                                             }, item.name, false, {
                                                 fileName: "[project]/components/layout/Header.tsx",
-                                                lineNumber: 195,
-                                                columnNumber: 41
+                                                lineNumber: 171,
+                                                columnNumber: 70
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Header.tsx",
-                                        lineNumber: 193,
+                                        lineNumber: 170,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -441,34 +441,34 @@ function Header() {
                                             children: "Book Consultation"
                                         }, void 0, false, {
                                             fileName: "[project]/components/layout/Header.tsx",
-                                            lineNumber: 225,
+                                            lineNumber: 198,
                                             columnNumber: 37
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Header.tsx",
-                                        lineNumber: 219,
+                                        lineNumber: 188,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Header.tsx",
-                                lineNumber: 176,
+                                lineNumber: 158,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/layout/Header.tsx",
-                            lineNumber: 169,
-                            columnNumber: 25
+                            lineNumber: 149,
+                            columnNumber: 40
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/layout/Header.tsx",
-                        lineNumber: 167,
+                        lineNumber: 148,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/layout/Header.tsx",
-                lineNumber: 56,
+                lineNumber: 63,
                 columnNumber: 13
             }, this)
         ]
@@ -581,7 +581,7 @@ function Footer() {
                 className: "absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold/40 to-transparent"
             }, void 0, false, {
                 fileName: "[project]/components/layout/Footer.tsx",
-                lineNumber: 34,
+                lineNumber: 59,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -606,12 +606,12 @@ function Footer() {
                                                     className: "object-contain rounded-full"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Footer.tsx",
-                                                    lineNumber: 43,
+                                                    lineNumber: 68,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 42,
+                                                lineNumber: 67,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -622,7 +622,7 @@ function Footer() {
                                                         children: "Pivotal Voice"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/layout/Footer.tsx",
-                                                        lineNumber: 51,
+                                                        lineNumber: 71,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -630,19 +630,19 @@ function Footer() {
                                                         children: "Ellis County"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/layout/Footer.tsx",
-                                                        lineNumber: 54,
+                                                        lineNumber: 74,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 50,
+                                                lineNumber: 70,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 41,
+                                        lineNumber: 66,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -650,7 +650,7 @@ function Footer() {
                                         children: "A non-partisan platform dedicated to creating meaningful dialogue on the issues that shape Ellis County's future."
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 59,
+                                        lineNumber: 79,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -665,24 +665,24 @@ function Footer() {
                                                     className: "w-4 h-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/layout/Footer.tsx",
-                                                    lineNumber: 75,
+                                                    lineNumber: 89,
                                                     columnNumber: 41
                                                 }, this)
                                             }, social.name, false, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 69,
-                                                columnNumber: 37
+                                                lineNumber: 88,
+                                                columnNumber: 22
                                             }, this);
                                         })
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 65,
+                                        lineNumber: 85,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 40,
+                                lineNumber: 65,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -692,7 +692,7 @@ function Footer() {
                                         children: "Platform"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 97,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -706,30 +706,30 @@ function Footer() {
                                                             className: "w-0 group-hover:w-2 h-[1px] bg-gold transition-all duration-300"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/layout/Footer.tsx",
-                                                            lineNumber: 94,
+                                                            lineNumber: 103,
                                                             columnNumber: 41
                                                         }, this),
                                                         link.name
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/layout/Footer.tsx",
-                                                    lineNumber: 90,
+                                                    lineNumber: 102,
                                                     columnNumber: 37
                                                 }, this)
                                             }, link.name, false, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 89,
-                                                columnNumber: 33
+                                                lineNumber: 101,
+                                                columnNumber: 56
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 87,
+                                        lineNumber: 100,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 83,
+                                lineNumber: 96,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -739,7 +739,7 @@ function Footer() {
                                         children: "Services"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 104,
+                                        lineNumber: 112,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -753,30 +753,30 @@ function Footer() {
                                                             className: "w-0 group-hover:w-2 h-[1px] bg-gold transition-all duration-300"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/layout/Footer.tsx",
-                                                            lineNumber: 114,
+                                                            lineNumber: 118,
                                                             columnNumber: 41
                                                         }, this),
                                                         link.name
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/layout/Footer.tsx",
-                                                    lineNumber: 110,
+                                                    lineNumber: 117,
                                                     columnNumber: 37
                                                 }, this)
                                             }, link.name, false, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 109,
-                                                columnNumber: 33
+                                                lineNumber: 116,
+                                                columnNumber: 55
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 115,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 103,
+                                lineNumber: 111,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -786,7 +786,7 @@ function Footer() {
                                         children: "Stay Connected"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 124,
+                                        lineNumber: 127,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -798,7 +798,7 @@ function Footer() {
                                                 children: "Contact Us"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                lineNumber: 128,
+                                                lineNumber: 131,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -829,7 +829,7 @@ function Footer() {
                                                                 children: "Subscribe"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/layout/Footer.tsx",
-                                                                lineNumber: 146,
+                                                                lineNumber: 142,
                                                                 columnNumber: 37
                                                             }, this)
                                                         ]
@@ -847,26 +847,26 @@ function Footer() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 130,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 123,
+                                lineNumber: 126,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/layout/Footer.tsx",
-                        lineNumber: 38,
+                        lineNumber: 63,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent mb-8"
                     }, void 0, false, {
                         fileName: "[project]/components/layout/Footer.tsx",
-                        lineNumber: 159,
+                        lineNumber: 152,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -881,7 +881,7 @@ function Footer() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 163,
+                                lineNumber: 156,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -893,7 +893,7 @@ function Footer() {
                                         children: "Privacy Policy"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 167,
+                                        lineNumber: 160,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -902,7 +902,7 @@ function Footer() {
                                         children: "Terms of Service"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 170,
+                                        lineNumber: 163,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -910,32 +910,32 @@ function Footer() {
                                         children: "Non-Partisan Platform"
                                     }, void 0, false, {
                                         fileName: "[project]/components/layout/Footer.tsx",
-                                        lineNumber: 173,
+                                        lineNumber: 166,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/layout/Footer.tsx",
-                                lineNumber: 166,
+                                lineNumber: 159,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/layout/Footer.tsx",
-                        lineNumber: 162,
+                        lineNumber: 155,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/layout/Footer.tsx",
-                lineNumber: 36,
+                lineNumber: 61,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/layout/Footer.tsx",
-        lineNumber: 32,
-        columnNumber: 9
+        lineNumber: 57,
+        columnNumber: 10
     }, this);
 }
 _c = Footer;
@@ -1057,15 +1057,15 @@ function CandidateCard({ candidate, onClick, index }) {
                                                 className: "w-3 h-3"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/CandidateCard.tsx",
-                                                lineNumber: 69,
+                                                lineNumber: 68,
                                                 columnNumber: 33
                                             }, this),
                                             "Incumbent"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/candidates/CandidateCard.tsx",
-                                        lineNumber: 68,
-                                        columnNumber: 29
+                                        lineNumber: 67,
+                                        columnNumber: 49
                                     }, this)
                                 ]
                             }, void 0, true, {
@@ -1093,7 +1093,7 @@ function CandidateCard({ candidate, onClick, index }) {
                         children: candidate.officeLevel.charAt(0).toUpperCase() + candidate.officeLevel.slice(1)
                     }, void 0, false, {
                         fileName: "[project]/components/candidates/CandidateCard.tsx",
-                        lineNumber: 79,
+                        lineNumber: 77,
                         columnNumber: 17
                     }, this),
                     candidate.district && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1103,20 +1103,20 @@ function CandidateCard({ candidate, onClick, index }) {
                                 className: "w-3 h-3"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateCard.tsx",
-                                lineNumber: 84,
+                                lineNumber: 81,
                                 columnNumber: 25
                             }, this),
                             candidate.district
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/CandidateCard.tsx",
-                        lineNumber: 83,
-                        columnNumber: 21
+                        lineNumber: 80,
+                        columnNumber: 40
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/candidates/CandidateCard.tsx",
-                lineNumber: 78,
+                lineNumber: 76,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1129,8 +1129,8 @@ function CandidateCard({ candidate, onClick, index }) {
                                 children: issue
                             }, issue, false, {
                                 fileName: "[project]/components/candidates/CandidateCard.tsx",
-                                lineNumber: 94,
-                                columnNumber: 25
+                                lineNumber: 89,
+                                columnNumber: 67
                             }, this)),
                         candidate.topIssues.length > 3 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             className: "px-2 py-0.5 text-cream/40 text-xs",
@@ -1141,18 +1141,18 @@ function CandidateCard({ candidate, onClick, index }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/candidates/CandidateCard.tsx",
-                            lineNumber: 102,
-                            columnNumber: 25
+                            lineNumber: 92,
+                            columnNumber: 56
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/candidates/CandidateCard.tsx",
-                    lineNumber: 92,
+                    lineNumber: 88,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/candidates/CandidateCard.tsx",
-                lineNumber: 91,
+                lineNumber: 87,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1166,7 +1166,7 @@ function CandidateCard({ candidate, onClick, index }) {
                                 children: candidate.election.type
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateCard.tsx",
-                                lineNumber: 112,
+                                lineNumber: 101,
                                 columnNumber: 21
                             }, this),
                             ' • ',
@@ -1177,7 +1177,7 @@ function CandidateCard({ candidate, onClick, index }) {
                                         className: "inline w-3 h-3 mr-0.5"
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/CandidateCard.tsx",
-                                        lineNumber: 116,
+                                        lineNumber: 104,
                                         columnNumber: 49
                                     }, this),
                                     daysUntil,
@@ -1185,20 +1185,20 @@ function CandidateCard({ candidate, onClick, index }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/candidates/CandidateCard.tsx",
-                                lineNumber: 115,
-                                columnNumber: 25
+                                lineNumber: 103,
+                                columnNumber: 38
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "text-cream/40",
                                 children: "Election passed"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateCard.tsx",
-                                lineNumber: 120,
-                                columnNumber: 25
+                                lineNumber: 106,
+                                columnNumber: 35
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/CandidateCard.tsx",
-                        lineNumber: 111,
+                        lineNumber: 100,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1209,19 +1209,19 @@ function CandidateCard({ candidate, onClick, index }) {
                                 className: "w-3 h-3"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateCard.tsx",
-                                lineNumber: 126,
+                                lineNumber: 111,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/CandidateCard.tsx",
-                        lineNumber: 124,
+                        lineNumber: 109,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/candidates/CandidateCard.tsx",
-                lineNumber: 110,
+                lineNumber: 99,
                 columnNumber: 13
             }, this),
             candidate.election.opponents.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1232,14 +1232,14 @@ function CandidateCard({ candidate, onClick, index }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/candidates/CandidateCard.tsx",
-                lineNumber: 132,
-                columnNumber: 17
+                lineNumber: 116,
+                columnNumber: 57
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/candidates/CandidateCard.tsx",
-        lineNumber: 42,
-        columnNumber: 9
+        lineNumber: 39,
+        columnNumber: 10
     }, this);
 }
 _c = CandidateCard;
@@ -1341,12 +1341,12 @@ function CandidateModal({ candidate, onClose }) {
                                     className: "w-5 h-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                    lineNumber: 63,
+                                    lineNumber: 57,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                lineNumber: 58,
+                                lineNumber: 56,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1359,12 +1359,12 @@ function CandidateModal({ candidate, onClose }) {
                                             children: candidate.name.split(' ').map((n)=>n[0]).join('')
                                         }, void 0, false, {
                                             fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                            lineNumber: 69,
+                                            lineNumber: 63,
                                             columnNumber: 33
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 68,
+                                        lineNumber: 62,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1375,7 +1375,7 @@ function CandidateModal({ candidate, onClose }) {
                                                 children: candidate.name
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 75,
+                                                lineNumber: 69,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1383,7 +1383,7 @@ function CandidateModal({ candidate, onClose }) {
                                                 children: candidate.office
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 78,
+                                                lineNumber: 72,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1394,7 +1394,7 @@ function CandidateModal({ candidate, onClose }) {
                                                         children: candidate.party
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 80,
+                                                        lineNumber: 74,
                                                         columnNumber: 37
                                                     }, this),
                                                     candidate.incumbent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1404,7 +1404,7 @@ function CandidateModal({ candidate, onClose }) {
                                                                 className: "w-3.5 h-3.5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                                lineNumber: 85,
+                                                                lineNumber: 78,
                                                                 columnNumber: 45
                                                             }, this),
                                                             "Incumbent",
@@ -1412,8 +1412,8 @@ function CandidateModal({ candidate, onClose }) {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 84,
-                                                        columnNumber: 41
+                                                        lineNumber: 77,
+                                                        columnNumber: 61
                                                     }, this),
                                                     candidate.district && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "inline-flex items-center gap-1 text-sm text-cream/60",
@@ -1422,38 +1422,38 @@ function CandidateModal({ candidate, onClose }) {
                                                                 className: "w-3.5 h-3.5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                                lineNumber: 91,
+                                                                lineNumber: 82,
                                                                 columnNumber: 45
                                                             }, this),
                                                             candidate.district
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 90,
-                                                        columnNumber: 41
+                                                        lineNumber: 81,
+                                                        columnNumber: 60
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 79,
+                                                lineNumber: 73,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 74,
+                                        lineNumber: 68,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                lineNumber: 66,
+                                lineNumber: 60,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                        lineNumber: 57,
+                        lineNumber: 55,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1471,15 +1471,15 @@ function CandidateModal({ candidate, onClose }) {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                            lineNumber: 110,
+                                            lineNumber: 94,
                                             columnNumber: 37
                                         }, this),
                                         "Campaign Website"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                    lineNumber: 104,
-                                    columnNumber: 33
+                                    lineNumber: 93,
+                                    columnNumber: 59
                                 }, this),
                                 candidate.donationUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                     href: candidate.donationUrl,
@@ -1491,25 +1491,25 @@ function CandidateModal({ candidate, onClose }) {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                            lineNumber: 121,
+                                            lineNumber: 98,
                                             columnNumber: 37
                                         }, this),
                                         "Donate"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                    lineNumber: 115,
-                                    columnNumber: 33
+                                    lineNumber: 97,
+                                    columnNumber: 55
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/candidates/CandidateModal.tsx",
-                            lineNumber: 102,
+                            lineNumber: 92,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                        lineNumber: 101,
+                        lineNumber: 91,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1522,7 +1522,7 @@ function CandidateModal({ candidate, onClose }) {
                                         children: "About"
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 132,
+                                        lineNumber: 108,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1530,13 +1530,13 @@ function CandidateModal({ candidate, onClose }) {
                                         children: candidate.bio
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 133,
+                                        lineNumber: 109,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                lineNumber: 131,
+                                lineNumber: 107,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1546,7 +1546,7 @@ function CandidateModal({ candidate, onClose }) {
                                         children: "Key Issues"
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 138,
+                                        lineNumber: 114,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1556,18 +1556,18 @@ function CandidateModal({ candidate, onClose }) {
                                                 children: issue
                                             }, issue, false, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 141,
-                                                columnNumber: 37
+                                                lineNumber: 116,
+                                                columnNumber: 67
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 139,
+                                        lineNumber: 115,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                lineNumber: 137,
+                                lineNumber: 113,
                                 columnNumber: 25
                             }, this),
                             candidate.policyPositions.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1577,7 +1577,7 @@ function CandidateModal({ candidate, onClose }) {
                                         children: "Policy Positions"
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 154,
+                                        lineNumber: 124,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1592,7 +1592,7 @@ function CandidateModal({ candidate, onClose }) {
                                                                 className: "w-4 h-4 text-gold"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                                lineNumber: 162,
+                                                                lineNumber: 128,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1600,13 +1600,13 @@ function CandidateModal({ candidate, onClose }) {
                                                                 children: pos.topic
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                                lineNumber: 163,
+                                                                lineNumber: 129,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 161,
+                                                        lineNumber: 127,
                                                         columnNumber: 45
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1614,25 +1614,25 @@ function CandidateModal({ candidate, onClose }) {
                                                         children: pos.stance
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 165,
+                                                        lineNumber: 131,
                                                         columnNumber: 45
                                                     }, this)
                                                 ]
                                             }, pos.topic, true, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 157,
-                                                columnNumber: 41
+                                                lineNumber: 126,
+                                                columnNumber: 75
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 155,
+                                        lineNumber: 125,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                lineNumber: 153,
-                                columnNumber: 29
+                                lineNumber: 123,
+                                columnNumber: 66
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "bg-navy/50 border border-gold/20 rounded-xl p-5",
@@ -1644,14 +1644,14 @@ function CandidateModal({ candidate, onClose }) {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 175,
+                                                lineNumber: 139,
                                                 columnNumber: 33
                                             }, this),
                                             "Election Details"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 174,
+                                        lineNumber: 138,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1664,7 +1664,7 @@ function CandidateModal({ candidate, onClose }) {
                                                         children: "Type"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 180,
+                                                        lineNumber: 144,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1675,13 +1675,13 @@ function CandidateModal({ candidate, onClose }) {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 181,
+                                                        lineNumber: 145,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 179,
+                                                lineNumber: 143,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1691,7 +1691,7 @@ function CandidateModal({ candidate, onClose }) {
                                                         children: "Date"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 184,
+                                                        lineNumber: 148,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1704,13 +1704,13 @@ function CandidateModal({ candidate, onClose }) {
                                                         })
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 185,
+                                                        lineNumber: 149,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 183,
+                                                lineNumber: 147,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1720,7 +1720,7 @@ function CandidateModal({ candidate, onClose }) {
                                                         children: "Countdown"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 190,
+                                                        lineNumber: 159,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1728,13 +1728,13 @@ function CandidateModal({ candidate, onClose }) {
                                                         children: daysUntil > 0 ? `${daysUntil} days until election` : 'Election has passed'
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 191,
+                                                        lineNumber: 160,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 189,
+                                                lineNumber: 158,
                                                 columnNumber: 33
                                             }, this),
                                             candidate.election.opponents.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1744,7 +1744,7 @@ function CandidateModal({ candidate, onClose }) {
                                                         children: "Opponent(s)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 197,
+                                                        lineNumber: 165,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1752,25 +1752,25 @@ function CandidateModal({ candidate, onClose }) {
                                                         children: candidate.election.opponents.join(', ')
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 198,
+                                                        lineNumber: 166,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 196,
-                                                columnNumber: 37
+                                                lineNumber: 164,
+                                                columnNumber: 77
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 178,
+                                        lineNumber: 142,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                lineNumber: 173,
+                                lineNumber: 137,
                                 columnNumber: 25
                             }, this),
                             candidate.endorsements && candidate.endorsements.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1782,14 +1782,14 @@ function CandidateModal({ candidate, onClose }) {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 208,
+                                                lineNumber: 174,
                                                 columnNumber: 37
                                             }, this),
                                             "Endorsements"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 207,
+                                        lineNumber: 173,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1799,19 +1799,19 @@ function CandidateModal({ candidate, onClose }) {
                                                 children: endorsement
                                             }, endorsement, false, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 213,
-                                                columnNumber: 41
+                                                lineNumber: 178,
+                                                columnNumber: 80
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 211,
+                                        lineNumber: 177,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                lineNumber: 206,
-                                columnNumber: 29
+                                lineNumber: 172,
+                                columnNumber: 89
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "grid grid-cols-1 sm:grid-cols-2 gap-6",
@@ -1823,7 +1823,7 @@ function CandidateModal({ candidate, onClose }) {
                                                 children: "Contact"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 228,
+                                                lineNumber: 188,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1837,15 +1837,15 @@ function CandidateModal({ candidate, onClose }) {
                                                                 className: "w-4 h-4 text-gold flex-shrink-0"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                                lineNumber: 235,
+                                                                lineNumber: 191,
                                                                 columnNumber: 45
                                                             }, this),
                                                             candidate.email
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 231,
-                                                        columnNumber: 41
+                                                        lineNumber: 190,
+                                                        columnNumber: 57
                                                     }, this),
                                                     candidate.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                         href: `tel:${candidate.phone}`,
@@ -1855,26 +1855,26 @@ function CandidateModal({ candidate, onClose }) {
                                                                 className: "w-4 h-4 text-gold flex-shrink-0"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                                lineNumber: 244,
+                                                                lineNumber: 195,
                                                                 columnNumber: 45
                                                             }, this),
                                                             candidate.phone
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 240,
-                                                        columnNumber: 41
+                                                        lineNumber: 194,
+                                                        columnNumber: 57
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 229,
+                                                lineNumber: 189,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 227,
+                                        lineNumber: 187,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1884,7 +1884,7 @@ function CandidateModal({ candidate, onClose }) {
                                                 children: "Social Media"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 253,
+                                                lineNumber: 203,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1900,13 +1900,13 @@ function CandidateModal({ candidate, onClose }) {
                                                             className: "w-5 h-5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                            lineNumber: 263,
+                                                            lineNumber: 206,
                                                             columnNumber: 45
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 256,
-                                                        columnNumber: 41
+                                                        lineNumber: 205,
+                                                        columnNumber: 71
                                                     }, this),
                                                     candidate.socialMedia.facebook && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                         href: candidate.socialMedia.facebook,
@@ -1918,13 +1918,13 @@ function CandidateModal({ candidate, onClose }) {
                                                             className: "w-5 h-5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                            lineNumber: 274,
+                                                            lineNumber: 209,
                                                             columnNumber: 45
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 267,
-                                                        columnNumber: 41
+                                                        lineNumber: 208,
+                                                        columnNumber: 72
                                                     }, this),
                                                     candidate.socialMedia.instagram && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                         href: candidate.socialMedia.instagram,
@@ -1936,13 +1936,13 @@ function CandidateModal({ candidate, onClose }) {
                                                             className: "w-5 h-5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                            lineNumber: 285,
+                                                            lineNumber: 212,
                                                             columnNumber: 45
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 278,
-                                                        columnNumber: 41
+                                                        lineNumber: 211,
+                                                        columnNumber: 73
                                                     }, this),
                                                     candidate.socialMedia.youtube && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                         href: candidate.socialMedia.youtube,
@@ -1954,36 +1954,36 @@ function CandidateModal({ candidate, onClose }) {
                                                             className: "w-5 h-5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                            lineNumber: 296,
+                                                            lineNumber: 215,
                                                             columnNumber: 45
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                        lineNumber: 289,
-                                                        columnNumber: 41
+                                                        lineNumber: 214,
+                                                        columnNumber: 71
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                                lineNumber: 254,
+                                                lineNumber: 204,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                        lineNumber: 252,
+                                        lineNumber: 202,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                                lineNumber: 225,
+                                lineNumber: 185,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                        lineNumber: 129,
+                        lineNumber: 105,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1993,29 +1993,29 @@ function CandidateModal({ candidate, onClose }) {
                             children: "Information sourced from public records and candidate-submitted data. Pivotal Voice does not endorse any candidate."
                         }, void 0, false, {
                             fileName: "[project]/components/candidates/CandidateModal.tsx",
-                            lineNumber: 306,
+                            lineNumber: 224,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/candidates/CandidateModal.tsx",
-                        lineNumber: 305,
+                        lineNumber: 223,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/candidates/CandidateModal.tsx",
-                lineNumber: 48,
+                lineNumber: 40,
                 columnNumber: 17
             }, this)
         }, void 0, false, {
             fileName: "[project]/components/candidates/CandidateModal.tsx",
-            lineNumber: 41,
+            lineNumber: 33,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/candidates/CandidateModal.tsx",
-        lineNumber: 40,
-        columnNumber: 9
+        lineNumber: 32,
+        columnNumber: 10
     }, this);
 }
 _c = CandidateModal;
@@ -2129,7 +2129,7 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                 className: "absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gold"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 69,
+                                lineNumber: 63,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2144,13 +2144,13 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                 "aria-label": "Search candidates"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 70,
+                                lineNumber: 64,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                        lineNumber: 68,
+                        lineNumber: 62,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2161,7 +2161,7 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 83,
+                                lineNumber: 70,
                                 columnNumber: 21
                             }, this),
                             "Filters",
@@ -2170,26 +2170,26 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                 children: activeCount
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 86,
-                                columnNumber: 25
+                                lineNumber: 72,
+                                columnNumber: 41
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {
                                 className: `w-4 h-4 transition-transform ${showFilters ? 'rotate-180' : ''}`
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 90,
+                                lineNumber: 75,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                        lineNumber: 79,
+                        lineNumber: 69,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                lineNumber: 67,
+                lineNumber: 61,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2201,7 +2201,7 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                         children: filteredCount
                     }, void 0, false, {
                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                        lineNumber: 96,
+                        lineNumber: 81,
                         columnNumber: 25
                     }, this),
                     " of ",
@@ -2210,7 +2210,7 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                lineNumber: 95,
+                lineNumber: 80,
                 columnNumber: 13
             }, this),
             showFilters && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2223,7 +2223,7 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                 children: "Party"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 104,
+                                lineNumber: 88,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2239,26 +2239,26 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                                 className: `w-2.5 h-2.5 rounded-full ${partyDots[party]}`
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                                lineNumber: 118,
+                                                lineNumber: 94,
                                                 columnNumber: 41
                                             }, this),
                                             party
                                         ]
                                     }, party, true, {
                                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                        lineNumber: 109,
-                                        columnNumber: 37
+                                        lineNumber: 92,
+                                        columnNumber: 20
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 105,
+                                lineNumber: 89,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                        lineNumber: 103,
+                        lineNumber: 87,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2268,7 +2268,7 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                 children: "Office Level"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 128,
+                                lineNumber: 103,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2282,19 +2282,19 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                         children: level
                                     }, level, false, {
                                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                        lineNumber: 133,
-                                        columnNumber: 37
+                                        lineNumber: 107,
+                                        columnNumber: 20
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 129,
+                                lineNumber: 104,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                        lineNumber: 127,
+                        lineNumber: 102,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2304,7 +2304,7 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                 children: "Election Type"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 151,
+                                lineNumber: 117,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2318,19 +2318,19 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                         children: type
                                     }, type, false, {
                                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                        lineNumber: 156,
-                                        columnNumber: 37
+                                        lineNumber: 121,
+                                        columnNumber: 20
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 152,
+                                lineNumber: 118,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                        lineNumber: 150,
+                        lineNumber: 116,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2352,27 +2352,27 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                                 className: "sr-only peer"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                                lineNumber: 176,
+                                                lineNumber: 133,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "w-10 h-5 bg-navy-dark border border-gold/30 rounded-full peer-checked:bg-gold/30 transition-colors"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                                lineNumber: 182,
+                                                lineNumber: 137,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "absolute top-0.5 left-0.5 w-4 h-4 bg-cream/50 rounded-full peer-checked:translate-x-5 peer-checked:bg-gold transition-all"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                                lineNumber: 183,
+                                                lineNumber: 138,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                        lineNumber: 175,
+                                        lineNumber: 132,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2380,13 +2380,13 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                         children: "Incumbents Only"
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                        lineNumber: 185,
+                                        lineNumber: 140,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 174,
+                                lineNumber: 131,
                                 columnNumber: 25
                             }, this),
                             activeCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2397,33 +2397,33 @@ function CandidateFilters({ filters, onFiltersChange, totalCount, filteredCount 
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                        lineNumber: 193,
+                                        lineNumber: 144,
                                         columnNumber: 33
                                     }, this),
                                     "Clear Filters"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                                lineNumber: 189,
-                                columnNumber: 29
+                                lineNumber: 143,
+                                columnNumber: 45
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                        lineNumber: 173,
+                        lineNumber: 130,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/candidates/CandidateFilters.tsx",
-                lineNumber: 101,
-                columnNumber: 17
+                lineNumber: 85,
+                columnNumber: 29
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/candidates/CandidateFilters.tsx",
-        lineNumber: 65,
-        columnNumber: 9
+        lineNumber: 59,
+        columnNumber: 10
     }, this);
 }
 _s(CandidateFilters, "oJ1PYJsWFrwlzYtlEiE9hrxrFU0=");
@@ -2534,7 +2534,7 @@ function VotingInfo() {
                         children: "You must be registered to vote at least 30 days before the election. Texas does not have same-day registration."
                     }, void 0, false, {
                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                        lineNumber: 57,
+                        lineNumber: 76,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2545,7 +2545,7 @@ function VotingInfo() {
                                 children: "Upcoming Deadlines"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                lineNumber: 61,
+                                lineNumber: 80,
                                 columnNumber: 25
                             }, this),
                             elections.map((election)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2556,7 +2556,7 @@ function VotingInfo() {
                                             children: election.name
                                         }, void 0, false, {
                                             fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                            lineNumber: 64,
+                                            lineNumber: 82,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2571,19 +2571,19 @@ function VotingInfo() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                            lineNumber: 65,
+                                            lineNumber: 83,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, election.id, true, {
                                     fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                    lineNumber: 63,
-                                    columnNumber: 29
+                                    lineNumber: 81,
+                                    columnNumber: 52
                                 }, this))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                        lineNumber: 60,
+                        lineNumber: 79,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -2597,20 +2597,20 @@ function VotingInfo() {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                lineNumber: 78,
+                                lineNumber: 94,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                        lineNumber: 71,
+                        lineNumber: 92,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                lineNumber: 56,
-                columnNumber: 17
+                lineNumber: 75,
+                columnNumber: 14
             }, this)
         },
         {
@@ -2628,7 +2628,7 @@ function VotingInfo() {
                                 children: "Early Voting Periods"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                lineNumber: 90,
+                                lineNumber: 103,
                                 columnNumber: 25
                             }, this),
                             elections.map((election)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2639,7 +2639,7 @@ function VotingInfo() {
                                             children: election.name
                                         }, void 0, false, {
                                             fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                            lineNumber: 93,
+                                            lineNumber: 105,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2658,19 +2658,19 @@ function VotingInfo() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                            lineNumber: 94,
+                                            lineNumber: 106,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, election.id, true, {
                                     fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                    lineNumber: 92,
-                                    columnNumber: 29
+                                    lineNumber: 104,
+                                    columnNumber: 52
                                 }, this))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                        lineNumber: 89,
+                        lineNumber: 102,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -2680,14 +2680,14 @@ function VotingInfo() {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                lineNumber: 104,
+                                lineNumber: 122,
                                 columnNumber: 25
                             }, this),
                             "Early Voting Locations"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                        lineNumber: 103,
+                        lineNumber: 121,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2700,7 +2700,7 @@ function VotingInfo() {
                                         children: location.name
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                        lineNumber: 110,
+                                        lineNumber: 127,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2710,7 +2710,7 @@ function VotingInfo() {
                                                 className: "w-3 h-3 flex-shrink-0"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                                lineNumber: 112,
+                                                lineNumber: 129,
                                                 columnNumber: 37
                                             }, this),
                                             location.address,
@@ -2719,7 +2719,7 @@ function VotingInfo() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                        lineNumber: 111,
+                                        lineNumber: 128,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2729,32 +2729,32 @@ function VotingInfo() {
                                                 className: "w-3 h-3 flex-shrink-0"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                                lineNumber: 116,
+                                                lineNumber: 133,
                                                 columnNumber: 37
                                             }, this),
                                             location.hours
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                        lineNumber: 115,
+                                        lineNumber: 132,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, location.name, true, {
                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                lineNumber: 109,
-                                columnNumber: 29
+                                lineNumber: 126,
+                                columnNumber: 92
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                        lineNumber: 107,
+                        lineNumber: 125,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                lineNumber: 88,
-                columnNumber: 17
+                lineNumber: 101,
+                columnNumber: 14
             }, this)
         },
         {
@@ -2769,7 +2769,7 @@ function VotingInfo() {
                         children: "On Election Day, you must vote at your assigned polling location based on your registered address. Polls are open 7:00 AM – 7:00 PM."
                     }, void 0, false, {
                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                        lineNumber: 131,
+                        lineNumber: 144,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -2783,20 +2783,20 @@ function VotingInfo() {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                lineNumber: 142,
+                                lineNumber: 150,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                        lineNumber: 135,
+                        lineNumber: 148,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                lineNumber: 130,
-                columnNumber: 17
+                lineNumber: 143,
+                columnNumber: 14
             }, this)
         },
         {
@@ -2814,7 +2814,7 @@ function VotingInfo() {
                                 className: "w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                lineNumber: 155,
+                                lineNumber: 160,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2822,24 +2822,24 @@ function VotingInfo() {
                                 children: votingInfo.absenteeBallotInfo
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                lineNumber: 156,
+                                lineNumber: 161,
                                 columnNumber: 29
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                        lineNumber: 154,
+                        lineNumber: 159,
                         columnNumber: 25
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/candidates/VotingInfo.tsx",
-                    lineNumber: 153,
+                    lineNumber: 158,
                     columnNumber: 21
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                lineNumber: 152,
-                columnNumber: 17
+                lineNumber: 157,
+                columnNumber: 14
             }, this)
         }
     ];
@@ -2865,12 +2865,12 @@ function VotingInfo() {
                                             className: "w-5 h-5 text-gold"
                                         }, void 0, false, {
                                             fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                            lineNumber: 182,
+                                            lineNumber: 174,
                                             columnNumber: 37
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                        lineNumber: 181,
+                                        lineNumber: 173,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2878,26 +2878,26 @@ function VotingInfo() {
                                         children: section.title
                                     }, void 0, false, {
                                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                        lineNumber: 184,
+                                        lineNumber: 176,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                lineNumber: 180,
+                                lineNumber: 172,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {
                                 className: `w-5 h-5 text-gold transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                lineNumber: 186,
+                                lineNumber: 178,
                                 columnNumber: 29
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                        lineNumber: 175,
+                        lineNumber: 171,
                         columnNumber: 25
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -2923,30 +2923,30 @@ function VotingInfo() {
                                 children: section.content
                             }, void 0, false, {
                                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                                lineNumber: 198,
+                                lineNumber: 194,
                                 columnNumber: 37
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/candidates/VotingInfo.tsx",
-                            lineNumber: 191,
-                            columnNumber: 33
+                            lineNumber: 182,
+                            columnNumber: 40
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/candidates/VotingInfo.tsx",
-                        lineNumber: 189,
+                        lineNumber: 181,
                         columnNumber: 25
                     }, this)
                 ]
             }, section.id, true, {
                 fileName: "[project]/components/candidates/VotingInfo.tsx",
-                lineNumber: 171,
-                columnNumber: 21
+                lineNumber: 170,
+                columnNumber: 14
             }, this);
         })
     }, void 0, false, {
         fileName: "[project]/components/candidates/VotingInfo.tsx",
-        lineNumber: 165,
-        columnNumber: 9
+        lineNumber: 166,
+        columnNumber: 10
     }, this);
 }
 _s(VotingInfo, "46hrkfsYRCsbdD0dZ8uCPZQDDvg=");
@@ -3002,8 +3002,8 @@ function ScrollReveal({ children, className = '', delay = 0, direction = 'up', d
             children: children
         }, void 0, false, {
             fileName: "[project]/components/layout/ScrollReveal.tsx",
-            lineNumber: 35,
-            columnNumber: 16
+            lineNumber: 43,
+            columnNumber: 12
         }, this);
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -3034,8 +3034,8 @@ function ScrollReveal({ children, className = '', delay = 0, direction = 'up', d
         children: children
     }, void 0, false, {
         fileName: "[project]/components/layout/ScrollReveal.tsx",
-        lineNumber: 39,
-        columnNumber: 9
+        lineNumber: 45,
+        columnNumber: 10
     }, this);
 }
 _s(ScrollReveal, "VVlbsF4XHDtJtLWyDw/S3b1ysqw=", false, function() {
@@ -3064,8 +3064,8 @@ function StaggerContainer({ children, className = '', staggerDelay = 0.08 }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/layout/ScrollReveal.tsx",
-        lineNumber: 64,
-        columnNumber: 9
+        lineNumber: 75,
+        columnNumber: 10
     }, this);
 }
 _c1 = StaggerContainer;
@@ -3078,8 +3078,8 @@ function StaggerItem({ children, className = '' }) {
             children: children
         }, void 0, false, {
             fileName: "[project]/components/layout/ScrollReveal.tsx",
-            lineNumber: 93,
-            columnNumber: 16
+            lineNumber: 98,
+            columnNumber: 12
         }, this);
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -3106,8 +3106,8 @@ function StaggerItem({ children, className = '' }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/layout/ScrollReveal.tsx",
-        lineNumber: 97,
-        columnNumber: 9
+        lineNumber: 100,
+        columnNumber: 10
     }, this);
 }
 _s1(StaggerItem, "VVlbsF4XHDtJtLWyDw/S3b1ysqw=", false, function() {
@@ -3208,8 +3208,8 @@ function AnimatedCounter({ end, duration = 2000, prefix = '', suffix = '', class
         ]
     }, void 0, true, {
         fileName: "[project]/components/layout/AnimatedCounter.tsx",
-        lineNumber: 72,
-        columnNumber: 9
+        lineNumber: 58,
+        columnNumber: 10
     }, this);
 }
 _s(AnimatedCounter, "p8fxCDC+R1ZuwOxvkt6vBzk57f0=", false, function() {
@@ -3381,7 +3381,7 @@ function CandidatesPage() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$layout$2f$Header$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/candidates/page.tsx",
-                lineNumber: 100,
+                lineNumber: 94,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -3394,7 +3394,7 @@ function CandidatesPage() {
                                 className: "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.06)_0%,_transparent_60%)]"
                             }, void 0, false, {
                                 fileName: "[project]/app/candidates/page.tsx",
-                                lineNumber: 104,
+                                lineNumber: 98,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3409,12 +3409,12 @@ function CandidatesPage() {
                                                     className: "w-8 h-8 text-gold"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/candidates/page.tsx",
-                                                    lineNumber: 109,
+                                                    lineNumber: 103,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 108,
+                                                lineNumber: 102,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -3422,7 +3422,7 @@ function CandidatesPage() {
                                                 children: "Ellis County Candidate Tracker"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 111,
+                                                lineNumber: 105,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3430,29 +3430,29 @@ function CandidatesPage() {
                                                 children: "Your comprehensive guide to every candidate running for office in Ellis County. Research positions, compare candidates, and make your voice heard."
                                             }, void 0, false, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 114,
+                                                lineNumber: 108,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/candidates/page.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 101,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/candidates/page.tsx",
-                                    lineNumber: 106,
+                                    lineNumber: 100,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/candidates/page.tsx",
-                                lineNumber: 105,
+                                lineNumber: 99,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/candidates/page.tsx",
-                        lineNumber: 103,
+                        lineNumber: 97,
                         columnNumber: 17
                     }, this),
                     nextElection && daysUntilNext && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -3471,12 +3471,12 @@ function CandidatesPage() {
                                                     className: "w-6 h-6 text-gold animate-pulse"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/candidates/page.tsx",
-                                                    lineNumber: 130,
+                                                    lineNumber: 123,
                                                     columnNumber: 41
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 129,
+                                                lineNumber: 122,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3490,7 +3490,7 @@ function CandidatesPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/candidates/page.tsx",
-                                                        lineNumber: 133,
+                                                        lineNumber: 126,
                                                         columnNumber: 41
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3503,19 +3503,19 @@ function CandidatesPage() {
                                                         })
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/candidates/page.tsx",
-                                                        lineNumber: 136,
+                                                        lineNumber: 129,
                                                         columnNumber: 41
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 132,
+                                                lineNumber: 125,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/candidates/page.tsx",
-                                        lineNumber: 128,
+                                        lineNumber: 121,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -3528,31 +3528,31 @@ function CandidatesPage() {
                                                 className: "w-4 h-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 147,
+                                                lineNumber: 140,
                                                 columnNumber: 37
                                             }, this),
                                             "Register to Vote"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/candidates/page.tsx",
-                                        lineNumber: 141,
+                                        lineNumber: 139,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/candidates/page.tsx",
-                                lineNumber: 127,
+                                lineNumber: 120,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/candidates/page.tsx",
-                            lineNumber: 126,
+                            lineNumber: 119,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/candidates/page.tsx",
-                        lineNumber: 125,
-                        columnNumber: 21
+                        lineNumber: 118,
+                        columnNumber: 51
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                         className: "border-b border-gold/10 py-6",
@@ -3570,6 +3570,86 @@ function CandidatesPage() {
                                                     end: stats.totalCandidates
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/candidates/page.tsx",
+                                                    lineNumber: 152,
+                                                    columnNumber: 90
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/candidates/page.tsx",
+                                                lineNumber: 152,
+                                                columnNumber: 33
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-xs text-cream/50 flex items-center justify-center gap-1",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
+                                                        className: "w-3 h-3"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/candidates/page.tsx",
+                                                        lineNumber: 153,
+                                                        columnNumber: 109
+                                                    }, this),
+                                                    " Candidates"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/candidates/page.tsx",
+                                                lineNumber: 153,
+                                                columnNumber: 33
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/candidates/page.tsx",
+                                        lineNumber: 151,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "glass-card text-center !p-4",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-2xl font-display font-bold text-gold",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$layout$2f$AnimatedCounter$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                    end: stats.races
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/candidates/page.tsx",
+                                                    lineNumber: 156,
+                                                    columnNumber: 90
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/candidates/page.tsx",
+                                                lineNumber: 156,
+                                                columnNumber: 33
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-xs text-cream/50 flex items-center justify-center gap-1",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bar$2d$chart$2d$3$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__BarChart3$3e$__["BarChart3"], {
+                                                        className: "w-3 h-3"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/candidates/page.tsx",
+                                                        lineNumber: 157,
+                                                        columnNumber: 109
+                                                    }, this),
+                                                    " Active Races"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/candidates/page.tsx",
+                                                lineNumber: 157,
+                                                columnNumber: 33
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/candidates/page.tsx",
+                                        lineNumber: 155,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "glass-card text-center !p-4",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-2xl font-display font-bold text-gold",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$layout$2f$AnimatedCounter$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                    end: stats.incumbents
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/candidates/page.tsx",
                                                     lineNumber: 160,
                                                     columnNumber: 90
                                                 }, this)
@@ -3581,14 +3661,14 @@ function CandidatesPage() {
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-xs text-cream/50 flex items-center justify-center gap-1",
                                                 children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"], {
                                                         className: "w-3 h-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/candidates/page.tsx",
                                                         lineNumber: 161,
                                                         columnNumber: 109
                                                     }, this),
-                                                    " Candidates"
+                                                    " Incumbents"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/candidates/page.tsx",
@@ -3607,7 +3687,7 @@ function CandidatesPage() {
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-2xl font-display font-bold text-gold",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$layout$2f$AnimatedCounter$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                                    end: stats.races
+                                                    end: stats.parties
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/candidates/page.tsx",
                                                     lineNumber: 164,
@@ -3621,14 +3701,14 @@ function CandidatesPage() {
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-xs text-cream/50 flex items-center justify-center gap-1",
                                                 children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bar$2d$chart$2d$3$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__BarChart3$3e$__["BarChart3"], {
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$vote$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Vote$3e$__["Vote"], {
                                                         className: "w-3 h-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/candidates/page.tsx",
                                                         lineNumber: 165,
                                                         columnNumber: 109
                                                     }, this),
-                                                    " Active Races"
+                                                    " Parties"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/candidates/page.tsx",
@@ -3640,101 +3720,21 @@ function CandidatesPage() {
                                         fileName: "[project]/app/candidates/page.tsx",
                                         lineNumber: 163,
                                         columnNumber: 29
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "glass-card text-center !p-4",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-2xl font-display font-bold text-gold",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$layout$2f$AnimatedCounter$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                                    end: stats.incumbents
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/candidates/page.tsx",
-                                                    lineNumber: 168,
-                                                    columnNumber: 90
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 168,
-                                                columnNumber: 33
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-xs text-cream/50 flex items-center justify-center gap-1",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"], {
-                                                        className: "w-3 h-3"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/candidates/page.tsx",
-                                                        lineNumber: 169,
-                                                        columnNumber: 109
-                                                    }, this),
-                                                    " Incumbents"
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 169,
-                                                columnNumber: 33
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/candidates/page.tsx",
-                                        lineNumber: 167,
-                                        columnNumber: 29
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "glass-card text-center !p-4",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-2xl font-display font-bold text-gold",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$layout$2f$AnimatedCounter$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                                    end: stats.parties
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/candidates/page.tsx",
-                                                    lineNumber: 172,
-                                                    columnNumber: 90
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 172,
-                                                columnNumber: 33
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-xs text-cream/50 flex items-center justify-center gap-1",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$vote$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Vote$3e$__["Vote"], {
-                                                        className: "w-3 h-3"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/candidates/page.tsx",
-                                                        lineNumber: 173,
-                                                        columnNumber: 109
-                                                    }, this),
-                                                    " Parties"
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 173,
-                                                columnNumber: 33
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/candidates/page.tsx",
-                                        lineNumber: 171,
-                                        columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/candidates/page.tsx",
-                                lineNumber: 158,
+                                lineNumber: 150,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/candidates/page.tsx",
-                            lineNumber: 157,
+                            lineNumber: 149,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/candidates/page.tsx",
-                        lineNumber: 156,
+                        lineNumber: 148,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -3751,12 +3751,12 @@ function CandidatesPage() {
                                         filteredCount: filteredCandidates.length
                                     }, void 0, false, {
                                         fileName: "[project]/app/candidates/page.tsx",
-                                        lineNumber: 184,
+                                        lineNumber: 176,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/candidates/page.tsx",
-                                    lineNumber: 183,
+                                    lineNumber: 175,
                                     columnNumber: 25
                                 }, this),
                                 loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3766,21 +3766,21 @@ function CandidatesPage() {
                                             className: "w-6 h-6 animate-spin text-gold"
                                         }, void 0, false, {
                                             fileName: "[project]/app/candidates/page.tsx",
-                                            lineNumber: 195,
+                                            lineNumber: 181,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: "Loading candidates..."
                                         }, void 0, false, {
                                             fileName: "[project]/app/candidates/page.tsx",
-                                            lineNumber: 196,
+                                            lineNumber: 182,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/candidates/page.tsx",
-                                    lineNumber: 194,
-                                    columnNumber: 29
+                                    lineNumber: 180,
+                                    columnNumber: 37
                                 }, this),
                                 !loading && filteredCandidates.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
@@ -3790,13 +3790,13 @@ function CandidatesPage() {
                                             index: index
                                         }, candidate.id, false, {
                                             fileName: "[project]/app/candidates/page.tsx",
-                                            lineNumber: 204,
-                                            columnNumber: 37
+                                            lineNumber: 187,
+                                            columnNumber: 79
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/app/candidates/page.tsx",
-                                    lineNumber: 202,
-                                    columnNumber: 29
+                                    lineNumber: 186,
+                                    columnNumber: 70
                                 }, this) : !loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "text-center py-16",
                                     children: [
@@ -3804,7 +3804,7 @@ function CandidatesPage() {
                                             className: "w-16 h-16 text-gold/30 mx-auto mb-4"
                                         }, void 0, false, {
                                             fileName: "[project]/app/candidates/page.tsx",
-                                            lineNumber: 214,
+                                            lineNumber: 189,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -3812,7 +3812,7 @@ function CandidatesPage() {
                                             children: "No candidates match your filters"
                                         }, void 0, false, {
                                             fileName: "[project]/app/candidates/page.tsx",
-                                            lineNumber: 215,
+                                            lineNumber: 190,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3820,7 +3820,7 @@ function CandidatesPage() {
                                             children: "Try adjusting your search or filter criteria"
                                         }, void 0, false, {
                                             fileName: "[project]/app/candidates/page.tsx",
-                                            lineNumber: 216,
+                                            lineNumber: 191,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3829,24 +3829,24 @@ function CandidatesPage() {
                                             children: "Clear All Filters"
                                         }, void 0, false, {
                                             fileName: "[project]/app/candidates/page.tsx",
-                                            lineNumber: 217,
+                                            lineNumber: 192,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/candidates/page.tsx",
-                                    lineNumber: 213,
-                                    columnNumber: 29
+                                    lineNumber: 188,
+                                    columnNumber: 50
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/candidates/page.tsx",
-                            lineNumber: 181,
+                            lineNumber: 173,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/candidates/page.tsx",
-                        lineNumber: 180,
+                        lineNumber: 172,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -3861,7 +3861,7 @@ function CandidatesPage() {
                                             className: "w-12 h-12 text-gold mx-auto mb-4"
                                         }, void 0, false, {
                                             fileName: "[project]/app/candidates/page.tsx",
-                                            lineNumber: 232,
+                                            lineNumber: 203,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -3869,7 +3869,7 @@ function CandidatesPage() {
                                             children: "Voting Information"
                                         }, void 0, false, {
                                             fileName: "[project]/app/candidates/page.tsx",
-                                            lineNumber: 233,
+                                            lineNumber: 204,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3877,36 +3877,36 @@ function CandidatesPage() {
                                             children: "Everything you need to know about registering, early voting, and casting your ballot in Ellis County."
                                         }, void 0, false, {
                                             fileName: "[project]/app/candidates/page.tsx",
-                                            lineNumber: 236,
+                                            lineNumber: 207,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/candidates/page.tsx",
-                                    lineNumber: 231,
+                                    lineNumber: 202,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "max-w-3xl mx-auto",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$candidates$2f$VotingInfo$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                         fileName: "[project]/app/candidates/page.tsx",
-                                        lineNumber: 241,
+                                        lineNumber: 212,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/candidates/page.tsx",
-                                    lineNumber: 240,
+                                    lineNumber: 211,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/candidates/page.tsx",
-                            lineNumber: 230,
+                            lineNumber: 201,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/candidates/page.tsx",
-                        lineNumber: 229,
+                        lineNumber: 200,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -3923,14 +3923,14 @@ function CandidatesPage() {
                                                 className: "w-5 h-5 text-gold"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 251,
+                                                lineNumber: 222,
                                                 columnNumber: 33
                                             }, this),
                                             "Data Sources"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/candidates/page.tsx",
-                                        lineNumber: 250,
+                                        lineNumber: 221,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3947,13 +3947,13 @@ function CandidatesPage() {
                                                         className: "w-3 h-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/candidates/page.tsx",
-                                                        lineNumber: 256,
+                                                        lineNumber: 227,
                                                         columnNumber: 60
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 255,
+                                                lineNumber: 226,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -3967,13 +3967,13 @@ function CandidatesPage() {
                                                         className: "w-3 h-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/candidates/page.tsx",
-                                                        lineNumber: 259,
+                                                        lineNumber: 230,
                                                         columnNumber: 59
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 258,
+                                                lineNumber: 229,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -3987,13 +3987,13 @@ function CandidatesPage() {
                                                         className: "w-3 h-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/candidates/page.tsx",
-                                                        lineNumber: 262,
+                                                        lineNumber: 233,
                                                         columnNumber: 49
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 261,
+                                                lineNumber: 232,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -4007,19 +4007,19 @@ function CandidatesPage() {
                                                         className: "w-3 h-3"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/candidates/page.tsx",
-                                                        lineNumber: 265,
+                                                        lineNumber: 236,
                                                         columnNumber: 51
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 264,
+                                                lineNumber: 235,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/candidates/page.tsx",
-                                        lineNumber: 254,
+                                        lineNumber: 225,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4029,14 +4029,14 @@ function CandidatesPage() {
                                                 className: "w-3 h-3"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 270,
+                                                lineNumber: 241,
                                                 columnNumber: 33
                                             }, this),
                                             "Data sourced from Ellis County Elections Department and Texas Secretary of State"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/candidates/page.tsx",
-                                        lineNumber: 269,
+                                        lineNumber: 240,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4046,7 +4046,7 @@ function CandidatesPage() {
                                                 className: "w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 275,
+                                                lineNumber: 246,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4054,40 +4054,40 @@ function CandidatesPage() {
                                                 children: disclaimer
                                             }, void 0, false, {
                                                 fileName: "[project]/app/candidates/page.tsx",
-                                                lineNumber: 276,
+                                                lineNumber: 247,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/candidates/page.tsx",
-                                        lineNumber: 274,
+                                        lineNumber: 245,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/candidates/page.tsx",
-                                lineNumber: 249,
+                                lineNumber: 220,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/candidates/page.tsx",
-                            lineNumber: 248,
+                            lineNumber: 219,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/candidates/page.tsx",
-                        lineNumber: 247,
+                        lineNumber: 218,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/candidates/page.tsx",
-                lineNumber: 101,
+                lineNumber: 95,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$layout$2f$Footer$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/candidates/page.tsx",
-                lineNumber: 284,
+                lineNumber: 255,
                 columnNumber: 13
             }, this),
             selectedCandidate && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$candidates$2f$CandidateModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -4095,8 +4095,8 @@ function CandidatesPage() {
                 onClose: ()=>setSelectedCandidate(null)
             }, void 0, false, {
                 fileName: "[project]/app/candidates/page.tsx",
-                lineNumber: 288,
-                columnNumber: 17
+                lineNumber: 258,
+                columnNumber: 35
             }, this)
         ]
     }, void 0, true);
