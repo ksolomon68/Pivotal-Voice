@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/$USER/pivotal-voice
+    - export DEPLOYPATH=/home/pivotalvoice/Pivotal-Voice
     - /bin/cp -R * $DEPLOYPATH/
     - /bin/cp -R .env.local.example $DEPLOYPATH/ 2>/dev/null; true
-    - . /home/$USER/nodevenv/pivotal-voice/24/bin/activate && cd $DEPLOYPATH && npm install
+    - . /home/pivotalvoice/nodevenv/pivotal-voice/24/bin/activate && cd $DEPLOYPATH && npm install
