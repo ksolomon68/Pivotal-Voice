@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LiveKitRoom, RoomAudioRenderer, useConnectionState } from '@livekit/components-react';
 import '@livekit/components-styles';
 import { BroadcastRole, BroadcastSession } from '@/lib/types/broadcast';
@@ -138,6 +138,15 @@ export default function StudioRoom({
     isUpdating,
 }: Props) {
     const [roomError, setRoomError] = useState<string | null>(null);
+    const [shouldConnect, setShouldConnect] = useState(false);
+
+    // Prevent double-connection race conditions in React 18 Strict Mode on dev server reload
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShouldConnect(true);
+        }, 300);
+        return () => clearTimeout(timer);
+    }, []);
 
     if (roomError) {
         return (
@@ -163,7 +172,7 @@ export default function StudioRoom({
         <LiveKitRoom
             token={token}
             serverUrl={livekitUrl}
-            connect={true}
+            connect={shouldConnect}
             video={false}
             audio={false}
             data-lk-theme="default"
