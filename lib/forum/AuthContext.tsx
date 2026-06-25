@@ -34,37 +34,41 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Force profile sync on mount
     useEffect(() => {
         const syncSession = async () => {
-            const { data: { session } } = await supabase.auth.getSession();
-            if (session?.user) {
-                const { data: profile } = await supabase
-                    .from('profiles')
-                    .select('*')
-                    .eq('id', session.user.id)
-                    .single();
+            try {
+                const { data: { session } } = await supabase.auth.getSession();
+                if (session?.user) {
+                    const { data: profile } = await supabase
+                        .from('profiles')
+                        .select('*')
+                        .eq('id', session.user.id)
+                        .single();
 
-                if (profile) {
-                    setState({
-                        user: {
-                            id: profile.id,
-                            email: profile.email,
-                            displayName: profile.display_name,
-                            joinDate: profile.join_date,
-                            city: profile.city,
-                            isBusinessOwner: profile.is_business_owner,
-                            yearsInCounty: profile.years_in_county,
-                            bio: profile.bio,
-                            reputation: profile.reputation,
-                            topicCount: profile.topic_count,
-                            replyCount: profile.reply_count,
-                            isAdmin: profile.is_admin,
-                            isModerator: profile.is_moderator,
-                            followedTopics: profile.followed_topics || [],
-                            notifications: profile.notifications || [],
-                        },
-                        isLoading: false
-                    });
-                    return;
+                    if (profile) {
+                        setState({
+                            user: {
+                                id: profile.id,
+                                email: profile.email,
+                                displayName: profile.display_name,
+                                joinDate: profile.join_date,
+                                city: profile.city,
+                                isBusinessOwner: profile.is_business_owner,
+                                yearsInCounty: profile.years_in_county,
+                                bio: profile.bio,
+                                reputation: profile.reputation,
+                                topicCount: profile.topic_count,
+                                replyCount: profile.reply_count,
+                                isAdmin: profile.is_admin,
+                                isModerator: profile.is_moderator,
+                                followedTopics: profile.followed_topics || [],
+                                notifications: profile.notifications || [],
+                            },
+                            isLoading: false
+                        });
+                        return;
+                    }
                 }
+            } catch (err) {
+                console.error('AuthContext syncSession error:', err);
             }
             setState({ user: null, isLoading: false });
         };
@@ -72,36 +76,43 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         syncSession();
 
         const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-            if (event === 'SIGNED_IN' && session) {
-                const { data: profile } = await supabase
-                    .from('profiles')
-                    .select('*')
-                    .eq('id', session.user.id)
-                    .single();
+            try {
+                if (event === 'SIGNED_IN' && session) {
+                    const { data: profile } = await supabase
+                        .from('profiles')
+                        .select('*')
+                        .eq('id', session.user.id)
+                        .single();
 
-                if (profile) {
-                    setState({
-                        user: {
-                            id: profile.id,
-                            email: profile.email,
-                            displayName: profile.display_name,
-                            joinDate: profile.join_date,
-                            city: profile.city,
-                            isBusinessOwner: profile.is_business_owner,
-                            yearsInCounty: profile.years_in_county,
-                            bio: profile.bio,
-                            reputation: profile.reputation,
-                            topicCount: profile.topic_count,
-                            replyCount: profile.reply_count,
-                            isAdmin: profile.is_admin,
-                            isModerator: profile.is_moderator,
-                            followedTopics: profile.followed_topics || [],
-                            notifications: profile.notifications || [],
-                        },
-                        isLoading: false
-                    });
+                    if (profile) {
+                        setState({
+                            user: {
+                                id: profile.id,
+                                email: profile.email,
+                                displayName: profile.display_name,
+                                joinDate: profile.join_date,
+                                city: profile.city,
+                                isBusinessOwner: profile.is_business_owner,
+                                yearsInCounty: profile.years_in_county,
+                                bio: profile.bio,
+                                reputation: profile.reputation,
+                                topicCount: profile.topic_count,
+                                replyCount: profile.reply_count,
+                                isAdmin: profile.is_admin,
+                                isModerator: profile.is_moderator,
+                                followedTopics: profile.followed_topics || [],
+                                notifications: profile.notifications || [],
+                            },
+                            isLoading: false
+                        });
+                    } else {
+                        setState({ user: null, isLoading: false });
+                    }
+                } else if (event === 'SIGNED_OUT') {
+                    setState({ user: null, isLoading: false });
                 }
-            } else if (event === 'SIGNED_OUT') {
+            } catch (err) {
+                console.error('AuthContext onAuthStateChange error:', err);
                 setState({ user: null, isLoading: false });
             }
         });
