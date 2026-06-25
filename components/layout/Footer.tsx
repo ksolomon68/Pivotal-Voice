@@ -2,7 +2,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Twitter, Linkedin, Youtube, Instagram } from 'lucide-react';
+import { useState } from 'react';
+import { Facebook, Youtube, Instagram } from 'lucide-react';
+import { addSubscriber } from '@/lib/crm/newsletter-service';
 
 const platformLinks = [
     { name: 'Calendar', href: '/calendar' },
@@ -21,13 +23,26 @@ const serviceLinks = [
 
 const socialLinks = [
     { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/pivotalvoice' },
-    { name: 'Twitter', icon: Twitter, href: '#' },
-    { name: 'LinkedIn', icon: Linkedin, href: '#' },
     { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/channel/UCbqEwPoQ211fx8IfHdwFK7w' },
-    { name: 'Instagram', icon: Instagram, href: '#' },
+    { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/pivotal_voice/' },
 ];
 
 export default function Footer() {
+    const [email, setEmail] = useState('');
+    const [subStatus, setSubStatus] = useState<'idle' | 'ok' | 'err'>('idle');
+
+    const handleSubscribe = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) return;
+        try {
+            await addSubscriber({ email, name: '', zipCode: '', interests: [], optInMethod: 'homepage' });
+            setSubStatus('ok');
+            setEmail('');
+        } catch {
+            setSubStatus('err');
+        }
+    };
+
     return (
         <footer className="relative bg-navy-dark border-t border-gold/10 mt-0">
             {/* Gold accent line */}
@@ -137,19 +152,29 @@ export default function Footer() {
                                 <p className="text-cream/50 text-sm mb-3">
                                     Subscribe to our newsletter
                                 </p>
-                                <form className="flex flex-col sm:flex-row gap-2">
-                                    <input
-                                        type="email"
-                                        placeholder="Your email"
-                                        className="input text-sm flex-1 min-w-0 !py-2.5 !px-4 sm:!rounded-l-xl sm:!rounded-r-none sm:!border-r-0"
-                                    />
-                                    <button
-                                        type="submit"
-                                        className="btn-primary text-sm !px-4 !py-2.5 sm:!rounded-l-none sm:!rounded-r-xl whitespace-nowrap w-full sm:w-auto"
-                                    >
-                                        Subscribe
-                                    </button>
-                                </form>
+                                {subStatus === 'ok' ? (
+                                    <p className="text-green-400 text-sm">You&apos;re subscribed!</p>
+                                ) : (
+                                    <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
+                                        <input
+                                            type="email"
+                                            placeholder="Your email"
+                                            value={email}
+                                            onChange={e => setEmail(e.target.value)}
+                                            required
+                                            className="input text-sm flex-1 min-w-0 !py-2.5 !px-4 sm:!rounded-l-xl sm:!rounded-r-none sm:!border-r-0"
+                                        />
+                                        <button
+                                            type="submit"
+                                            className="btn-primary text-sm !px-4 !py-2.5 sm:!rounded-l-none sm:!rounded-r-xl whitespace-nowrap w-full sm:w-auto"
+                                        >
+                                            Subscribe
+                                        </button>
+                                    </form>
+                                )}
+                                {subStatus === 'err' && (
+                                    <p className="text-red-400 text-xs mt-1">Something went wrong — please try again.</p>
+                                )}
                             </div>
                         </div>
                     </div>
