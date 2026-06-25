@@ -1,0 +1,20 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/admin/page": "/admin",
+  "/api/candidates/live/route": "/api/candidates/live",
+  "/api/civic-events/route": "/api/civic-events",
+  "/api/community-feed/route": "/api/community-feed",
+  "/api/events/ics/route": "/api/events/ics",
+  "/api/events/route": "/api/events",
+  "/calendar/page": "/calendar",
+  "/candidates/page": "/candidates",
+  "/debates/page": "/debates",
+  "/forum/page": "/forum",
+  "/forum/topic/[id]/page": "/forum/topic/[id]",
+  "/page": "/",
+  "/podcast/page": "/podcast",
+  "/resources/page": "/resources",
+  "/services/page": "/services",
+  "/transparency/page": "/transparency"
+}

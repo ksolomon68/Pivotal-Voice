@@ -1,17 +1,4 @@
 ---
-# cPanel Git Deployment Configuration
-# Learn more: https://docs.cpanel.net/cpanel/files/git-version-control/
-
 deployment:
   tasks:
-    # 1. Define the path where your website/application files should be deployed.
-    # IMPORTANT: Replace 'your_cpanel_username' with your actual cPanel username,
-    # and adjust the directory path (e.g., public_html or a subdomain folder) as needed.
-    - export DEPLOYPATH=/home/pivotalvoice/Pivotal-Voice
-
-    # 2. Sync files from the repository to the deployment folder, excluding unnecessary files.
-    - /bin/rsync -a --exclude='.git' --exclude='node_modules' --exclude='.env' --exclude='.env.local' ./ $DEPLOYPATH/
-
-    # 3. (Optional) Touch the restart file to trigger a reload of the Node.js application.
-    # Un-comment the line below if you are using cPanel's Application Manager for Node.js.
-    # - touch $DEPLOYPATH/tmp/restart.txt
+    - . /home/pivotalvoice/nodevenv/Pivotal-Voice/24/bin/activate && npm install --production
