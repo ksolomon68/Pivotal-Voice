@@ -142,7 +142,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }]);
 
         if (profileError) {
-            console.error('Profile creation error:', profileError);
+            console.error('Profile creation error:', {
+                message: profileError.message,
+                details: profileError.details,
+                hint: profileError.hint,
+                code: profileError.code
+            });
             // We don't fail registration if profile insert fails here, 
             // but ideally we'd have a DB trigger.
         }
