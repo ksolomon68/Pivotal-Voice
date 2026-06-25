@@ -16,13 +16,18 @@ export default function Error({
 
     return (
         <div style={{ background: '#0d1625', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-            <div style={{ textAlign: 'center', maxWidth: 480 }}>
+            <div style={{ textAlign: 'center', maxWidth: 520 }}>
                 <h2 style={{ color: '#d4af37', fontSize: '1.5rem', marginBottom: '1rem', fontFamily: 'sans-serif' }}>
                     Page Error
                 </h2>
-                <p style={{ color: 'rgba(245,240,232,0.6)', marginBottom: '1.5rem', fontSize: '0.9rem', fontFamily: 'sans-serif' }}>
+                <p style={{ color: 'rgba(245,240,232,0.6)', marginBottom: '1rem', fontSize: '0.9rem', fontFamily: 'sans-serif' }}>
                     This page encountered an error. You can try again or return home.
                 </p>
+                {(error?.message || error?.digest) && (
+                    <p style={{ color: 'rgba(245,240,232,0.35)', marginBottom: '1.5rem', fontSize: '0.75rem', fontFamily: 'monospace', background: 'rgba(255,255,255,0.05)', padding: '0.5rem 0.75rem', borderRadius: '0.375rem', wordBreak: 'break-all' }}>
+                        {error.digest ? `[${error.digest}] ` : ''}{error.message}
+                    </p>
+                )}
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                     <button
                         onClick={reset}
