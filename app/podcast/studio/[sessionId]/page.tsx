@@ -16,7 +16,7 @@ export default function StudioPage() {
     const { sessionId } = useParams<{ sessionId: string }>();
     const searchParams = useSearchParams();
     const router = useRouter();
-    const { user } = useAuth();
+    const { user, isLoading: authLoading } = useAuth();
 
     const inviteToken = searchParams.get('invite') || '';
 
@@ -32,7 +32,15 @@ export default function StudioPage() {
     const [sessionStatus, setSessionStatus] = useState<BroadcastSession['status']>('scheduled');
 
     useEffect(() => {
-        if (!user || !sessionId) return;
+        // Wait for auth to finish loading before running init
+        if (authLoading || !sessionId) return;
+
+        // If auth is done loading and there's no user, we can only proceed as guest
+        if (!user && !inviteToken) {
+            // Not logged in and no invite token – redirect to live viewer
+            router.replace(`/podcast/live/${sessionId}`);
+            return;
+        }
 
         async function init() {
             try {
@@ -42,9 +50,9 @@ export default function StudioPage() {
                 setSessionStatus(s.status);
 
                 // Determine role
-                if (user!.isAdmin && s.hostId === user!.id) {
+                if (user?.isAdmin && s.hostId === user.id) {
                     setRole('host');
-                    await fetchToken('host', s, user!.displayName);
+                    await fetchToken('host', s, user.displayName);
                 } else if (inviteToken && inviteToken === s.guestInviteToken) {
                     setRole('guest');
                     setPageState('name-prompt');
@@ -59,7 +67,7 @@ export default function StudioPage() {
 
         init();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user, sessionId]);
+    }, [authLoading, user, sessionId]);
 
     async function fetchToken(r: BroadcastRole, s: BroadcastSession, name: string) {
         setPageState('connecting');
