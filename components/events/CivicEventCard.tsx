@@ -21,7 +21,7 @@ export default function CivicEventCard({ event, userId, onRSVPChange, compact = 
     const [showCalendar, setShowCalendar] = useState(false);
     const [isRSVPed, setIsRSVPed] = useState(userId ? event.rsvpUsers.includes(userId) : false);
 
-    const eventDate = new Date(event.date + 'T' + event.startTime);
+    const eventDate = new Date(event.date + 'T' + (event.startTime || '00:00'));
     const isToday = event.date === new Date().toISOString().split('T')[0];
     const now = new Date();
     const endOfWeek = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
@@ -34,7 +34,8 @@ export default function CivicEventCard({ event, userId, onRSVPChange, compact = 
         onRSVPChange?.();
     };
 
-    const formatTime = (time: string) => {
+    const formatTime = (time: string | undefined | null) => {
+        if (!time) return '';
         const [h, m] = time.split(':').map(Number);
         const ampm = h >= 12 ? 'PM' : 'AM';
         return `${h % 12 || 12}:${m.toString().padStart(2, '0')} ${ampm}`;
