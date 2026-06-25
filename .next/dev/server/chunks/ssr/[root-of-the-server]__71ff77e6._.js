@@ -15,7 +15,7 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@supabase/supabase-js/dist/index.mjs [app-ssr] (ecmascript) <locals>");
 ;
 const supabaseUrl = ("TURBOPACK compile-time value", "https://cndaaiaygxhmuvqtgxhk.supabase.co") || '';
-const supabaseAnonKey = ("TURBOPACK compile-time value", "EYJHBGCIOIJIUZI1NIISINR5CCI6IKPXVCJ9.EYJPC3MIOIJZDXBHYMFZZSISINJLZII6IMNUZGFHAWF5Z3HOBXV2CXRNEGHRIIWICM9SZSI6IMFUB24ILCJPYXQIOJE3NZA2OTQYMZMSIMV4CCI6MJA4NJI3MDIZM30.A0GW6NI_SBSR8GN0O14RWZNWXOA4XK6SG60MOOYSMWE") || '';
+const supabaseAnonKey = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNuZGFhaWF5Z3hobXV2cXRneGhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2OTQyMzMsImV4cCI6MjA4NjI3MDIzM30.a0gw6nI_sBsR8GN0O14rwzNwXOa4XK6sg60mooySmwE") || '';
 const supabase = ("TURBOPACK compile-time truthy", 1) ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$supabase$2d$js$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["createClient"])(supabaseUrl, supabaseAnonKey) : "TURBOPACK unreachable";
 if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
 ;

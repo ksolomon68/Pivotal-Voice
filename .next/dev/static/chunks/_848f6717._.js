@@ -1015,7 +1015,7 @@ let mockSessions = [
         createdAt: new Date().toISOString()
     }
 ];
-const isMockMode = !("TURBOPACK compile-time value", "https://cndaaiaygxhmuvqtgxhk.supabase.co") || !("TURBOPACK compile-time value", "EYJHBGCIOIJIUZI1NIISINR5CCI6IKPXVCJ9.EYJPC3MIOIJZDXBHYMFZZSISINJLZII6IMNUZGFHAWF5Z3HOBXV2CXRNEGHRIIWICM9SZSI6IMFUB24ILCJPYXQIOJE3NZA2OTQYMZMSIMV4CCI6MJA4NJI3MDIZM30.A0GW6NI_SBSR8GN0O14RWZNWXOA4XK6SG60MOOYSMWE");
+const isMockMode = !("TURBOPACK compile-time value", "https://cndaaiaygxhmuvqtgxhk.supabase.co") || !("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNuZGFhaWF5Z3hobXV2cXRneGhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2OTQyMzMsImV4cCI6MjA4NjI3MDIzM30.a0gw6nI_sBsR8GN0O14rwzNwXOa4XK6sg60mooySmwE");
 async function createSession(hostId, hostName, title, description, scheduledAt) {
     if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;

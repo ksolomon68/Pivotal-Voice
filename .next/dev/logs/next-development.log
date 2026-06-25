@@ -4,3 +4,10 @@
 [00:00:06.193] Browser WARN    Image with src "/images/logo.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
 [00:20:19.756] Browser WARN    Image with src "/images/logo.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
 [00:26:30.406] Server  LOG     ✓ Compiled in 1101ms
+[00:43:33.655] Server  LOG       Reload env: .env.local
+[00:43:33.947] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:43:33.953] Server  LOG     ✓ Compiled in 98ms
+[00:43:33.954] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./lib/supabase/client.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:43:34.146] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./lib/supabase/client.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:43:34.637] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:43:36.891] Browser WARN    Image with src "/images/logo.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
