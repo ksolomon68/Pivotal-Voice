@@ -1,0 +1,3 @@
+{
+  "/api/broadcast/sessions/[sessionId]/viewer-decrement/route": "app/api/broadcast/sessions/[sessionId]/viewer-decrement/route.js"
+}
