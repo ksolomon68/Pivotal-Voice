@@ -33,9 +33,7 @@ export default function BroadcastCreatePage() {
         );
     }
 
-    const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-    if (!isMockMode && !user?.isAdmin) {
+    if (!user?.isAdmin) {
         return (
             <>
                 <Header />
@@ -61,37 +59,22 @@ export default function BroadcastCreatePage() {
         setError('');
 
         try {
-            let res;
-            if (isMockMode) {
-                res = await fetch('/api/broadcast/sessions', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        title: title.trim(),
-                        description: description.trim() || undefined,
-                        scheduledAt: scheduledAt || undefined,
-                    }),
-                });
-            } else {
-                const { data: { session: authSession } } = await supabase.auth.getSession();
-                const token = authSession?.access_token;
-                if (!token) throw new Error('Not authenticated');
+            const { data: { session: authSession } } = await supabase.auth.getSession();
+            const token = authSession?.access_token;
+            if (!token) throw new Error('Not authenticated');
 
-                res = await fetch('/api/broadcast/sessions', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`,
-                    },
-                    body: JSON.stringify({
-                        title: title.trim(),
-                        description: description.trim() || undefined,
-                        scheduledAt: scheduledAt || undefined,
-                    }),
-                });
-            }
+            const res = await fetch('/api/broadcast/sessions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    title: title.trim(),
+                    description: description.trim() || undefined,
+                    scheduledAt: scheduledAt || undefined,
+                }),
+            });
 
             if (!res.ok) {
                 const data = await res.json();

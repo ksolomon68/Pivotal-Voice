@@ -57,7 +57,7 @@ export async function getCategories(): Promise<ForumCategory[]> {
         .order('order', { ascending: true });
 
     if (error || !data || data.length === 0) {
-        if (error) console.error('Error fetching categories:', error);
+        if (error) console.error('Error fetching categories:', error.message);
         return FORUM_CATEGORIES;
     }
     return data.map(cat => ({
@@ -88,7 +88,7 @@ export async function getTopics(): Promise<Topic[]> {
         .order('created_at', { ascending: false });
 
     if (error || !data || data.length === 0) {
-        if (error) console.error('Error fetching topics:', error);
+        if (error) console.error('Error fetching topics:', error.message);
         return SEED_TOPICS;
     }
     return data.map(mapTopic);

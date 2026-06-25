@@ -61,7 +61,7 @@ export default function PodcastPage() {
                                     <Rss className="w-4 h-4" />
                                     RSS Feed
                                 </button>
-                                {(user?.isAdmin || !process.env.NEXT_PUBLIC_SUPABASE_URL) && (
+                                {user?.isAdmin && (
                                     <Link
                                         href="/podcast/broadcast"
                                         className="btn-primary text-sm flex items-center gap-2 bg-red-600 hover:bg-red-700 border-red-500"

@@ -31,15 +31,10 @@ export default function StudioPage() {
     const [isUpdating, setIsUpdating] = useState(false);
     const [sessionStatus, setSessionStatus] = useState<BroadcastSession['status']>('scheduled');
 
-    const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    const activeUser = user || (isMockMode ? { id: 'mock-host-1', displayName: 'Commissioner Smith', isAdmin: true } : null);
-
     useEffect(() => {
-        const currentUser = activeUser;
-        if (!currentUser || !sessionId) return;
+        if (!user || !sessionId) return;
 
         async function init() {
-            if (!currentUser) return;
             try {
                 const s = await getSession(sessionId as string);
                 if (!s) throw new Error('Session not found');
@@ -47,9 +42,9 @@ export default function StudioPage() {
                 setSessionStatus(s.status);
 
                 // Determine role
-                if (currentUser.isAdmin && s.hostId === currentUser.id) {
+                if (user!.isAdmin && s.hostId === user!.id) {
                     setRole('host');
-                    await fetchToken('host', s, currentUser.displayName);
+                    await fetchToken('host', s, user!.displayName);
                 } else if (inviteToken && inviteToken === s.guestInviteToken) {
                     setRole('guest');
                     setPageState('name-prompt');

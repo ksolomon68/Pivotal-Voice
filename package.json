@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build.js",
+    "build:force": "next build",
     "start": "next start",
     "start:hostinger": "NODE_ENV=production node server.js",
-    "postinstall": "next build",
     "lint": "next lint"
   },
   "dependencies": {

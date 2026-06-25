@@ -1,6 +1,7 @@
 {
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
+  "/admin/login/page": "/admin/login",
   "/admin/page": "/admin",
   "/api/broadcast/sessions/[sessionId]/route": "/api/broadcast/sessions/[sessionId]",
   "/api/broadcast/sessions/[sessionId]/viewer-decrement/route": "/api/broadcast/sessions/[sessionId]/viewer-decrement",
