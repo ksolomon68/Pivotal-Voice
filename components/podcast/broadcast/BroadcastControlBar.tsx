@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useLocalParticipant } from '@livekit/components-react';
+import { useLocalParticipant, useConnectionState } from '@livekit/components-react';
 import { Mic, MicOff, Video, VideoOff, Radio, Square } from 'lucide-react';
 import { BroadcastRole, BroadcastStatus } from '@/lib/types/broadcast';
 
@@ -15,9 +15,12 @@ interface Props {
 
 export default function BroadcastControlBar({ role, sessionStatus, onGoLive, onEnd, isUpdating }: Props) {
     const { localParticipant, isMicrophoneEnabled, isCameraEnabled } = useLocalParticipant();
+    const connectionState = useConnectionState();
+    const isConnected = connectionState === 'connected';
     const [error, setError] = useState<string | null>(null);
 
     const toggleMic = async () => {
+        if (!isConnected) return;
         try {
             setError(null);
             await localParticipant.setMicrophoneEnabled(!isMicrophoneEnabled);
@@ -28,6 +31,7 @@ export default function BroadcastControlBar({ role, sessionStatus, onGoLive, onE
     };
 
     const toggleCamera = async () => {
+        if (!isConnected) return;
         try {
             setError(null);
             await localParticipant.setCameraEnabled(!isCameraEnabled);
@@ -48,28 +52,50 @@ export default function BroadcastControlBar({ role, sessionStatus, onGoLive, onE
             <div className="flex items-center gap-2">
                 <button
                     onClick={toggleMic}
+                    disabled={!isConnected}
                     className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium transition-all ${
-                        !isMicrophoneEnabled
+                        !isConnected
+                            ? 'opacity-50 cursor-not-allowed bg-white/5 border-white/10 text-cream/40'
+                            : !isMicrophoneEnabled
                             ? 'bg-red-500/15 border-red-400/30 text-red-400 hover:bg-red-500/25'
                             : 'bg-white/5 border-white/15 text-cream/80 hover:bg-white/10'
                     }`}
-                    title={!isMicrophoneEnabled ? 'Unmute microphone' : 'Mute microphone'}
+                    title={!isConnected ? 'Connecting to studio...' : !isMicrophoneEnabled ? 'Unmute microphone' : 'Mute microphone'}
                 >
-                    {!isMicrophoneEnabled ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
-                    <span className="hidden sm:inline">{!isMicrophoneEnabled ? 'Unmute' : 'Mute'}</span>
+                    {!isConnected ? (
+                        <div className="w-4 h-4 border-2 border-cream/30 border-t-cream rounded-full animate-spin shrink-0" />
+                    ) : !isMicrophoneEnabled ? (
+                        <MicOff className="w-4 h-4" />
+                    ) : (
+                        <Mic className="w-4 h-4" />
+                    )}
+                    <span className="hidden sm:inline">
+                        {!isConnected ? 'Connecting...' : !isMicrophoneEnabled ? 'Unmute' : 'Mute'}
+                    </span>
                 </button>
 
                 <button
                     onClick={toggleCamera}
+                    disabled={!isConnected}
                     className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium transition-all ${
-                        !isCameraEnabled
+                        !isConnected
+                            ? 'opacity-50 cursor-not-allowed bg-white/5 border-white/10 text-cream/40'
+                            : !isCameraEnabled
                             ? 'bg-red-500/15 border-red-400/30 text-red-400 hover:bg-red-500/25'
                             : 'bg-white/5 border-white/15 text-cream/80 hover:bg-white/10'
                     }`}
-                    title={!isCameraEnabled ? 'Enable camera' : 'Disable camera'}
+                    title={!isConnected ? 'Connecting to studio...' : !isCameraEnabled ? 'Enable camera' : 'Disable camera'}
                 >
-                    {!isCameraEnabled ? <VideoOff className="w-4 h-4" /> : <Video className="w-4 h-4" />}
-                    <span className="hidden sm:inline">{!isCameraEnabled ? 'Camera On' : 'Camera Off'}</span>
+                    {!isConnected ? (
+                        <div className="w-4 h-4 border-2 border-cream/30 border-t-cream rounded-full animate-spin shrink-0" />
+                    ) : !isCameraEnabled ? (
+                        <VideoOff className="w-4 h-4" />
+                    ) : (
+                        <Video className="w-4 h-4" />
+                    )}
+                    <span className="hidden sm:inline">
+                        {!isConnected ? 'Connecting...' : !isCameraEnabled ? 'Camera On' : 'Camera Off'}
+                    </span>
                 </button>
             </div>
 
@@ -78,11 +104,11 @@ export default function BroadcastControlBar({ role, sessionStatus, onGoLive, onE
                     {sessionStatus === 'scheduled' && (
                         <button
                             onClick={onGoLive}
-                            disabled={isUpdating}
+                            disabled={isUpdating || !isConnected}
                             className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-red-500 hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm transition-colors"
                         >
                             <Radio className="w-4 h-4" />
-                            {isUpdating ? 'Starting...' : 'Go Live'}
+                            {isUpdating ? 'Starting...' : !isConnected ? 'Connecting to Studio...' : 'Go Live'}
                         </button>
                     )}
                     {sessionStatus === 'live' && (
