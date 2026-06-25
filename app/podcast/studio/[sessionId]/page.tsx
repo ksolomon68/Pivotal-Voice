@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import { useAuth } from '@/lib/forum/AuthContext';
@@ -30,10 +30,17 @@ export default function StudioPage() {
     const [error, setError] = useState('');
     const [isUpdating, setIsUpdating] = useState(false);
     const [sessionStatus, setSessionStatus] = useState<BroadcastSession['status']>('scheduled');
+    // Prevent the init effect from running more than once per mount.
+    // The auth context can fire two state updates (syncSession + onAuthStateChange),
+    // which would call fetchToken twice and cause an "invalid token" error from LiveKit.
+    const initializedRef = useRef(false);
 
     useEffect(() => {
         // Wait for auth to finish loading before running init
         if (authLoading || !sessionId) return;
+        // Prevent running more than once per page load
+        if (initializedRef.current) return;
+        initializedRef.current = true;
 
         // If auth is done loading and there's no user, we can only proceed as guest
         if (!user && !inviteToken) {
