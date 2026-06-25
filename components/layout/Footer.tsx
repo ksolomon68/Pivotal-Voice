@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Facebook, Twitter, Linkedin, Youtube, Instagram } from 'lucide-react';
+import { Facebook, Youtube, Instagram } from 'lucide-react';
 import { addSubscriber } from '@/lib/crm/newsletter-service';
 
 const platformLinks = [
@@ -23,10 +23,8 @@ const serviceLinks = [
 
 const socialLinks = [
     { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/pivotalvoice' },
-    { name: 'Twitter', icon: Twitter, href: '#' },
-    { name: 'LinkedIn', icon: Linkedin, href: '#' },
     { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/channel/UCbqEwPoQ211fx8IfHdwFK7w' },
-    { name: 'Instagram', icon: Instagram, href: '#' },
+    { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/pivotal_voice/' },
 ];
 
 export default function Footer() {
