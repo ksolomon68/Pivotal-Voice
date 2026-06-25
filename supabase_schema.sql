@@ -125,18 +125,31 @@ ALTER TABLE public.replies ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.civic_events ENABLE ROW LEVEL SECURITY;
 
 -- Allow public read Access
+DROP POLICY IF EXISTS "Allow public read on profiles" ON public.profiles;
 CREATE POLICY "Allow public read on profiles" ON public.profiles FOR SELECT USING (true);
-CREATE POLICY "Allow public read on topics" ON public.topics FOR SELECT USING (true);
-CREATE POLICY "Allow public read on replies" ON public.replies FOR SELECT USING (true);
-CREATE POLICY "Allow public read on categories" ON public.forum_categories FOR SELECT USING (true);
-CREATE POLICY "Allow public read on events" ON public.civic_events FOR SELECT USING (true);
 
--- Allow users to manage their own profiles, and admins to manage all
+DROP POLICY IF EXISTS "Users can insert their own profile" ON public.profiles;
 CREATE POLICY "Users can insert their own profile" ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id);
+
+DROP POLICY IF EXISTS "Users can update their own profile" ON public.profiles;
 CREATE POLICY "Users can update their own profile" ON public.profiles FOR UPDATE USING (auth.uid() = id) WITH CHECK (auth.uid() = id);
+
+DROP POLICY IF EXISTS "Admins can update all profiles" ON public.profiles;
 CREATE POLICY "Admins can update all profiles" ON public.profiles FOR UPDATE USING (
     (SELECT is_admin FROM public.profiles WHERE id = auth.uid()) = true
 );
+
+DROP POLICY IF EXISTS "Allow public read on topics" ON public.topics;
+CREATE POLICY "Allow public read on topics" ON public.topics FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Allow public read on replies" ON public.replies;
+CREATE POLICY "Allow public read on replies" ON public.replies FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Allow public read on categories" ON public.forum_categories;
+CREATE POLICY "Allow public read on categories" ON public.forum_categories FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Allow public read on events" ON public.civic_events;
+CREATE POLICY "Allow public read on events" ON public.civic_events FOR SELECT USING (true);
 
 -- Functions
 CREATE OR REPLACE FUNCTION update_updated_at_column()
@@ -147,8 +160,13 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
+DROP TRIGGER IF EXISTS update_topics_updated_at ON public.topics;
 CREATE TRIGGER update_topics_updated_at BEFORE UPDATE ON public.topics FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+
+DROP TRIGGER IF EXISTS update_replies_updated_at ON public.replies;
 CREATE TRIGGER update_replies_updated_at BEFORE UPDATE ON public.replies FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
+
+DROP TRIGGER IF EXISTS update_profiles_updated_at ON public.profiles;
 CREATE TRIGGER update_profiles_updated_at BEFORE UPDATE ON public.profiles FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
 -- 8. Broadcast Sessions (Live Podcast)
@@ -170,15 +188,18 @@ CREATE TABLE IF NOT EXISTS public.broadcast_sessions (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+DROP TRIGGER IF EXISTS update_broadcast_sessions_updated_at ON public.broadcast_sessions;
 CREATE TRIGGER update_broadcast_sessions_updated_at
     BEFORE UPDATE ON public.broadcast_sessions
     FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 
 ALTER TABLE public.broadcast_sessions ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Public can read broadcast sessions" ON public.broadcast_sessions;
 CREATE POLICY "Public can read broadcast sessions"
     ON public.broadcast_sessions FOR SELECT USING (true);
 
+DROP POLICY IF EXISTS "Host can manage own session" ON public.broadcast_sessions;
 CREATE POLICY "Host can manage own session"
     ON public.broadcast_sessions FOR ALL
     USING (auth.uid() = host_id) WITH CHECK (auth.uid() = host_id);
@@ -193,3 +214,6 @@ CREATE OR REPLACE FUNCTION decrement_viewer_count(session_id UUID)
 RETURNS void LANGUAGE sql AS $$
     UPDATE public.broadcast_sessions SET viewer_count = GREATEST(viewer_count - 1, 0) WHERE id = session_id;
 $$;
+
+-- Force PostgREST schema cache reload
+NOTIFY pgrst, 'reload schema';
