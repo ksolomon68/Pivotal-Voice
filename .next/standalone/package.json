@@ -1,0 +1,40 @@
+{
+  "name": "pivotal-voice",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "node scripts/build.js",
+    "build:force": "next build",
+    "start": "next start",
+    "start:hostinger": "NODE_ENV=production node server.js",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
+    "@livekit/components-react": "^2.9.21",
+    "@livekit/components-styles": "^1.2.0",
+    "@supabase/supabase-js": "^2.95.3",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "cheerio": "^1.2.0",
+    "clsx": "^2.1.0",
+    "date-fns": "^3.3.1",
+    "eslint": "^9",
+    "eslint-config-next": "^16.1.6",
+    "framer-motion": "^11.0.0",
+    "livekit-server-sdk": "^2.15.5",
+    "lucide-react": "^0.344.0",
+    "next": "^16.1.6",
+    "postcss": "^8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.51.0",
+    "recharts": "^2.12.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5",
+    "zod": "^3.22.4"
+  }
+}
