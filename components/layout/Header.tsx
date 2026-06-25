@@ -3,9 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
-import { Menu, X, Search, User } from 'lucide-react';
+import { Menu, X, Search, User, LayoutDashboard } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '@/lib/forum/AuthContext';
 
 const navigation = [
     { name: 'Calendar', href: '/calendar' },
@@ -18,6 +19,7 @@ const navigation = [
 ];
 
 export default function Header() {
+    const { user } = useAuth();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -121,12 +123,13 @@ export default function Header() {
                                 Book Consultation
                             </Link>
 
-                            <button
-                                aria-label="User account"
+                            <Link
+                                href={user?.isAdmin ? '/admin' : '/admin/login'}
+                                aria-label={user?.isAdmin ? 'Admin dashboard' : 'Admin login'}
                                 className="hidden md:flex p-2.5 text-cream/60 hover:text-gold rounded-full hover:bg-gold/10 transition-all duration-300"
                             >
-                                <User className="w-5 h-5" />
-                            </button>
+                                {user?.isAdmin ? <LayoutDashboard className="w-5 h-5" /> : <User className="w-5 h-5" />}
+                            </Link>
 
                             {/* Mobile menu button */}
                             <button
