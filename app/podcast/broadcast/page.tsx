@@ -33,7 +33,9 @@ export default function BroadcastCreatePage() {
         );
     }
 
-    if (!user?.isAdmin) {
+    const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!isMockMode && !user?.isAdmin) {
         return (
             <>
                 <Header />
@@ -59,22 +61,37 @@ export default function BroadcastCreatePage() {
         setError('');
 
         try {
-            const { data: { session: authSession } } = await supabase.auth.getSession();
-            const token = authSession?.access_token;
-            if (!token) throw new Error('Not authenticated');
+            let res;
+            if (isMockMode) {
+                res = await fetch('/api/broadcast/sessions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        title: title.trim(),
+                        description: description.trim() || undefined,
+                        scheduledAt: scheduledAt || undefined,
+                    }),
+                });
+            } else {
+                const { data: { session: authSession } } = await supabase.auth.getSession();
+                const token = authSession?.access_token;
+                if (!token) throw new Error('Not authenticated');
 
-            const res = await fetch('/api/broadcast/sessions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    title: title.trim(),
-                    description: description.trim() || undefined,
-                    scheduledAt: scheduledAt || undefined,
-                }),
-            });
+                res = await fetch('/api/broadcast/sessions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({
+                        title: title.trim(),
+                        description: description.trim() || undefined,
+                        scheduledAt: scheduledAt || undefined,
+                    }),
+                });
+            }
 
             if (!res.ok) {
                 const data = await res.json();

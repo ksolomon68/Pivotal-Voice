@@ -12,26 +12,30 @@ export async function PATCH(
 ) {
     const { sessionId } = await params;
 
-    const authHeader = req.headers.get('Authorization');
-    if (!authHeader?.startsWith('Bearer ')) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+    const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
-    const jwt = authHeader.slice(7);
-    const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
-    if (authError || !user) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+    if (!isMockMode) {
+        const authHeader = req.headers.get('Authorization');
+        if (!authHeader?.startsWith('Bearer ')) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        }
 
-    const { data: session } = await supabase
-        .from('broadcast_sessions')
-        .select('host_id')
-        .eq('id', sessionId)
-        .single();
+        const supabase = createClient(supabaseUrl, supabaseAnonKey);
+        const jwt = authHeader.slice(7);
+        const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
+        if (authError || !user) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        }
 
-    if (!session || session.host_id !== user.id) {
-        return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+        const { data: session } = await supabase
+            .from('broadcast_sessions')
+            .select('host_id')
+            .eq('id', sessionId)
+            .single();
+
+        if (!session || session.host_id !== user.id) {
+            return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+        }
     }
 
     const body = await req.json();
