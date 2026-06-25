@@ -36,7 +36,10 @@ export default function CivicEventCard({ event, userId, onRSVPChange, compact = 
 
     const formatTime = (time: string | undefined | null) => {
         if (!time) return '';
-        const [h, m] = time.split(':').map(Number);
+        const parts = time.split(':');
+        if (parts.length < 2) return time;
+        const [h, m] = parts.map(Number);
+        if (isNaN(h) || isNaN(m)) return time;
         const ampm = h >= 12 ? 'PM' : 'AM';
         return `${h % 12 || 12}:${m.toString().padStart(2, '0')} ${ampm}`;
     };
