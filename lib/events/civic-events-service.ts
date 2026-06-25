@@ -4,36 +4,67 @@ import { CivicEvent, EventFilters, CivicEventType } from '@/lib/types/civic-even
 
 import { LOCAL_MEETUP_EVENTS } from './civic-events-data';
 
+// ─── Map DB Row to CivicEvent ───────────────────────────────
+
+function mapDbRow(row: any): CivicEvent {
+    // The live DB stores location as a JSONB object; handle both flat columns and JSONB
+    const loc = row.location && typeof row.location === 'object'
+        ? row.location
+        : {};
+
+    return {
+        id: row.id,
+        title: row.title,
+        description: row.description || '',
+        date: row.date,
+        startTime: row.start_time?.slice(0, 5) || '00:00',
+        endTime: row.end_time?.slice(0, 5),
+        timezone: row.timezone || 'America/Chicago',
+        location: {
+            name: loc.name || row.location_name || '',
+            address: loc.address || row.location_address || '',
+            city: loc.city || row.location_city || '',
+            state: loc.state || row.location_state || 'TX',
+            zip: loc.zip || row.location_zip || '',
+            mapUrl: loc.mapUrl || row.location_map_url,
+        },
+        eventType: row.event_type || 'community_event',
+        governingBody: row.governing_body,
+        agendaUrl: row.agenda_url,
+        minutesUrl: row.minutes_url,
+        zoomUrl: row.zoom_url,
+        participationInstructions: row.participation_instructions,
+        publicCommentDeadline: row.public_comment_deadline,
+        rsvpUsers: (row.event_rsvps || []).map((r: any) => r.user_id),
+        rsvpCount: row.event_rsvps ? row.event_rsvps.length : (row.rsvp_count || 0),
+        isFeatured: row.is_featured || false,
+        isRecurring: row.is_recurring || false,
+        recurringSchedule: row.recurring_schedule,
+        tags: row.tags || [],
+        sourceUrl: row.source_url,
+        sourceName: row.source_name,
+        lastVerified: row.last_verified || row.updated_at || new Date().toISOString(),
+        createdAt: row.created_at,
+        updatedAt: row.updated_at,
+        isUserSubmitted: row.is_user_submitted || false,
+        submittedBy: row.submitted_by,
+        approvalStatus: row.approval_status || 'approved',
+    };
+}
+
 // ─── CRUD ────────────────────────────────────────────────────
 
 export async function getCivicEvents(): Promise<CivicEvent[]> {
-    const { data, error } = await supabase
-        .from('civic_events')
-        .select('*, event_rsvps(user_id)')
-        .order('date', { ascending: true })
-        .order('start_time', { ascending: true });
-
-    if (error) {
-        console.error('Error fetching events:', error);
-        // Fallback to just local meetups if DB fails
+    try {
+        const res = await fetch('/api/civic-events');
+        if (!res.ok) throw new Error('Failed to fetch events from API');
+        const data = await res.json();
+        return data.events || [];
+    } catch (error) {
+        console.error('Error fetching events from API:', error);
+        // Fallback to local events if the API fails
         return LOCAL_MEETUP_EVENTS;
     }
-
-    // Map rsvpUsers from event_rsvps relation
-    const dbEvents = (data as any[]).map(event => ({
-        ...event,
-        rsvpUsers: event.event_rsvps.map((r: any) => r.user_id),
-        rsvpCount: event.event_rsvps.length
-    })) as CivicEvent[];
-
-    // Merge DB events with local meetups and sort by date
-    const allEvents = [...dbEvents, ...LOCAL_MEETUP_EVENTS];
-
-    return allEvents.sort((a, b) => {
-        const dateA = new Date(a.date + 'T' + a.startTime);
-        const dateB = new Date(b.date + 'T' + b.startTime);
-        return dateA.getTime() - dateB.getTime();
-    });
 }
 
 export async function getCivicEventById(id: string): Promise<CivicEvent | undefined> {
@@ -51,11 +82,7 @@ export async function getCivicEventById(id: string): Promise<CivicEvent | undefi
 
     if (!data) return undefined;
 
-    return {
-        ...data,
-        rsvpUsers: (data as any).event_rsvps.map((r: any) => r.user_id),
-        rsvpCount: (data as any).event_rsvps.length
-    } as CivicEvent;
+    return mapDbRow(data);
 }
 
 export async function getApprovedEvents(): Promise<CivicEvent[]> {
@@ -91,13 +118,24 @@ export async function toggleRSVP(eventId: string, userId: string): Promise<boole
 // ─── User Submitted Events ───────────────────────────────────
 
 export async function submitEvent(data: any): Promise<CivicEvent | null> {
+    // Map camelCase fields from frontend to snake_case for the database
+    const dbPayload = {
+        title: data.title,
+        description: data.description,
+        date: data.date,
+        start_time: data.startTime,
+        end_time: data.endTime,
+        location_name: data.location,
+        location_city: data.city,
+        event_type: data.eventType,
+        submitted_by: data.submittedBy,
+        approval_status: 'pending',
+        created_at: new Date().toISOString()
+    };
+
     const { data: newEvent, error } = await supabase
         .from('civic_events')
-        .insert([{
-            ...data,
-            approval_status: 'pending',
-            created_at: new Date().toISOString()
-        }])
+        .insert([dbPayload])
         .select()
         .single();
 
@@ -105,7 +143,7 @@ export async function submitEvent(data: any): Promise<CivicEvent | null> {
         console.error('Error submitting event:', error);
         return null;
     }
-    return newEvent as CivicEvent;
+    return mapDbRow(newEvent);
 }
 // ─── Helpers ──────────────────────────────────────────────────
 
