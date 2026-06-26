@@ -28,7 +28,7 @@ export default function LiveViewerPage() {
         async function init() {
             try {
                 const s = await getSession(sessionId as string);
-                if (!s) throw new Error('Broadcast not found');
+                if (!s) throw new Error(`Broadcast not found (id: ${sessionId})`);
                 setSession(s);
 
                 if (s.status === 'ended') {

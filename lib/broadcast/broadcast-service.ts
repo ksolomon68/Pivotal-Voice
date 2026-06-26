@@ -53,7 +53,11 @@ export async function getSession(id: string): Promise<BroadcastSession | null> {
         .eq('id', id)
         .single();
 
-    if (error || !data) return null;
+    if (error) {
+        console.error('[broadcast] getSession error:', error.code, error.message, error.details, 'id:', id);
+        return null;
+    }
+    if (!data) return null;
     return mapRow(data);
 }
 
