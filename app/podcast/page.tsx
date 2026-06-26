@@ -5,7 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MissionPillars from '@/components/podcast/MissionPillars';
 import SessionCard from '@/components/podcast/broadcast/SessionCard';
-import { Podcast, Rss, Music, Radio, Youtube } from 'lucide-react';
+import { Podcast, Music, Radio, Youtube } from 'lucide-react';
 import { useAuth } from '@/lib/forum/AuthContext';
 import Link from 'next/link';
 import { BroadcastSession } from '@/lib/types/broadcast';
@@ -67,10 +67,6 @@ export default function PodcastPage() {
                                     <Youtube className="w-4 h-4" />
                                     YouTube
                                 </a>
-                                <button className="btn-secondary text-sm flex items-center gap-2">
-                                    <Rss className="w-4 h-4" />
-                                    RSS Feed
-                                </button>
                                 {user?.isAdmin && (
                                     <Link
                                         href="/podcast/broadcast"
