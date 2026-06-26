@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { Suspense, useEffect, useState, useRef } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import { useAuth } from '@/lib/forum/AuthContext';
@@ -8,11 +8,13 @@ import { supabase } from '@/lib/supabase/client';
 import { getSession } from '@/lib/broadcast/broadcast-service';
 import StudioRoom from '@/components/podcast/broadcast/StudioRoom';
 import { BroadcastRole, BroadcastSession } from '@/lib/types/broadcast';
-import { AlertCircle } from 'lucide-react';
+import { AlertCircle, Link as LinkIcon } from 'lucide-react';
 
-type PageState = 'loading' | 'name-prompt' | 'connecting' | 'live' | 'error';
+type PageState = 'loading' | 'no-token' | 'name-prompt' | 'connecting' | 'live' | 'error';
 
-export default function StudioPage() {
+// useSearchParams() requires a Suspense boundary in Next.js App Router.
+// This inner component reads the invite token and contains all page logic.
+function StudioPageContent() {
     const { sessionId } = useParams<{ sessionId: string }>();
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -36,16 +38,14 @@ export default function StudioPage() {
     const initializedRef = useRef(false);
 
     useEffect(() => {
-        // Wait for auth to finish loading before running init
         if (authLoading || !sessionId) return;
-        // Prevent running more than once per page load
         if (initializedRef.current) return;
         initializedRef.current = true;
 
-        // If auth is done loading and there's no user, we can only proceed as guest
         if (!user && !inviteToken) {
-            // Not logged in and no invite token – redirect to live viewer
-            router.replace(`/podcast/live/${sessionId}`);
+            // No account and no invite token — show a helpful message instead of
+            // silently redirecting, so guests know they need the correct invite link.
+            setPageState('no-token');
             return;
         }
 
@@ -56,7 +56,6 @@ export default function StudioPage() {
                 setSession(s);
                 setSessionStatus(s.status);
 
-                // Determine role
                 if (user?.isAdmin && s.hostId === user.id) {
                     setRole('host');
                     await fetchToken('host', s, user.displayName);
@@ -169,10 +168,22 @@ export default function StudioPage() {
                     </div>
                 )}
 
+                {pageState === 'no-token' && (
+                    <div className="max-w-md mx-auto mt-20 text-center">
+                        <div className="w-14 h-14 bg-gold/10 border border-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <LinkIcon className="w-7 h-7 text-gold/60" />
+                        </div>
+                        <h2 className="text-xl font-display font-bold text-white mb-2">Invite Link Required</h2>
+                        <p className="text-cream/60 text-sm">
+                            You need a guest invite link to join this studio. Ask the host to share the full invite link with you.
+                        </p>
+                    </div>
+                )}
+
                 {pageState === 'name-prompt' && (
                     <div className="max-w-md mx-auto mt-20">
                         <div className="bg-navy-dark/60 border border-white/10 rounded-2xl p-8 text-center">
-                            <h2 className="text-xl font-display font-bold text-white mb-2">You're invited!</h2>
+                            <h2 className="text-xl font-display font-bold text-white mb-2">You&apos;re invited!</h2>
                             <p className="text-cream/60 text-sm mb-6">Enter your name to join the studio as a guest.</p>
                             <form onSubmit={handleNameSubmit} className="space-y-4">
                                 <input
@@ -226,5 +237,20 @@ export default function StudioPage() {
                 )}
             </main>
         </div>
+    );
+}
+
+export default function StudioPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-navy flex flex-col">
+                <Header />
+                <main className="flex-1 flex items-center justify-center">
+                    <div className="w-8 h-8 border-2 border-gold/30 border-t-gold rounded-full animate-spin" />
+                </main>
+            </div>
+        }>
+            <StudioPageContent />
+        </Suspense>
     );
 }
