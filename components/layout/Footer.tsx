@@ -23,7 +23,7 @@ const serviceLinks = [
 
 const socialLinks = [
     { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/pivotalvoice' },
-    { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/channel/UCbqEwPoQ211fx8IfHdwFK7w' },
+    { name: 'YouTube', icon: Youtube, href: 'https://www.youtube.com/@pivotalvoice' },
     { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/pivotal_voice/' },
 ];
 
