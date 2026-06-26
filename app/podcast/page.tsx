@@ -5,7 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MissionPillars from '@/components/podcast/MissionPillars';
 import SessionCard from '@/components/podcast/broadcast/SessionCard';
-import { Podcast, Rss, Apple, Music, Radio } from 'lucide-react';
+import { Podcast, Rss, Music, Radio, Youtube } from 'lucide-react';
 import { useAuth } from '@/lib/forum/AuthContext';
 import Link from 'next/link';
 import { BroadcastSession } from '@/lib/types/broadcast';
@@ -49,14 +49,24 @@ export default function PodcastPage() {
 
                             {/* Subscribe Buttons */}
                             <div className="flex flex-wrap justify-center gap-3 mt-8">
-                                <button className="btn-primary text-sm flex items-center gap-2">
-                                    <Apple className="w-4 h-4" />
-                                    Apple Podcasts
-                                </button>
-                                <button className="btn-primary text-sm flex items-center gap-2">
+                                <a
+                                    href="https://open.spotify.com/show/033EDEaRlSogq6mVFGi0xj"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn-primary text-sm flex items-center gap-2"
+                                >
                                     <Music className="w-4 h-4" />
                                     Spotify
-                                </button>
+                                </a>
+                                <a
+                                    href="https://www.youtube.com/@pivotalvoice"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn-primary text-sm flex items-center gap-2"
+                                >
+                                    <Youtube className="w-4 h-4" />
+                                    YouTube
+                                </a>
                                 <button className="btn-secondary text-sm flex items-center gap-2">
                                     <Rss className="w-4 h-4" />
                                     RSS Feed
