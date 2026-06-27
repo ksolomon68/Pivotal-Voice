@@ -16,11 +16,17 @@ export default function AdminLoginPage() {
     const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
 
+    // Once AuthContext resolves the session after sign-in, handle redirect or access denial
     useEffect(() => {
-        if (!isLoading && user?.isAdmin) {
+        if (isLoading || !submitting) return;
+        if (user?.isAdmin) {
             router.replace('/admin');
+        } else if (user && !user.isAdmin) {
+            supabase.auth.signOut();
+            setError('This account does not have admin access.');
+            setSubmitting(false);
         }
-    }, [user, isLoading, router]);
+    }, [user, isLoading, submitting, router]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -33,28 +39,7 @@ export default function AdminLoginPage() {
             setSubmitting(false);
             return;
         }
-
-        const { data: { user: authUser } } = await supabase.auth.getUser();
-        if (!authUser) {
-            setError('Login failed. Please try again.');
-            setSubmitting(false);
-            return;
-        }
-
-        const { data: profile } = await supabase
-            .from('profiles')
-            .select('is_admin')
-            .eq('id', authUser.id)
-            .single();
-
-        if (!profile?.is_admin) {
-            await supabase.auth.signOut();
-            setError('This account does not have admin access.');
-            setSubmitting(false);
-            return;
-        }
-
-        router.replace('/admin');
+        // AuthContext's onAuthStateChange will update `user`; the useEffect above handles the rest
     };
 
     if (isLoading) return null;
