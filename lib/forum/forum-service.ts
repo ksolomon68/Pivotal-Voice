@@ -87,11 +87,13 @@ export async function getTopics(): Promise<Topic[]> {
         .select('*')
         .order('created_at', { ascending: false });
 
-    if (error || !data || data.length === 0) {
-        if (error) console.error('Error fetching topics:', error.message);
-        return SEED_TOPICS;
-    }
-    return data.map(mapTopic);
+    if (error) console.error('Error fetching topics:', error.message);
+
+    const dbTopics = (data || []).map(mapTopic);
+    // Always include seed topics; real DB topics take precedence (deduped by id)
+    const dbIds = new Set(dbTopics.map(t => t.id));
+    const merged = [...dbTopics, ...SEED_TOPICS.filter(t => !dbIds.has(t.id))];
+    return merged;
 }
 
 export async function getTopicById(id: string): Promise<Topic | undefined> {
@@ -111,10 +113,10 @@ export async function getTopicsByCategory(categoryId: string): Promise<Topic[]> 
         .eq('category_id', categoryId)
         .order('created_at', { ascending: false });
 
-    if (!data || data.length === 0) {
-        return SEED_TOPICS.filter(t => t.categoryId === categoryId);
-    }
-    return data.map(mapTopic);
+    const dbTopics = (data || []).map(mapTopic);
+    const dbIds = new Set(dbTopics.map(t => t.id));
+    const seedForCategory = SEED_TOPICS.filter(t => t.categoryId === categoryId && !dbIds.has(t.id));
+    return [...dbTopics, ...seedForCategory];
 }
 
 export async function createTopic(topic: any): Promise<Topic | null> {
@@ -184,10 +186,13 @@ export async function getRepliesByTopic(topicId: string): Promise<Reply[]> {
         .select('*')
         .eq('topic_id', topicId)
         .order('created_at', { ascending: true });
-    if (!data || data.length === 0) {
-        return SEED_REPLIES.filter(r => r.topicId === topicId);
-    }
-    return data.map(mapReply);
+
+    const dbReplies = (data || []).map(mapReply);
+    const dbIds = new Set(dbReplies.map(r => r.id));
+    const seedForTopic = SEED_REPLIES.filter(r => r.topicId === topicId && !dbIds.has(r.id));
+    return [...dbReplies, ...seedForTopic].sort(
+        (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    );
 }
 
 export async function createReply(reply: any): Promise<Reply | null> {
@@ -321,20 +326,15 @@ export async function getForumStats() {
     const { count: replyCount } = await supabase.from('replies').select('*', { count: 'exact', head: true });
     const { count: userCount } = await supabase.from('profiles').select('*', { count: 'exact', head: true });
 
-    // Fall back to seed data counts when Supabase has no data
-    if (!topicCount && !replyCount && !userCount) {
-        return {
-            totalTopics: SEED_TOPICS.length,
-            totalReplies: SEED_REPLIES.length,
-            totalUsers: SEED_USERS.length,
-            activeToday: Math.min(SEED_USERS.length, 14)
-        };
-    }
+    // Always add seed counts for items not already in the DB
+    const totalTopics = (topicCount || 0) + SEED_TOPICS.length;
+    const totalReplies = (replyCount || 0) + SEED_REPLIES.length;
+    const totalUsers = Math.max(userCount || 0, SEED_USERS.length);
 
     return {
-        totalTopics: topicCount || 0,
-        totalReplies: replyCount || 0,
-        totalUsers: userCount || 0,
-        activeToday: Math.max(Math.floor((userCount || 0) * 0.4), 1)
+        totalTopics,
+        totalReplies,
+        totalUsers,
+        activeToday: Math.max(Math.floor(totalUsers * 0.4), SEED_USERS.length)
     };
 }
