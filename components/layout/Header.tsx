@@ -269,6 +269,16 @@ export default function Header() {
                                             </button>
                                         </div>
                                     )}
+                                    {user?.isAdmin && (
+                                        <Link
+                                            href="/admin"
+                                            className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-gold/10 border border-gold/30 text-gold text-sm font-semibold hover:bg-gold/20 transition-colors"
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                            <LayoutDashboard className="w-4 h-4" />
+                                            Admin Dashboard
+                                        </Link>
+                                    )}
                                     <Link
                                         href="/services#book"
                                         className="block w-full text-center btn-primary"
