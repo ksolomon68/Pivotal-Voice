@@ -6,9 +6,17 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { useAuth } from '@/lib/forum/AuthContext';
 import { supabase } from '@/lib/supabase/client';
-import { Radio, Lock } from 'lucide-react';
+import { Radio, Lock, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { BroadcastSession } from '@/lib/types/broadcast';
+
+function extractYoutubeId(input: string): string {
+    const trimmed = input.trim();
+    const match = trimmed.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|live\/|embed\/))([A-Za-z0-9_-]{11})/);
+    if (match) return match[1];
+    if (/^[A-Za-z0-9_-]{11}$/.test(trimmed)) return trimmed;
+    return '';
+}
 
 export default function BroadcastCreatePage() {
     const { user, isLoading } = useAuth();
@@ -17,6 +25,7 @@ export default function BroadcastCreatePage() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [scheduledAt, setScheduledAt] = useState('');
+    const [youtubeVideoId, setYoutubeVideoId] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
     const [createdSession, setCreatedSession] = useState<BroadcastSession | null>(null);
@@ -33,9 +42,7 @@ export default function BroadcastCreatePage() {
         );
     }
 
-    const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-    if (!isMockMode && !user?.isAdmin) {
+    if (!user?.isAdmin) {
         return (
             <>
                 <Header />
@@ -61,37 +68,23 @@ export default function BroadcastCreatePage() {
         setError('');
 
         try {
-            let res;
-            if (isMockMode) {
-                res = await fetch('/api/broadcast/sessions', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        title: title.trim(),
-                        description: description.trim() || undefined,
-                        scheduledAt: scheduledAt || undefined,
-                    }),
-                });
-            } else {
-                const { data: { session: authSession } } = await supabase.auth.getSession();
-                const token = authSession?.access_token;
-                if (!token) throw new Error('Not authenticated');
+            const { data: { session: authSession } } = await supabase.auth.getSession();
+            const token = authSession?.access_token;
+            if (!token) throw new Error('Not authenticated');
 
-                res = await fetch('/api/broadcast/sessions', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`,
-                    },
-                    body: JSON.stringify({
-                        title: title.trim(),
-                        description: description.trim() || undefined,
-                        scheduledAt: scheduledAt || undefined,
-                    }),
-                });
-            }
+            const res = await fetch('/api/broadcast/sessions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    title: title.trim(),
+                    description: description.trim() || undefined,
+                    scheduledAt: scheduledAt || undefined,
+                    youtubeVideoId: extractYoutubeId(youtubeVideoId) || undefined,
+                }),
+            });
 
             if (!res.ok) {
                 const data = await res.json();
@@ -155,6 +148,25 @@ export default function BroadcastCreatePage() {
                             <p className="text-cream/60">Set up your live podcast session.</p>
                         </div>
 
+                        {/* Streamyard workflow guide */}
+                        <div className="bg-gold/5 border border-gold/20 rounded-xl p-5 mb-2 space-y-2">
+                            <p className="text-sm font-semibold text-gold">Streamyard Workflow</p>
+                            <ol className="text-xs text-cream/60 space-y-1 list-decimal list-inside">
+                                <li>Open Streamyard and create a new broadcast → destination: <span className="text-cream/80">YouTube</span></li>
+                                <li>Copy the guest invite link from Streamyard and send it to your guest</li>
+                                <li>In Streamyard, go live — copy the YouTube video URL from the broadcast</li>
+                                <li>Paste the YouTube URL below so viewers on this site see the embedded stream</li>
+                            </ol>
+                            <a
+                                href="https://streamyard.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs text-gold/70 hover:text-gold transition-colors mt-1"
+                            >
+                                Open Streamyard <ExternalLink className="w-3 h-3" />
+                            </a>
+                        </div>
+
                         <form onSubmit={handleSubmit} className="bg-navy-dark/60 border border-white/10 rounded-2xl p-8 space-y-5">
                             <div>
                                 <label className="block text-sm font-semibold text-cream/70 mb-2">
@@ -193,6 +205,22 @@ export default function BroadcastCreatePage() {
                                     onChange={(e) => setScheduledAt(e.target.value)}
                                     className="input w-full"
                                 />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-semibold text-cream/70 mb-2">
+                                    YouTube Video URL <span className="text-red-400">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    value={youtubeVideoId}
+                                    onChange={(e) => setYoutubeVideoId(e.target.value)}
+                                    placeholder="https://www.youtube.com/watch?v=..."
+                                    className="input w-full"
+                                />
+                                <p className="text-xs text-cream/40 mt-1">
+                                    Paste the YouTube live URL from Streamyard. You can add this after going live.
+                                </p>
                             </div>
 
                             {error && (

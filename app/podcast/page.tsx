@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MissionPillars from '@/components/podcast/MissionPillars';
+import YouTubeLiveEmbed from '@/components/podcast/YouTubeLiveEmbed';
 import SessionCard from '@/components/podcast/broadcast/SessionCard';
 import { Podcast, Music, Radio, Youtube } from 'lucide-react';
 import { useAuth } from '@/lib/forum/AuthContext';
@@ -13,19 +14,15 @@ import { BroadcastSession } from '@/lib/types/broadcast';
 export default function PodcastPage() {
     const { user } = useAuth();
     const [liveSessions, setLiveSessions] = useState<BroadcastSession[]>([]);
-    const [scheduledSessions, setScheduledSessions] = useState<BroadcastSession[]>([]);
 
     useEffect(() => {
         fetch('/api/broadcast/sessions')
             .then((r) => r.json())
-            .then(({ live, scheduled }) => {
+            .then(({ live }) => {
                 setLiveSessions(live || []);
-                setScheduledSessions(scheduled || []);
             })
             .catch(() => {/* silently fail */});
     }, []);
-
-    const hasSessions = liveSessions.length > 0 || scheduledSessions.length > 0;
 
     return (
         <>
@@ -92,33 +89,25 @@ export default function PodcastPage() {
                                 </span>
                                 <h2 className="text-lg font-display font-bold text-white uppercase tracking-wide">Live Now</h2>
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {liveSessions.map((s) => (
-                                    <SessionCard key={s.id} session={s} />
-                                ))}
-                            </div>
+                            {liveSessions[0]?.youtubeVideoId ? (
+                                <YouTubeLiveEmbed
+                                    videoId={liveSessions[0].youtubeVideoId}
+                                    title={liveSessions[0].title}
+                                />
+                            ) : (
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    {liveSessions.map((s) => (
+                                        <SessionCard key={s.id} session={s} />
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </section>
                 )}
 
-                {/* Upcoming */}
-                {scheduledSessions.length > 0 && (
-                    <section className="section">
-                        <div className="container-custom">
-                            <h2 className="text-lg font-display font-bold text-white uppercase tracking-wide mb-6">
-                                Upcoming Broadcasts
-                            </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {scheduledSessions.map((s) => (
-                                    <SessionCard key={s.id} session={s} />
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-                )}
 
                 {/* No sessions placeholder */}
-                {!hasSessions && (
+                {liveSessions.length === 0 && (
                     <section className="section">
                         <div className="container-custom">
                             <div className="max-w-2xl mx-auto text-center py-16">

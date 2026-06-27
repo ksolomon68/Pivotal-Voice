@@ -15,5 +15,6 @@ export interface BroadcastSession {
     endedAt?: string;
     viewerCount: number;
     thumbnailUrl?: string;
+    youtubeVideoId?: string;
     createdAt: string;
 }

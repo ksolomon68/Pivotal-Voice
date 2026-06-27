@@ -11,40 +11,30 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-    const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    
-    let userId = 'mock-host-1';
-    let displayName = 'Commissioner Smith';
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader?.startsWith('Bearer ')) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
-    if (!isMockMode) {
-        const authHeader = req.headers.get('Authorization');
-        if (!authHeader?.startsWith('Bearer ')) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    const jwt = authHeader.slice(7);
+    const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
+    if (authError || !user) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
-        const supabase = createClient(supabaseUrl, supabaseAnonKey);
-        const jwt = authHeader.slice(7);
-        const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
-        if (authError || !user) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+    const { data: profile } = await supabase
+        .from('profiles')
+        .select('is_admin, display_name')
+        .eq('id', user.id)
+        .single();
 
-        const { data: profile } = await supabase
-            .from('profiles')
-            .select('is_admin, display_name')
-            .eq('id', user.id)
-            .single();
-
-        if (!profile?.is_admin) {
-            return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-        }
-
-        userId = user.id;
-        displayName = profile.display_name;
+    if (!profile?.is_admin) {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
     const body = await req.json();
-    const { title, description, scheduledAt } = body;
+    const { title, description, scheduledAt, youtubeVideoId } = body;
 
     if (!title?.trim()) {
         return NextResponse.json({ error: 'Title is required' }, { status: 400 });
@@ -52,11 +42,12 @@ export async function POST(req: NextRequest) {
 
     try {
         const session = await createSession(
-            userId,
-            displayName,
+            user.id,
+            profile.display_name,
             title.trim(),
             description?.trim() || undefined,
-            scheduledAt || undefined
+            scheduledAt || undefined,
+            youtubeVideoId?.trim() || undefined
         );
         return NextResponse.json(session, { status: 201 });
     } catch (err) {
