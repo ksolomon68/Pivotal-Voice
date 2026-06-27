@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { title, description, scheduledAt } = body;
+    const { title, description, scheduledAt, youtubeVideoId } = body;
 
     if (!title?.trim()) {
         return NextResponse.json({ error: 'Title is required' }, { status: 400 });
@@ -46,7 +46,8 @@ export async function POST(req: NextRequest) {
             profile.display_name,
             title.trim(),
             description?.trim() || undefined,
-            scheduledAt || undefined
+            scheduledAt || undefined,
+            youtubeVideoId?.trim() || undefined
         );
         return NextResponse.json(session, { status: 201 });
     } catch (err) {
