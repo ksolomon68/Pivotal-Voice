@@ -25,7 +25,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         );
     }
 
-    if (!isLoginPage && !user) return null;
+    if (!isLoginPage && !user) {
+        // Show spinner while the useEffect redirect is in-flight instead of blank screen
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-navy-dark">
+                <div className="w-10 h-10 border-2 border-gold border-t-transparent rounded-full animate-spin" />
+            </div>
+        );
+    }
 
     if (!isLoginPage && user && !user.isAdmin) {
         return (
