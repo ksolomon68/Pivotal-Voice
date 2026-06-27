@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MissionPillars from '@/components/podcast/MissionPillars';
+import YouTubeLiveEmbed from '@/components/podcast/YouTubeLiveEmbed';
 import SessionCard from '@/components/podcast/broadcast/SessionCard';
 import { Podcast, Music, Radio, Youtube } from 'lucide-react';
 import { useAuth } from '@/lib/forum/AuthContext';
@@ -92,11 +93,18 @@ export default function PodcastPage() {
                                 </span>
                                 <h2 className="text-lg font-display font-bold text-white uppercase tracking-wide">Live Now</h2>
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {liveSessions.map((s) => (
-                                    <SessionCard key={s.id} session={s} />
-                                ))}
-                            </div>
+                            {liveSessions[0]?.youtubeVideoId ? (
+                                <YouTubeLiveEmbed
+                                    videoId={liveSessions[0].youtubeVideoId}
+                                    title={liveSessions[0].title}
+                                />
+                            ) : (
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    {liveSessions.map((s) => (
+                                        <SessionCard key={s.id} session={s} />
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </section>
                 )}

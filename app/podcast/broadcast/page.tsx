@@ -10,6 +10,14 @@ import { Radio, Lock } from 'lucide-react';
 import Link from 'next/link';
 import { BroadcastSession } from '@/lib/types/broadcast';
 
+function extractYoutubeId(input: string): string {
+    const trimmed = input.trim();
+    const match = trimmed.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|live\/|embed\/))([A-Za-z0-9_-]{11})/);
+    if (match) return match[1];
+    if (/^[A-Za-z0-9_-]{11}$/.test(trimmed)) return trimmed;
+    return '';
+}
+
 export default function BroadcastCreatePage() {
     const { user, isLoading } = useAuth();
     const router = useRouter();
@@ -17,6 +25,7 @@ export default function BroadcastCreatePage() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [scheduledAt, setScheduledAt] = useState('');
+    const [youtubeVideoId, setYoutubeVideoId] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
     const [createdSession, setCreatedSession] = useState<BroadcastSession | null>(null);
@@ -73,6 +82,7 @@ export default function BroadcastCreatePage() {
                     title: title.trim(),
                     description: description.trim() || undefined,
                     scheduledAt: scheduledAt || undefined,
+                    youtubeVideoId: extractYoutubeId(youtubeVideoId) || undefined,
                 }),
             });
 
@@ -176,6 +186,22 @@ export default function BroadcastCreatePage() {
                                     onChange={(e) => setScheduledAt(e.target.value)}
                                     className="input w-full"
                                 />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-semibold text-cream/70 mb-2">
+                                    YouTube Live Video ID or URL (optional)
+                                </label>
+                                <input
+                                    type="text"
+                                    value={youtubeVideoId}
+                                    onChange={(e) => setYoutubeVideoId(e.target.value)}
+                                    placeholder="e.g. dQw4w9WgXcQ or full YouTube URL"
+                                    className="input w-full"
+                                />
+                                <p className="text-xs text-cream/40 mt-1">
+                                    Paste a YouTube video ID or URL to embed the live stream on the podcast page.
+                                </p>
                             </div>
 
                             {error && (
