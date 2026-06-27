@@ -1,6 +1,7 @@
 {
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
+  "/admin/login/page": "/admin/login",
   "/admin/page": "/admin",
   "/api/broadcast/sessions/[sessionId]/route": "/api/broadcast/sessions/[sessionId]",
   "/api/broadcast/sessions/[sessionId]/viewer-decrement/route": "/api/broadcast/sessions/[sessionId]/viewer-decrement",
@@ -12,6 +13,7 @@
   "/api/community-feed/route": "/api/community-feed",
   "/api/events/ics/route": "/api/events/ics",
   "/api/events/route": "/api/events",
+  "/api/send-resource/route": "/api/send-resource",
   "/calendar/page": "/calendar",
   "/candidates/page": "/candidates",
   "/debates/page": "/debates",

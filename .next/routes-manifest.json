@@ -96,6 +96,12 @@
       "namedRegex": "^/admin(?:/)?$"
     },
     {
+      "page": "/admin/login",
+      "regex": "^/admin/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/login(?:/)?$"
+    },
+    {
       "page": "/api/broadcast/sessions",
       "regex": "^/api/broadcast/sessions(?:/)?$",
       "routeKeys": {},
@@ -136,6 +142,12 @@
       "regex": "^/api/events/ics(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/events/ics(?:/)?$"
+    },
+    {
+      "page": "/api/send-resource",
+      "regex": "^/api/send\\-resource(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/send\\-resource(?:/)?$"
     },
     {
       "page": "/calendar",

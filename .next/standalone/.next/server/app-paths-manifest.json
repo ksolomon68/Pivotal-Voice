@@ -13,6 +13,7 @@
   "/api/community-feed/route": "app/api/community-feed/route.js",
   "/api/events/ics/route": "app/api/events/ics/route.js",
   "/api/events/route": "app/api/events/route.js",
+  "/api/send-resource/route": "app/api/send-resource/route.js",
   "/calendar/page": "app/calendar/page.js",
   "/candidates/page": "app/candidates/page.js",
   "/debates/page": "app/debates/page.js",
