@@ -16,9 +16,17 @@ export default function AdminLoginPage() {
     const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
 
-    // Once AuthContext resolves the session after sign-in, handle redirect or access denial
+    // If already authenticated as admin, go straight to dashboard
     useEffect(() => {
-        if (isLoading || !submitting) return;
+        if (isLoading) return;
+        if (user?.isAdmin) {
+            router.replace('/admin');
+        }
+    }, [user, isLoading, router]);
+
+    // After form submission: wait for AuthContext to resolve the new session
+    useEffect(() => {
+        if (!submitting || isLoading) return;
         if (user?.isAdmin) {
             router.replace('/admin');
         } else if (user && !user.isAdmin) {
@@ -27,6 +35,16 @@ export default function AdminLoginPage() {
             setSubmitting(false);
         }
     }, [user, isLoading, submitting, router]);
+
+    // Safety timeout: if submitting stays true for >15s, unblock the form
+    useEffect(() => {
+        if (!submitting) return;
+        const timer = setTimeout(() => {
+            setSubmitting(false);
+            setError('Sign-in timed out. Please check your connection and try again.');
+        }, 15000);
+        return () => clearTimeout(timer);
+    }, [submitting]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -42,7 +60,17 @@ export default function AdminLoginPage() {
         // AuthContext's onAuthStateChange will update `user`; the useEffect above handles the rest
     };
 
-    if (isLoading) return null;
+    // Show a spinner while the initial auth check runs (replaces the blank render)
+    if (isLoading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-navy-dark">
+                <div className="flex flex-col items-center gap-4">
+                    <div className="w-8 h-8 border-2 border-gold border-t-transparent rounded-full animate-spin" />
+                    <p className="text-cream/40 text-sm">Checking session…</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-navy-dark px-4">

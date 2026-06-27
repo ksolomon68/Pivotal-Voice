@@ -33,6 +33,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     // Force profile sync on mount
     useEffect(() => {
+        let settled = false;
+
+        // Fallback: if auth never resolves (e.g. Supabase unreachable), unblock the UI after 8s
+        const timeout = setTimeout(() => {
+            if (!settled) {
+                console.warn('AuthContext: session check timed out, proceeding as logged out');
+                setState({ user: null, isLoading: false });
+            }
+        }, 8000);
+
         const syncSession = async () => {
             try {
                 const { data: { session } } = await supabase.auth.getSession();
@@ -44,6 +54,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                         .single();
 
                     if (profile) {
+                        settled = true;
+                        clearTimeout(timeout);
                         setState({
                             user: {
                                 id: profile.id,
@@ -70,6 +82,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             } catch (err) {
                 console.error('AuthContext syncSession error:', err);
             }
+            settled = true;
+            clearTimeout(timeout);
             setState({ user: null, isLoading: false });
         };
 
@@ -117,7 +131,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             }
         });
 
-        return () => subscription.unsubscribe();
+        return () => {
+            clearTimeout(timeout);
+            subscription.unsubscribe();
+        };
     }, []);
 
     const login = async (email: string, password: string): Promise<{ success: boolean; error?: string }> => {

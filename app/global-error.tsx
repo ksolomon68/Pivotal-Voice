@@ -9,9 +9,24 @@ export default function GlobalError({
     error: Error & { digest?: string };
     reset: () => void;
 }) {
+    const isChunkError =
+        (error as { name?: string })?.name === 'ChunkLoadError' ||
+        error?.message?.includes('Loading chunk') ||
+        error?.message?.includes('Failed to load chunk');
+
     useEffect(() => {
         console.error('[GlobalError]', error);
-    }, [error]);
+
+        if (isChunkError) {
+            const RELOAD_KEY = 'pv_chunk_reload';
+            const lastReload = sessionStorage.getItem(RELOAD_KEY);
+            const now = Date.now();
+            if (!lastReload || now - parseInt(lastReload) > 30000) {
+                sessionStorage.setItem(RELOAD_KEY, String(now));
+                window.location.reload();
+            }
+        }
+    }, [error, isChunkError]);
 
     return (
         <html>
@@ -21,14 +36,18 @@ export default function GlobalError({
                         Something went wrong
                     </h2>
                     <p style={{ color: 'rgba(245,240,232,0.6)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
-                        An unexpected error occurred. Please try refreshing the page.
+                        {isChunkError
+                            ? 'A page resource failed to load. Refreshing automatically…'
+                            : 'An unexpected error occurred. Please try refreshing the page.'}
                     </p>
-                    <button
-                        onClick={reset}
-                        style={{ background: '#d4af37', color: '#0d1625', border: 'none', padding: '0.75rem 2rem', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer', fontSize: '1rem' }}
-                    >
-                        Try Again
-                    </button>
+                    {!isChunkError && (
+                        <button
+                            onClick={reset}
+                            style={{ background: '#d4af37', color: '#0d1625', border: 'none', padding: '0.75rem 2rem', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer', fontSize: '1rem' }}
+                        >
+                            Try Again
+                        </button>
+                    )}
                 </div>
             </body>
         </html>
