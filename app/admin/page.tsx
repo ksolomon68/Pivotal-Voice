@@ -6,8 +6,8 @@ import {
     Users, Mail, TrendingUp, Download, Search,
     BarChart3, Eye, MousePointer, UserMinus, UserPlus,
     RefreshCw, ChevronDown, Podcast, Calendar, Shield,
-    ShieldCheck, LogOut, Copy, Check, ExternalLink,
-    Plus, Clock, Radio, CheckCircle, XCircle,
+    ShieldCheck, LogOut, ExternalLink,
+    Plus, Radio, CheckCircle, XCircle,
 } from 'lucide-react';
 import Link from 'next/link';
 import { useAuth } from '@/lib/forum/AuthContext';
@@ -16,11 +16,19 @@ import {
     getSubscribers, getCRMStats, getCampaigns, exportSubscribersCSV,
     downloadCSV, initializeNewsletterData, unsubscribeById, resubscribe,
 } from '@/lib/crm/newsletter-service';
-import { createSession, getLiveSessions, getScheduledSessions } from '@/lib/broadcast/broadcast-service';
+import { createSession, getLiveSessions } from '@/lib/broadcast/broadcast-service';
 import type { NewsletterSubscriber, EmailCampaign } from '@/lib/types/newsletter';
 import type { BroadcastSession } from '@/lib/types/broadcast';
 
 type Tab = 'overview' | 'users' | 'podcasts' | 'subscribers' | 'campaigns';
+
+function extractYoutubeId(input: string): string {
+    const trimmed = input.trim();
+    const match = trimmed.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|live\/|embed\/))([A-Za-z0-9_-]{11})/);
+    if (match) return match[1];
+    if (/^[A-Za-z0-9_-]{11}$/.test(trimmed)) return trimmed;
+    return '';
+}
 
 interface ProfileRow {
     id: string;
@@ -53,15 +61,12 @@ export default function AdminPage() {
 
     // Podcast state
     const [liveSessions, setLiveSessions] = useState<BroadcastSession[]>([]);
-    const [scheduledSessions, setScheduledSessions] = useState<BroadcastSession[]>([]);
     const [podcastsLoading, setPodcastsLoading] = useState(false);
     const [showNewForm, setShowNewForm] = useState(false);
     const [newTitle, setNewTitle] = useState('');
     const [newDesc, setNewDesc] = useState('');
-    const [newDate, setNewDate] = useState('');
-    const [newTime, setNewTime] = useState('');
+    const [newYoutubeUrl, setNewYoutubeUrl] = useState('');
     const [creating, setCreating] = useState(false);
-    const [copiedId, setCopiedId] = useState<string | null>(null);
 
     // CRM filter state
     const [search, setSearch] = useState('');
@@ -90,9 +95,8 @@ export default function AdminPage() {
 
     const loadPodcasts = useCallback(async () => {
         setPodcastsLoading(true);
-        const [live, scheduled] = await Promise.all([getLiveSessions(), getScheduledSessions()]);
+        const live = await getLiveSessions();
         setLiveSessions(live);
-        setScheduledSessions(scheduled);
         setPodcastsLoading(false);
     }, []);
 
@@ -147,24 +151,15 @@ export default function AdminPage() {
         if (!user) return;
         setCreating(true);
         try {
-            const scheduledAt = newDate && newTime
-                ? new Date(`${newDate}T${newTime}`).toISOString()
-                : undefined;
-            await createSession(user.id, user.displayName, newTitle, newDesc || undefined, scheduledAt);
-            setNewTitle(''); setNewDesc(''); setNewDate(''); setNewTime('');
+            const youtubeVideoId = extractYoutubeId(newYoutubeUrl);
+            await createSession(user.id, user.displayName, newTitle, newDesc || undefined, undefined, youtubeVideoId || undefined);
+            setNewTitle(''); setNewDesc(''); setNewYoutubeUrl('');
             setShowNewForm(false);
             loadPodcasts();
         } catch (err) {
             console.error(err);
         }
         setCreating(false);
-    };
-
-    const copyInviteLink = (token: string, id: string) => {
-        const url = `${window.location.origin}/podcast/studio/${id}?invite=${token}`;
-        navigator.clipboard.writeText(url);
-        setCopiedId(id);
-        setTimeout(() => setCopiedId(null), 2000);
     };
 
     const tabs: { key: Tab; label: string; icon: React.ReactNode }[] = [
@@ -387,6 +382,14 @@ export default function AdminPage() {
 
                             {showNewForm && (
                                 <form onSubmit={handleCreateSession} className="px-5 pb-5 space-y-4 border-t border-gold/10 pt-4">
+                                    <div className="bg-gold/5 border border-gold/20 rounded-lg p-3 text-xs text-cream/60 space-y-1">
+                                        <p className="font-semibold text-gold text-xs">Streamyard Workflow</p>
+                                        <ol className="list-decimal list-inside space-y-0.5">
+                                            <li>Create a broadcast in Streamyard → destination: YouTube</li>
+                                            <li>Send the guest invite link from Streamyard to your guest</li>
+                                            <li>Go live in Streamyard, then paste the YouTube URL below</li>
+                                        </ol>
+                                    </div>
                                     <div>
                                         <label className="block text-xs text-cream/50 mb-1">Title *</label>
                                         <input
@@ -408,29 +411,19 @@ export default function AdminPage() {
                                             className="input w-full resize-none"
                                         />
                                     </div>
-                                    <div className="grid grid-cols-2 gap-3">
-                                        <div>
-                                            <label className="block text-xs text-cream/50 mb-1">Date</label>
-                                            <input
-                                                type="date"
-                                                value={newDate}
-                                                onChange={e => setNewDate(e.target.value)}
-                                                className="input w-full"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-xs text-cream/50 mb-1">Time</label>
-                                            <input
-                                                type="time"
-                                                value={newTime}
-                                                onChange={e => setNewTime(e.target.value)}
-                                                className="input w-full"
-                                            />
-                                        </div>
+                                    <div>
+                                        <label className="block text-xs text-cream/50 mb-1">YouTube Live URL</label>
+                                        <input
+                                            type="text"
+                                            placeholder="https://www.youtube.com/watch?v=..."
+                                            value={newYoutubeUrl}
+                                            onChange={e => setNewYoutubeUrl(e.target.value)}
+                                            className="input w-full"
+                                        />
                                     </div>
                                     <div className="flex gap-3">
                                         <button type="submit" disabled={creating} className="btn-primary">
-                                            {creating ? 'Creating…' : 'Create Session'}
+                                            {creating ? 'Creating…' : 'Go Live'}
                                         </button>
                                         <button type="button" onClick={() => setShowNewForm(false)} className="btn-secondary">
                                             Cancel
@@ -448,37 +441,37 @@ export default function AdminPage() {
                                 </h3>
                                 <div className="space-y-3">
                                     {liveSessions.map(s => (
-                                        <SessionRow key={s.id} session={s} copiedId={copiedId} onCopy={copyInviteLink} />
+                                        <div key={s.id} className="p-4 rounded-xl bg-navy border border-red-500/20">
+                                            <div className="flex items-start justify-between gap-4">
+                                                <div className="flex-1 min-w-0">
+                                                    <span className="text-[10px] px-2 py-0.5 rounded-full border font-medium uppercase bg-red-500/15 text-red-400 border-red-500/30 mr-2">live</span>
+                                                    <span className="text-sm font-medium text-white">{s.title}</span>
+                                                    {s.description && <p className="text-xs text-cream/50 mt-1">{s.description}</p>}
+                                                </div>
+                                                {s.youtubeVideoId && (
+                                                    <a
+                                                        href={`https://www.youtube.com/watch?v=${s.youtubeVideoId}`}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-red-600/20 text-red-400 text-xs border border-red-500/30 hover:bg-red-600/30 transition-colors flex-shrink-0"
+                                                    >
+                                                        <ExternalLink className="w-3 h-3" /> YouTube
+                                                    </a>
+                                                )}
+                                            </div>
+                                        </div>
                                     ))}
                                 </div>
                             </div>
                         )}
 
-                        {/* Scheduled sessions */}
-                        <div>
-                            <div className="flex items-center justify-between mb-3">
-                                <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-                                    <Clock className="w-4 h-4 text-gold" /> Scheduled
-                                </h3>
-                                <button onClick={loadPodcasts} className="text-xs text-cream/40 hover:text-cream flex items-center gap-1">
-                                    <RefreshCw className="w-3 h-3" /> Refresh
-                                </button>
+                        {/* Live sessions */}
+                        {!podcastsLoading && liveSessions.length === 0 && (
+                            <div className="text-center py-10 rounded-xl border border-gold/10 bg-navy">
+                                <Podcast className="w-10 h-10 text-gold/20 mx-auto mb-3" />
+                                <p className="text-cream/40 text-sm">No active broadcasts. Start one above.</p>
                             </div>
-                            {podcastsLoading ? (
-                                <div className="text-center py-8 text-cream/40">Loading…</div>
-                            ) : scheduledSessions.length === 0 ? (
-                                <div className="text-center py-10 rounded-xl border border-gold/10 bg-navy">
-                                    <Podcast className="w-10 h-10 text-gold/20 mx-auto mb-3" />
-                                    <p className="text-cream/40 text-sm">No upcoming sessions. Schedule one above.</p>
-                                </div>
-                            ) : (
-                                <div className="space-y-3">
-                                    {scheduledSessions.map(s => (
-                                        <SessionRow key={s.id} session={s} copiedId={copiedId} onCopy={copyInviteLink} />
-                                    ))}
-                                </div>
-                            )}
-                        </div>
+                        )}
                     </div>
                 )}
 
@@ -599,57 +592,3 @@ export default function AdminPage() {
     );
 }
 
-function SessionRow({ session, copiedId, onCopy }: {
-    session: BroadcastSession;
-    copiedId: string | null;
-    onCopy: (token: string, id: string) => void;
-}) {
-    const statusColors: Record<string, string> = {
-        live: 'bg-red-500/15 text-red-400 border-red-500/30',
-        scheduled: 'bg-gold/15 text-gold border-gold/30',
-        ended: 'bg-white/10 text-cream/40 border-white/10',
-    };
-
-    return (
-        <div className="p-4 rounded-xl bg-navy border border-gold/10">
-            <div className="flex items-start justify-between gap-4">
-                <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full border font-medium uppercase ${statusColors[session.status]}`}>
-                            {session.status}
-                        </span>
-                        <h4 className="text-sm font-medium text-white truncate">{session.title}</h4>
-                    </div>
-                    {session.description && (
-                        <p className="text-xs text-cream/50 mb-2">{session.description}</p>
-                    )}
-                    {session.scheduledAt && (
-                        <p className="text-xs text-cream/40 flex items-center gap-1">
-                            <Calendar className="w-3 h-3" />
-                            {new Date(session.scheduledAt).toLocaleString()}
-                        </p>
-                    )}
-                </div>
-                <div className="flex items-center gap-2 flex-shrink-0">
-                    {session.guestInviteToken && (
-                        <button
-                            onClick={() => onCopy(session.guestInviteToken!, session.id)}
-                            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-gold/10 text-gold text-xs border border-gold/20 hover:bg-gold/20 transition-colors"
-                        >
-                            {copiedId === session.id ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-                            {copiedId === session.id ? 'Copied!' : 'Invite Link'}
-                        </button>
-                    )}
-                    {session.status !== 'ended' && (
-                        <Link
-                            href={`/podcast/studio/${session.id}`}
-                            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-navy-dark text-cream/70 text-xs border border-gold/15 hover:border-gold/40 transition-colors"
-                        >
-                            <ExternalLink className="w-3 h-3" /> Studio
-                        </Link>
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-}
