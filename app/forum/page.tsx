@@ -16,6 +16,7 @@ import AuthModal from '@/components/forum/AuthModal';
 import NewTopicForm from '@/components/forum/NewTopicForm';
 import { useAuth } from '@/lib/forum/AuthContext';
 import { getCategories, getTopics, sortTopics, searchTopics, getTopicsByCategory } from '@/lib/forum/forum-service';
+import { SEED_TOPICS, FORUM_CATEGORIES } from '@/lib/forum/forum-data';
 import { ForumCategory, Topic, SortOption } from '@/lib/types/forum';
 
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -66,9 +67,9 @@ const sortIcons: Record<SortOption, React.ReactNode> = {
 
 export default function ForumPage() {
     const { user, logout } = useAuth();
-    const [categories, setCategories] = useState<ForumCategory[]>([]);
-    const [topics, setTopics] = useState<Topic[]>([]);
-    const [filteredTopics, setFilteredTopics] = useState<Topic[]>([]);
+    const [categories, setCategories] = useState<ForumCategory[]>(FORUM_CATEGORIES);
+    const [topics, setTopics] = useState<Topic[]>(sortTopics(SEED_TOPICS, 'active'));
+    const [filteredTopics, setFilteredTopics] = useState<Topic[]>(sortTopics(SEED_TOPICS, 'active'));
     const [search, setSearch] = useState('');
     const [sort, setSort] = useState<SortOption>('active');
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -84,25 +85,36 @@ export default function ForumPage() {
 
     useEffect(() => {
         const fetchCategories = async () => {
-            const data = await getCategories();
-            setCategories(data);
+            try {
+                const data = await getCategories();
+                if (data.length > 0) setCategories(data);
+            } catch (err) {
+                console.error('Forum fetchCategories error:', err);
+            }
         };
         fetchCategories();
     }, [refreshKey]);
 
     useEffect(() => {
         const fetchTopics = async () => {
-            let result: Topic[];
-            if (search.trim()) {
-                result = await searchTopics(search);
-            } else if (selectedCategory) {
-                result = await getTopicsByCategory(selectedCategory!);
-            } else {
-                result = await getTopics();
+            try {
+                let result: Topic[];
+                if (search.trim()) {
+                    result = await searchTopics(search);
+                } else if (selectedCategory) {
+                    result = await getTopicsByCategory(selectedCategory!);
+                } else {
+                    result = await getTopics();
+                }
+                result = sortTopics(result, sort);
+                if (result.length > 0) {
+                    setTopics(result);
+                    setFilteredTopics(result);
+                }
+            } catch (err) {
+                console.error('Forum fetchTopics error:', err);
+                // Leave the seed-initialized state intact on error
             }
-            result = sortTopics(result, sort);
-            setTopics(result);
-            setFilteredTopics(result);
         };
         fetchTopics();
     }, [search, sort, selectedCategory, refreshKey]);
