@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import {
     Users, Mail, TrendingUp, Download, Search,
@@ -44,7 +45,8 @@ interface ProfileRow {
 }
 
 export default function AdminPage() {
-    const { user, logout } = useAuth();
+    const { user, isLoading, logout } = useAuth();
+    const router = useRouter();
     const [tab, setTab] = useState<Tab>('overview');
 
     // CRM state
@@ -71,6 +73,14 @@ export default function AdminPage() {
     // CRM filter state
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'unsubscribed'>('all');
+
+    // Auth guard: redirect to login if not an admin once auth is resolved
+    useEffect(() => {
+        if (isLoading) return;
+        if (!user || !user.isAdmin) {
+            router.replace('/admin/login');
+        }
+    }, [user, isLoading, router]);
 
     const loadCRM = useCallback(async () => {
         initializeNewsletterData();
@@ -169,6 +179,15 @@ export default function AdminPage() {
         { key: 'subscribers', label: 'Subscribers', icon: <Mail className="w-4 h-4" /> },
         { key: 'campaigns', label: 'Campaigns', icon: <TrendingUp className="w-4 h-4" /> },
     ];
+
+    // Show loading state while auth check is pending or redirect is in progress
+    if (isLoading || !user?.isAdmin) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-navy-dark">
+                <div className="w-8 h-8 border-2 border-gold border-t-transparent rounded-full animate-spin" />
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-navy-dark">
