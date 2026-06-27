@@ -5,9 +5,9 @@ import Footer from '@/components/layout/Footer';
 import {
     BookOpen, Download, FileText, Video, ExternalLink,
     Users, Mic2, Shield, Vote, Newspaper, Star,
-    ChevronRight, Megaphone, BarChart2, CheckCircle
+    ChevronRight, Megaphone, BarChart2, CheckCircle, X, Send, Play
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
 type Audience = 'All' | 'Voters' | 'Candidates';
@@ -301,9 +301,104 @@ const audienceBadge: Record<Audience, string> = {
     Candidates: 'bg-gold/20 text-gold',
 };
 
+function DownloadModal({ resource, onClose }: { resource: Resource; onClose: () => void }) {
+    const [email, setEmail] = useState('');
+    const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) return;
+        setLoading(true);
+        await new Promise((r) => setTimeout(r, 800));
+        setLoading(false);
+        setSubmitted(true);
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                transition={{ duration: 0.2 }}
+                className="relative bg-navy border border-gold/30 rounded-2xl p-8 w-full max-w-md shadow-2xl"
+            >
+                <button onClick={onClose} className="absolute top-4 right-4 text-cream/40 hover:text-cream transition-colors">
+                    <X className="w-5 h-5" />
+                </button>
+
+                {!submitted ? (
+                    <>
+                        <div className="w-12 h-12 bg-gold/10 border border-gold/30 rounded-xl flex items-center justify-center mb-4">
+                            {resource.type === 'Video' ? (
+                                <Play className="w-6 h-6 text-gold" />
+                            ) : (
+                                <Download className="w-6 h-6 text-gold" />
+                            )}
+                        </div>
+                        <h3 className="font-display text-lg font-semibold text-white mb-1">
+                            {resource.type === 'Video' ? 'Watch This Resource' : 'Download This Resource'}
+                        </h3>
+                        <p className="text-gold/70 text-xs font-medium uppercase tracking-wide mb-2">
+                            {resource.category}
+                        </p>
+                        <p className="text-cream/60 text-sm mb-6">
+                            {resource.title} — enter your email and we'll send it straight to your inbox.
+                        </p>
+                        <form onSubmit={handleSubmit} className="space-y-3">
+                            <input
+                                type="email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="your@email.com"
+                                className="w-full bg-navy-dark/60 border border-gold/20 rounded-lg px-4 py-3 text-white placeholder:text-cream/30 text-sm focus:outline-none focus:border-gold/50 transition-colors"
+                            />
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="btn-primary w-full flex items-center justify-center gap-2"
+                            >
+                                {loading ? (
+                                    <span className="animate-pulse">Sending…</span>
+                                ) : (
+                                    <>
+                                        <Send className="w-4 h-4" />
+                                        Send to My Inbox
+                                    </>
+                                )}
+                            </button>
+                        </form>
+                        <p className="text-cream/30 text-xs text-center mt-4">
+                            No spam. Unsubscribe anytime.
+                        </p>
+                    </>
+                ) : (
+                    <div className="text-center py-4">
+                        <div className="w-14 h-14 bg-green-500/15 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <CheckCircle className="w-7 h-7 text-green-400" />
+                        </div>
+                        <h3 className="font-display text-lg font-semibold text-white mb-2">You're all set!</h3>
+                        <p className="text-cream/60 text-sm mb-6">
+                            <span className="text-gold font-medium">{resource.title}</span> is on its way to{' '}
+                            <span className="text-white">{email}</span>.
+                        </p>
+                        <button onClick={onClose} className="btn-secondary text-sm">
+                            Back to Resources
+                        </button>
+                    </div>
+                )}
+            </motion.div>
+        </div>
+    );
+}
+
 export default function ResourcesPage() {
     const [activeAudience, setActiveAudience] = useState<Audience>('All');
     const [activeCategory, setActiveCategory] = useState<string>('All');
+    const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
 
     const audienceFilters: Audience[] = ['All', 'Voters', 'Candidates'];
 
@@ -325,6 +420,11 @@ export default function ResourcesPage() {
 
     return (
         <>
+            <AnimatePresence>
+                {selectedResource && (
+                    <DownloadModal resource={selectedResource} onClose={() => setSelectedResource(null)} />
+                )}
+            </AnimatePresence>
             <Header />
             <main className="min-h-screen">
                 {/* Page Header */}
@@ -442,7 +542,10 @@ export default function ResourcesPage() {
                                                 <span className="text-cream/40 text-xs">
                                                     {resource.downloads.toLocaleString()} downloads
                                                 </span>
-                                                <button className="btn-secondary text-xs flex items-center gap-1.5 py-1.5 px-3">
+                                                <button
+                                                    onClick={() => setSelectedResource(resource)}
+                                                    className="btn-secondary text-xs flex items-center gap-1.5 py-1.5 px-3"
+                                                >
                                                     <Download className="w-3.5 h-3.5" />
                                                     {resource.type === 'Video' ? 'Watch' : 'Download'}
                                                 </button>
@@ -578,7 +681,10 @@ export default function ResourcesPage() {
                                                 <span className="text-cream/40 text-xs">
                                                     {resource.downloads.toLocaleString()} downloads
                                                 </span>
-                                                <button className="btn-secondary text-xs flex items-center gap-1.5 py-1.5 px-3">
+                                                <button
+                                                    onClick={() => setSelectedResource(resource)}
+                                                    className="btn-secondary text-xs flex items-center gap-1.5 py-1.5 px-3"
+                                                >
                                                     <Download className="w-3.5 h-3.5" />
                                                     {resource.type === 'Video' ? 'Watch' : 'Download'}
                                                 </button>
