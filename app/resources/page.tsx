@@ -310,9 +310,24 @@ function DownloadModal({ resource, onClose }: { resource: Resource; onClose: () 
         e.preventDefault();
         if (!email) return;
         setLoading(true);
-        await new Promise((r) => setTimeout(r, 800));
-        setLoading(false);
-        setSubmitted(true);
+        try {
+            const res = await fetch('/api/send-resource', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email,
+                    resourceTitle: resource.title,
+                    resourceCategory: resource.category,
+                    resourceType: resource.type,
+                }),
+            });
+            if (!res.ok) throw new Error('Send failed');
+            setSubmitted(true);
+        } catch {
+            alert('Something went wrong. Please try again.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (

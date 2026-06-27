@@ -144,6 +144,12 @@
       "namedRegex": "^/api/events/ics(?:/)?$"
     },
     {
+      "page": "/api/send-resource",
+      "regex": "^/api/send\\-resource(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/send\\-resource(?:/)?$"
+    },
+    {
       "page": "/calendar",
       "regex": "^/calendar(?:/)?$",
       "routeKeys": {},
