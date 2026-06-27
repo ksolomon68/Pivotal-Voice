@@ -38,3 +38,4 @@ next-env.d.ts
 # scripts with hardcoded credentials
 push_sql.js
 supabase_candidates.sql
+.next/dev/
