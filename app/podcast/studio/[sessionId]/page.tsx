@@ -8,9 +8,20 @@ import { supabase } from '@/lib/supabase/client';
 import { getSession } from '@/lib/broadcast/broadcast-service';
 import StudioRoom from '@/components/podcast/broadcast/StudioRoom';
 import { BroadcastRole, BroadcastSession } from '@/lib/types/broadcast';
-import { AlertCircle, Link as LinkIcon } from 'lucide-react';
+import { AlertCircle, Link as LinkIcon, RefreshCw } from 'lucide-react';
 
 type PageState = 'loading' | 'no-token' | 'name-prompt' | 'connecting' | 'live' | 'error';
+
+// Fetch wrapper with a hard timeout so calls never hang indefinitely.
+async function fetchWithTimeout(url: string, options: RequestInit, timeoutMs = 12000): Promise<Response> {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+        return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+        clearTimeout(id);
+    }
+}
 
 // useSearchParams() requires a Suspense boundary in Next.js App Router.
 // This inner component reads the invite token and contains all page logic.
@@ -27,9 +38,9 @@ function StudioPageContent() {
     const [role, setRole] = useState<BroadcastRole>('viewer');
     const [livekitToken, setLivekitToken] = useState('');
     const [livekitUrl, setLivekitUrl] = useState('');
-    const [displayName, setDisplayName] = useState('');
     const [nameInput, setNameInput] = useState('');
     const [error, setError] = useState('');
+    const [goLiveError, setGoLiveError] = useState('');
     const [isUpdating, setIsUpdating] = useState(false);
     const [sessionStatus, setSessionStatus] = useState<BroadcastSession['status']>('scheduled');
     // Prevent the init effect from running more than once per mount.
@@ -43,37 +54,36 @@ function StudioPageContent() {
         initializedRef.current = true;
 
         if (!user && !inviteToken) {
-            // No account and no invite token — show a helpful message instead of
-            // silently redirecting, so guests know they need the correct invite link.
             setPageState('no-token');
             return;
-        }
-
-        async function init() {
-            try {
-                const s = await getSession(sessionId as string);
-                if (!s) throw new Error('Session not found');
-                setSession(s);
-                setSessionStatus(s.status);
-
-                if (user?.isAdmin && s.hostId === user.id) {
-                    setRole('host');
-                    await fetchToken('host', s, user.displayName);
-                } else if (inviteToken && inviteToken === s.guestInviteToken) {
-                    setRole('guest');
-                    setPageState('name-prompt');
-                } else {
-                    router.replace(`/podcast/live/${sessionId}`);
-                }
-            } catch (err) {
-                setError(err instanceof Error ? err.message : 'Failed to load session');
-                setPageState('error');
-            }
         }
 
         init();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [authLoading, user, sessionId]);
+
+    async function init() {
+        setPageState('loading');
+        try {
+            const s = await getSession(sessionId as string);
+            if (!s) throw new Error('Session not found');
+            setSession(s);
+            setSessionStatus(s.status);
+
+            if (user?.isAdmin && s.hostId === user.id) {
+                setRole('host');
+                await fetchToken('host', s, user.displayName);
+            } else if (inviteToken && inviteToken === s.guestInviteToken) {
+                setRole('guest');
+                setPageState('name-prompt');
+            } else {
+                router.replace(`/podcast/live/${sessionId}`);
+            }
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Failed to load session');
+            setPageState('error');
+        }
+    }
 
     async function fetchToken(r: BroadcastRole, s: BroadcastSession, name: string) {
         setPageState('connecting');
@@ -81,7 +91,7 @@ function StudioPageContent() {
             const { data: { session: authSession } } = await supabase.auth.getSession();
             const authToken = authSession?.access_token;
 
-            const res = await fetch('/api/broadcast/token', {
+            const res = await fetchWithTimeout('/api/broadcast/token', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -103,10 +113,10 @@ function StudioPageContent() {
             const { token, livekitUrl: url } = await res.json();
             setLivekitToken(token);
             setLivekitUrl(url);
-            setDisplayName(name);
             setPageState('live');
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'Connection failed');
+            const msg = err instanceof Error ? err.message : 'Connection failed';
+            setError(err instanceof Error && err.name === 'AbortError' ? 'Connection timed out. Check your network and try again.' : msg);
             setPageState('error');
         }
     }
@@ -120,9 +130,10 @@ function StudioPageContent() {
     const handleGoLive = async () => {
         if (!session) return;
         setIsUpdating(true);
+        setGoLiveError('');
         try {
             const { data: { session: authSession } } = await supabase.auth.getSession();
-            await fetch(`/api/broadcast/sessions/${session.id}`, {
+            const res = await fetchWithTimeout(`/api/broadcast/sessions/${session.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -130,8 +141,17 @@ function StudioPageContent() {
                 },
                 body: JSON.stringify({ status: 'live' }),
             });
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                throw new Error(data.error || `Server error (${res.status})`);
+            }
             setSessionStatus('live');
             setSession(prev => prev ? { ...prev, status: 'live' } : prev);
+        } catch (err) {
+            const msg = err instanceof Error && err.name === 'AbortError'
+                ? 'Request timed out. Check your connection and try again.'
+                : err instanceof Error ? err.message : 'Failed to go live';
+            setGoLiveError(msg);
         } finally {
             setIsUpdating(false);
         }
@@ -142,7 +162,7 @@ function StudioPageContent() {
         setIsUpdating(true);
         try {
             const { data: { session: authSession } } = await supabase.auth.getSession();
-            await fetch(`/api/broadcast/sessions/${session.id}`, {
+            const res = await fetchWithTimeout(`/api/broadcast/sessions/${session.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -150,6 +170,7 @@ function StudioPageContent() {
                 },
                 body: JSON.stringify({ status: 'ended' }),
             });
+            if (!res.ok) return;
             setSessionStatus('ended');
             setSession(prev => prev ? { ...prev, status: 'ended' } : prev);
         } finally {
@@ -220,7 +241,23 @@ function StudioPageContent() {
                             <AlertCircle className="w-7 h-7 text-red-400" />
                         </div>
                         <h2 className="text-xl font-display font-bold text-white mb-2">Connection Failed</h2>
-                        <p className="text-cream/60 text-sm">{error}</p>
+                        <p className="text-cream/60 text-sm mb-6">{error}</p>
+                        <button
+                            onClick={() => {
+                                initializedRef.current = false;
+                                if (session && user?.isAdmin) {
+                                    fetchToken('host', session, user.displayName);
+                                } else if (session && inviteToken) {
+                                    fetchToken('guest', session, nameInput || 'Guest');
+                                } else {
+                                    init();
+                                }
+                            }}
+                            className="flex items-center gap-2 mx-auto px-5 py-2.5 rounded-lg bg-gold/10 border border-gold/30 text-gold text-sm font-semibold hover:bg-gold/20 transition-colors"
+                        >
+                            <RefreshCw className="w-4 h-4" />
+                            Try Again
+                        </button>
                     </div>
                 )}
 
@@ -233,6 +270,7 @@ function StudioPageContent() {
                         onGoLive={handleGoLive}
                         onEnd={handleEnd}
                         isUpdating={isUpdating}
+                        goLiveError={goLiveError}
                     />
                 )}
             </main>

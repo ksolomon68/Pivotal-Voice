@@ -18,6 +18,7 @@ interface Props {
     onGoLive: () => void;
     onEnd: () => void;
     isUpdating: boolean;
+    goLiveError?: string;
 }
 
 // Inner component that has access to the LiveKit room context
@@ -27,6 +28,7 @@ function StudioRoomInner({
     onGoLive,
     onEnd,
     isUpdating,
+    goLiveError,
 }: Omit<Props, 'token' | 'livekitUrl'>) {
     const connectionState = useConnectionState();
     const isPublisher = role === 'host' || role === 'guest';
@@ -91,6 +93,7 @@ function StudioRoomInner({
                             onGoLive={onGoLive}
                             onEnd={onEnd}
                             isUpdating={isUpdating}
+                            goLiveError={goLiveError}
                         />
                     </div>
 
@@ -136,6 +139,7 @@ export default function StudioRoom({
     onGoLive,
     onEnd,
     isUpdating,
+    goLiveError,
 }: Props) {
     const [roomError, setRoomError] = useState<string | null>(null);
     const [shouldConnect, setShouldConnect] = useState(false);
@@ -189,6 +193,7 @@ export default function StudioRoom({
                 onGoLive={onGoLive}
                 onEnd={onEnd}
                 isUpdating={isUpdating}
+                goLiveError={goLiveError}
             />
         </LiveKitRoom>
     );

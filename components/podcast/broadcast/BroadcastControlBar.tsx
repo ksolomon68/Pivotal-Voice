@@ -11,9 +11,10 @@ interface Props {
     onGoLive: () => void;
     onEnd: () => void;
     isUpdating: boolean;
+    goLiveError?: string;
 }
 
-export default function BroadcastControlBar({ role, sessionStatus, onGoLive, onEnd, isUpdating }: Props) {
+export default function BroadcastControlBar({ role, sessionStatus, onGoLive, onEnd, isUpdating, goLiveError }: Props) {
     const { localParticipant, isMicrophoneEnabled, isCameraEnabled } = useLocalParticipant();
     const connectionState = useConnectionState();
     const isConnected = connectionState === 'connected';
@@ -102,14 +103,22 @@ export default function BroadcastControlBar({ role, sessionStatus, onGoLive, onE
             {role === 'host' && (
                 <div className="pt-2 border-t border-white/10">
                     {sessionStatus === 'scheduled' && (
-                        <button
-                            onClick={onGoLive}
-                            disabled={isUpdating || !isConnected}
-                            className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-red-500 hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm transition-colors"
-                        >
-                            <Radio className="w-4 h-4" />
-                            {isUpdating ? 'Starting...' : !isConnected ? 'Connecting to Studio...' : 'Go Live'}
-                        </button>
+                        <>
+                            <button
+                                onClick={onGoLive}
+                                disabled={isUpdating || !isConnected}
+                                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-red-500 hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm transition-colors"
+                            >
+                                <Radio className="w-4 h-4" />
+                                {isUpdating ? 'Starting...' : !isConnected ? 'Connecting to Studio...' : 'Go Live'}
+                            </button>
+                            {goLiveError && (
+                                <div className="mt-2 text-xs text-red-400 bg-red-500/10 border border-red-500/20 p-2.5 rounded-lg flex items-start gap-2">
+                                    <span className="shrink-0 mt-0.5">⚠️</span>
+                                    <span>{goLiveError}</span>
+                                </div>
+                            )}
+                        </>
                     )}
                     {sessionStatus === 'live' && (
                         <button
