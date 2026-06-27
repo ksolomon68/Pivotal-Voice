@@ -6,7 +6,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { useAuth } from '@/lib/forum/AuthContext';
 import { supabase } from '@/lib/supabase/client';
-import { Radio, Lock } from 'lucide-react';
+import { Radio, Lock, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { BroadcastSession } from '@/lib/types/broadcast';
 
@@ -148,6 +148,25 @@ export default function BroadcastCreatePage() {
                             <p className="text-cream/60">Set up your live podcast session.</p>
                         </div>
 
+                        {/* Streamyard workflow guide */}
+                        <div className="bg-gold/5 border border-gold/20 rounded-xl p-5 mb-2 space-y-2">
+                            <p className="text-sm font-semibold text-gold">Streamyard Workflow</p>
+                            <ol className="text-xs text-cream/60 space-y-1 list-decimal list-inside">
+                                <li>Open Streamyard and create a new broadcast → destination: <span className="text-cream/80">YouTube</span></li>
+                                <li>Copy the guest invite link from Streamyard and send it to your guest</li>
+                                <li>In Streamyard, go live — copy the YouTube video URL from the broadcast</li>
+                                <li>Paste the YouTube URL below so viewers on this site see the embedded stream</li>
+                            </ol>
+                            <a
+                                href="https://streamyard.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs text-gold/70 hover:text-gold transition-colors mt-1"
+                            >
+                                Open Streamyard <ExternalLink className="w-3 h-3" />
+                            </a>
+                        </div>
+
                         <form onSubmit={handleSubmit} className="bg-navy-dark/60 border border-white/10 rounded-2xl p-8 space-y-5">
                             <div>
                                 <label className="block text-sm font-semibold text-cream/70 mb-2">
@@ -190,17 +209,17 @@ export default function BroadcastCreatePage() {
 
                             <div>
                                 <label className="block text-sm font-semibold text-cream/70 mb-2">
-                                    YouTube Live Video ID or URL (optional)
+                                    YouTube Video URL <span className="text-red-400">*</span>
                                 </label>
                                 <input
                                     type="text"
                                     value={youtubeVideoId}
                                     onChange={(e) => setYoutubeVideoId(e.target.value)}
-                                    placeholder="e.g. dQw4w9WgXcQ or full YouTube URL"
+                                    placeholder="https://www.youtube.com/watch?v=..."
                                     className="input w-full"
                                 />
                                 <p className="text-xs text-cream/40 mt-1">
-                                    Paste a YouTube video ID or URL to embed the live stream on the podcast page.
+                                    Paste the YouTube live URL from Streamyard. You can add this after going live.
                                 </p>
                             </div>
 
