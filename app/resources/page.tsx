@@ -321,10 +321,15 @@ function DownloadModal({ resource, onClose }: { resource: Resource; onClose: () 
                     resourceType: resource.type,
                 }),
             });
-            if (!res.ok) throw new Error('Send failed');
+            if (!res.ok) {
+                const body = await res.json().catch(() => ({}));
+                console.error('send-resource error:', body);
+                throw new Error(body.detail?.message || 'Send failed');
+            }
             setSubmitted(true);
-        } catch {
-            alert('Something went wrong. Please try again.');
+        } catch (err: unknown) {
+            const msg = err instanceof Error ? err.message : 'Unknown error';
+            alert(`Something went wrong: ${msg}`);
         } finally {
             setLoading(false);
         }
