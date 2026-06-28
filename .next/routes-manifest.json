@@ -158,6 +158,12 @@
       "namedRegex": "^/api/send\\-resource(?:/)?$"
     },
     {
+      "page": "/api/submit-resource",
+      "regex": "^/api/submit\\-resource(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/submit\\-resource(?:/)?$"
+    },
+    {
       "page": "/calendar",
       "regex": "^/calendar(?:/)?$",
       "routeKeys": {},
