@@ -2,5 +2,5 @@
 deployment:
   tasks:
     - /bin/rsync -av --delete --exclude='.git' --exclude='node_modules' --exclude='.env.local' --exclude='.env' ./ /home/pivotalvoice/Pivotal-Voice/
-    - . /home/pivotalvoice/nodevenv/Pivotal-Voice/22/bin/activate && cd /home/pivotalvoice/Pivotal-Voice && npm install --production
+    - . /home/pivotalvoice/nodevenv/Pivotal-Voice/24/bin/activate && cd /home/pivotalvoice/Pivotal-Voice && npm install --production
 
