@@ -16,5 +16,6 @@ export interface BroadcastSession {
     viewerCount: number;
     thumbnailUrl?: string;
     youtubeVideoId?: string;
+    streamyardBroadcastId?: string;
     createdAt: string;
 }

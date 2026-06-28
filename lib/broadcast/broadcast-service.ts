@@ -17,6 +17,7 @@ function mapRow(row: Record<string, unknown>): BroadcastSession {
         viewerCount: row.viewer_count as number,
         thumbnailUrl: row.thumbnail_url as string | undefined,
         youtubeVideoId: row.youtube_video_id as string | undefined,
+        streamyardBroadcastId: row.streamyard_broadcast_id as string | undefined,
         createdAt: row.created_at as string,
     };
 }
@@ -27,7 +28,8 @@ export async function createSession(
     title: string,
     description?: string,
     scheduledAt?: string,
-    youtubeVideoId?: string
+    youtubeVideoId?: string,
+    streamyardBroadcastId?: string
 ): Promise<BroadcastSession> {
     const tempId = crypto.randomUUID();
     const { data, error } = await supabase
@@ -41,6 +43,7 @@ export async function createSession(
             livekit_room_name: `room_${tempId}`,
             guest_invite_token: crypto.randomUUID(),
             youtube_video_id: youtubeVideoId || null,
+            streamyard_broadcast_id: streamyardBroadcastId || null,
         })
         .select()
         .single();
