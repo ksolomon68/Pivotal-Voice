@@ -67,7 +67,6 @@ export default function AdminPage() {
     const [showNewForm, setShowNewForm] = useState(false);
     const [newTitle, setNewTitle] = useState('');
     const [newDesc, setNewDesc] = useState('');
-    const [newYoutubeUrl, setNewYoutubeUrl] = useState('');
     const [newStreamyardId, setNewStreamyardId] = useState('');
     const [creating, setCreating] = useState(false);
 
@@ -162,17 +161,16 @@ export default function AdminPage() {
         if (!user) return;
         setCreating(true);
         try {
-            const youtubeVideoId = extractYoutubeId(newYoutubeUrl);
             await createSession(
                 user.id,
                 user.displayName,
                 newTitle,
                 newDesc || undefined,
                 undefined,
-                youtubeVideoId || undefined,
+                undefined,
                 newStreamyardId.trim() || undefined
             );
-            setNewTitle(''); setNewDesc(''); setNewYoutubeUrl(''); setNewStreamyardId('');
+            setNewTitle(''); setNewDesc(''); setNewStreamyardId('');
             setShowNewForm(false);
             loadPodcasts();
         } catch (err) {
@@ -406,16 +404,14 @@ export default function AdminPage() {
                                     <Plus className="w-4 h-4 text-gold" /> Schedule a Broadcast
                                 </span>
                                 <ChevronDown className={`w-4 h-4 text-cream/40 transition-transform ${showNewForm ? 'rotate-180' : ''}`} />
-                            </button>
-
-                            {showNewForm && (
+                                        {showNewForm && (
                                 <form onSubmit={handleCreateSession} className="px-5 pb-5 space-y-4 border-t border-gold/10 pt-4">
                                     <div className="bg-gold/5 border border-gold/20 rounded-lg p-3 text-xs text-cream/60 space-y-1">
                                         <p className="font-semibold text-gold text-xs">Streamyard Workflow</p>
                                         <ol className="list-decimal list-inside space-y-0.5">
-                                            <li>Create a broadcast in Streamyard → destination: YouTube</li>
+                                            <li>Create a broadcast in Streamyard</li>
                                             <li>Send the guest invite link from Streamyard to your guest</li>
-                                            <li>Go live in Streamyard, then paste the YouTube URL below</li>
+                                            <li>Go live in Streamyard, then paste the StreamYard Watch URL or Broadcast ID below</li>
                                         </ol>
                                     </div>
                                     <div>
@@ -440,22 +436,13 @@ export default function AdminPage() {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-xs text-cream/50 mb-1">StreamYard Broadcast ID *</label>
+                                        <label className="block text-xs text-cream/50 mb-1">StreamYard Broadcast ID or Watch URL *</label>
                                         <input
                                             type="text"
-                                            placeholder="e.g. LNeHdzk3_EF7BZD3xbZqnKvAw"
+                                            placeholder="https://streamyard.com/watch/AbCdEf123"
                                             value={newStreamyardId}
                                             onChange={e => setNewStreamyardId(e.target.value)}
-                                            className="input w-full"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-xs text-cream/50 mb-1">YouTube Live URL (optional)</label>
-                                        <input
-                                            type="text"
-                                            placeholder="https://www.youtube.com/watch?v=..."
-                                            value={newYoutubeUrl}
-                                            onChange={e => setNewYoutubeUrl(e.target.value)}
+                                            required
                                             className="input w-full"
                                         />
                                     </div>

@@ -184,6 +184,8 @@ CREATE TABLE IF NOT EXISTS public.broadcast_sessions (
     ended_at TIMESTAMPTZ,
     viewer_count INTEGER NOT NULL DEFAULT 0,
     thumbnail_url TEXT,
+    youtube_video_id TEXT,
+    streamyard_broadcast_id TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
