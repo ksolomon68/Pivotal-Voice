@@ -59,7 +59,8 @@ function DownloadModal({ resource, onClose }: { resource: Resource; onClose: () 
             });
             if (!res.ok) {
                 const body = await res.json().catch(() => ({}));
-                throw new Error(body.detail?.message || 'Send failed');
+                console.error('send-resource error status:', res.status, 'body:', body);
+                throw new Error(body.error || body.detail?.message || 'Send failed');
             }
             setSubmitted(true);
         } catch (err: unknown) {
@@ -136,10 +137,155 @@ function DownloadModal({ resource, onClose }: { resource: Resource; onClose: () 
     );
 }
 
+function SubmitResourceModal({ onClose }: { onClose: () => void }) {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [link, setLink] = useState('');
+    const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email || !title || !description) return;
+        setLoading(true);
+        try {
+            const res = await fetch('/api/submit-resource', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, title, description, link }),
+            });
+            if (!res.ok) {
+                const body = await res.json().catch(() => ({}));
+                console.error('submit-resource error status:', res.status, 'body:', body);
+                throw new Error(body.error || 'Submission failed');
+            }
+            setSubmitted(true);
+        } catch (err: unknown) {
+            const msg = err instanceof Error ? err.message : 'Unknown error';
+            alert(`Something went wrong: ${msg}`);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                transition={{ duration: 0.2 }}
+                className="relative bg-navy border border-gold/30 rounded-2xl p-8 w-full max-w-lg shadow-2xl overflow-y-auto max-h-[90vh]"
+            >
+                <button onClick={onClose} className="absolute top-4 right-4 text-cream/40 hover:text-cream transition-colors">
+                    <X className="w-5 h-5" />
+                </button>
+
+                {!submitted ? (
+                    <>
+                        <div className="w-12 h-12 bg-gold/10 border border-gold/30 rounded-xl flex items-center justify-center mb-4">
+                            <Send className="w-6 h-6 text-gold" />
+                        </div>
+                        <h3 className="font-display text-lg font-semibold text-white mb-1">
+                            Submit a Resource
+                        </h3>
+                        <p className="text-cream/60 text-sm mb-6">
+                            Share a guide, template, or tool with the Pivotal Voice community.
+                        </p>
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <div>
+                                <label className="block text-cream/80 text-xs font-semibold uppercase tracking-wider mb-1.5">
+                                    Your Name
+                                </label>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    placeholder="Jane Doe"
+                                    className="w-full bg-navy-dark/60 border border-gold/20 rounded-lg px-4 py-2.5 text-white placeholder:text-cream/30 text-sm focus:outline-none focus:border-gold/50 transition-colors"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-cream/80 text-xs font-semibold uppercase tracking-wider mb-1.5">
+                                    Your Email *
+                                </label>
+                                <input
+                                    type="email"
+                                    required
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="your@email.com"
+                                    className="w-full bg-navy-dark/60 border border-gold/20 rounded-lg px-4 py-2.5 text-white placeholder:text-cream/30 text-sm focus:outline-none focus:border-gold/50 transition-colors"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-cream/80 text-xs font-semibold uppercase tracking-wider mb-1.5">
+                                    Resource Title *
+                                </label>
+                                <input
+                                    type="text"
+                                    required
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    placeholder="e.g. Ellis County Campaign Checklist"
+                                    className="w-full bg-navy-dark/60 border border-gold/20 rounded-lg px-4 py-2.5 text-white placeholder:text-cream/30 text-sm focus:outline-none focus:border-gold/50 transition-colors"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-cream/80 text-xs font-semibold uppercase tracking-wider mb-1.5">
+                                    Link / Source URL (Optional)
+                                </label>
+                                <input
+                                    type="url"
+                                    value={link}
+                                    onChange={(e) => setLink(e.target.value)}
+                                    placeholder="https://example.com/resource"
+                                    className="w-full bg-navy-dark/60 border border-gold/20 rounded-lg px-4 py-2.5 text-white placeholder:text-cream/30 text-sm focus:outline-none focus:border-gold/50 transition-colors"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-cream/80 text-xs font-semibold uppercase tracking-wider mb-1.5">
+                                    Description / Content *
+                                </label>
+                                <textarea
+                                    required
+                                    rows={4}
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    placeholder="Describe the resource or paste its text here..."
+                                    className="w-full bg-navy-dark/60 border border-gold/20 rounded-lg px-4 py-2.5 text-white placeholder:text-cream/30 text-sm focus:outline-none focus:border-gold/50 transition-colors resize-none"
+                                />
+                            </div>
+                            <button type="submit" disabled={loading} className="btn-primary w-full flex items-center justify-center gap-2 mt-2">
+                                {loading ? <span className="animate-pulse">Submitting…</span> : <><Send className="w-4 h-4" /> Submit for Review</>}
+                            </button>
+                        </form>
+                    </>
+                ) : (
+                    <div className="text-center py-6">
+                        <div className="w-14 h-14 bg-green-500/15 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <CheckCircle className="w-7 h-7 text-green-400" />
+                        </div>
+                        <h3 className="font-display text-lg font-semibold text-white mb-2">Thank you!</h3>
+                        <p className="text-cream/60 text-sm mb-6">
+                            Your resource suggestion has been submitted to the Pivotal Voice team. We will review it shortly.
+                        </p>
+                        <button onClick={onClose} className="btn-primary text-sm">Close</button>
+                    </div>
+                )}
+            </motion.div>
+        </div>
+    );
+}
+
 export default function ResourcesPage() {
     const [activeAudience, setActiveAudience] = useState<Audience>('All');
     const [activeCategory, setActiveCategory] = useState<string>('All');
     const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
+    const [showSubmitModal, setShowSubmitModal] = useState(false);
 
     const audienceFilters: Audience[] = ['All', 'Voters', 'Candidates'];
 
@@ -211,6 +357,9 @@ export default function ResourcesPage() {
             <AnimatePresence>
                 {selectedResource && (
                     <DownloadModal resource={selectedResource} onClose={() => setSelectedResource(null)} />
+                )}
+                {showSubmitModal && (
+                    <SubmitResourceModal onClose={() => setShowSubmitModal(false)} />
                 )}
             </AnimatePresence>
             <Header />
@@ -376,11 +525,13 @@ export default function ResourcesPage() {
                                     ))}
                                 </ul>
                                 <div className="flex gap-4">
-                                    <button className="btn-primary">Schedule a Consultation</button>
-                                    <button className="btn-secondary flex items-center gap-2">
+                                    <Link href="/services#book" className="btn-primary inline-flex items-center justify-center">
+                                        Schedule a Consultation
+                                    </Link>
+                                    <Link href="/services" className="btn-secondary inline-flex items-center gap-2">
                                         <ExternalLink className="w-4 h-4" />
                                         View Services
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
@@ -409,7 +560,7 @@ export default function ResourcesPage() {
                                 Have a guide, template, or tool that would help Ellis County voters or candidates?
                                 Submit it for review and we'll add it to the library.
                             </p>
-                            <button className="btn-primary">Submit a Resource</button>
+                            <button onClick={() => setShowSubmitModal(true)} className="btn-primary">Submit a Resource</button>
                         </div>
                     </div>
                 </section>
