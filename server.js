@@ -5,6 +5,13 @@ const next = require('next');
 const dev = process.env.NODE_ENV !== 'production';
 const hostname = process.env.HOSTNAME || '0.0.0.0';
 
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('REAL UNHANDLED REJECTION:', reason ? (reason.stack || reason) : reason);
+});
+process.on('uncaughtException', (err) => {
+    console.error('REAL UNCAUGHT EXCEPTION:', err ? (err.stack || err) : err);
+});
+
 // cPanel Passenger passes a Unix socket path string in process.env.PORT.
 // If it's a number, parse it. Otherwise, use it as a string socket path.
 const rawPort = process.env.PORT || '3000';
