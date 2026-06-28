@@ -68,6 +68,7 @@ export default function AdminPage() {
     const [newTitle, setNewTitle] = useState('');
     const [newDesc, setNewDesc] = useState('');
     const [newYoutubeUrl, setNewYoutubeUrl] = useState('');
+    const [newStreamyardId, setNewStreamyardId] = useState('');
     const [creating, setCreating] = useState(false);
 
     // CRM filter state
@@ -162,8 +163,16 @@ export default function AdminPage() {
         setCreating(true);
         try {
             const youtubeVideoId = extractYoutubeId(newYoutubeUrl);
-            await createSession(user.id, user.displayName, newTitle, newDesc || undefined, undefined, youtubeVideoId || undefined);
-            setNewTitle(''); setNewDesc(''); setNewYoutubeUrl('');
+            await createSession(
+                user.id,
+                user.displayName,
+                newTitle,
+                newDesc || undefined,
+                undefined,
+                youtubeVideoId || undefined,
+                newStreamyardId.trim() || undefined
+            );
+            setNewTitle(''); setNewDesc(''); setNewYoutubeUrl(''); setNewStreamyardId('');
             setShowNewForm(false);
             loadPodcasts();
         } catch (err) {
@@ -437,6 +446,16 @@ export default function AdminPage() {
                                             placeholder="https://www.youtube.com/watch?v=..."
                                             value={newYoutubeUrl}
                                             onChange={e => setNewYoutubeUrl(e.target.value)}
+                                            className="input w-full"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs text-cream/50 mb-1">StreamYard Broadcast ID (optional)</label>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. LNeHdzk3_EF7BZD3xbZqnKvAw"
+                                            value={newStreamyardId}
+                                            onChange={e => setNewStreamyardId(e.target.value)}
                                             className="input w-full"
                                         />
                                     </div>
