@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/pivotalvoice/Pivotal-Voice
-    - /bin/rsync -av --delete --exclude='.git' --exclude='node_modules' --exclude='.env.local' --exclude='.env' ./ $DEPLOYPATH
-    - . /home/pivotalvoice/nodevenv/Pivotal-Voice/22/bin/activate && cd $DEPLOYPATH && npm install --production
+    - /bin/rsync -av --delete --exclude='.git' --exclude='node_modules' --exclude='.env.local' --exclude='.env' ./ /home/pivotalvoice/Pivotal-Voice/
+    - . /home/pivotalvoice/nodevenv/Pivotal-Voice/22/bin/activate && cd /home/pivotalvoice/Pivotal-Voice && npm install --production
+
