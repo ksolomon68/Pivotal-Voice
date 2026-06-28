@@ -26,6 +26,7 @@ export default function BroadcastCreatePage() {
     const [description, setDescription] = useState('');
     const [scheduledAt, setScheduledAt] = useState('');
     const [youtubeVideoId, setYoutubeVideoId] = useState('');
+    const [streamyardBroadcastId, setStreamyardBroadcastId] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
     const [createdSession, setCreatedSession] = useState<BroadcastSession | null>(null);
@@ -83,6 +84,7 @@ export default function BroadcastCreatePage() {
                     description: description.trim() || undefined,
                     scheduledAt: scheduledAt || undefined,
                     youtubeVideoId: extractYoutubeId(youtubeVideoId) || undefined,
+                    streamyardBroadcastId: streamyardBroadcastId.trim() || undefined,
                 }),
             });
 
@@ -220,6 +222,22 @@ export default function BroadcastCreatePage() {
                                 />
                                 <p className="text-xs text-cream/40 mt-1">
                                     Paste the YouTube live URL from Streamyard. You can add this after going live.
+                                </p>
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-semibold text-cream/70 mb-2">
+                                    StreamYard Broadcast ID (optional)
+                                </label>
+                                <input
+                                    type="text"
+                                    value={streamyardBroadcastId}
+                                    onChange={(e) => setStreamyardBroadcastId(e.target.value)}
+                                    placeholder="e.g. LNeHdzk3_EF7BZD3xbZqnKvAw"
+                                    className="input w-full"
+                                />
+                                <p className="text-xs text-cream/40 mt-1">
+                                    Pasting the StreamYard Broadcast ID will embed the StreamYard player.
                                 </p>
                             </div>
 
