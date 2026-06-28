@@ -4,6 +4,7 @@ import { createSession, getLiveSessions, getScheduledSessions } from '@/lib/broa
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 export async function GET() {
     const [live, scheduled] = await Promise.all([getLiveSessions(), getScheduledSessions()]);
@@ -47,6 +48,12 @@ export async function POST(req: NextRequest) {
     }
 
     try {
+        // Use service-role client for the insert so RLS is bypassed server-side.
+        // Auth + admin check already happened above, so this is safe.
+        const writeClient = supabaseServiceKey
+            ? createClient(supabaseUrl, supabaseServiceKey)
+            : supabase;
+
         const session = await createSession(
             user.id,
             profile.display_name,
@@ -55,7 +62,7 @@ export async function POST(req: NextRequest) {
             scheduledAt || undefined,
             youtubeVideoId?.trim() || undefined,
             streamyardBroadcastId?.trim() || undefined,
-            supabase
+            writeClient
         );
         return NextResponse.json(session, { status: 201 });
     } catch (err) {

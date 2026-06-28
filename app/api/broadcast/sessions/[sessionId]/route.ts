@@ -5,6 +5,7 @@ import { BroadcastStatus } from '@/lib/types/broadcast';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 export async function PATCH(
     req: NextRequest,
@@ -48,7 +49,10 @@ export async function PATCH(
     }
 
     try {
-        await updateSessionStatus(sessionId, status, supabase);
+        const writeClient = supabaseServiceKey
+            ? createClient(supabaseUrl, supabaseServiceKey)
+            : supabase;
+        await updateSessionStatus(sessionId, status, writeClient);
         return NextResponse.json({ success: true });
     } catch (err) {
         const message = err instanceof Error ? err.message : 'Failed to update session';
