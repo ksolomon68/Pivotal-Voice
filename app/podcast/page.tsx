@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MissionPillars from '@/components/podcast/MissionPillars';
 import YouTubeLiveEmbed from '@/components/podcast/YouTubeLiveEmbed';
+import StreamYardEmbed from '@/components/podcast/StreamYardEmbed';
 import SessionCard from '@/components/podcast/broadcast/SessionCard';
 import { Podcast, Music, Radio, Youtube } from 'lucide-react';
 import { useAuth } from '@/lib/forum/AuthContext';
@@ -89,7 +90,12 @@ export default function PodcastPage() {
                                 </span>
                                 <h2 className="text-lg font-display font-bold text-white uppercase tracking-wide">Live Now</h2>
                             </div>
-                            {liveSessions[0]?.youtubeVideoId ? (
+                            {liveSessions[0]?.streamyardBroadcastId ? (
+                                <StreamYardEmbed
+                                    broadcastId={liveSessions[0].streamyardBroadcastId}
+                                    title={liveSessions[0].title}
+                                />
+                            ) : liveSessions[0]?.youtubeVideoId ? (
                                 <YouTubeLiveEmbed
                                     videoId={liveSessions[0].youtubeVideoId}
                                     title={liveSessions[0].title}
