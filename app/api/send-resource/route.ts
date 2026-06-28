@@ -1,8 +1,6 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: NextRequest) {
     const { email, resourceTitle, resourceCategory, resourceType } = await req.json();
 
@@ -10,9 +8,17 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+        console.error('RESEND_API_KEY is not set');
+        return NextResponse.json({ error: 'Email service not configured' }, { status: 500 });
+    }
+
+    const resend = new Resend(apiKey);
+
     const isVideo = resourceType === 'Video';
 
-    const { error } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
         from: 'Pivotal Voice <resources@pivotalvoice.com>',
         to: [email],
         subject: `Your Resource: ${resourceTitle}`,
@@ -76,10 +82,11 @@ export async function POST(req: NextRequest) {
 </html>`,
     });
 
+    console.log('Resend response — data:', JSON.stringify(data), 'error:', JSON.stringify(error));
+
     if (error) {
-        console.error('Resend error:', JSON.stringify(error));
         return NextResponse.json({ error: 'Failed to send email', detail: error }, { status: 500 });
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, id: data?.id });
 }
