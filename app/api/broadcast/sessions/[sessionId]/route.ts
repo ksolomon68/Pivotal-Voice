@@ -17,8 +17,14 @@ export async function PATCH(
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
     const jwt = authHeader.slice(7);
+    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+        global: {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            },
+        },
+    });
     const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
     if (authError || !user) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -42,7 +48,7 @@ export async function PATCH(
     }
 
     try {
-        await updateSessionStatus(sessionId, status);
+        await updateSessionStatus(sessionId, status, supabase);
         return NextResponse.json({ success: true });
     } catch (err) {
         const message = err instanceof Error ? err.message : 'Failed to update session';
