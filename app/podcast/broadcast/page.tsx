@@ -10,12 +10,14 @@ import { Radio, Lock, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { BroadcastSession } from '@/lib/types/broadcast';
 
-function extractYoutubeId(input: string): string {
+// Extract the broadcast ID from a StreamYard watch URL or accept a bare ID
+function extractStreamyardId(input: string): string {
     const trimmed = input.trim();
-    const match = trimmed.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|live\/|embed\/))([A-Za-z0-9_-]{11})/);
+    // Handle full URL: https://streamyard.com/watch/ABC123
+    const match = trimmed.match(/streamyard\.com\/watch\/([A-Za-z0-9_-]+)/);
     if (match) return match[1];
-    if (/^[A-Za-z0-9_-]{11}$/.test(trimmed)) return trimmed;
-    return '';
+    // Otherwise treat the input itself as the ID
+    return trimmed;
 }
 
 export default function BroadcastCreatePage() {
@@ -25,7 +27,6 @@ export default function BroadcastCreatePage() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [scheduledAt, setScheduledAt] = useState('');
-    const [youtubeVideoId, setYoutubeVideoId] = useState('');
     const [streamyardBroadcastId, setStreamyardBroadcastId] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
@@ -83,8 +84,7 @@ export default function BroadcastCreatePage() {
                     title: title.trim(),
                     description: description.trim() || undefined,
                     scheduledAt: scheduledAt || undefined,
-                    youtubeVideoId: extractYoutubeId(youtubeVideoId) || undefined,
-                    streamyardBroadcastId: streamyardBroadcastId.trim() || undefined,
+                    streamyardBroadcastId: extractStreamyardId(streamyardBroadcastId) || undefined,
                 }),
             });
 
@@ -152,12 +152,13 @@ export default function BroadcastCreatePage() {
 
                         {/* Streamyard workflow guide */}
                         <div className="bg-gold/5 border border-gold/20 rounded-xl p-5 mb-2 space-y-2">
-                            <p className="text-sm font-semibold text-gold">Streamyard Workflow</p>
-                            <ol className="text-xs text-cream/60 space-y-1 list-decimal list-inside">
-                                <li>Open Streamyard and create a new broadcast → destination: <span className="text-cream/80">YouTube</span></li>
-                                <li>Copy the guest invite link from Streamyard and send it to your guest</li>
-                                <li>In Streamyard, go live — copy the YouTube video URL from the broadcast</li>
-                                <li>Paste the YouTube URL below so viewers on this site see the embedded stream</li>
+                            <p className="text-sm font-semibold text-gold">How to Go Live with StreamYard</p>
+                            <ol className="text-xs text-cream/60 space-y-1.5 list-decimal list-inside">
+                                <li>Open <span className="text-cream/80">StreamYard</span> and click <span className="text-cream/80">Create a Broadcast</span></li>
+                                <li>Set up your studio — add guests via the guest invite link if needed</li>
+                                <li>Click <span className="text-cream/80">Go Live</span> in StreamYard to start your stream</li>
+                                <li>Copy the <span className="text-cream/80">StreamYard watch URL</span> from your browser — it looks like:<br /><code className="text-gold/80 bg-black/20 px-1.5 py-0.5 rounded text-[10px] mt-0.5 inline-block">streamyard.com/watch/AbCdEf123</code></li>
+                                <li>Paste that URL (or just the ID) in the field below and click <span className="text-cream/80">Create Session</span></li>
                             </ol>
                             <a
                                 href="https://streamyard.com"
@@ -165,7 +166,7 @@ export default function BroadcastCreatePage() {
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-1 text-xs text-gold/70 hover:text-gold transition-colors mt-1"
                             >
-                                Open Streamyard <ExternalLink className="w-3 h-3" />
+                                Open StreamYard <ExternalLink className="w-3 h-3" />
                             </a>
                         </div>
 
@@ -211,33 +212,18 @@ export default function BroadcastCreatePage() {
 
                             <div>
                                 <label className="block text-sm font-semibold text-cream/70 mb-2">
-                                    StreamYard Broadcast ID <span className="text-gold">*</span>
+                                    StreamYard Watch URL or Broadcast ID <span className="text-red-400">*</span>
                                 </label>
                                 <input
                                     type="text"
                                     value={streamyardBroadcastId}
                                     onChange={(e) => setStreamyardBroadcastId(e.target.value)}
-                                    placeholder="e.g. LNeHdzk3_EF7BZD3xbZqnKvAw"
+                                    placeholder="https://streamyard.com/watch/AbCdEf123"
                                     className="input w-full"
+                                    required
                                 />
                                 <p className="text-xs text-cream/40 mt-1">
-                                    Pasting the StreamYard Broadcast ID will embed the StreamYard player. Default live source.
-                                </p>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-cream/70 mb-2">
-                                    YouTube Video URL (optional)
-                                </label>
-                                <input
-                                    type="text"
-                                    value={youtubeVideoId}
-                                    onChange={(e) => setYoutubeVideoId(e.target.value)}
-                                    placeholder="https://www.youtube.com/watch?v=..."
-                                    className="input w-full"
-                                />
-                                <p className="text-xs text-cream/40 mt-1">
-                                    Optional backup source. Paste the YouTube live URL from Streamyard if desired.
+                                    Paste the full StreamYard watch URL or just the broadcast ID. Viewers on this site will see the embedded StreamYard stream.
                                 </p>
                             </div>
 
