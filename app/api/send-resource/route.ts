@@ -2,7 +2,8 @@ import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
-    const { email, resourceTitle, resourceCategory, resourceType } = await req.json();
+    const { email, resourceTitle, resourceCategory, resourceType, resourceSlug } = await req.json();
+    const slug = resourceSlug || 'library';
 
     if (!email || !resourceTitle) {
         return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -50,7 +51,7 @@ export async function POST(req: NextRequest) {
 
           <table cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
             <tr><td style="background:#d4af37;border-radius:8px;padding:14px 28px;">
-              <a href="https://pivotalvoice.org/resources" style="color:#0a0f1e;font-size:14px;font-weight:700;text-decoration:none;font-family:Arial,sans-serif;">
+              <a href="https://pivotalvoice.org/resources/${slug}" style="color:#0a0f1e;font-size:14px;font-weight:700;text-decoration:none;font-family:Arial,sans-serif;">
                 ${isVideo ? '▶ Watch Resource' : '⬇ Download Resource'}
               </a>
             </td></tr>

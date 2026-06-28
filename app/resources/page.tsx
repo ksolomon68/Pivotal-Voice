@@ -9,283 +9,18 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-
-type Audience = 'All' | 'Voters' | 'Candidates';
-
-interface Resource {
-    id: number;
-    title: string;
-    description: string;
-    type: 'PDF' | 'Video' | 'Guide' | 'Template' | 'Checklist';
-    category: string;
-    audience: Audience[];
-    featured?: boolean;
-    downloads: number;
-    tags: string[];
-}
+import Link from 'next/link';
+import { resources, type Resource, type Audience } from '@/lib/resources';
 
 const categoryConfig = [
-    {
-        label: 'Voter Information',
-        icon: Vote,
-        description: 'Registration deadlines, polling locations, ballot breakdowns, and rights.',
-        audience: 'Voters' as Audience,
-    },
-    {
-        label: 'Candidate Toolkit',
-        icon: Megaphone,
-        description: 'Campaign planning, filing requirements, FEC compliance, and messaging guides.',
-        audience: 'Candidates' as Audience,
-    },
-    {
-        label: 'Media Relations',
-        icon: Newspaper,
-        description: 'Press release templates, interview prep, and newsroom contact strategies.',
-        audience: 'All' as Audience,
-    },
-    {
-        label: 'Public Speaking',
-        icon: Mic2,
-        description: 'Debate coaching, town hall facilitation, and speech structure frameworks.',
-        audience: 'All' as Audience,
-    },
-    {
-        label: 'Civic Engagement',
-        icon: Users,
-        description: 'Guides to attending public meetings, submitting comments, and organizing.',
-        audience: 'Voters' as Audience,
-    },
-    {
-        label: 'Government Transparency',
-        icon: Shield,
-        description: 'Open records requests, FOIA templates, and public accountability tools.',
-        audience: 'Voters' as Audience,
-    },
-    {
-        label: 'Campaign Strategy',
-        icon: BarChart2,
-        description: 'Polling interpretation, opposition research basics, and digital outreach.',
-        audience: 'Candidates' as Audience,
-    },
-    {
-        label: 'Crisis & Reputation',
-        icon: CheckCircle,
-        description: 'Rapid response playbooks, crisis messaging, and reputation management.',
-        audience: 'Candidates' as Audience,
-    },
-];
-
-const resources: Resource[] = [
-    // --- VOTERS ---
-    {
-        id: 1,
-        title: 'Ellis County Voter Guide 2026',
-        description: 'Full breakdown of every race and proposition on the Ellis County ballot — candidates, positions, and what each measure means for your community.',
-        type: 'PDF',
-        category: 'Voter Information',
-        audience: ['Voters'],
-        featured: true,
-        downloads: 342,
-        tags: ['Ellis County', '2026 Election', 'Ballot Guide'],
-    },
-    {
-        id: 2,
-        title: 'Texas Voter Registration: Step-by-Step',
-        description: 'Deadlines, ID requirements, address changes, and how to check your registration status online — everything a first-time voter needs.',
-        type: 'Checklist',
-        category: 'Voter Information',
-        audience: ['Voters'],
-        featured: true,
-        downloads: 289,
-        tags: ['Registration', 'Texas', 'First-Time Voters'],
-    },
-    {
-        id: 3,
-        title: 'Know Your Voter Rights in Texas',
-        description: 'A plain-language summary of your legal rights at the polls: assistance provisions, ID rules, provisional ballots, and how to report problems.',
-        type: 'PDF',
-        category: 'Voter Information',
-        audience: ['Voters'],
-        downloads: 198,
-        tags: ['Voter Rights', 'Texas Law', 'Election Day'],
-    },
-    {
-        id: 4,
-        title: 'How to Attend a County Commissioners Meeting',
-        description: 'Step-by-step guide to participating in local government — agenda access, public comment sign-up, decorum rules, and follow-up strategies.',
-        type: 'PDF',
-        category: 'Civic Engagement',
-        audience: ['Voters'],
-        featured: true,
-        downloads: 156,
-        tags: ['Local Government', 'Public Comment', 'Ellis County'],
-    },
-    {
-        id: 5,
-        title: 'Open Records Request Template (Texas PIA)',
-        description: 'A ready-to-send FOIA/PIA letter you can customize to request government documents from any Texas agency or county office.',
-        type: 'Template',
-        category: 'Government Transparency',
-        audience: ['Voters'],
-        downloads: 134,
-        tags: ['FOIA', 'PIA', 'Open Records', 'Transparency'],
-    },
-    {
-        id: 6,
-        title: 'Evaluating Candidates: 10 Questions to Ask',
-        description: 'A nonpartisan framework for researching candidates — voting records, endorsements, funding sources, and consistency of public statements.',
-        type: 'Guide',
-        category: 'Voter Information',
-        audience: ['Voters'],
-        downloads: 211,
-        tags: ['Candidate Research', 'Nonpartisan', 'Due Diligence'],
-    },
-    {
-        id: 7,
-        title: 'Decoding a Local Government Budget',
-        description: 'Learn how to read a county or city budget, identify spending priorities, and ask the right questions at budget hearings.',
-        type: 'Guide',
-        category: 'Government Transparency',
-        audience: ['Voters'],
-        downloads: 88,
-        tags: ['Budget', 'Local Government', 'Accountability'],
-    },
-    {
-        id: 8,
-        title: 'Community Organizing 101',
-        description: 'Practical tactics for building coalitions, running effective meetings, amplifying constituent voices, and sustaining momentum between elections.',
-        type: 'Guide',
-        category: 'Civic Engagement',
-        audience: ['Voters'],
-        downloads: 103,
-        tags: ['Organizing', 'Coalition Building', 'Grassroots'],
-    },
-
-    // --- CANDIDATES ---
-    {
-        id: 9,
-        title: 'Texas Candidate Filing Checklist',
-        description: 'Every form, fee, deadline, and disclosure requirement for filing as a candidate in Texas — from county offices to state races.',
-        type: 'Checklist',
-        category: 'Candidate Toolkit',
-        audience: ['Candidates'],
-        featured: true,
-        downloads: 267,
-        tags: ['Filing', 'Texas SOS', 'Compliance', 'Deadlines'],
-    },
-    {
-        id: 10,
-        title: 'Campaign Messaging Framework',
-        description: 'The Pivotal Voice blueprint for crafting a compelling campaign narrative: core message, contrast messaging, proof points, and audience segmentation.',
-        type: 'Guide',
-        category: 'Candidate Toolkit',
-        audience: ['Candidates'],
-        featured: true,
-        downloads: 312,
-        tags: ['Messaging', 'Narrative', 'Brand', 'PR Strategy'],
-    },
-    {
-        id: 11,
-        title: '90-Day Campaign Launch Plan',
-        description: 'A week-by-week roadmap covering announcement strategy, coalition outreach, earned media, fundraising milestones, and digital presence.',
-        type: 'PDF',
-        category: 'Campaign Strategy',
-        audience: ['Candidates'],
-        featured: true,
-        downloads: 241,
-        tags: ['Launch', 'Campaign Plan', 'Timeline'],
-    },
-    {
-        id: 12,
-        title: 'Press Release Template Pack',
-        description: 'Five plug-and-play templates: campaign announcement, endorsement, policy position, event, and rapid response. Includes headline formulas and AP style guide.',
-        type: 'Template',
-        category: 'Media Relations',
-        audience: ['Candidates', 'All'],
-        downloads: 445,
-        tags: ['Press Release', 'Templates', 'Media', 'AP Style'],
-    },
-    {
-        id: 13,
-        title: 'Debate Preparation Workbook',
-        description: 'A structured workbook for organizing policy positions, anticipating attacks, preparing rebuttals, and mastering the two-minute format.',
-        type: 'Guide',
-        category: 'Public Speaking',
-        audience: ['Candidates'],
-        downloads: 178,
-        tags: ['Debate', 'Prep', 'Policy', 'Rebuttal'],
-    },
-    {
-        id: 14,
-        title: 'Texas Campaign Finance: TEC Compliance Guide',
-        description: 'Plain-language overview of Texas Ethics Commission rules — contribution limits, reporting schedules, and common violations to avoid.',
-        type: 'PDF',
-        category: 'Candidate Toolkit',
-        audience: ['Candidates'],
-        downloads: 199,
-        tags: ['TEC', 'Finance', 'Compliance', 'Texas Law'],
-    },
-    {
-        id: 15,
-        title: 'Digital Campaign Playbook',
-        description: 'Strategy for Facebook, Instagram, X, and NextDoor — organic content calendars, paid ad frameworks, and community engagement tactics for local races.',
-        type: 'Guide',
-        category: 'Campaign Strategy',
-        audience: ['Candidates'],
-        downloads: 326,
-        tags: ['Social Media', 'Digital', 'Advertising', 'Local Race'],
-    },
-    {
-        id: 16,
-        title: 'Crisis Communications Rapid Response Playbook',
-        description: 'Step-by-step protocol for the first 24 hours of a crisis: who speaks, what you say, when you say it, and how to protect your reputation long-term.',
-        type: 'PDF',
-        category: 'Crisis & Reputation',
-        audience: ['Candidates'],
-        featured: true,
-        downloads: 183,
-        tags: ['Crisis', 'Rapid Response', 'Reputation', 'PR'],
-    },
-    {
-        id: 17,
-        title: 'Earned Media Strategy for Local Candidates',
-        description: 'How to build relationships with local journalists, pitch stories, land op-eds, and maximize free coverage without a big ad budget.',
-        type: 'Guide',
-        category: 'Media Relations',
-        audience: ['Candidates'],
-        downloads: 259,
-        tags: ['Earned Media', 'Press', 'Local News', 'Outreach'],
-    },
-    {
-        id: 18,
-        title: 'On-Camera Interview Masterclass',
-        description: 'Video series covering body language, bridging techniques, staying on message, and handling hostile questions in TV and video interviews.',
-        type: 'Video',
-        category: 'Public Speaking',
-        audience: ['Candidates', 'All'],
-        downloads: 89,
-        tags: ['Media Training', 'Video', 'On-Camera', 'Interview'],
-    },
-    {
-        id: 19,
-        title: 'Voter Contact Script Library',
-        description: 'Tested door-knock, phone bank, and text banking scripts for introduction calls, persuasion conversations, and GOTV final pushes.',
-        type: 'Template',
-        category: 'Campaign Strategy',
-        audience: ['Candidates'],
-        downloads: 374,
-        tags: ['GOTV', 'Door Knock', 'Phone Bank', 'Scripts'],
-    },
-    {
-        id: 20,
-        title: 'Public Speaking Masterclass',
-        description: 'Video series on effective public speaking for local leaders — from town halls to televised forums.',
-        type: 'Video',
-        category: 'Public Speaking',
-        audience: ['Candidates', 'All'],
-        downloads: 142,
-        tags: ['Public Speaking', 'Presentation', 'Leadership'],
-    },
+    { label: 'Voter Information', icon: Vote, description: 'Registration deadlines, polling locations, ballot breakdowns, and rights.', audience: 'Voters' as Audience },
+    { label: 'Candidate Toolkit', icon: Megaphone, description: 'Campaign planning, filing requirements, FEC compliance, and messaging guides.', audience: 'Candidates' as Audience },
+    { label: 'Media Relations', icon: Newspaper, description: 'Press release templates, interview prep, and newsroom contact strategies.', audience: 'All' as Audience },
+    { label: 'Public Speaking', icon: Mic2, description: 'Debate coaching, town hall facilitation, and speech structure frameworks.', audience: 'All' as Audience },
+    { label: 'Civic Engagement', icon: Users, description: 'Guides to attending public meetings, submitting comments, and organizing.', audience: 'Voters' as Audience },
+    { label: 'Government Transparency', icon: Shield, description: 'Open records requests, FOIA templates, and public accountability tools.', audience: 'Voters' as Audience },
+    { label: 'Campaign Strategy', icon: BarChart2, description: 'Polling interpretation, opposition research basics, and digital outreach.', audience: 'Candidates' as Audience },
+    { label: 'Crisis & Reputation', icon: CheckCircle, description: 'Rapid response playbooks, crisis messaging, and reputation management.', audience: 'Candidates' as Audience },
 ];
 
 const typeIcon = (type: Resource['type']) => {
@@ -319,11 +54,11 @@ function DownloadModal({ resource, onClose }: { resource: Resource; onClose: () 
                     resourceTitle: resource.title,
                     resourceCategory: resource.category,
                     resourceType: resource.type,
+                    resourceSlug: resource.slug,
                 }),
             });
             if (!res.ok) {
                 const body = await res.json().catch(() => ({}));
-                console.error('send-resource error:', body);
                 throw new Error(body.detail?.message || 'Send failed');
             }
             setSubmitted(true);
@@ -352,20 +87,14 @@ function DownloadModal({ resource, onClose }: { resource: Resource; onClose: () 
                 {!submitted ? (
                     <>
                         <div className="w-12 h-12 bg-gold/10 border border-gold/30 rounded-xl flex items-center justify-center mb-4">
-                            {resource.type === 'Video' ? (
-                                <Play className="w-6 h-6 text-gold" />
-                            ) : (
-                                <Download className="w-6 h-6 text-gold" />
-                            )}
+                            {resource.type === 'Video' ? <Play className="w-6 h-6 text-gold" /> : <Download className="w-6 h-6 text-gold" />}
                         </div>
                         <h3 className="font-display text-lg font-semibold text-white mb-1">
-                            {resource.type === 'Video' ? 'Watch This Resource' : 'Download This Resource'}
+                            {resource.type === 'Video' ? 'Watch This Resource' : 'Get This Resource'}
                         </h3>
-                        <p className="text-gold/70 text-xs font-medium uppercase tracking-wide mb-2">
-                            {resource.category}
-                        </p>
+                        <p className="text-gold/70 text-xs font-medium uppercase tracking-wide mb-2">{resource.category}</p>
                         <p className="text-cream/60 text-sm mb-6">
-                            {resource.title} — enter your email and we'll send it straight to your inbox.
+                            {resource.title} — enter your email and we'll send a direct link straight to your inbox.
                         </p>
                         <form onSubmit={handleSubmit} className="space-y-3">
                             <input
@@ -376,38 +105,30 @@ function DownloadModal({ resource, onClose }: { resource: Resource; onClose: () 
                                 placeholder="your@email.com"
                                 className="w-full bg-navy-dark/60 border border-gold/20 rounded-lg px-4 py-3 text-white placeholder:text-cream/30 text-sm focus:outline-none focus:border-gold/50 transition-colors"
                             />
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="btn-primary w-full flex items-center justify-center gap-2"
-                            >
-                                {loading ? (
-                                    <span className="animate-pulse">Sending…</span>
-                                ) : (
-                                    <>
-                                        <Send className="w-4 h-4" />
-                                        Send to My Inbox
-                                    </>
-                                )}
+                            <button type="submit" disabled={loading} className="btn-primary w-full flex items-center justify-center gap-2">
+                                {loading ? <span className="animate-pulse">Sending…</span> : <><Send className="w-4 h-4" /> Send to My Inbox</>}
                             </button>
                         </form>
-                        <p className="text-cream/30 text-xs text-center mt-4">
-                            No spam. Unsubscribe anytime.
-                        </p>
+                        <p className="text-cream/30 text-xs text-center mt-4">No spam. Unsubscribe anytime.</p>
                     </>
                 ) : (
                     <div className="text-center py-4">
                         <div className="w-14 h-14 bg-green-500/15 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-4">
                             <CheckCircle className="w-7 h-7 text-green-400" />
                         </div>
-                        <h3 className="font-display text-lg font-semibold text-white mb-2">You're all set!</h3>
-                        <p className="text-cream/60 text-sm mb-6">
-                            <span className="text-gold font-medium">{resource.title}</span> is on its way to{' '}
-                            <span className="text-white">{email}</span>.
+                        <h3 className="font-display text-lg font-semibold text-white mb-2">Check your inbox!</h3>
+                        <p className="text-cream/60 text-sm mb-4">
+                            We sent a direct link to <span className="text-white">{email}</span>.
                         </p>
-                        <button onClick={onClose} className="btn-secondary text-sm">
-                            Back to Resources
-                        </button>
+                        <Link
+                            href={`/resources/${resource.slug}`}
+                            className="btn-primary text-sm inline-block mb-3"
+                            onClick={onClose}
+                        >
+                            Read It Now →
+                        </Link>
+                        <br />
+                        <button onClick={onClose} className="btn-secondary text-sm">Back to Resources</button>
                     </div>
                 )}
             </motion.div>
@@ -423,20 +144,67 @@ export default function ResourcesPage() {
     const audienceFilters: Audience[] = ['All', 'Voters', 'Candidates'];
 
     const filteredResources = resources.filter((r) => {
-        const audienceMatch =
-            activeAudience === 'All' || r.audience.includes(activeAudience) || r.audience.includes('All');
+        const audienceMatch = activeAudience === 'All' || r.audience.includes(activeAudience) || r.audience.includes('All');
         const categoryMatch = activeCategory === 'All' || r.category === activeCategory;
         return audienceMatch && categoryMatch;
     });
 
     const featuredResources = resources.filter((r) => r.featured);
 
-    const filteredCategories =
-        activeAudience === 'All'
-            ? categoryConfig
-            : categoryConfig.filter(
-                  (c) => c.audience === activeAudience || c.audience === 'All'
-              );
+    const filteredCategories = activeAudience === 'All'
+        ? categoryConfig
+        : categoryConfig.filter((c) => c.audience === activeAudience || c.audience === 'All');
+
+    const ResourceCard = ({ resource, index }: { resource: Resource; index: number }) => {
+        const Icon = typeIcon(resource.type);
+        return (
+            <motion.div
+                key={resource.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.4) }}
+                className="card group hover:border-gold/40 flex flex-col"
+            >
+                <div className="flex items-start justify-between mb-3">
+                    <div className="w-10 h-10 bg-gold/10 border border-gold/20 rounded-lg flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-gold" />
+                    </div>
+                    <div className="flex gap-1 flex-wrap justify-end">
+                        {resource.audience.filter(a => a !== 'All').map((a) => (
+                            <span key={a} className={`text-xs px-2 py-0.5 rounded-full font-medium ${audienceBadge[a]}`}>{a}</span>
+                        ))}
+                    </div>
+                </div>
+
+                <span className="text-gold/60 text-xs font-medium uppercase tracking-wide">{resource.category}</span>
+
+                <Link href={`/resources/${resource.slug}`} className="mt-1 mb-2 flex-1">
+                    <h3 className="font-display text-base font-semibold text-white group-hover:text-gold transition-colors leading-snug">
+                        {resource.title}
+                    </h3>
+                </Link>
+
+                <p className="text-cream/60 text-sm mb-4 line-clamp-3">{resource.description}</p>
+
+                <div className="flex flex-wrap gap-1 mb-4">
+                    {resource.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className="text-xs bg-navy-dark/80 text-cream/40 px-2 py-0.5 rounded">{tag}</span>
+                    ))}
+                </div>
+
+                <div className="flex items-center justify-between pt-3 border-t border-gold/10 mt-auto">
+                    <span className="text-cream/40 text-xs">{resource.downloads.toLocaleString()} downloads</span>
+                    <button
+                        onClick={() => setSelectedResource(resource)}
+                        className="btn-secondary text-xs flex items-center gap-1.5 py-1.5 px-3"
+                    >
+                        <Download className="w-3.5 h-3.5" />
+                        {resource.type === 'Video' ? 'Watch' : 'Get'}
+                    </button>
+                </div>
+            </motion.div>
+        );
+    };
 
     return (
         <>
@@ -455,25 +223,17 @@ export default function ResourcesPage() {
                             <div className="w-16 h-16 bg-gold/10 border border-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
                                 <BookOpen className="w-8 h-8 text-gold" />
                             </div>
-                            <h1 className="text-hero font-bold text-white mb-4">
-                                Resource Library
-                            </h1>
+                            <h1 className="text-hero font-bold text-white mb-4">Resource Library</h1>
                             <p className="text-lg text-cream/60 mb-8">
                                 Guides, templates, and tools built by political communications professionals —
                                 for voters who want to engage and candidates who want to win.
                             </p>
-
-                            {/* Audience Toggle */}
                             <div className="inline-flex bg-navy-dark/60 border border-gold/20 rounded-xl p-1 gap-1">
                                 {audienceFilters.map((f) => (
                                     <button
                                         key={f}
                                         onClick={() => { setActiveAudience(f); setActiveCategory('All'); }}
-                                        className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${
-                                            activeAudience === f
-                                                ? 'bg-gold text-navy'
-                                                : 'text-cream/60 hover:text-white'
-                                        }`}
+                                        className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${activeAudience === f ? 'bg-gold text-navy' : 'text-cream/60 hover:text-white'}`}
                                     >
                                         {f === 'All' ? 'All Resources' : `For ${f}`}
                                     </button>
@@ -496,9 +256,7 @@ export default function ResourcesPage() {
                                 <div className="text-cream/50 text-sm mt-1">Categories</div>
                             </div>
                             <div>
-                                <div className="text-2xl font-bold text-gold">
-                                    {resources.reduce((s, r) => s + r.downloads, 0).toLocaleString()}+
-                                </div>
+                                <div className="text-2xl font-bold text-gold">{resources.reduce((s, r) => s + r.downloads, 0).toLocaleString()}+</div>
                                 <div className="text-cream/50 text-sm mt-1">Total Downloads</div>
                             </div>
                         </div>
@@ -513,66 +271,10 @@ export default function ResourcesPage() {
                                 <Star className="w-5 h-5 text-gold" />
                                 <h2 className="text-section font-bold text-white">Featured Resources</h2>
                             </div>
-
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {featuredResources.map((resource, index) => {
-                                    const Icon = typeIcon(resource.type);
-                                    return (
-                                        <motion.div
-                                            key={resource.id}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.5, delay: index * 0.08 }}
-                                            className="card group cursor-pointer border-gold/20 hover:border-gold/50"
-                                        >
-                                            <div className="flex items-start justify-between mb-3">
-                                                <div className="w-12 h-12 bg-gold/10 border border-gold/30 rounded-lg flex items-center justify-center">
-                                                    <Icon className="w-6 h-6 text-gold" />
-                                                </div>
-                                                <div className="flex gap-1 flex-wrap justify-end">
-                                                    {resource.audience.map((a) => (
-                                                        <span key={a} className={`text-xs px-2 py-0.5 rounded-full font-medium ${audienceBadge[a]}`}>
-                                                            {a}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-
-                                            <span className="text-gold/70 text-xs font-medium uppercase tracking-wide">
-                                                {resource.category}
-                                            </span>
-
-                                            <h3 className="font-display text-base font-semibold text-white mt-1 mb-2 group-hover:text-gold transition-colors leading-snug">
-                                                {resource.title}
-                                            </h3>
-
-                                            <p className="text-cream/60 text-sm mb-4 line-clamp-2">
-                                                {resource.description}
-                                            </p>
-
-                                            <div className="flex flex-wrap gap-1 mb-4">
-                                                {resource.tags.slice(0, 3).map((tag) => (
-                                                    <span key={tag} className="text-xs bg-navy-dark/80 text-cream/50 px-2 py-0.5 rounded">
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
-
-                                            <div className="flex items-center justify-between pt-3 border-t border-gold/15">
-                                                <span className="text-cream/40 text-xs">
-                                                    {resource.downloads.toLocaleString()} downloads
-                                                </span>
-                                                <button
-                                                    onClick={() => setSelectedResource(resource)}
-                                                    className="btn-secondary text-xs flex items-center gap-1.5 py-1.5 px-3"
-                                                >
-                                                    <Download className="w-3.5 h-3.5" />
-                                                    {resource.type === 'Video' ? 'Watch' : 'Download'}
-                                                </button>
-                                            </div>
-                                        </motion.div>
-                                    );
-                                })}
+                                {featuredResources.map((resource, index) => (
+                                    <ResourceCard key={resource.id} resource={resource} index={index} />
+                                ))}
                             </div>
                         </div>
                     </section>
@@ -581,30 +283,21 @@ export default function ResourcesPage() {
                 {/* Browse by Category */}
                 <section className="section bg-navy-dark/50">
                     <div className="container-custom">
-                        <h2 className="text-section font-bold text-white mb-8">
-                            Browse by Category
-                        </h2>
-
+                        <h2 className="text-section font-bold text-white mb-8">Browse by Category</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
                             <motion.button
-                                key="all"
                                 onClick={() => setActiveCategory('All')}
-                                className={`card text-left group transition-all ${
-                                    activeCategory === 'All' ? 'border-gold/60 bg-gold/5' : ''
-                                }`}
+                                className={`card text-left group transition-all ${activeCategory === 'All' ? 'border-gold/60 bg-gold/5' : ''}`}
                             >
-                                <h3 className={`font-semibold transition-colors ${activeCategory === 'All' ? 'text-gold' : 'text-white group-hover:text-gold'}`}>
-                                    All Categories
-                                </h3>
+                                <h3 className={`font-semibold transition-colors ${activeCategory === 'All' ? 'text-gold' : 'text-white group-hover:text-gold'}`}>All Categories</h3>
                                 <p className="text-cream/40 text-xs mt-1">{filteredResources.length} resources</p>
                             </motion.button>
 
                             {filteredCategories.map((cat, index) => {
                                 const CatIcon = cat.icon;
-                                const count = resources.filter(
-                                    (r) =>
-                                        r.category === cat.label &&
-                                        (activeAudience === 'All' || r.audience.includes(activeAudience) || r.audience.includes('All'))
+                                const count = resources.filter((r) =>
+                                    r.category === cat.label &&
+                                    (activeAudience === 'All' || r.audience.includes(activeAudience) || r.audience.includes('All'))
                                 ).length;
                                 return (
                                     <motion.button
@@ -613,9 +306,7 @@ export default function ResourcesPage() {
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.4, delay: index * 0.04 }}
                                         onClick={() => setActiveCategory(cat.label)}
-                                        className={`card text-left group transition-all ${
-                                            activeCategory === cat.label ? 'border-gold/60 bg-gold/5' : ''
-                                        }`}
+                                        className={`card text-left group transition-all ${activeCategory === cat.label ? 'border-gold/60 bg-gold/5' : ''}`}
                                     >
                                         <div className="flex items-start gap-3">
                                             <div className="w-8 h-8 bg-gold/10 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
@@ -628,9 +319,7 @@ export default function ResourcesPage() {
                                                 <p className="text-cream/40 text-xs mt-0.5">{count} resources</p>
                                             </div>
                                         </div>
-                                        <p className="text-cream/50 text-xs mt-3 leading-relaxed">
-                                            {cat.description}
-                                        </p>
+                                        <p className="text-cream/50 text-xs mt-3 leading-relaxed">{cat.description}</p>
                                     </motion.button>
                                 );
                             })}
@@ -649,69 +338,12 @@ export default function ResourcesPage() {
                         </div>
 
                         {filteredResources.length === 0 ? (
-                            <div className="text-center py-16 text-cream/40">
-                                No resources found for this filter combination.
-                            </div>
+                            <div className="text-center py-16 text-cream/40">No resources found for this filter combination.</div>
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                                {filteredResources.map((resource, index) => {
-                                    const Icon = typeIcon(resource.type);
-                                    return (
-                                        <motion.div
-                                            key={resource.id}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.4) }}
-                                            className="card group cursor-pointer hover:border-gold/40"
-                                        >
-                                            <div className="flex items-start justify-between mb-3">
-                                                <div className="w-10 h-10 bg-gold/10 border border-gold/20 rounded-lg flex items-center justify-center">
-                                                    <Icon className="w-5 h-5 text-gold" />
-                                                </div>
-                                                <div className="flex gap-1 flex-wrap justify-end">
-                                                    {resource.audience.filter(a => a !== 'All').map((a) => (
-                                                        <span key={a} className={`text-xs px-2 py-0.5 rounded-full font-medium ${audienceBadge[a]}`}>
-                                                            {a}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-
-                                            <span className="text-gold/60 text-xs font-medium uppercase tracking-wide">
-                                                {resource.category}
-                                            </span>
-
-                                            <h3 className="font-display text-base font-semibold text-white mt-1 mb-2 group-hover:text-gold transition-colors leading-snug">
-                                                {resource.title}
-                                            </h3>
-
-                                            <p className="text-cream/60 text-sm mb-4 line-clamp-3">
-                                                {resource.description}
-                                            </p>
-
-                                            <div className="flex flex-wrap gap-1 mb-4">
-                                                {resource.tags.slice(0, 3).map((tag) => (
-                                                    <span key={tag} className="text-xs bg-navy-dark/80 text-cream/40 px-2 py-0.5 rounded">
-                                                        {tag}
-                                                    </span>
-                                                ))}
-                                            </div>
-
-                                            <div className="flex items-center justify-between pt-3 border-t border-gold/10">
-                                                <span className="text-cream/40 text-xs">
-                                                    {resource.downloads.toLocaleString()} downloads
-                                                </span>
-                                                <button
-                                                    onClick={() => setSelectedResource(resource)}
-                                                    className="btn-secondary text-xs flex items-center gap-1.5 py-1.5 px-3"
-                                                >
-                                                    <Download className="w-3.5 h-3.5" />
-                                                    {resource.type === 'Video' ? 'Watch' : 'Download'}
-                                                </button>
-                                            </div>
-                                        </motion.div>
-                                    );
-                                })}
+                                {filteredResources.map((resource, index) => (
+                                    <ResourceCard key={resource.id} resource={resource} index={index} />
+                                ))}
                             </div>
                         )}
                     </div>
@@ -723,9 +355,7 @@ export default function ResourcesPage() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             <div>
                                 <span className="badge-gold text-xs mb-4 inline-block">Pivotal Voice Services</span>
-                                <h2 className="text-section font-bold text-white mb-4">
-                                    Need More Than a Template?
-                                </h2>
+                                <h2 className="text-section font-bold text-white mb-4">Need More Than a Template?</h2>
                                 <p className="text-cream/70 mb-6">
                                     These resources are a starting point. Pivotal Voice's communications professionals
                                     work directly with candidates and civic leaders — building custom messaging strategy,
@@ -753,7 +383,6 @@ export default function ResourcesPage() {
                                     </button>
                                 </div>
                             </div>
-
                             <div className="grid grid-cols-2 gap-4">
                                 {[
                                     { label: 'Campaigns Supported', value: '50+' },
@@ -775,9 +404,7 @@ export default function ResourcesPage() {
                 <section className="bg-navy py-16">
                     <div className="container-custom">
                         <div className="text-center max-w-2xl mx-auto">
-                            <h2 className="text-section font-bold text-white mb-4">
-                                Share a Resource
-                            </h2>
+                            <h2 className="text-section font-bold text-white mb-4">Share a Resource</h2>
                             <p className="text-cream/70 mb-6">
                                 Have a guide, template, or tool that would help Ellis County voters or candidates?
                                 Submit it for review and we'll add it to the library.

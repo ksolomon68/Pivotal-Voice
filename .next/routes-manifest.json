@@ -68,6 +68,14 @@
         "nxtPsessionId": "nxtPsessionId"
       },
       "namedRegex": "^/podcast/studio/(?<nxtPsessionId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/resources/[id]",
+      "regex": "^/resources/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/resources/(?<nxtPid>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
