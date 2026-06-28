@@ -152,13 +152,11 @@ export default function BroadcastCreatePage() {
 
                         {/* Streamyard workflow guide */}
                         <div className="bg-gold/5 border border-gold/20 rounded-xl p-5 mb-2 space-y-2">
-                            <p className="text-sm font-semibold text-gold">How to Go Live with StreamYard</p>
+                            <p className="text-sm font-semibold text-gold">Streamyard Workflow</p>
                             <ol className="text-xs text-cream/60 space-y-1.5 list-decimal list-inside">
-                                <li>Open <span className="text-cream/80">StreamYard</span> and click <span className="text-cream/80">Create a Broadcast</span></li>
-                                <li>Set up your studio — add guests via the guest invite link if needed</li>
-                                <li>Click <span className="text-cream/80">Go Live</span> in StreamYard to start your stream</li>
-                                <li>Copy the <span className="text-cream/80">StreamYard watch URL</span> from your browser — it looks like:<br /><code className="text-gold/80 bg-black/20 px-1.5 py-0.5 rounded text-[10px] mt-0.5 inline-block">streamyard.com/watch/AbCdEf123</code></li>
-                                <li>Paste that URL (or just the ID) in the field below and click <span className="text-cream/80">Create Session</span></li>
+                                <li>Create a broadcast in Streamyard → destination: <span className="text-cream/80">YouTube</span></li>
+                                <li>Send the guest invite link from Streamyard to your guest</li>
+                                <li>Go live in Streamyard, then paste the <span className="text-cream/80">StreamYard watch URL</span> below to embed the stream</li>
                             </ol>
                             <a
                                 href="https://streamyard.com"
