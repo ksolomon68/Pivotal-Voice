@@ -1,3 +1,0 @@
-module.exports=[92573,a=>{"use strict";var b=a.i(87924),c=a.i(72131);function d({children:a}){let[d,e]=(0,c.useState)(!1);return((0,c.useEffect)(()=>{e(!0)},[]),d)?(0,b.jsx)(b.Fragment,{children:a}):(0,b.jsx)("div",{className:"min-h-screen flex items-center justify-center bg-navy-dark",children:(0,b.jsxs)("div",{className:"text-center",children:[(0,b.jsx)("div",{className:"w-10 h-10 border-2 border-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"}),(0,b.jsx)("p",{className:"text-cream/50 text-sm",children:"Loading community forum..."})]})})}a.s(["default",()=>d])}];
-
-//# sourceMappingURL=app_forum_layout_tsx_4add9bda._.js.map
