@@ -29,10 +29,11 @@ export async function createSession(
     description?: string,
     scheduledAt?: string,
     youtubeVideoId?: string,
-    streamyardBroadcastId?: string
+    streamyardBroadcastId?: string,
+    supabaseClient = supabase
 ): Promise<BroadcastSession> {
     const tempId = crypto.randomUUID();
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
         .from('broadcast_sessions')
         .insert({
             host_id: hostId,
@@ -102,13 +103,14 @@ export async function getScheduledSessions(): Promise<BroadcastSession[]> {
 
 export async function updateSessionStatus(
     id: string,
-    status: BroadcastStatus
+    status: BroadcastStatus,
+    supabaseClient = supabase
 ): Promise<void> {
     const updates: Record<string, unknown> = { status };
     if (status === 'live') updates.started_at = new Date().toISOString();
     if (status === 'ended') updates.ended_at = new Date().toISOString();
 
-    const { error } = await supabase
+    const { error } = await supabaseClient
         .from('broadcast_sessions')
         .update(updates)
         .eq('id', id);
@@ -116,10 +118,10 @@ export async function updateSessionStatus(
     if (error) throw new Error(error.message);
 }
 
-export async function incrementViewerCount(id: string): Promise<void> {
-    await supabase.rpc('increment_viewer_count', { session_id: id });
+export async function incrementViewerCount(id: string, supabaseClient = supabase): Promise<void> {
+    await supabaseClient.rpc('increment_viewer_count', { session_id: id });
 }
 
-export async function decrementViewerCount(id: string): Promise<void> {
-    await supabase.rpc('decrement_viewer_count', { session_id: id });
+export async function decrementViewerCount(id: string, supabaseClient = supabase): Promise<void> {
+    await supabaseClient.rpc('decrement_viewer_count', { session_id: id });
 }
