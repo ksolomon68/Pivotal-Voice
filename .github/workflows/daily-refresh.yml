@@ -1,0 +1,26 @@
+name: Daily Civic Data Refresh
+
+on:
+  schedule:
+    # Run at 06:00 AM CST (12:00 UTC) every day
+    - cron: '0 12 * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub Actions UI
+
+jobs:
+  warm-cache:
+    name: Warm API Cache
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Live Candidates API
+        run: |
+          echo "Warming /api/candidates/live..."
+          curl -s -o /dev/null -w "Status: %{http_code}" "${{ secrets.SITE_URL }}/api/candidates/live" || echo "Warning: candidates API ping failed"
+
+      - name: Ping Community Feed API
+        run: |
+          echo "Warming /api/community-feed..."
+          curl -s -o /dev/null -w "Status: %{http_code}" "${{ secrets.SITE_URL }}/api/community-feed" || echo "Warning: community feed API ping failed"
+
+      - name: Done
+        run: echo "Daily civic data cache refresh complete — $(date)"

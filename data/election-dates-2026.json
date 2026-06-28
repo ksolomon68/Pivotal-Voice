@@ -1,0 +1,66 @@
+[
+    {
+        "id": "primary-2026",
+        "name": "Republican Primary Election",
+        "date": "2026-03-03",
+        "location": "Ellis County Courthouse Annex",
+        "address": "200 South College Street, Waxahachie, TX 75165",
+        "zip": "75165",
+        "pollingHours": "7:00 AM – 7:00 PM",
+        "status": "live",
+        "description": "March 3 Republican & Democratic Primary. Ellis County voters select party nominees for county, state, and federal offices.",
+        "italyPollingPlace": {
+            "name": "Italy Community Center",
+            "address": "400 N College St, Italy, TX 76651",
+            "hours": "7:00 AM – 7:00 PM"
+        }
+    },
+    {
+        "id": "joint-election-may-2026",
+        "name": "City of Italy & Italy ISD Joint Election",
+        "date": "2026-05-02",
+        "location": "Italy City Hall",
+        "address": "130 S College St, Italy, TX 76651",
+        "zip": "76651",
+        "pollingHours": "7:00 AM – 7:00 PM",
+        "status": "upcoming",
+        "description": "Joint uniform election for Italy City Council and Italy ISD Board of Trustees seats.",
+        "italyPollingPlace": {
+            "name": "Italy City Hall",
+            "address": "130 S College St, Italy, TX 76651",
+            "hours": "7:00 AM – 7:00 PM"
+        }
+    },
+    {
+        "id": "runoff-2026",
+        "name": "Primary Runoff Election",
+        "date": "2026-05-26",
+        "location": "Ellis County Courthouse Annex",
+        "address": "200 South College Street, Waxahachie, TX 75165",
+        "zip": "75165",
+        "pollingHours": "7:00 AM – 7:00 PM",
+        "status": "upcoming",
+        "description": "Runoff election if no candidate earns a majority in the March Primary. Only held if required.",
+        "italyPollingPlace": {
+            "name": "Italy Community Center",
+            "address": "400 N College St, Italy, TX 76651",
+            "hours": "7:00 AM – 7:00 PM"
+        }
+    },
+    {
+        "id": "general-2026",
+        "name": "General Election",
+        "date": "2026-11-03",
+        "location": "Ellis County Courthouse Annex",
+        "address": "200 South College Street, Waxahachie, TX 75165",
+        "zip": "75165",
+        "pollingHours": "7:00 AM – 7:00 PM",
+        "status": "planned",
+        "description": "November General Election for all offices. All Ellis County registered voters may participate.",
+        "italyPollingPlace": {
+            "name": "Italy Community Center",
+            "address": "400 N College St, Italy, TX 76651",
+            "hours": "7:00 AM – 7:00 PM"
+        }
+    }
+]

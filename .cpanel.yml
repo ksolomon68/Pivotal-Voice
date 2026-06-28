@@ -1,0 +1,4 @@
+---
+deployment:
+  tasks:
+    - . /home/pivotalvoice/nodevenv/Pivotal-Voice/24/bin/activate && npm install --production
