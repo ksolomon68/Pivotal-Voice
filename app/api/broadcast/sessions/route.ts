@@ -16,8 +16,14 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
     const jwt = authHeader.slice(7);
+    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+        global: {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            },
+        },
+    });
     const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
     if (authError || !user) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -48,7 +54,8 @@ export async function POST(req: NextRequest) {
             description?.trim() || undefined,
             scheduledAt || undefined,
             youtubeVideoId?.trim() || undefined,
-            streamyardBroadcastId?.trim() || undefined
+            streamyardBroadcastId?.trim() || undefined,
+            supabase
         );
         return NextResponse.json(session, { status: 201 });
     } catch (err) {

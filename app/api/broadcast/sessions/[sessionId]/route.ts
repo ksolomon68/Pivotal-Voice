@@ -12,30 +12,32 @@ export async function PATCH(
 ) {
     const { sessionId } = await params;
 
-    const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader?.startsWith('Bearer ')) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
-    if (!isMockMode) {
-        const authHeader = req.headers.get('Authorization');
-        if (!authHeader?.startsWith('Bearer ')) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+    const jwt = authHeader.slice(7);
+    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+        global: {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            },
+        },
+    });
+    const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
+    if (authError || !user) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
-        const supabase = createClient(supabaseUrl, supabaseAnonKey);
-        const jwt = authHeader.slice(7);
-        const { data: { user }, error: authError } = await supabase.auth.getUser(jwt);
-        if (authError || !user) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        }
+    const { data: session } = await supabase
+        .from('broadcast_sessions')
+        .select('host_id')
+        .eq('id', sessionId)
+        .single();
 
-        const { data: session } = await supabase
-            .from('broadcast_sessions')
-            .select('host_id')
-            .eq('id', sessionId)
-            .single();
-
-        if (!session || session.host_id !== user.id) {
-            return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-        }
+    if (!session || session.host_id !== user.id) {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
     const body = await req.json();
@@ -46,7 +48,7 @@ export async function PATCH(
     }
 
     try {
-        await updateSessionStatus(sessionId, status);
+        await updateSessionStatus(sessionId, status, supabase);
         return NextResponse.json({ success: true });
     } catch (err) {
         const message = err instanceof Error ? err.message : 'Failed to update session';
