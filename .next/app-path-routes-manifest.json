@@ -24,6 +24,7 @@
   "/podcast/live/[sessionId]/page": "/podcast/live/[sessionId]",
   "/podcast/page": "/podcast",
   "/podcast/studio/[sessionId]/page": "/podcast/studio/[sessionId]",
+  "/resources/[id]/page": "/resources/[id]",
   "/resources/page": "/resources",
   "/services/page": "/services",
   "/transparency/page": "/transparency"
