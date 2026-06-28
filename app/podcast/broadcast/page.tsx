@@ -154,7 +154,7 @@ export default function BroadcastCreatePage() {
                         <div className="bg-gold/5 border border-gold/20 rounded-xl p-5 mb-2 space-y-2">
                             <p className="text-sm font-semibold text-gold">Streamyard Workflow</p>
                             <ol className="text-xs text-cream/60 space-y-1.5 list-decimal list-inside">
-                                <li>Create a broadcast in Streamyard → destination: <span className="text-cream/80">YouTube</span></li>
+                                <li>Create a broadcast in Streamyard</li>
                                 <li>Send the guest invite link from Streamyard to your guest</li>
                                 <li>Go live in Streamyard, then paste the <span className="text-cream/80">StreamYard watch URL</span> below to embed the stream</li>
                             </ol>
