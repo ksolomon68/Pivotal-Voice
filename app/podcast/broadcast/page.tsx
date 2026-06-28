@@ -211,23 +211,7 @@ export default function BroadcastCreatePage() {
 
                             <div>
                                 <label className="block text-sm font-semibold text-cream/70 mb-2">
-                                    YouTube Video URL <span className="text-red-400">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    value={youtubeVideoId}
-                                    onChange={(e) => setYoutubeVideoId(e.target.value)}
-                                    placeholder="https://www.youtube.com/watch?v=..."
-                                    className="input w-full"
-                                />
-                                <p className="text-xs text-cream/40 mt-1">
-                                    Paste the YouTube live URL from Streamyard. You can add this after going live.
-                                </p>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-cream/70 mb-2">
-                                    StreamYard Broadcast ID (optional)
+                                    StreamYard Broadcast ID <span className="text-gold">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -237,7 +221,23 @@ export default function BroadcastCreatePage() {
                                     className="input w-full"
                                 />
                                 <p className="text-xs text-cream/40 mt-1">
-                                    Pasting the StreamYard Broadcast ID will embed the StreamYard player.
+                                    Pasting the StreamYard Broadcast ID will embed the StreamYard player. Default live source.
+                                </p>
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-semibold text-cream/70 mb-2">
+                                    YouTube Video URL (optional)
+                                </label>
+                                <input
+                                    type="text"
+                                    value={youtubeVideoId}
+                                    onChange={(e) => setYoutubeVideoId(e.target.value)}
+                                    placeholder="https://www.youtube.com/watch?v=..."
+                                    className="input w-full"
+                                />
+                                <p className="text-xs text-cream/40 mt-1">
+                                    Optional backup source. Paste the YouTube live URL from Streamyard if desired.
                                 </p>
                             </div>
 

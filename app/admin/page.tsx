@@ -440,22 +440,22 @@ export default function AdminPage() {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-xs text-cream/50 mb-1">YouTube Live URL</label>
-                                        <input
-                                            type="text"
-                                            placeholder="https://www.youtube.com/watch?v=..."
-                                            value={newYoutubeUrl}
-                                            onChange={e => setNewYoutubeUrl(e.target.value)}
-                                            className="input w-full"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-xs text-cream/50 mb-1">StreamYard Broadcast ID (optional)</label>
+                                        <label className="block text-xs text-cream/50 mb-1">StreamYard Broadcast ID *</label>
                                         <input
                                             type="text"
                                             placeholder="e.g. LNeHdzk3_EF7BZD3xbZqnKvAw"
                                             value={newStreamyardId}
                                             onChange={e => setNewStreamyardId(e.target.value)}
+                                            className="input w-full"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs text-cream/50 mb-1">YouTube Live URL (optional)</label>
+                                        <input
+                                            type="text"
+                                            placeholder="https://www.youtube.com/watch?v=..."
+                                            value={newYoutubeUrl}
+                                            onChange={e => setNewYoutubeUrl(e.target.value)}
                                             className="input w-full"
                                         />
                                     </div>
