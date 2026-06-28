@@ -24,40 +24,51 @@ export default function AdminLoginPage() {
         }
     }, [user, isLoading, router]);
 
-    // After form submission: wait for AuthContext to resolve the new session
-    useEffect(() => {
-        if (!submitting || isLoading) return;
-        if (user?.isAdmin) {
-            router.replace('/admin');
-        } else if (user && !user.isAdmin) {
-            supabase.auth.signOut();
-            setError('This account does not have admin access.');
-            setSubmitting(false);
-        }
-    }, [user, isLoading, submitting, router]);
-
-    // Safety timeout: if submitting stays true for >15s, unblock the form
-    useEffect(() => {
-        if (!submitting) return;
-        const timer = setTimeout(() => {
-            setSubmitting(false);
-            setError('Sign-in timed out. Please check your connection and try again.');
-        }, 15000);
-        return () => clearTimeout(timer);
-    }, [submitting]);
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
         setSubmitting(true);
 
-        const { error: authError } = await supabase.auth.signInWithPassword({ email, password });
-        if (authError) {
-            setError(authError.message);
+        try {
+            const { data: authData, error: authError } = await supabase.auth.signInWithPassword({ email, password });
+            if (authError) {
+                setError(authError.message);
+                setSubmitting(false);
+                return;
+            }
+
+            if (!authData.user) {
+                setError('Sign-in failed. No user returned.');
+                setSubmitting(false);
+                return;
+            }
+
+            // Verify if user is an admin in the profiles table directly
+            const { data: profile, error: profileError } = await supabase
+                .from('profiles')
+                .select('is_admin')
+                .eq('id', authData.user.id)
+                .single();
+
+            if (profileError || !profile) {
+                await supabase.auth.signOut();
+                setError('This account profile does not exist.');
+                setSubmitting(false);
+                return;
+            }
+
+            if (!profile.is_admin) {
+                await supabase.auth.signOut();
+                setError('This account does not have admin access.');
+                setSubmitting(false);
+                return;
+            }
+
+            router.replace('/admin');
+        } catch (err) {
+            setError('An unexpected error occurred during sign-in.');
             setSubmitting(false);
-            return;
         }
-        // AuthContext's onAuthStateChange will update `user`; the useEffect above handles the rest
     };
 
     // Show a spinner while the initial auth check runs (replaces the blank render)
