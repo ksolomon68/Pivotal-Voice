@@ -8,7 +8,7 @@ import { supabase } from '@/lib/supabase/client';
 import { useAuth } from '@/lib/forum/AuthContext';
 
 export default function AdminLoginPage() {
-    const { user, isLoading } = useAuth();
+    const { user, isLoading, login } = useAuth();
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,11 +16,16 @@ export default function AdminLoginPage() {
     const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
 
-    // If already authenticated as admin, go straight to dashboard
+    // Watch auth state: redirect if admin, show error and sign out if not
     useEffect(() => {
         if (isLoading) return;
-        if (user?.isAdmin) {
-            router.replace('/admin');
+        if (user) {
+            if (user.isAdmin) {
+                router.replace('/admin');
+            } else {
+                setError('This account does not have admin access.');
+                supabase.auth.signOut();
+            }
         }
     }, [user, isLoading, router]);
 
@@ -30,51 +35,12 @@ export default function AdminLoginPage() {
         setSubmitting(true);
 
         try {
-            // Step 1: Authenticate with Supabase
-            const { data: authData, error: authError } = await supabase.auth.signInWithPassword({ email, password });
-            if (authError) {
-                setError(authError.message);
+            const result = await login(email, password);
+            if (!result.success) {
+                setError(result.error || 'Sign-in failed.');
                 setSubmitting(false);
-                return;
             }
-
-            if (!authData.user) {
-                setError('Sign-in failed. No user returned.');
-                setSubmitting(false);
-                return;
-            }
-
-            // Step 2: Verify admin status via profiles table
-            const { data: profile, error: profileError } = await supabase
-                .from('profiles')
-                .select('is_admin')
-                .eq('id', authData.user.id)
-                .single();
-
-            if (profileError) {
-                console.error('[login] Profile fetch error:', profileError);
-                await supabase.auth.signOut();
-                setError(`Profile lookup failed: ${profileError.message}`);
-                setSubmitting(false);
-                return;
-            }
-
-            if (!profile) {
-                await supabase.auth.signOut();
-                setError('This account profile does not exist. Please contact an administrator.');
-                setSubmitting(false);
-                return;
-            }
-
-            if (!profile.is_admin) {
-                await supabase.auth.signOut();
-                setError('This account does not have admin access.');
-                setSubmitting(false);
-                return;
-            }
-
-            // Step 3: All good — navigate to admin dashboard
-            router.replace('/admin');
+            // If successful, the useEffect hook will handle redirection or access denial
         } catch (err) {
             const message = err instanceof Error ? err.message : String(err);
             console.error('[login] Unexpected error during sign-in:', err);
