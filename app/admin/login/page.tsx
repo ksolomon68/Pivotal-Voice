@@ -30,6 +30,7 @@ export default function AdminLoginPage() {
         setSubmitting(true);
 
         try {
+            // Step 1: Authenticate with Supabase
             const { data: authData, error: authError } = await supabase.auth.signInWithPassword({ email, password });
             if (authError) {
                 setError(authError.message);
@@ -43,16 +44,24 @@ export default function AdminLoginPage() {
                 return;
             }
 
-            // Verify if user is an admin in the profiles table directly
+            // Step 2: Verify admin status via profiles table
             const { data: profile, error: profileError } = await supabase
                 .from('profiles')
                 .select('is_admin')
                 .eq('id', authData.user.id)
                 .single();
 
-            if (profileError || !profile) {
+            if (profileError) {
+                console.error('[login] Profile fetch error:', profileError);
                 await supabase.auth.signOut();
-                setError('This account profile does not exist.');
+                setError(`Profile lookup failed: ${profileError.message}`);
+                setSubmitting(false);
+                return;
+            }
+
+            if (!profile) {
+                await supabase.auth.signOut();
+                setError('This account profile does not exist. Please contact an administrator.');
                 setSubmitting(false);
                 return;
             }
@@ -64,14 +73,17 @@ export default function AdminLoginPage() {
                 return;
             }
 
+            // Step 3: All good — navigate to admin dashboard
             router.replace('/admin');
         } catch (err) {
-            setError('An unexpected error occurred during sign-in.');
+            const message = err instanceof Error ? err.message : String(err);
+            console.error('[login] Unexpected error during sign-in:', err);
+            setError(`Sign-in error: ${message}`);
             setSubmitting(false);
         }
     };
 
-    // Show a spinner while the initial auth check runs (replaces the blank render)
+    // Show a spinner while the initial auth check runs
     if (isLoading) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-navy-dark">
