@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     const isVideo = resourceType === 'Video';
 
     const { data, error } = await resend.emails.send({
-        from: 'Pivotal Voice <resources@pivotalvoice.com>',
+        from: 'Pivotal Voice <resources@pivotalvoice.org>',
         to: [email],
         subject: `Your Resource: ${resourceTitle}`,
         html: `
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
 
           <table cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
             <tr><td style="background:#d4af37;border-radius:8px;padding:14px 28px;">
-              <a href="https://pivotalvoice.com/resources" style="color:#0a0f1e;font-size:14px;font-weight:700;text-decoration:none;font-family:Arial,sans-serif;">
+              <a href="https://pivotalvoice.org/resources" style="color:#0a0f1e;font-size:14px;font-weight:700;text-decoration:none;font-family:Arial,sans-serif;">
                 ${isVideo ? '▶ Watch Resource' : '⬇ Download Resource'}
               </a>
             </td></tr>
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
             <strong style="color:rgba(245,235,210,0.8);">Need personalized help?</strong> Pivotal Voice works directly with candidates and civic leaders across Ellis County — from campaign messaging to media relations and crisis communications.
           </p>
           <p style="margin:0;">
-            <a href="https://pivotalvoice.com/services" style="color:#d4af37;font-size:13px;text-decoration:none;">Explore our services →</a>
+            <a href="https://pivotalvoice.org/services" style="color:#d4af37;font-size:13px;text-decoration:none;">Explore our services →</a>
           </p>
         </td></tr>
 
