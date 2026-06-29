@@ -105,7 +105,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/home/pivotalvoice/Pivotal-Voice",
+    "outputFileTracingRoot": "/home/user/Pivotal-Voice",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -162,7 +162,7 @@
       "proxyPrefetch": "flexible",
       "optimisticClientCache": true,
       "manualClientBasePath": false,
-      "cpus": 7,
+      "cpus": 3,
       "memoryBasedWorkersCount": false,
       "imgOptConcurrency": null,
       "imgOptTimeoutInSeconds": 7,
@@ -294,7 +294,7 @@
       "trustHostHeader": false,
       "isExperimentalCompile": false
     },
-    "htmlLimitedBots": "[/w-]+-Google|Google-[/w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight",
+    "htmlLimitedBots": "[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight",
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.js",
     "transpilePackages": [
@@ -302,11 +302,11 @@
       "@livekit/components-core"
     ],
     "turbopack": {
-      "root": "/home/pivotalvoice/Pivotal-Voice"
+      "root": "/home/user/Pivotal-Voice"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "/home/pivotalvoice/Pivotal-Voice",
+  "appDir": "/home/user/Pivotal-Voice",
   "relativeAppDir": "",
   "files": [
     ".next/routes-manifest.json",
