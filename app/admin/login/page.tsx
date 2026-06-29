@@ -21,7 +21,11 @@ export default function AdminLoginPage() {
         if (isLoading) return;
         if (user) {
             if (user.isAdmin) {
-                router.replace('/admin');
+                // Delay navigation slightly to allow any in-flight Supabase auth fetches to resolve cleanly.
+                // Next.js App Router aborts active fetches on navigation, which can throw an AbortError.
+                setTimeout(() => {
+                    router.replace('/admin');
+                }, 100);
             } else {
                 setError('This account does not have admin access.');
                 supabase.auth.signOut();
