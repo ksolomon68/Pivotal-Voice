@@ -67,7 +67,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         const syncSession = async () => {
             try {
-                const { data: { session } } = await supabase.auth.getSession();
+                const { data: { session }, error } = await supabase.auth.getSession();
+                if (error) {
+                    // Clear stale/invalid refresh tokens from client storage
+                    await supabase.auth.signOut();
+                    throw error;
+                }
                 if (!mounted) return; // component unmounted while awaiting — bail out cleanly
 
                 if (session?.user) {
