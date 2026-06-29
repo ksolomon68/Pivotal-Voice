@@ -27,7 +27,7 @@ export default function BroadcastCreatePage() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [scheduledAt, setScheduledAt] = useState('');
-    const [streamyardBroadcastId, setStreamyardBroadcastId] = useState('');
+    const [streamyardBroadcastId] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
     const [createdSession, setCreatedSession] = useState<BroadcastSession | null>(null);
@@ -152,11 +152,12 @@ export default function BroadcastCreatePage() {
 
                         {/* Streamyard workflow guide */}
                         <div className="bg-gold/5 border border-gold/20 rounded-xl p-5 mb-2 space-y-2">
-                            <p className="text-sm font-semibold text-gold">Streamyard Workflow</p>
+                            <p className="text-sm font-semibold text-gold">Streamyard + Facebook Live Workflow</p>
                             <ol className="text-xs text-cream/60 space-y-1.5 list-decimal list-inside">
-                                <li>Create a broadcast in Streamyard</li>
-                                <li>Send the guest invite link from Streamyard to your guest</li>
-                                <li>Go live in Streamyard, then paste the <span className="text-cream/80">StreamYard watch URL</span> below to embed the stream</li>
+                                <li>Create a broadcast in StreamYard and add <span className="text-cream/80">Facebook</span> as a destination</li>
+                                <li>Send the guest invite link from StreamYard to your guest</li>
+                                <li>Create this session, then open the Studio to go live</li>
+                                <li>Once live on Facebook, copy the video URL and paste it in the Studio sidebar — viewers will see the embedded stream</li>
                             </ol>
                             <a
                                 href="https://streamyard.com"
@@ -206,23 +207,6 @@ export default function BroadcastCreatePage() {
                                     onChange={(e) => setScheduledAt(e.target.value)}
                                     className="input w-full"
                                 />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-cream/70 mb-2">
-                                    StreamYard Watch URL or Broadcast ID <span className="text-red-400">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    value={streamyardBroadcastId}
-                                    onChange={(e) => setStreamyardBroadcastId(e.target.value)}
-                                    placeholder="https://streamyard.com/watch/AbCdEf123"
-                                    className="input w-full"
-                                    required
-                                />
-                                <p className="text-xs text-cream/40 mt-1">
-                                    Paste the full StreamYard watch URL or just the broadcast ID. Viewers on this site will see the embedded StreamYard stream.
-                                </p>
                             </div>
 
                             {error && (

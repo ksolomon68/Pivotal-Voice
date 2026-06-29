@@ -8,7 +8,7 @@ import ParticipantGrid from './ParticipantGrid';
 import BroadcastControlBar from './BroadcastControlBar';
 import ViewerCountBadge from './ViewerCountBadge';
 import InviteLinkPanel from './InviteLinkPanel';
-import { AlertCircle, Wifi } from 'lucide-react';
+import { AlertCircle, Wifi, Facebook, Check } from 'lucide-react';
 
 interface Props {
     token: string;
@@ -18,6 +18,7 @@ interface Props {
     onGoLive: () => void;
     onEnd: () => void;
     isUpdating: boolean;
+    onUpdateFacebookUrl?: (url: string) => Promise<void>;
 }
 
 // Inner component that has access to the LiveKit room context
@@ -27,9 +28,25 @@ function StudioRoomInner({
     onGoLive,
     onEnd,
     isUpdating,
+    onUpdateFacebookUrl,
 }: Omit<Props, 'token' | 'livekitUrl'>) {
     const connectionState = useConnectionState();
     const isPublisher = role === 'host' || role === 'guest';
+    const [fbUrlInput, setFbUrlInput] = useState(session.facebookVideoUrl ?? '');
+    const [fbSaving, setFbSaving] = useState(false);
+    const [fbSaved, setFbSaved] = useState(false);
+
+    const handleSaveFbUrl = async () => {
+        if (!onUpdateFacebookUrl || !fbUrlInput.trim()) return;
+        setFbSaving(true);
+        try {
+            await onUpdateFacebookUrl(fbUrlInput.trim());
+            setFbSaved(true);
+            setTimeout(() => setFbSaved(false), 3000);
+        } finally {
+            setFbSaving(false);
+        }
+    };
 
     return (
         <div className="flex flex-col lg:flex-row gap-4 h-full relative">
@@ -101,6 +118,35 @@ function StudioRoomInner({
                             inviteToken={session.guestInviteToken}
                         />
                     )}
+
+                    {/* Facebook Live URL (host only) */}
+                    {role === 'host' && onUpdateFacebookUrl && (
+                        <div className="bg-navy-dark/60 border border-white/10 rounded-xl p-4">
+                            <div className="flex items-center gap-2 mb-3">
+                                <Facebook className="w-4 h-4 text-[#1877F2]" />
+                                <p className="text-xs font-semibold text-cream/50 uppercase tracking-wide">Facebook Live URL</p>
+                            </div>
+                            <p className="text-xs text-cream/40 mb-2">
+                                Once live on Facebook, paste the video URL here so viewers can watch the embedded stream.
+                            </p>
+                            <input
+                                type="url"
+                                value={fbUrlInput}
+                                onChange={(e) => setFbUrlInput(e.target.value)}
+                                placeholder="https://www.facebook.com/…/videos/…"
+                                className="input w-full text-xs mb-2"
+                            />
+                            <button
+                                onClick={handleSaveFbUrl}
+                                disabled={fbSaving || !fbUrlInput.trim()}
+                                className="btn-secondary text-xs w-full disabled:opacity-50 flex items-center justify-center gap-1.5"
+                            >
+                                {fbSaved ? (
+                                    <><Check className="w-3 h-3 text-green-400" /> Saved!</>
+                                ) : fbSaving ? 'Saving…' : 'Save URL'}
+                            </button>
+                        </div>
+                    )}
                 </div>
             )}
 
@@ -136,6 +182,7 @@ export default function StudioRoom({
     onGoLive,
     onEnd,
     isUpdating,
+    onUpdateFacebookUrl,
 }: Props) {
     const [roomError, setRoomError] = useState<string | null>(null);
     const [shouldConnect, setShouldConnect] = useState(false);
@@ -189,6 +236,7 @@ export default function StudioRoom({
                 onGoLive={onGoLive}
                 onEnd={onEnd}
                 isUpdating={isUpdating}
+                onUpdateFacebookUrl={onUpdateFacebookUrl}
             />
         </LiveKitRoom>
     );
