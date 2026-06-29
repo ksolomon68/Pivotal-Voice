@@ -39,3 +39,6 @@ next-env.d.ts
 push_sql.js
 supabase_candidates.sql
 .next/dev/
+
+# cPanel Passenger restart dir — created server-side, not tracked in git
+/tmp/
