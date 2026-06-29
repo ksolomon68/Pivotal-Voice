@@ -238,20 +238,31 @@ export default function Header() {
                                 >
                                     {/* Auth row */}
                                     {user ? (
-                                        <div className="flex items-center justify-between px-2 py-2 bg-navy-dark/60 border border-gold/15 rounded-xl">
-                                            <div className="flex items-center gap-2">
-                                                <div className="w-8 h-8 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center flex-shrink-0">
-                                                    <span className="text-sm font-bold text-gold">{user.displayName[0]}</span>
+                                        <div className="flex flex-col gap-3 p-3 bg-navy-dark/60 border border-gold/15 rounded-xl">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-8 h-8 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center flex-shrink-0">
+                                                        <span className="text-sm font-bold text-gold">{user.displayName[0]}</span>
+                                                    </div>
+                                                    <span className="text-cream/80 text-sm font-medium truncate max-w-[140px]">{user.displayName}</span>
                                                 </div>
-                                                <span className="text-cream/80 text-sm font-medium truncate max-w-[140px]">{user.displayName}</span>
+                                                <button
+                                                    onClick={() => { logout(); setMobileMenuOpen(false); }}
+                                                    className="flex items-center gap-1 text-sm text-cream/50 hover:text-red-400 transition-colors ml-2"
+                                                >
+                                                    <LogOut className="w-4 h-4" />
+                                                    Sign Out
+                                                </button>
                                             </div>
-                                            <button
-                                                onClick={() => { logout(); setMobileMenuOpen(false); }}
-                                                className="flex items-center gap-1 text-sm text-cream/50 hover:text-red-400 transition-colors ml-2"
-                                            >
-                                                <LogOut className="w-4 h-4" />
-                                                Sign Out
-                                            </button>
+                                            {user.isAdmin && (
+                                                <Link
+                                                    href="/admin"
+                                                    onClick={() => setMobileMenuOpen(false)}
+                                                    className="w-full text-center py-2 bg-gold/10 hover:bg-gold/20 text-gold rounded-lg text-xs font-semibold transition-all border border-gold/20"
+                                                >
+                                                    Admin Dashboard
+                                                </Link>
+                                            )}
                                         </div>
                                     ) : (
                                         <div className="flex gap-2">
