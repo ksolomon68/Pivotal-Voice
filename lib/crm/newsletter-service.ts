@@ -192,29 +192,26 @@ export async function resubscribe(id: string): Promise<boolean> {
 }
 
 export async function getCampaigns(): Promise<EmailCampaign[]> {
-    // Return mock data for now as we don't have a campaigns table yet
-    return [
-        {
-            id: '1',
-            subject: 'Weekly Ellis County Digest',
-            type: 'weekly_digest',
-            sentAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-            recipientCount: 1240,
-            openCount: 520,
-            clickCount: 180,
-            unsubscribeCount: 12,
-        },
-        {
-            id: '2',
-            subject: 'Monthly Civic Updates - February',
-            type: 'monthly_newsletter',
-            sentAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
-            recipientCount: 1180,
-            openCount: 640,
-            clickCount: 220,
-            unsubscribeCount: 8,
-        }
-    ];
+    const { data, error } = await supabase
+        .from('email_campaigns')
+        .select('*')
+        .order('sent_at', { ascending: false });
+
+    if (error) {
+        console.error('Error fetching campaigns:', error);
+        return [];
+    }
+
+    return (data || []).map(row => ({
+        id: row.id,
+        type: row.type,
+        subject: row.subject,
+        sentAt: row.sent_at,
+        recipientCount: row.recipient_count,
+        openCount: row.open_count,
+        clickCount: row.click_count,
+        unsubscribeCount: row.unsubscribe_count,
+    }));
 }
 
 export function exportSubscribersCSV(subscribers: NewsletterSubscriber[]): string {
