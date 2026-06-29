@@ -17,12 +17,22 @@ export default function PodcastPage() {
     const [liveSessions, setLiveSessions] = useState<BroadcastSession[]>([]);
 
     useEffect(() => {
-        fetch('/api/broadcast/sessions')
+        const controller = new AbortController();
+        let mounted = true;
+
+        fetch('/api/broadcast/sessions', { signal: controller.signal })
             .then((r) => r.json())
             .then(({ live }) => {
-                setLiveSessions(live || []);
+                if (mounted) setLiveSessions(live || []);
             })
-            .catch(() => {/* silently fail */});
+            .catch((err) => {
+                if (err.name === 'AbortError') return; // expected on unmount
+            });
+
+        return () => {
+            mounted = false;
+            controller.abort();
+        };
     }, []);
 
     return (

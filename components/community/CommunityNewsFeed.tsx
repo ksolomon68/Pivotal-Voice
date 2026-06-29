@@ -64,14 +64,25 @@ export default function CommunityNewsFeed() {
     const [activeCity, setActiveCity] = useState<CityTab>('All');
 
     useEffect(() => {
-        fetch('/api/community-feed')
+        const controller = new AbortController();
+        let mounted = true;
+
+        fetch('/api/community-feed', { signal: controller.signal })
             .then(r => r.json())
             .then(data => {
+                if (!mounted) return;
                 setItems(data.items || []);
                 setSource(data.source || 'fallback');
             })
-            .catch(() => {/* silently fail */ })
-            .finally(() => setLoading(false));
+            .catch((err) => {
+                if (err.name === 'AbortError') return; // expected on unmount
+            })
+            .finally(() => { if (mounted) setLoading(false); });
+
+        return () => {
+            mounted = false;
+            controller.abort();
+        };
     }, []);
 
     const filteredItems = activeCity === 'All'
