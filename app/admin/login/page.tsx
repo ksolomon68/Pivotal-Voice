@@ -44,6 +44,10 @@ export default function AdminLoginPage() {
             // If successful, the useEffect hook will handle redirection or access denial
         } catch (err) {
             const message = err instanceof Error ? err.message : String(err);
+            if (err instanceof Error && (err.name === 'AbortError' || message.includes('aborted'))) {
+                // Ignore AbortError caused by component unmounting during redirect
+                return;
+            }
             console.error('[login] Unexpected error during sign-in:', err);
             setError(`Sign-in error: ${message}`);
             setSubmitting(false);
