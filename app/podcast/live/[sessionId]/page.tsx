@@ -7,11 +7,11 @@ import Footer from '@/components/layout/Footer';
 import { getSession } from '@/lib/broadcast/broadcast-service';
 import StudioRoom from '@/components/podcast/broadcast/StudioRoom';
 import { BroadcastSession } from '@/lib/types/broadcast';
-import { Clock, Radio, AlertCircle } from 'lucide-react';
+import { Clock, Radio, AlertCircle, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase/client';
 
-type PageState = 'loading' | 'not-live' | 'connecting' | 'live' | 'ended' | 'error';
+type PageState = 'loading' | 'not-live' | 'connecting' | 'facebook-live' | 'live' | 'ended' | 'error';
 
 export default function LiveViewerPage() {
     const { sessionId } = useParams<{ sessionId: string }>();
@@ -37,7 +37,11 @@ export default function LiveViewerPage() {
                 }
                 if (s.status !== 'live') {
                     setPageState('not-live');
-                    // Subscribe to realtime updates to detect when it goes live
+                    return;
+                }
+
+                if (s.facebookVideoUrl) {
+                    setPageState('facebook-live');
                     return;
                 }
 
@@ -67,15 +71,26 @@ export default function LiveViewerPage() {
                     filter: `id=eq.${sessionId}`,
                 },
                 async (payload) => {
-                    const updated = payload.new as { status: string };
-                    if (updated.status === 'live' && pageState === 'not-live') {
+                    const updated = payload.new as { status: string; facebook_video_url?: string };
+                    if (updated.status === 'ended') {
+                        setPageState('ended');
+                    } else if (updated.status === 'live' && pageState === 'not-live') {
                         const s = await getSession(sessionId as string);
                         if (s) {
                             setSession(s);
-                            await connectAsViewer(s.id);
+                            if (s.facebookVideoUrl) {
+                                setPageState('facebook-live');
+                            } else {
+                                await connectAsViewer(s.id);
+                            }
                         }
-                    } else if (updated.status === 'ended') {
-                        setPageState('ended');
+                    } else if (updated.facebook_video_url && pageState === 'live') {
+                        // Facebook URL added after LiveKit viewer was already connected — switch to embed
+                        const s = await getSession(sessionId as string);
+                        if (s) {
+                            setSession(s);
+                            setPageState('facebook-live');
+                        }
                     }
                 }
             )
@@ -181,6 +196,38 @@ export default function LiveViewerPage() {
                             <h2 className="text-xl font-display font-bold text-white mb-2">Error</h2>
                             <p className="text-cream/60 text-sm mb-6">{error}</p>
                             <Link href="/podcast" className="btn-secondary text-sm">Back to Podcast</Link>
+                        </div>
+                    </div>
+                )}
+
+                {pageState === 'facebook-live' && session?.facebookVideoUrl && (
+                    <div className="p-4 lg:p-6 max-w-5xl mx-auto w-full">
+                        <div className="aspect-video w-full mb-4 rounded-xl overflow-hidden bg-black">
+                            <iframe
+                                src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(session.facebookVideoUrl)}&show_text=false&autoplay=1&mute=0`}
+                                className="w-full h-full"
+                                style={{ border: 'none' }}
+                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                allowFullScreen
+                            />
+                        </div>
+                        <div className="flex items-start justify-between gap-4">
+                            <div className="bg-navy-dark/60 border border-white/10 rounded-xl p-4 flex-1">
+                                <h3 className="text-base font-display font-bold text-white mb-1">{session.title}</h3>
+                                {session.description && (
+                                    <p className="text-sm text-cream/50">{session.description}</p>
+                                )}
+                                <p className="text-xs text-cream/40 mt-2">Hosted by {session.hostName}</p>
+                            </div>
+                            <a
+                                href={session.facebookVideoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-secondary text-xs shrink-0 inline-flex items-center gap-1.5"
+                            >
+                                <ExternalLink className="w-3 h-3" />
+                                Open on Facebook
+                            </a>
                         </div>
                     </div>
                 )}
