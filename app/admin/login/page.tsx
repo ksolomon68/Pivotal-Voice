@@ -31,6 +31,7 @@ export default function AdminLoginPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (submitting) return;
         setError('');
         setSubmitting(true);
 
