@@ -8,7 +8,7 @@ import {
     BarChart3, Eye, MousePointer, UserMinus, UserPlus,
     RefreshCw, ChevronDown, Podcast, Calendar, Shield,
     ShieldCheck, LogOut, ExternalLink,
-    Plus, Radio, CheckCircle, XCircle,
+    Plus, Radio, CheckCircle, XCircle, Loader2,
 } from 'lucide-react';
 import Link from 'next/link';
 import { useAuth } from '@/lib/forum/AuthContext';
@@ -74,6 +74,17 @@ export default function AdminPage() {
     // CRM filter state
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'unsubscribed'>('all');
+
+    // Campaign composition state
+    const [showComposeCampaign, setShowComposeCampaign] = useState(false);
+    const [campaignSubject, setCampaignSubject] = useState('');
+    const [campaignType, setCampaignType] = useState('general');
+    const [campaignBody, setCampaignBody] = useState('');
+    const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+    const [targetAudience, setTargetAudience] = useState<'all' | 'interests'>('all');
+    const [sendingCampaign, setSendingCampaign] = useState(false);
+    const [campaignError, setCampaignError] = useState('');
+    const [campaignSuccess, setCampaignSuccess] = useState(false);
 
     // Auth guard: redirect to login if not an admin once auth is resolved
     useEffect(() => {
@@ -179,6 +190,49 @@ export default function AdminPage() {
             console.error(err);
         }
         setCreating(false);
+    };
+
+    const handleSendCampaign = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSendingCampaign(true);
+        setCampaignError('');
+        setCampaignSuccess(false);
+
+        try {
+            const { data: { session: authSession } } = await supabase.auth.getSession();
+            const token = authSession?.access_token;
+            if (!token) throw new Error('Not authenticated');
+
+            const res = await fetch('/api/admin/campaigns', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    subject: campaignSubject.trim(),
+                    body: campaignBody.trim(),
+                    type: campaignType,
+                    targetInterests: targetAudience === 'interests' ? selectedInterests : undefined
+                }),
+            });
+
+            if (!res.ok) {
+                const data = await res.json();
+                throw new Error(data.error || 'Failed to dispatch campaign');
+            }
+
+            setCampaignSubject('');
+            setCampaignBody('');
+            setSelectedInterests([]);
+            setTargetAudience('all');
+            setCampaignSuccess(true);
+            loadCRM(); // reload campaigns list & stats
+        } catch (err) {
+            setCampaignError(err instanceof Error ? err.message : 'Something went wrong');
+        } finally {
+            setSendingCampaign(false);
+        }
     };
 
     const tabs: { key: Tab; label: string; icon: React.ReactNode }[] = [
@@ -587,42 +641,207 @@ export default function AdminPage() {
 
                 {/* ── CAMPAIGNS TAB ── */}
                 {tab === 'campaigns' && (
-                    <div className="space-y-3">
-                        {campaigns.map(camp => (
-                            <div key={camp.id} className="p-4 rounded-xl bg-navy border border-gold/10">
-                                <div className="flex items-start justify-between">
-                                    <div>
-                                        <span className={`text-[10px] px-2 py-0.5 rounded-full border font-medium capitalize ${camp.type === 'weekly_digest' ? 'bg-blue-500/15 text-blue-400 border-blue-500/30' :
-                                            camp.type === 'monthly_newsletter' ? 'bg-purple-500/15 text-purple-400 border-purple-500/30' :
-                                                'bg-green-500/15 text-green-400 border-green-500/30'}`}>
-                                            {camp.type.replace(/_/g, ' ')}
-                                        </span>
-                                        <h4 className="text-sm font-medium text-white mt-1">{camp.subject}</h4>
-                                        <p className="text-xs text-cream/40 mt-0.5">
-                                            Sent {new Date(camp.sentAt).toLocaleDateString()}
-                                        </p>
-                                    </div>
+                    <div className="space-y-6">
+                        {/* Compose Campaign Form */}
+                        <div className="rounded-xl border border-gold/20 bg-navy overflow-hidden">
+                            <button
+                                onClick={() => {
+                                    setShowComposeCampaign(v => !v);
+                                    setCampaignSuccess(false);
+                                    setCampaignError('');
+                                }}
+                                className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gold/5 transition-colors"
+                            >
+                                <span className="flex items-center gap-2 text-white font-medium">
+                                    <Plus className="w-4 h-4 text-gold" /> Compose Email Campaign
+                                </span>
+                                <ChevronDown className={`w-4 h-4 text-cream/40 transition-transform ${showComposeCampaign ? 'rotate-180' : ''}`} />
+                            </button>
+
+                            {showComposeCampaign && (
+                                <form onSubmit={handleSendCampaign} className="px-5 pb-5 space-y-4 border-t border-gold/10 pt-4">
+                                    {campaignSuccess ? (
+                                        <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4 text-center text-green-400">
+                                            <CheckCircle className="w-8 h-8 mx-auto mb-2 text-green-400" />
+                                            <p className="font-semibold text-sm">Campaign sent successfully!</p>
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setCampaignSuccess(false);
+                                                    setShowComposeCampaign(false);
+                                                }}
+                                                className="btn-secondary text-xs mt-3"
+                                            >
+                                                Close Form
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div>
+                                                <label className="block text-xs text-cream/50 mb-1">Subject Line *</label>
+                                                <input
+                                                    type="text"
+                                                    placeholder="e.g. Important Ellis County Legislative Updates"
+                                                    value={campaignSubject}
+                                                    onChange={e => setCampaignSubject(e.target.value)}
+                                                    required
+                                                    className="input w-full"
+                                                />
+                                            </div>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label className="block text-xs text-cream/50 mb-1">Campaign Type *</label>
+                                                    <select
+                                                        value={campaignType}
+                                                        onChange={e => setCampaignType(e.target.value)}
+                                                        className="input w-full"
+                                                    >
+                                                        <option value="general">General Broadcast</option>
+                                                        <option value="weekly_digest">Weekly Digest</option>
+                                                        <option value="monthly_newsletter">Monthly Newsletter</option>
+                                                        <option value="event_reminder">Event Reminder</option>
+                                                        <option value="trending_alert">Trending Alert</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-cream/50 mb-1">Target Audience *</label>
+                                                    <select
+                                                        value={targetAudience}
+                                                        onChange={e => setTargetAudience(e.target.value as any)}
+                                                        className="input w-full"
+                                                    >
+                                                        <option value="all">All Active Subscribers</option>
+                                                        <option value="interests">Filter by Interests</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            {targetAudience === 'interests' && (
+                                                <div className="bg-navy-dark/40 border border-gold/10 rounded-lg p-4">
+                                                    <label className="block text-xs text-cream/50 mb-2">Target Interests (select at least one) *</label>
+                                                    <div className="grid grid-cols-2 gap-2">
+                                                        {[
+                                                            { id: 'taxes', label: 'Property Taxes' },
+                                                            { id: 'infrastructure', label: 'Infrastructure & Roads' },
+                                                            { id: 'education', label: 'Education & Schools' },
+                                                            { id: 'safety', label: 'Public Safety & EMS' },
+                                                            { id: 'growth', label: 'Growth & Development' },
+                                                            { id: 'healthcare', label: 'Healthcare' },
+                                                            { id: 'agriculture', label: 'Agriculture & Farming' },
+                                                            { id: 'environment', label: 'Environment & Water' },
+                                                            { id: 'economic', label: 'Economic Development' },
+                                                            { id: 'quality', label: 'Quality of Life' },
+                                                        ].map(i => (
+                                                            <label key={i.id} className="flex items-center gap-2 text-xs text-cream/80 cursor-pointer">
+                                                                <input
+                                                                    type="checkbox"
+                                                                    checked={selectedInterests.includes(i.id)}
+                                                                    onChange={() => {
+                                                                        setSelectedInterests(prev =>
+                                                                            prev.includes(i.id) ? prev.filter(x => x !== i.id) : [...prev, i.id]
+                                                                        );
+                                                                    }}
+                                                                    className="rounded bg-navy border-gold/20 text-gold focus:ring-0 focus:ring-offset-0"
+                                                                />
+                                                                {i.label}
+                                                            </label>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            <div>
+                                                <label className="block text-xs text-cream/50 mb-1">Email Body *</label>
+                                                <textarea
+                                                    placeholder="Write your email content here. Separate paragraphs with a blank line..."
+                                                    value={campaignBody}
+                                                    onChange={e => setCampaignBody(e.target.value)}
+                                                    rows={10}
+                                                    required
+                                                    className="input w-full resize-y font-sans text-sm"
+                                                />
+                                            </div>
+
+                                            {campaignError && (
+                                                <div className="text-xs text-red-400 bg-red-500/10 border border-red-400/20 rounded-lg px-3 py-2 flex items-center gap-2">
+                                                    <XCircle className="w-4 h-4 flex-shrink-0" />
+                                                    <span>{campaignError}</span>
+                                                </div>
+                                            )}
+
+                                            <div className="flex gap-3">
+                                                <button
+                                                    type="submit"
+                                                    disabled={sendingCampaign || (targetAudience === 'interests' && selectedInterests.length === 0)}
+                                                    className="btn-primary flex items-center justify-center gap-2"
+                                                >
+                                                    {sendingCampaign ? (
+                                                        <>
+                                                            <Loader2 className="w-4 h-4 animate-spin" />
+                                                            Sending...
+                                                        </>
+                                                    ) : (
+                                                        'Send Campaign'
+                                                    )}
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowComposeCampaign(false)}
+                                                    className="btn-secondary"
+                                                >
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        </>
+                                    )}
+                                </form>
+                            )}
+                        </div>
+
+                        {/* Campaigns Log List */}
+                        <div className="space-y-3">
+                            {campaigns.length === 0 ? (
+                                <div className="text-center py-10 rounded-xl border border-gold/10 bg-navy text-cream/40 text-sm">
+                                    No campaigns sent yet.
                                 </div>
-                                <div className="flex gap-6 mt-3 pt-3 border-t border-gold/5 text-center">
-                                    <div>
-                                        <p className="text-base font-bold text-white">{camp.recipientCount}</p>
-                                        <p className="text-[10px] text-cream/40">Sent</p>
+                            ) : (
+                                campaigns.map(camp => (
+                                    <div key={camp.id} className="p-4 rounded-xl bg-navy border border-gold/10">
+                                        <div className="flex items-start justify-between">
+                                            <div>
+                                                <span className={`text-[10px] px-2 py-0.5 rounded-full border font-medium capitalize ${camp.type === 'weekly_digest' ? 'bg-blue-500/15 text-blue-400 border-blue-500/30' :
+                                                    camp.type === 'monthly_newsletter' ? 'bg-purple-500/15 text-purple-400 border-purple-500/30' :
+                                                        'bg-green-500/15 text-green-400 border-green-500/30'}`}>
+                                                    {camp.type.replace(/_/g, ' ')}
+                                                </span>
+                                                <h4 className="text-sm font-medium text-white mt-1">{camp.subject}</h4>
+                                                <p className="text-xs text-cream/40 mt-0.5">
+                                                    Sent {new Date(camp.sentAt).toLocaleDateString()}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-6 mt-3 pt-3 border-t border-gold/5 text-center">
+                                            <div>
+                                                <p className="text-base font-bold text-white">{camp.recipientCount}</p>
+                                                <p className="text-[10px] text-cream/40">Sent</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-base font-bold text-green-400">{camp.recipientCount > 0 ? Math.round((camp.openCount / camp.recipientCount) * 100) : 0}%</p>
+                                                <p className="text-[10px] text-cream/40">Open Rate</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-base font-bold text-blue-400">{camp.recipientCount > 0 ? Math.round((camp.clickCount / camp.recipientCount) * 100) : 0}%</p>
+                                                <p className="text-[10px] text-cream/40">Click Rate</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-base font-bold text-red-400">{camp.unsubscribeCount}</p>
+                                                <p className="text-[10px] text-cream/40">Unsubs</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="text-base font-bold text-green-400">{Math.round((camp.openCount / camp.recipientCount) * 100)}%</p>
-                                        <p className="text-[10px] text-cream/40">Open Rate</p>
-                                    </div>
-                                    <div>
-                                        <p className="text-base font-bold text-blue-400">{Math.round((camp.clickCount / camp.recipientCount) * 100)}%</p>
-                                        <p className="text-[10px] text-cream/40">Click Rate</p>
-                                    </div>
-                                    <div>
-                                        <p className="text-base font-bold text-red-400">{camp.unsubscribeCount}</p>
-                                        <p className="text-[10px] text-cream/40">Unsubs</p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                                ))
+                            )}
+                        </div>
                     </div>
                 )}
             </main>

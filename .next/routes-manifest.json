@@ -110,6 +110,12 @@
       "namedRegex": "^/admin/login(?:/)?$"
     },
     {
+      "page": "/api/admin/campaigns",
+      "regex": "^/api/admin/campaigns(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/admin/campaigns(?:/)?$"
+    },
+    {
       "page": "/api/broadcast/sessions",
       "regex": "^/api/broadcast/sessions(?:/)?$",
       "routeKeys": {},
@@ -138,6 +144,12 @@
       "regex": "^/api/community\\-feed(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/community\\-feed(?:/)?$"
+    },
+    {
+      "page": "/api/crm/unsubscribe",
+      "regex": "^/api/crm/unsubscribe(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/crm/unsubscribe(?:/)?$"
     },
     {
       "page": "/api/events",
