@@ -88,7 +88,7 @@ self.__SERVER_FILES_MANIFEST={
     "productionBrowserSourceMaps": false,
     "excludeDefaultMomentLocales": true,
     "reactProductionProfiling": false,
-    "reactStrictMode": null,
+    "reactStrictMode": false,
     "reactMaxHeadersLength": 6000,
     "httpAgentOptions": {
       "keepAlive": true
