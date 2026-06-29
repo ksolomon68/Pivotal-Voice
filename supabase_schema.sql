@@ -240,5 +240,26 @@ CREATE TRIGGER on_auth_user_created
     AFTER INSERT ON auth.users
     FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
 
+-- 10. Email Campaigns (CRM history)
+CREATE TABLE IF NOT EXISTS public.email_campaigns (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    subject TEXT NOT NULL,
+    body TEXT NOT NULL,
+    type TEXT NOT NULL,
+    target_interests TEXT[],
+    sent_at TIMESTAMPTZ DEFAULT NOW(),
+    recipient_count INTEGER DEFAULT 0,
+    open_count INTEGER DEFAULT 0,
+    click_count INTEGER DEFAULT 0,
+    unsubscribe_count INTEGER DEFAULT 0
+);
+
+ALTER TABLE public.email_campaigns ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Allow admin read/write on email_campaigns" ON public.email_campaigns;
+CREATE POLICY "Allow admin read/write on email_campaigns"
+    ON public.email_campaigns FOR ALL
+    USING ((SELECT is_admin FROM public.profiles WHERE id = auth.uid()) = true);
+
 -- Force PostgREST schema cache reload
 NOTIFY pgrst, 'reload schema';
