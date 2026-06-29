@@ -404,7 +404,9 @@ export default function AdminPage() {
                                     <Plus className="w-4 h-4 text-gold" /> Schedule a Broadcast
                                 </span>
                                 <ChevronDown className={`w-4 h-4 text-cream/40 transition-transform ${showNewForm ? 'rotate-180' : ''}`} />
-                                        {showNewForm && (
+                            </button>
+
+                            {showNewForm && (
                                 <form onSubmit={handleCreateSession} className="px-5 pb-5 space-y-4 border-t border-gold/10 pt-4">
                                     <div className="bg-gold/5 border border-gold/20 rounded-lg p-3 text-xs text-cream/60 space-y-1">
                                         <p className="font-semibold text-gold text-xs">Streamyard Workflow</p>
