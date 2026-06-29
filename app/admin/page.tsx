@@ -68,6 +68,7 @@ export default function AdminPage() {
     const [newTitle, setNewTitle] = useState('');
     const [newDesc, setNewDesc] = useState('');
     const [newStreamyardId, setNewStreamyardId] = useState('');
+    const [newFacebookUrl, setNewFacebookUrl] = useState('');
     const [creating, setCreating] = useState(false);
 
     // CRM filter state
@@ -168,9 +169,10 @@ export default function AdminPage() {
                 newDesc || undefined,
                 undefined,
                 undefined,
-                newStreamyardId.trim() || undefined
+                newStreamyardId.trim() || undefined,
+                newFacebookUrl.trim() || undefined
             );
-            setNewTitle(''); setNewDesc(''); setNewStreamyardId('');
+            setNewTitle(''); setNewDesc(''); setNewStreamyardId(''); setNewFacebookUrl('');
             setShowNewForm(false);
             loadPodcasts();
         } catch (err) {
@@ -409,11 +411,11 @@ export default function AdminPage() {
                             {showNewForm && (
                                 <form onSubmit={handleCreateSession} className="px-5 pb-5 space-y-4 border-t border-gold/10 pt-4">
                                     <div className="bg-gold/5 border border-gold/20 rounded-lg p-3 text-xs text-cream/60 space-y-1">
-                                        <p className="font-semibold text-gold text-xs">Streamyard Workflow</p>
+                                        <p className="font-semibold text-gold text-xs">Streamyard + Facebook Live Workflow</p>
                                         <ol className="list-decimal list-inside space-y-0.5">
-                                            <li>Create a broadcast in Streamyard</li>
+                                            <li>Create a broadcast in Streamyard and add Facebook as a destination</li>
                                             <li>Send the guest invite link from Streamyard to your guest</li>
-                                            <li>Go live in Streamyard, then paste the StreamYard Watch URL or Broadcast ID below</li>
+                                            <li>Go live in Streamyard, then paste the Facebook Live URL below to embed the stream</li>
                                         </ol>
                                     </div>
                                     <div>
@@ -438,13 +440,22 @@ export default function AdminPage() {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-xs text-cream/50 mb-1">StreamYard Broadcast ID or Watch URL *</label>
+                                        <label className="block text-xs text-cream/50 mb-1">StreamYard Broadcast ID or Watch URL (optional)</label>
                                         <input
                                             type="text"
                                             placeholder="https://streamyard.com/watch/AbCdEf123"
                                             value={newStreamyardId}
                                             onChange={e => setNewStreamyardId(e.target.value)}
-                                            required
+                                            className="input w-full"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs text-cream/50 mb-1">Facebook Live URL (optional)</label>
+                                        <input
+                                            type="url"
+                                            placeholder="https://www.facebook.com/.../videos/..."
+                                            value={newFacebookUrl}
+                                            onChange={e => setNewFacebookUrl(e.target.value)}
                                             className="input w-full"
                                         />
                                     </div>
