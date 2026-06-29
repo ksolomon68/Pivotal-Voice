@@ -138,6 +138,20 @@ export default function StudioPage() {
         }
     };
 
+    const handleUpdateFacebookUrl = async (url: string) => {
+        if (!session) return;
+        const { data: { session: authSession } } = await supabase.auth.getSession();
+        await fetch(`/api/broadcast/sessions/${session.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authSession?.access_token}`,
+            },
+            body: JSON.stringify({ facebookVideoUrl: url }),
+        });
+        setSession(prev => prev ? { ...prev, facebookVideoUrl: url } : prev);
+    };
+
     const handleEnd = async () => {
         if (!session) return;
         setIsUpdating(true);
@@ -222,6 +236,7 @@ export default function StudioPage() {
                         onGoLive={handleGoLive}
                         onEnd={handleEnd}
                         isUpdating={isUpdating}
+                        onUpdateFacebookUrl={role === 'host' ? handleUpdateFacebookUrl : undefined}
                     />
                 )}
             </main>

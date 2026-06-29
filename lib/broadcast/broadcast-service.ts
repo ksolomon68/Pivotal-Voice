@@ -18,6 +18,7 @@ function mapRow(row: Record<string, unknown>): BroadcastSession {
         thumbnailUrl: row.thumbnail_url as string | undefined,
         youtubeVideoId: row.youtube_video_id as string | undefined,
         streamyardBroadcastId: row.streamyard_broadcast_id as string | undefined,
+        facebookVideoUrl: row.facebook_video_url as string | undefined,
         createdAt: row.created_at as string,
     };
 }
@@ -99,6 +100,19 @@ export async function getScheduledSessions(): Promise<BroadcastSession[]> {
 
     if (error || !data) return [];
     return data.map(mapRow);
+}
+
+export async function updateSessionFacebookUrl(
+    id: string,
+    facebookVideoUrl: string,
+    supabaseClient = supabase
+): Promise<void> {
+    const { error } = await supabaseClient
+        .from('broadcast_sessions')
+        .update({ facebook_video_url: facebookVideoUrl || null })
+        .eq('id', id);
+
+    if (error) throw new Error(error.message);
 }
 
 export async function updateSessionStatus(

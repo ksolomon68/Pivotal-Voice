@@ -17,5 +17,6 @@ export interface BroadcastSession {
     thumbnailUrl?: string;
     youtubeVideoId?: string;
     streamyardBroadcastId?: string;
+    facebookVideoUrl?: string;
     createdAt: string;
 }
