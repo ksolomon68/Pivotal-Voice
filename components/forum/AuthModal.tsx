@@ -170,9 +170,6 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: Aut
                                 </div>
                             </div>
                             <button type="submit" className="btn-primary w-full">Sign In</button>
-                            <p className="text-cream/40 text-xs text-center">
-                                Demo accounts: use any seed user email (e.g. marcus.w@email.com) with any password
-                            </p>
                         </form>
                     )}
 
