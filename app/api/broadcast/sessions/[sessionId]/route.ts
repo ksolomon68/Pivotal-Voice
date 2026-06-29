@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import { updateSessionStatus } from '@/lib/broadcast/broadcast-service';
+import { updateSessionStatus, updateSessionFacebookUrl } from '@/lib/broadcast/broadcast-service';
 import { BroadcastStatus } from '@/lib/types/broadcast';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -42,17 +42,24 @@ export async function PATCH(
     }
 
     const body = await req.json();
-    const { status } = body as { status: BroadcastStatus };
-
-    if (!['live', 'ended'].includes(status)) {
-        return NextResponse.json({ error: 'Invalid status' }, { status: 400 });
-    }
+    const { status, facebookVideoUrl } = body as { status?: BroadcastStatus; facebookVideoUrl?: string };
 
     try {
         const writeClient = supabaseServiceKey
             ? createClient(supabaseUrl, supabaseServiceKey)
             : supabase;
-        await updateSessionStatus(sessionId, status, writeClient);
+
+        if (facebookVideoUrl !== undefined) {
+            await updateSessionFacebookUrl(sessionId, facebookVideoUrl, writeClient);
+        }
+
+        if (status !== undefined) {
+            if (!['live', 'ended'].includes(status)) {
+                return NextResponse.json({ error: 'Invalid status' }, { status: 400 });
+            }
+            await updateSessionStatus(sessionId, status, writeClient);
+        }
+
         return NextResponse.json({ success: true });
     } catch (err) {
         const message = err instanceof Error ? err.message : 'Failed to update session';
