@@ -31,6 +31,7 @@ export async function createSession(
     scheduledAt?: string,
     youtubeVideoId?: string,
     streamyardBroadcastId?: string,
+    facebookVideoUrl?: string,
     supabaseClient = supabase
 ): Promise<BroadcastSession> {
     const tempId = crypto.randomUUID();
@@ -46,6 +47,7 @@ export async function createSession(
             guest_invite_token: crypto.randomUUID(),
             youtube_video_id: youtubeVideoId || null,
             streamyard_broadcast_id: streamyardBroadcastId || null,
+            facebook_video_url: facebookVideoUrl || null,
         })
         .select()
         .single();

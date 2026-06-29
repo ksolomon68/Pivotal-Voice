@@ -28,6 +28,7 @@ export default function BroadcastCreatePage() {
     const [description, setDescription] = useState('');
     const [scheduledAt, setScheduledAt] = useState('');
     const [streamyardBroadcastId] = useState('');
+    const [facebookVideoUrl, setFacebookVideoUrl] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
     const [createdSession, setCreatedSession] = useState<BroadcastSession | null>(null);
@@ -84,7 +85,7 @@ export default function BroadcastCreatePage() {
                     title: title.trim(),
                     description: description.trim() || undefined,
                     scheduledAt: scheduledAt || undefined,
-                    streamyardBroadcastId: extractStreamyardId(streamyardBroadcastId) || undefined,
+                    facebookVideoUrl: facebookVideoUrl.trim() || undefined,
                 }),
             });
 
@@ -205,6 +206,19 @@ export default function BroadcastCreatePage() {
                                     type="datetime-local"
                                     value={scheduledAt}
                                     onChange={(e) => setScheduledAt(e.target.value)}
+                                    className="input w-full"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-semibold text-cream/70 mb-2">
+                                    Facebook Live URL (optional)
+                                </label>
+                                <input
+                                    type="url"
+                                    value={facebookVideoUrl}
+                                    onChange={(e) => setFacebookVideoUrl(e.target.value)}
+                                    placeholder="https://www.facebook.com/.../videos/..."
                                     className="input w-full"
                                 />
                             </div>

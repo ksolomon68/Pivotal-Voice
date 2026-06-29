@@ -110,6 +110,16 @@ export default function PodcastPage() {
                                     videoId={liveSessions[0].youtubeVideoId}
                                     title={liveSessions[0].title}
                                 />
+                            ) : liveSessions[0]?.facebookVideoUrl ? (
+                                <div className="aspect-video w-full rounded-xl overflow-hidden bg-black max-w-5xl mx-auto">
+                                    <iframe
+                                        src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(liveSessions[0].facebookVideoUrl)}&show_text=false&autoplay=1&mute=0`}
+                                        className="w-full h-full"
+                                        style={{ border: 'none' }}
+                                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                        allowFullScreen
+                                    />
+                                </div>
                             ) : (
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                     {liveSessions.map((s) => (
