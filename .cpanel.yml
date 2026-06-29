@@ -1,6 +1,9 @@
 ---
 deployment:
   tasks:
+    # 1. Sync everything (except secrets and node_modules) to the live folder
     - /bin/rsync -av --delete --exclude='.git' --exclude='node_modules' --exclude='.env.local' --exclude='.env' ./ /home/pivotalvoice/Pivotal-Voice/
+    # 2. Install only production dependencies (skips devDependencies)
     - . /home/pivotalvoice/nodevenv/Pivotal-Voice/24/bin/activate && cd /home/pivotalvoice/Pivotal-Voice && npm install --production
-
+    # 3. Touch the Passenger restart file so the Node server reloads immediately
+    - touch /home/pivotalvoice/Pivotal-Voice/tmp/restart.txt
