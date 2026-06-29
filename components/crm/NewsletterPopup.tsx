@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, Bell } from 'lucide-react';
+import { X, Bell } from 'lucide-react';
 import { isPopupDismissed, dismissPopup } from '@/lib/crm/newsletter-service';
 import NewsletterSignup from './NewsletterSignup';
 
@@ -43,13 +43,13 @@ export default function NewsletterPopup() {
 
                     {/* Modal */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                        initial={{ opacity: 0, scale: 0.95, y: 16 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 16 }}
                         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[101] w-[calc(100%-2rem)] max-w-md"
+                        className="fixed left-4 right-4 top-1/2 -translate-y-1/2 z-[101] sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:w-full sm:max-w-sm"
                     >
-                        <div className="relative bg-gradient-to-b from-[#1a1a2e] to-[#0d0d1a] border border-white/10 rounded-2xl p-5 shadow-2xl shadow-gold/5 max-h-[85dvh] overflow-y-auto">
+                        <div className="relative bg-gradient-to-b from-[#1a1a2e] to-[#0d0d1a] border border-white/10 rounded-2xl p-4 shadow-2xl shadow-gold/5 max-h-[85dvh] overflow-y-auto">
                             {/* Close button */}
                             <button
                                 onClick={handleDismiss}
