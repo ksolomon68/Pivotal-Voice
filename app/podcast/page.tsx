@@ -132,24 +132,29 @@ export default function PodcastPage() {
                 )}
 
 
-                {/* No sessions placeholder */}
-                {liveSessions.length === 0 && (
-                    <section className="section">
-                        <div className="container-custom">
-                            <div className="max-w-2xl mx-auto text-center py-16">
-                                <div className="w-20 h-20 bg-gold/10 border border-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                                    <Podcast className="w-10 h-10 text-gold/50" />
-                                </div>
-                                <h2 className="text-2xl font-display font-bold text-white mb-3">
-                                    Episodes Coming Soon
-                                </h2>
-                                <p className="text-cream/60">
-                                    The Pivotal Voice Podcast is launching soon. Subscribe below to be notified when the first episode drops.
-                                </p>
-                            </div>
+                {/* Past Episodes Archive */}
+                <section className="section bg-navy-dark/30 border-t border-gold/10 py-16">
+                    <div className="container-custom">
+                        <div className="text-center max-w-2xl mx-auto mb-10">
+                            <h2 className="text-3xl font-display font-bold text-white mb-3">
+                                Recorded Broadcasts
+                            </h2>
+                            <p className="text-cream/60">
+                                Catch up on past episodes of the Pivotal Voice Podcast and recorded live broadcasts.
+                            </p>
                         </div>
-                    </section>
-                )}
+                        
+                        <div className="aspect-video w-full rounded-xl overflow-hidden bg-black max-w-4xl mx-auto border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                            <iframe
+                                src="https://www.youtube.com/embed/videoseries?list=PLbhwRGVX5QPU"
+                                className="w-full h-full"
+                                style={{ border: 'none' }}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                            />
+                        </div>
+                    </div>
+                </section>
 
                 {/* Mission Pillars */}
                 <section className="section">
