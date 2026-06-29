@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { supabase } from '@/lib/supabase/client';
-import { ForumUser } from '@/lib/types/forum';
+import { ForumUser, ForumNotification } from '@/lib/types/forum';
 
 interface AuthState {
     user: ForumUser | null;
@@ -33,19 +33,43 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     // Force profile sync on mount
     useEffect(() => {
+        // mounted flag prevents calling setState on an unmounted component,
+        // which is the primary cause of the AbortError "signal is aborted without reason".
+        let mounted = true;
         let settled = false;
 
         // Fallback: if auth never resolves (e.g. Supabase unreachable), unblock the UI after 8s
         const timeout = setTimeout(() => {
-            if (!settled) {
+            if (!settled && mounted) {
                 console.warn('AuthContext: session check timed out, proceeding as logged out');
+                settled = true;
                 setState({ user: null, isLoading: false });
             }
         }, 8000);
 
+        const buildUser = (profile: Record<string, unknown>) => ({
+            id: profile.id as string,
+            email: profile.email as string,
+            displayName: profile.display_name as string,
+            joinDate: profile.join_date as string,
+            city: profile.city as string | undefined,
+            isBusinessOwner: profile.is_business_owner as boolean,
+            yearsInCounty: profile.years_in_county as number | undefined,
+            bio: profile.bio as string | undefined,
+            reputation: profile.reputation as number,
+            topicCount: profile.topic_count as number,
+            replyCount: profile.reply_count as number,
+            isAdmin: profile.is_admin as boolean,
+            isModerator: profile.is_moderator as boolean,
+            followedTopics: (profile.followed_topics as string[]) || [],
+            notifications: (profile.notifications as ForumNotification[]) || [],
+        });
+
         const syncSession = async () => {
             try {
                 const { data: { session } } = await supabase.auth.getSession();
+                if (!mounted) return; // component unmounted while awaiting — bail out cleanly
+
                 if (session?.user) {
                     const { data: profile } = await supabase
                         .from('profiles')
@@ -53,35 +77,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                         .eq('id', session.user.id)
                         .single();
 
+                    if (!mounted) return; // unmounted while awaiting profile fetch
+
                     if (profile) {
                         settled = true;
                         clearTimeout(timeout);
-                        setState({
-                            user: {
-                                id: profile.id,
-                                email: profile.email,
-                                displayName: profile.display_name,
-                                joinDate: profile.join_date,
-                                city: profile.city,
-                                isBusinessOwner: profile.is_business_owner,
-                                yearsInCounty: profile.years_in_county,
-                                bio: profile.bio,
-                                reputation: profile.reputation,
-                                topicCount: profile.topic_count,
-                                replyCount: profile.reply_count,
-                                isAdmin: profile.is_admin,
-                                isModerator: profile.is_moderator,
-                                followedTopics: profile.followed_topics || [],
-                                notifications: profile.notifications || [],
-                            },
-                            isLoading: false
-                        });
+                        setState({ user: buildUser(profile as Record<string, unknown>), isLoading: false });
                         return;
                     }
                 }
             } catch (err) {
+                if (!mounted) return;
+                // AbortError is expected on component unmount — don't log it as an error
+                if (err instanceof Error && (err.name === 'AbortError' || err.message?.includes('aborted'))) {
+                    return;
+                }
                 console.error('AuthContext syncSession error:', err);
             }
+            if (!mounted) return;
             settled = true;
             clearTimeout(timeout);
             setState({ user: null, isLoading: false });
@@ -98,40 +111,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                         .eq('id', session.user.id)
                         .single();
 
+                    if (!mounted) return;
+
                     if (profile) {
-                        setState({
-                            user: {
-                                id: profile.id,
-                                email: profile.email,
-                                displayName: profile.display_name,
-                                joinDate: profile.join_date,
-                                city: profile.city,
-                                isBusinessOwner: profile.is_business_owner,
-                                yearsInCounty: profile.years_in_county,
-                                bio: profile.bio,
-                                reputation: profile.reputation,
-                                topicCount: profile.topic_count,
-                                replyCount: profile.reply_count,
-                                isAdmin: profile.is_admin,
-                                isModerator: profile.is_moderator,
-                                followedTopics: profile.followed_topics || [],
-                                notifications: profile.notifications || [],
-                            },
-                            isLoading: false
-                        });
+                        setState({ user: buildUser(profile as Record<string, unknown>), isLoading: false });
                     } else {
                         setState({ user: null, isLoading: false });
                     }
                 } else if (event === 'SIGNED_OUT') {
+                    if (!mounted) return;
                     setState({ user: null, isLoading: false });
                 }
             } catch (err) {
+                if (!mounted) return;
+                if (err instanceof Error && (err.name === 'AbortError' || err.message?.includes('aborted'))) {
+                    return;
+                }
                 console.error('AuthContext onAuthStateChange error:', err);
                 setState({ user: null, isLoading: false });
             }
         });
 
         return () => {
+            mounted = false;
             clearTimeout(timeout);
             subscription.unsubscribe();
         };
