@@ -84,6 +84,13 @@ export default function NewsletterSignup({ variant = 'sidebar', optInMethod = 'f
             return;
         }
 
+        // Send welcome email (fire-and-forget — don't block the success state)
+        fetch('/api/crm/welcome-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: result.email, name: result.name, subscriberId: result.id }),
+        }).catch(err => console.error('Welcome email error:', err));
+
         setSuccess(true);
         setIsSubmitting(false);
         onSuccess?.();
