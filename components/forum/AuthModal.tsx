@@ -80,14 +80,20 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: Aut
         if (result.success) {
             // Subscribe to newsletter if opted in
             if (regNewsletter && regEmail) {
-                await addSubscriber({
+                const subResult = await addSubscriber({
                     email: regEmail,
                     name: regDisplayName,
-                    zipCode: '',
                     interests: [],
                     city: regCity || undefined,
                     optInMethod: 'registration',
                 });
+                if (subResult && !('error' in subResult)) {
+                    fetch('/api/crm/welcome-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: subResult.email, name: subResult.name, subscriberId: subResult.id }),
+                    }).catch(err => console.error('Welcome email error:', err));
+                }
             }
             setSuccess('Account created! Welcome to the community.');
             setTimeout(() => onClose(), 1000);
