@@ -27,6 +27,7 @@
   "/podcast/live/[sessionId]/page": "/podcast/live/[sessionId]",
   "/podcast/page": "/podcast",
   "/podcast/studio/[sessionId]/page": "/podcast/studio/[sessionId]",
+  "/reset-password/page": "/reset-password",
   "/resources/[id]/page": "/resources/[id]",
   "/resources/page": "/resources",
   "/services/page": "/services",
