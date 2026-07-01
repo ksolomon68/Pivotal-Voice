@@ -54,7 +54,7 @@ export async function getSubscribers(): Promise<NewsletterSubscriber[]> {
 export async function addSubscriber(data: {
     email: string;
     name: string;
-    zipCode: string;
+    zipCode?: string;
     interests: string[];
     city?: string;
     optInMethod: OptInMethod;
