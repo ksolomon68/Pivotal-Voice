@@ -13,6 +13,7 @@
   "/api/civic-events/route": "/api/civic-events",
   "/api/community-feed/route": "/api/community-feed",
   "/api/crm/unsubscribe/route": "/api/crm/unsubscribe",
+  "/api/crm/welcome-email/route": "/api/crm/welcome-email",
   "/api/events/ics/route": "/api/events/ics",
   "/api/events/route": "/api/events",
   "/api/send-resource/route": "/api/send-resource",

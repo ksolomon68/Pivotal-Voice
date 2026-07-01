@@ -152,6 +152,12 @@
       "namedRegex": "^/api/crm/unsubscribe(?:/)?$"
     },
     {
+      "page": "/api/crm/welcome-email",
+      "regex": "^/api/crm/welcome\\-email(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/crm/welcome\\-email(?:/)?$"
+    },
+    {
       "page": "/api/events",
       "regex": "^/api/events(?:/)?$",
       "routeKeys": {},
