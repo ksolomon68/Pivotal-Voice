@@ -14,6 +14,7 @@ interface AuthContextValue extends AuthState {
     register: (data: RegisterData) => Promise<{ success: boolean; error?: string }>;
     logout: () => Promise<void>;
     updateProfile: (updates: Partial<ForumUser>) => Promise<void>;
+    resetPassword: (email: string) => Promise<{ success: boolean; error?: string }>;
 }
 
 interface RegisterData {
@@ -146,13 +147,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     const register = async (data: RegisterData): Promise<{ success: boolean; error?: string }> => {
-        // 1. Sign up user via Supabase Auth
+        // Pass all profile fields in user metadata so the DB trigger
+        // handle_new_user() can create the profile row immediately on insert,
+        // bypassing RLS (which requires auth.uid() — unavailable before email confirmation).
         const { data: authData, error: authError } = await supabase.auth.signUp({
             email: data.email,
             password: data.password,
             options: {
                 data: {
                     display_name: data.displayName,
+                    city: data.city ?? null,
+                    bio: data.bio ?? null,
+                    is_business_owner: data.isBusinessOwner ?? false,
+                    years_in_county: data.yearsInCounty ?? null,
                 }
             }
         });
@@ -160,28 +167,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (authError) return { success: false, error: authError.message };
         if (!authData.user) return { success: false, error: 'User creation failed.' };
 
-        // 2. Create profile entry (Manual sync as fallback for missing DB triggers)
-        const { error: profileError } = await supabase.from('profiles').insert([{
-            id: authData.user.id,
-            email: data.email,
-            display_name: data.displayName,
-            city: data.city,
-            is_business_owner: data.isBusinessOwner,
-            years_in_county: data.yearsInCounty,
-            bio: data.bio
-        }]);
+        return { success: true };
+    };
 
-        if (profileError) {
-            console.error('Profile creation error:', {
-                message: profileError.message,
-                details: profileError.details,
-                hint: profileError.hint,
-                code: profileError.code
-            });
-            // We don't fail registration if profile insert fails here, 
-            // but ideally we'd have a DB trigger.
-        }
-
+    const resetPassword = async (email: string): Promise<{ success: boolean; error?: string }> => {
+        const redirectTo = typeof window !== 'undefined'
+            ? `${window.location.origin}/reset-password`
+            : undefined;
+        const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
+        if (error) return { success: false, error: error.message };
         return { success: true };
     };
 
@@ -220,7 +214,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     return (
-        <AuthContext.Provider value={{ ...state, login, register, logout, updateProfile }}>
+        <AuthContext.Provider value={{ ...state, login, register, logout, updateProfile, resetPassword }}>
             {children}
         </AuthContext.Provider>
     );
