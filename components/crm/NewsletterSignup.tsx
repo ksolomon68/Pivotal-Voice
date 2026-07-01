@@ -6,6 +6,23 @@ import { Mail, CheckCircle, Loader2, ChevronDown, ChevronUp } from 'lucide-react
 import { addSubscriber } from '@/lib/crm/newsletter-service';
 import type { OptInMethod } from '@/lib/types/newsletter';
 
+const ELLIS_COUNTY_CITIES = [
+    'Alma',
+    'Bardwell',
+    'Ennis',
+    'Ferris',
+    'Garrett',
+    'Italy',
+    'Maypearl',
+    'Midlothian',
+    'Milford',
+    'Ovilla',
+    'Palmer',
+    'Red Oak',
+    'Waxahachie',
+    'Other / Unincorporated',
+] as const;
+
 const INTEREST_OPTIONS = [
     { id: 'taxes', label: 'Property Taxes' },
     { id: 'infrastructure', label: 'Infrastructure & Roads' },
@@ -29,7 +46,7 @@ interface NewsletterSignupProps {
 export default function NewsletterSignup({ variant = 'sidebar', optInMethod = 'forum_sidebar', forumUserId, onSuccess }: NewsletterSignupProps) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [zipCode, setZipCode] = useState('');
+    const [city, setCity] = useState('');
     const [interests, setInterests] = useState<string[]>([]);
     const [showInterests, setShowInterests] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,7 +61,7 @@ export default function NewsletterSignup({ variant = 'sidebar', optInMethod = 'f
         e.preventDefault();
         setError('');
 
-        if (!name.trim() || !email.trim() || !zipCode.trim()) {
+        if (!name.trim() || !email.trim() || !city) {
             setError('Please fill in all required fields.');
             return;
         }
@@ -52,15 +69,11 @@ export default function NewsletterSignup({ variant = 'sidebar', optInMethod = 'f
             setError('Please enter a valid email address.');
             return;
         }
-        if (!/^\d{5}$/.test(zipCode)) {
-            setError('Please enter a valid 5-digit zip code.');
-            return;
-        }
 
         setIsSubmitting(true);
 
         const result = await addSubscriber({
-            email, name, zipCode,
+            email, name, city,
             interests: interests.length > 0 ? interests : ['general'],
             optInMethod, forumUserId,
         });
@@ -109,14 +122,17 @@ export default function NewsletterSignup({ variant = 'sidebar', optInMethod = 'f
                 onChange={e => setEmail(e.target.value)}
                 className="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/10 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-gold/50 transition-colors"
             />
-            <input
-                type="text"
-                placeholder="Zip code"
-                value={zipCode}
-                onChange={e => setZipCode(e.target.value)}
-                maxLength={5}
-                className="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/10 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-gold/50 transition-colors"
-            />
+            <select
+                value={city}
+                onChange={e => setCity(e.target.value)}
+                className="w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border border-white/10 text-sm focus:outline-none focus:border-gold/50 transition-colors appearance-none"
+                style={{ color: city ? 'white' : 'rgba(255,255,255,0.4)' }}
+            >
+                <option value="" disabled>City in Ellis County</option>
+                {ELLIS_COUNTY_CITIES.map(c => (
+                    <option key={c} value={c} className="text-white bg-[#1a1a2e]">{c}</option>
+                ))}
+            </select>
 
             {/* Collapsible interest selector */}
             <button
