@@ -25,6 +25,7 @@
   "/podcast/live/[sessionId]/page": "app/podcast/live/[sessionId]/page.js",
   "/podcast/page": "app/podcast/page.js",
   "/podcast/studio/[sessionId]/page": "app/podcast/studio/[sessionId]/page.js",
+  "/reset-password/page": "app/reset-password/page.js",
   "/resources/[id]/page": "app/resources/[id]/page.js",
   "/resources/page": "app/resources/page.js",
   "/services/page": "app/services/page.js",

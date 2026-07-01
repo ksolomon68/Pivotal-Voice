@@ -200,6 +200,12 @@
       "namedRegex": "^/podcast/broadcast(?:/)?$"
     },
     {
+      "page": "/reset-password",
+      "regex": "^/reset\\-password(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reset\\-password(?:/)?$"
+    },
+    {
       "page": "/resources",
       "regex": "^/resources(?:/)?$",
       "routeKeys": {},
