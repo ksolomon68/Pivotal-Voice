@@ -13,14 +13,17 @@ interface AuthModalProps {
 }
 
 export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: AuthModalProps) {
-    const { login, register } = useAuth();
-    const [tab, setTab] = useState<'login' | 'register'>(initialTab);
+    const { login, register, resetPassword } = useAuth();
+    const [tab, setTab] = useState<'login' | 'register' | 'forgot'>(initialTab);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
     // Login fields
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
+
+    // Forgot-password field
+    const [resetEmail, setResetEmail] = useState('');
 
     // Register fields
     const [regEmail, setRegEmail] = useState('');
@@ -41,6 +44,17 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: Aut
             onClose();
         } else {
             setError(result.error || 'Login failed');
+        }
+    };
+
+    const handleForgotPassword = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError('');
+        const result = await resetPassword(resetEmail);
+        if (result.success) {
+            setSuccess('Check your email for a password reset link.');
+        } else {
+            setError(result.error || 'Failed to send reset email.');
         }
     };
 
@@ -103,7 +117,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: Aut
                     {/* Header */}
                     <div className="p-6 pb-4 flex items-center justify-between border-b border-gold/20">
                         <h2 className="font-display text-xl font-bold text-white">
-                            {tab === 'login' ? 'Welcome Back' : 'Join the Community'}
+                            {tab === 'login' ? 'Welcome Back' : tab === 'register' ? 'Join the Community' : 'Reset Password'}
                         </h2>
                         <button onClick={onClose} className="p-2 text-cream/60 hover:text-white transition-colors">
                             <X className="w-5 h-5" />
@@ -113,13 +127,13 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: Aut
                     {/* Tabs */}
                     <div className="flex border-b border-gold/20">
                         <button
-                            onClick={() => { setTab('login'); setError(''); }}
-                            className={`flex-1 py-3 text-sm font-semibold text-center transition-colors ${tab === 'login' ? 'text-gold border-b-2 border-gold' : 'text-cream/50 hover:text-cream'}`}
+                            onClick={() => { setTab('login'); setError(''); setSuccess(''); }}
+                            className={`flex-1 py-3 text-sm font-semibold text-center transition-colors ${tab === 'login' || tab === 'forgot' ? 'text-gold border-b-2 border-gold' : 'text-cream/50 hover:text-cream'}`}
                         >
                             Sign In
                         </button>
                         <button
-                            onClick={() => { setTab('register'); setError(''); }}
+                            onClick={() => { setTab('register'); setError(''); setSuccess(''); }}
                             className={`flex-1 py-3 text-sm font-semibold text-center transition-colors ${tab === 'register' ? 'text-gold border-b-2 border-gold' : 'text-cream/50 hover:text-cream'}`}
                         >
                             Create Account
@@ -156,7 +170,16 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: Aut
                                 </div>
                             </div>
                             <div>
-                                <label className="text-xs font-semibold text-cream/60 uppercase tracking-wider mb-1 block">Password</label>
+                                <div className="flex items-center justify-between mb-1">
+                                    <label className="text-xs font-semibold text-cream/60 uppercase tracking-wider">Password</label>
+                                    <button
+                                        type="button"
+                                        onClick={() => { setTab('forgot'); setResetEmail(loginEmail); setError(''); setSuccess(''); }}
+                                        className="text-xs text-gold/70 hover:text-gold transition-colors"
+                                    >
+                                        Forgot password?
+                                    </button>
+                                </div>
                                 <div className="relative">
                                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gold/60" />
                                     <input
@@ -170,6 +193,35 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }: Aut
                                 </div>
                             </div>
                             <button type="submit" className="btn-primary w-full">Sign In</button>
+                        </form>
+                    )}
+
+                    {/* Forgot Password Form */}
+                    {tab === 'forgot' && (
+                        <form onSubmit={handleForgotPassword} className="p-6 space-y-4">
+                            <p className="text-cream/60 text-sm">Enter your email and we&apos;ll send you a link to reset your password.</p>
+                            <div>
+                                <label className="text-xs font-semibold text-cream/60 uppercase tracking-wider mb-1 block">Email</label>
+                                <div className="relative">
+                                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gold/60" />
+                                    <input
+                                        type="email"
+                                        value={resetEmail}
+                                        onChange={(e) => setResetEmail(e.target.value)}
+                                        className="input pl-10 w-full"
+                                        placeholder="your@email.com"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <button type="submit" className="btn-primary w-full">Send Reset Link</button>
+                            <button
+                                type="button"
+                                onClick={() => { setTab('login'); setError(''); setSuccess(''); }}
+                                className="w-full text-center text-cream/50 text-sm hover:text-cream transition-colors"
+                            >
+                                Back to Sign In
+                            </button>
                         </form>
                     )}
 

@@ -296,6 +296,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/reset-password": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/reset-password",
+      "dataRoute": "/reset-password.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/resources/90-day-campaign-launch-plan": {
       "experimentalBypassFor": [
         {
@@ -880,8 +904,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "ec1919d5cf51d6eaa592459dcadcec7c",
-    "previewModeSigningKey": "f07e2b05c9c243e3aa28515a94f7fe6c139045a75b3a5fa988ec6041d7531338",
-    "previewModeEncryptionKey": "76d97e6a399aa86b5c2bcd627d6c9cc713facc1ba8fd50a283380aad30f1fa37"
+    "previewModeId": "65fd616b3811c38b9c82662d01561f1c",
+    "previewModeSigningKey": "eb4e498f76ad549a785c70deae330c17da81622da38ac188939f755f1af5b48a",
+    "previewModeEncryptionKey": "57986a4b7f29b53b1eee9d173bcbfd88cedc376c4158ae776dd709b90c7352a3"
   }
 }
