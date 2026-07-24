@@ -5,7 +5,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import MissionPillars from '@/components/podcast/MissionPillars';
 import YouTubeLiveEmbed from '@/components/podcast/YouTubeLiveEmbed';
-import StreamYardEmbed from '@/components/podcast/StreamYardEmbed';
 import SessionCard from '@/components/podcast/broadcast/SessionCard';
 import { Podcast, Music, Radio, Youtube } from 'lucide-react';
 import { useAuth } from '@/lib/forum/AuthContext';
@@ -26,7 +25,7 @@ export default function PodcastPage() {
                 if (mounted) setLiveSessions(live || []);
             })
             .catch((err) => {
-                if (err.name === 'AbortError') return; // expected on unmount
+                if (err.name === 'AbortError') return;
             });
 
         return () => {
@@ -100,26 +99,22 @@ export default function PodcastPage() {
                                 </span>
                                 <h2 className="text-lg font-display font-bold text-white uppercase tracking-wide">Live Now</h2>
                             </div>
-                            {liveSessions[0]?.streamyardBroadcastId ? (
-                                <StreamYardEmbed
-                                    broadcastId={liveSessions[0].streamyardBroadcastId}
-                                    title={liveSessions[0].title}
-                                />
-                            ) : liveSessions[0]?.youtubeVideoId ? (
-                                <YouTubeLiveEmbed
-                                    videoId={liveSessions[0].youtubeVideoId}
-                                    title={liveSessions[0].title}
-                                />
-                            ) : liveSessions[0]?.facebookVideoUrl ? (
-                                <div className="aspect-video w-full rounded-xl overflow-hidden bg-black max-w-5xl mx-auto">
+                            {liveSessions[0]?.facebookVideoUrl ? (
+                                <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden">
                                     <iframe
                                         src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(liveSessions[0].facebookVideoUrl)}&show_text=false&autoplay=1&mute=0`}
-                                        className="w-full h-full"
+                                        title={liveSessions[0].title}
+                                        className="absolute inset-0 w-full h-full"
                                         style={{ border: 'none' }}
                                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                                         allowFullScreen
                                     />
                                 </div>
+                            ) : liveSessions[0]?.youtubeVideoId ? (
+                                <YouTubeLiveEmbed
+                                    videoId={liveSessions[0].youtubeVideoId}
+                                    title={liveSessions[0].title}
+                                />
                             ) : (
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                     {liveSessions.map((s) => (
@@ -131,26 +126,20 @@ export default function PodcastPage() {
                     </section>
                 )}
 
-
-                {/* Past Episodes Archive */}
-                <section className="section bg-navy-dark/30 border-t border-gold/10 py-16">
+                {/* Episode Playlist */}
+                <section className="section">
                     <div className="container-custom">
-                        <div className="text-center max-w-2xl mx-auto mb-10">
-                            <h2 className="text-3xl font-display font-bold text-white mb-3">
-                                Recorded Broadcasts
-                            </h2>
-                            <p className="text-cream/60">
-                                Catch up on past episodes of the Pivotal Voice Podcast and recorded live broadcasts.
-                            </p>
+                        <div className="flex items-center gap-3 mb-6">
+                            <Youtube className="w-5 h-5 text-red-500" />
+                            <h2 className="text-lg font-display font-bold text-white">The Loser&apos;s Club — Episodes</h2>
                         </div>
-                        
-                        <div className="aspect-video w-full rounded-xl overflow-hidden bg-black max-w-4xl mx-auto border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                        <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden">
                             <iframe
-                                src="https://www.youtube.com/embed/videoseries?list=PLbhwRGVX5QPU"
-                                className="w-full h-full"
-                                style={{ border: 'none' }}
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                src="https://www.youtube.com/embed/videoseries?list=PLGupSNfc6dfE&rel=0"
+                                title="The Loser's Club Playlist"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
+                                className="absolute inset-0 w-full h-full"
                             />
                         </div>
                     </div>
