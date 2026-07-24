@@ -6,7 +6,7 @@ import Footer from '@/components/layout/Footer';
 import MissionPillars from '@/components/podcast/MissionPillars';
 import YouTubeLiveEmbed from '@/components/podcast/YouTubeLiveEmbed';
 import SessionCard from '@/components/podcast/broadcast/SessionCard';
-import { Podcast, Music, Radio, Youtube } from 'lucide-react';
+import { Podcast, Radio, Youtube } from 'lucide-react';
 import { useAuth } from '@/lib/forum/AuthContext';
 import Link from 'next/link';
 import { BroadcastSession } from '@/lib/types/broadcast';
@@ -56,16 +56,7 @@ export default function PodcastPage() {
 
                             {/* Subscribe Buttons */}
                             <div className="flex flex-wrap justify-center gap-3 mt-8">
-                                <a
-                                    href="https://open.spotify.com/show/033EDEaRlSogq6mVFGi0xj"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="btn-primary text-sm flex items-center gap-2"
-                                >
-                                    <Music className="w-4 h-4" />
-                                    Spotify
-                                </a>
-                                <a
+                                <
                                     href="https://www.youtube.com/@pivotalvoice"
                                     target="_blank"
                                     rel="noopener noreferrer"
