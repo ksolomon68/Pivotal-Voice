@@ -126,20 +126,25 @@ export default function PodcastPage() {
                     </section>
                 )}
 
-                {/* Episode Playlist */}
-                <section className="section">
+                {/* Recorded Broadcasts */}
+                <section className="section bg-navy-dark/30 border-t border-gold/10 py-16">
                     <div className="container-custom">
-                        <div className="flex items-center gap-3 mb-6">
-                            <Youtube className="w-5 h-5 text-red-500" />
-                            <h2 className="text-lg font-display font-bold text-white">The Loser&apos;s Club — Episodes</h2>
+                        <div className="text-center max-w-2xl mx-auto mb-10">
+                            <h2 className="text-3xl font-display font-bold text-white mb-3">
+                                Recorded Broadcasts
+                            </h2>
+                            <p className="text-cream/60">
+                                Catch up on past episodes of the Pivotal Voice Podcast and recorded live broadcasts.
+                            </p>
                         </div>
-                        <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden">
+                        <div className="aspect-video w-full rounded-xl overflow-hidden bg-black max-w-4xl mx-auto border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
                             <iframe
                                 src="https://www.youtube.com/embed/videoseries?list=PLGupSNfc6dfE&rel=0"
                                 title="The Loser's Club Playlist"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                className="w-full h-full"
+                                style={{ border: 'none' }}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowFullScreen
-                                className="absolute inset-0 w-full h-full"
                             />
                         </div>
                     </div>
