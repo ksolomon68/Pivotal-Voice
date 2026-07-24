@@ -56,7 +56,7 @@ export default function PodcastPage() {
 
                             {/* Subscribe Buttons */}
                             <div className="flex flex-wrap justify-center gap-3 mt-8">
-                                <
+                                <a
                                     href="https://www.youtube.com/@pivotalvoice"
                                     target="_blank"
                                     rel="noopener noreferrer"
