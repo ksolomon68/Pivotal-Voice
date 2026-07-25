@@ -1,0 +1,17 @@
+{
+  "[project]/components/crm/NewsletterPopup.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/components/crm/NewsletterPopup.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_90e63863._.js",
+      "static/chunks/_62ffa790._.js",
+      "static/chunks/components_crm_NewsletterPopup_tsx_94def072._.js"
+    ]
+  },
+  "[project]/components/forum/AuthModal.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/components/forum/AuthModal.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/_f3756ff3._.js",
+      "static/chunks/components_forum_AuthModal_tsx_e6c6416e._.js"
+    ]
+  }
+}
