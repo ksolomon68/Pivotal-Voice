@@ -10,7 +10,7 @@
 /coverage
 
 # next.js
-# /.next/ — committed for cPanel deployment (server lacks RAM to build)
+/.next/
 # Cache dir is excluded: it's a runtime artifact and deploying it causes stale data
 /.next/cache/
 /out/
