@@ -14,5 +14,14 @@ deployment:
     #    ("A page resource failed to load"). Restarting with the previous
     #    node_modules is always better than that stuck state.
     - . /home/pivotalvoice/nodevenv/Pivotal-Voice/24/bin/activate && cd /home/pivotalvoice/Pivotal-Voice && npm install --production || echo "WARNING - npm install failed; restarting with existing node_modules"
-    # 5. Ensure tmp/ dir exists, then touch restart.txt to reload Passenger
+    # 5. Ensure tmp/ dir exists, then touch restart.txt (works if the host runs
+    #    Phusion Passenger; harmless no-op otherwise)
     - mkdir -p /home/pivotalvoice/Pivotal-Voice/tmp && touch /home/pivotalvoice/Pivotal-Voice/tmp/restart.txt
+    # 6. This host actually runs LiteSpeed's own Node.js process manager
+    #    (visible in `ps` as "lsnode:/home/pivotalvoice/Pivotal-Voice/"), which
+    #    does NOT reliably restart on restart.txt - a process can keep serving
+    #    stale HTML referencing deleted chunk files for days after a deploy
+    #    ("A page resource failed to load"). Kill it directly; LiteSpeed
+    #    auto-respawns a fresh one on the next request. `|| true` so a first
+    #    deploy (no running process yet) doesn't fail this task.
+    - pkill -f 'lsnode:/home/pivotalvoice/Pivotal-Voice/' || true
