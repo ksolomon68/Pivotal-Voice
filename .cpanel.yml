@@ -7,7 +7,12 @@ deployment:
     - /bin/rsync -av --delete --exclude='.git' --exclude='node_modules' --exclude='.env.local' --exclude='.env' ./ /home/pivotalvoice/Pivotal-Voice/
     # 3. Clear the Next.js fetch/route cache so the app never starts with stale API data
     - rm -rf /home/pivotalvoice/Pivotal-Voice/.next/cache
-    # 4. Install only production dependencies
-    - . /home/pivotalvoice/nodevenv/Pivotal-Voice/24/bin/activate && cd /home/pivotalvoice/Pivotal-Voice && npm install --production
+    # 4. Install only production dependencies. Must never abort the deployment:
+    #    cPanel stops at the first failing task, and if this fails after .next
+    #    was already replaced (steps 1-2), the restart below never runs and the
+    #    old app keeps serving HTML that points at deleted chunk files
+    #    ("A page resource failed to load"). Restarting with the previous
+    #    node_modules is always better than that stuck state.
+    - . /home/pivotalvoice/nodevenv/Pivotal-Voice/24/bin/activate && cd /home/pivotalvoice/Pivotal-Voice && npm install --production || echo "WARNING - npm install failed; restarting with existing node_modules"
     # 5. Ensure tmp/ dir exists, then touch restart.txt to reload Passenger
     - mkdir -p /home/pivotalvoice/Pivotal-Voice/tmp && touch /home/pivotalvoice/Pivotal-Voice/tmp/restart.txt
