@@ -315,6 +315,18 @@ const FALLBACK_ITEMS: CommunityNewsItem[] = [
     },
 ];
 
+// Drops any item whose date has already passed. Items with no parseable
+// date are kept, since we can't confirm they're stale.
+function isUpcoming(item: CommunityNewsItem): boolean {
+    if (!item.date) return true;
+    const parsed = new Date(item.date);
+    if (Number.isNaN(parsed.getTime())) return true;
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return parsed.getTime() >= today.getTime();
+}
+
 export async function GET() {
     const [isdItems, cityItems] = await Promise.all([
         scrapeItalyISD(),
@@ -328,7 +340,7 @@ export async function GET() {
     const otherCityFallbacks = FALLBACK_ITEMS.filter(i => i.city !== 'Italy');
 
     const italyItems = liveItalyItems.length > 0 ? liveItalyItems : italyFallbacks;
-    const allItems = [...italyItems, ...otherCityFallbacks];
+    const allItems = [...italyItems, ...otherCityFallbacks].filter(isUpcoming);
 
     return NextResponse.json(
         {
