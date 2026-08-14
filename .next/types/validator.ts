@@ -317,6 +317,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../app/api/podcast-episodes/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/podcast-episodes">> = Specific
+  const handler = {} as typeof import("../../app/api/podcast-episodes/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/api/send-resource/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/send-resource">> = Specific
@@ -338,15 +347,6 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 
 
 
-
-// Validate ../../app/admin/layout.tsx
-{
-  type __IsExpected<Specific extends LayoutConfig<"/admin">> = Specific
-  const handler = {} as typeof import("../../app/admin/layout.js")
-  type __Check = __IsExpected<typeof handler>
-  // @ts-ignore
-  type __Unused = __Check
-}
 
 // Validate ../../app/forum/layout.tsx
 {

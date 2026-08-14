@@ -16,6 +16,7 @@
   "/api/crm/welcome-email/route": "/api/crm/welcome-email",
   "/api/events/ics/route": "/api/events/ics",
   "/api/events/route": "/api/events",
+  "/api/podcast-episodes/route": "/api/podcast-episodes",
   "/api/send-resource/route": "/api/send-resource",
   "/api/submit-resource/route": "/api/submit-resource",
   "/calendar/page": "/calendar",

@@ -170,6 +170,12 @@
       "namedRegex": "^/api/events/ics(?:/)?$"
     },
     {
+      "page": "/api/podcast-episodes",
+      "regex": "^/api/podcast\\-episodes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/podcast\\-episodes(?:/)?$"
+    },
+    {
       "page": "/api/send-resource",
       "regex": "^/api/send\\-resource(?:/)?$",
       "routeKeys": {},
