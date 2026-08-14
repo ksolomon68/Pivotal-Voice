@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import MissionPillars from '@/components/podcast/MissionPillars';
 import YouTubeLiveEmbed from '@/components/podcast/YouTubeLiveEmbed';
 import SessionCard from '@/components/podcast/broadcast/SessionCard';
+import PodcastLibrary from '@/components/podcast/PodcastLibrary';
 import { Podcast, Radio, Youtube } from 'lucide-react';
 import { useAuth } from '@/lib/forum/AuthContext';
 import Link from 'next/link';
@@ -128,16 +129,7 @@ export default function PodcastPage() {
                                 Catch up on past episodes of the Pivotal Voice Podcast and recorded live broadcasts.
                             </p>
                         </div>
-                        <div className="aspect-video w-full rounded-xl overflow-hidden bg-black max-w-4xl mx-auto border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                            <iframe
-                                src="https://www.youtube.com/embed/videoseries?list=PLGupSNfc6dfE&rel=0"
-                                title="The Loser's Club Playlist"
-                                className="w-full h-full"
-                                style={{ border: 'none' }}
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowFullScreen
-                            />
-                        </div>
+                        <PodcastLibrary />
                     </div>
                 </section>
 
