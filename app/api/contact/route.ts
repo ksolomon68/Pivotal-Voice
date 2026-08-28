@@ -6,8 +6,10 @@ export async function POST(req: NextRequest) {
         const body = await req.json();
         const { name, email, phone, subject, message, nomineeName, nomineeBio, nomineeContact } = body;
 
+        const isNomination = subject === 'Nominate someone to be on the show';
+
         // Basic validation
-        if (!name || !email || !subject || !message) {
+        if (!name || !email || !subject || (!isNomination && !message)) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
@@ -16,12 +18,10 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
         }
 
-        const isNomination = subject === 'Nominate someone to be on the show';
-
         // Nominee validation if applicable
         if (isNomination) {
-            if (!nomineeName || !nomineeBio) {
-                return NextResponse.json({ error: 'Missing required nominee fields' }, { status: 400 });
+            if (!nomineeName || !nomineeBio || !nomineeContact) {
+                return NextResponse.json({ error: 'Missing required nominee fields (Name, Bio, and Contact Info are required)' }, { status: 400 });
             }
         }
 
@@ -100,9 +100,9 @@ export async function POST(req: NextRequest) {
                       ` : ''}
 
                       <h2 style="color:#d4af37;font-size:16px;font-weight:600;margin:28px 0 12px;border-bottom:1px solid rgba(212,175,55,0.1);padding-bottom:6px;">
-                        ${isNomination ? 'Nomination Notes / Message' : 'Message Body'}
+                        ${isNomination ? 'Additional Notes' : 'Message Body'}
                       </h2>
-                      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:16px;color:#ffffff;white-space:pre-wrap;margin-bottom:24px;">${message}</div>
+                      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:16px;color:#ffffff;white-space:pre-wrap;margin-bottom:24px;">${message || '<em style="color:rgba(245,235,210,0.4);">None provided</em>'}</div>
             
                       <hr style="border:none;border-top:1px solid rgba(212,175,55,0.1);margin:30px 0 20px 0;">
                       <p style="margin:0;font-size:12px;color:rgba(245,235,210,0.4);text-align:center;">This is an automated notification from the Pivotal Voice website contact form.</p>

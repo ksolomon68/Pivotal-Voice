@@ -51,7 +51,7 @@ export default function ContactPage() {
         setError('');
 
         // Basic validation
-        if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+        if (!name.trim() || !email.trim() || !subject.trim() || (!isNomination && !message.trim())) {
             setError('Please fill in all required fields.');
             return;
         }
@@ -63,8 +63,8 @@ export default function ContactPage() {
 
         // Nomination validation
         if (isNomination) {
-            if (!nomineeName.trim() || !nomineeBio.trim()) {
-                setError('Please provide the nominee\'s name and context.');
+            if (!nomineeName.trim() || !nomineeBio.trim() || !nomineeContact.trim()) {
+                setError('Please provide the nominee\'s name, bio context, and contact info.');
                 return;
             }
         }
@@ -341,12 +341,13 @@ export default function ContactPage() {
                                                             </div>
                                                             <div>
                                                                 <label htmlFor="nomineeContact" className="block text-xs font-semibold text-gold mb-2 uppercase tracking-wider">
-                                                                    Nominee Contact Info <span className="text-white/30">(Optional)</span>
+                                                                    Nominee Contact Info <span className="text-red-400">*</span>
                                                                 </label>
                                                                 <input
                                                                     id="nomineeContact"
                                                                     type="text"
-                                                                    placeholder="Email address, phone number, or social media link"
+                                                                    placeholder="Email address, phone number, or social media profile"
+                                                                    required={isNomination}
                                                                     value={nomineeContact}
                                                                     onChange={e => setNomineeContact(e.target.value)}
                                                                     className="w-full px-3 py-2.5 rounded-lg bg-gold/5 border border-gold/20 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-gold/50 transition-colors"
@@ -359,13 +360,17 @@ export default function ContactPage() {
                                                 {/* Message Textarea */}
                                                 <div>
                                                     <label htmlFor="message" className="block text-xs font-semibold text-cream/80 mb-2 uppercase tracking-wider">
-                                                        {isNomination ? 'Additional Notes / Your Message' : 'Your Message'} <span className="text-gold">*</span>
+                                                        {isNomination ? (
+                                                            <>Additional Notes <span className="text-white/30 lowercase font-normal">(optional)</span></>
+                                                        ) : (
+                                                            <>Your Message <span className="text-gold">*</span></>
+                                                        )}
                                                     </label>
                                                     <textarea
                                                         id="message"
-                                                        placeholder={isNomination ? "Any additional context or message for the production team..." : "What's on your mind?..."}
-                                                        required
-                                                        rows={5}
+                                                        placeholder={isNomination ? "Any additional context or notes for the production team (optional)..." : "What's on your mind?..."}
+                                                        required={!isNomination}
+                                                        rows={isNomination ? 3 : 5}
                                                         value={message}
                                                         onChange={e => setMessage(e.target.value)}
                                                         className="w-full px-3 py-2.5 rounded-lg bg-white/10 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-gold/50 transition-colors resize-none"
