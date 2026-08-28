@@ -105,7 +105,7 @@ self.__SERVER_FILES_MANIFEST={
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/home/user/Pivotal-Voice",
+    "outputFileTracingRoot": "/home/pivotalvoice/Pivotal-Voice",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -302,11 +302,11 @@ self.__SERVER_FILES_MANIFEST={
       "@livekit/components-core"
     ],
     "turbopack": {
-      "root": "/home/user/Pivotal-Voice"
+      "root": "/home/pivotalvoice/Pivotal-Voice"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "/home/user/Pivotal-Voice",
+  "appDir": "/home/pivotalvoice/Pivotal-Voice",
   "relativeAppDir": "",
   "files": [
     ".next/routes-manifest.json",
