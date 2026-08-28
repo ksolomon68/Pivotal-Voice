@@ -146,6 +146,12 @@
       "namedRegex": "^/api/community\\-feed(?:/)?$"
     },
     {
+      "page": "/api/contact",
+      "regex": "^/api/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/contact(?:/)?$"
+    },
+    {
       "page": "/api/crm/unsubscribe",
       "regex": "^/api/crm/unsubscribe(?:/)?$",
       "routeKeys": {},
@@ -198,6 +204,12 @@
       "regex": "^/candidates(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/candidates(?:/)?$"
+    },
+    {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
     },
     {
       "page": "/debates",
